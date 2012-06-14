@@ -1,0 +1,30 @@
+@charset "utf-8";
+/*!
+ * jQuery integration v1.3 / Intégration jQuery v1.3
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * www.tbs.gc.ca/ws-nw/wet-boew/terms / www.sct.gc.ca/ws-nw/wet-boew/conditions
+ */
+div.tooltip {
+	z-index: 21000;
+	border: 1px solid InfoText;
+	background: InfoBackground;
+	color: InfoText;
+	font: message-box;
+	padding: 2px 4px;
+	text-align: left;
+	position: absolute;
+	width: auto;
+	height: auto;
+}
+div.safetooltip {
+	z-index: 21000;
+	border: 1px solid #000;
+	background-color: #ffc;
+	color: #000;
+	font: 0.85em Verdana, Geneva, Arial, Helvetica, sans-serif;
+	padding: 2px 4px;
+	text-align: left;
+	position: absolute;
+	width: auto;
+	height: auto;
+}

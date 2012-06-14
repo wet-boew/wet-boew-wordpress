@@ -1,0 +1,111 @@
+@charset "utf-8";
+/*!
+ * GC Web Usability theme v1.0b1 / Thème de la facilité d'emploi GC v1.0b1
+ * CSS Grid System v1.3b1 / Système de grille CSS v1.3b1
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * Terms and conditions of use: http://tbs-sct.ircan.gc.ca/projects/gcwwwtemplates/wiki/Terms
+ * Conditions régissant l'utilisation : http://tbs-sct.ircan.gc.ca/projects/gcwwwtemplates/wiki/Conditions
+ */
+ 
+/*** GC Web Usability theme begins / Début du thème de la facilité d'emploi ***/
+	/** Body normalization for cross browser **/
+	body{min-width: 1200px;}
+	#cn-head, #cn-cols, #cn-foot, #cn-head-inner, #cn-gcnb, #cn-banner, #cn-psnb, #cn-bc, #cn-foot-inner, #cn-gcft, #cn-sft {width:100%;}
+	#cn-cols-inner, #cn-gcnb-inner, #cn-banner-inner, #cn-psnb-inner, #cn-bc-inner, #cn-gcft-inner, #cn-sft-inner {width:1200px;}
+	
+	/** Banner **/
+
+	#cn-banner-inner {width:1200px;}
+	
+	/** Site title **/
+	#cn-site-title{width:500px;}
+	
+	/** Site nav bar **/
+	#cn-psnb .wet-boew-menu {width:1200px;}
+	
+	/** Tabbed menu **/
+	#cn-psnb .wet-boew-tabbedmenu .showcase-visible ul {width:1200px;}
+	
+	/** Content area borders **/
+	#cn-cols-inner,#cn-bc-inner {background-image:url(../fip-pcim/images/content-deco-large.gif)}
+
+	/** Centre column **/
+	#cn-body-inner-1col #cn-centre-col {width:1200px;}
+	#cn-body-inner-2col #cn-centre-col {width:900px;}
+	#cn-body-inner-2col-right #cn-centre-col {width:900px;}
+	#cn-body-inner-3col #cn-centre-col {width:600px;left:300px;}
+	#cn-body-inner-2col #cn-centre-col-inner, #cn-body-inner-2col-right #cn-centre-col-inner{width:900px;}
+	#cn-body-inner-3col #cn-centre-col-inner {width:600px;}
+
+	/** Left column **/
+	#cn-left-col {width:300px;}
+	
+	/** Right column **/
+	#cn-right-col {width:300px;left:600px;}
+
+	/** Two column layout within the content area **/
+	#cn-body-inner-1col #cn-content{width:900px;}
+	#cn-body-inner-2col #cn-content{width:580px;}
+	#cn-aside{width:280px;} 
+	
+ 	/** Government priorities **/
+	#cn-gc-priorities {width: 280px;}
+	
+	/** Site footer **/
+	#cn-sft-inner {background-image: url(../fip-pcim/images/footer-deco-large.gif)}
+/*** GC Web Usability theme ends / Fin du thème de la facilité d'emploi ***/
+
+/*** CSS Grid System begins / Début du Système de grille CSS ***/
+	/* ---- Dimensions ---- */
+	#cn-body-inner-2col #cn-cols .grid-12 .span-1{width:55px;}
+	.grid-12 .span-1{width:80px;}
+	.span-1,#cn-body-inner-2col #cn-cols .grid-12 .span-2{width:130px;}
+	.grid-12 .span-2{width:180px;}
+	#cn-body-inner-2col #cn-cols .grid-12 .span-3{width:205px;}
+	.span-2,#cn-body-inner-2col #cn-cols .grid-12 .span-4,.grid-12 .span-3{width:280px;}
+	#cn-body-inner-2col #cn-cols .grid-12 .span-5{width:355px;}
+	.grid-12 .span-4{width:380px;}
+	.span-3,#cn-body-inner-2col #cn-cols .grid-12 .span-6{width:430px;}
+	.grid-12 .span-5{width:480px;}
+	#cn-body-inner-2col #cn-cols .grid-12 .span-7{width:505px;}
+	.span-4,#cn-body-inner-2col #cn-cols .grid-12 .span-8,.grid-12 .span-6{width:580px;}
+	#cn-body-inner-2col #cn-cols .grid-12 .span-9{width:655px;}
+	.grid-12 .span-7{width:680px;}
+	.span-5,#cn-body-inner-2col #cn-cols .grid-12 .span-10{width:730px;}
+	.grid-12 .span-8{width:780px;}
+	#cn-body-inner-2col #cn-cols .grid-12 .span-11{width:805px;}
+	.span-6,#cn-body-inner-2col #cn-cols .grid-12 .span-12,.grid-12 .span-9{width:880px;}
+	.grid-12 .span-10{width:980px;}
+	.span-7{width:1030px;}
+	.grid-12 .span-11{width:1080px;}
+	.span-8,.grid-12 .span-12{width:1180px;}
+	
+	/* ---- Borders ---- */
+	#cn-body-inner-2col #cn-cols .grid-12 .border-span-1{background-image:url(../../grids/images/border-55px.gif);}
+	.grid-12 .border-span-1{background-image:url(../../grids/images/border-80px.gif);}
+	.border-span-1,#cn-body-inner-2col #cn-cols .grid-12 .border-span-2,.module-versatile{background-image:url(../../grids/images/border-130px.gif);}
+	.grid-12 .border-span-2,.module-versatile{background-image:url(../../grids/images/border-180px.gif);}
+	#cn-body-inner-2col #cn-cols .grid-12 .border-span-3{background-image:url(../../grids/images/border-205px.gif);}
+	.border-span-2,.module-versatile,#cn-body-inner-2col #cn-cols .grid-12 .border-span-4,.grid-12 .border-span-3{background-image:url(../../grids/images/border-280px.gif);}
+	#cn-body-inner-2col #cn-cols .grid-12 .border-span-5{background-image:url(../../grids/images/border-355px.gif);}
+	.grid-12 .border-span-4{background-image:url(../../grids/images/border-380px.gif);}
+	.border-span-3,#cn-body-inner-2col #cn-cols .grid-12 .border-span-6{background-image:url(../../grids/images/border-430px.gif);}
+	.grid-12 .border-span-5{background-image:url(../../grids/images/border-480px.gif);}
+	#cn-body-inner-2col #cn-cols .grid-12 .border-span-7{background-image:url(../../grids/images/border-505px.gif);}
+	.border-span-4,.module-table-contents,.module-welcomepage,#cn-body-inner-2col #cn-cols .grid-12 .border-span-8,.grid-12 .border-span-6{background-image:url(../../grids/images/border-580px.gif);}
+	#cn-body-inner-2col #cn-cols .grid-12 .border-span-9{background-image:url(../../grids/images/border-655px.gif);}
+	.grid-12 .border-span-7{background-image:url(../../grids/images/border-680px.gif);}
+	.border-span-5,#cn-body-inner-2col #cn-cols .grid-12 .border-span-10{background-image:url(../../grids/images/border-730px.gif);}
+	.grid-12 .border-span-8{background-image:url(../../grids/images/border-780px.gif);}
+	#cn-body-inner-2col #cn-cols .grid-12 .border-span-11{background-image:url(../../grids/images/border-805px.gif);}
+	.border-span-6,#cn-body-inner-2col #cn-cols .grid-12 .border-span-12,.grid-12 .border-span-9{background-image:url(../../grids/images/border-880px.gif);}
+	.grid-12 .border-span-10{background-image:url(../../grids/images/border-980px.gif);}
+	.border-span-7{background-image:url(../../grids/images/border-1030px.gif);}
+	.grid-12 .border-span-11{background-image:url(../../grids/images/border-1080px.gif);}
+	.border-span-8,.grid-12 .border-span-12{background-image:url(../../grids/images/border-1180px.gif);}
+	
+	/* ---- Other ---- */
+	.span-2 .calendar-month td,.span-2 .calendar-month th{width:34px;height:32px;padding:2px 3px;}
+	#cn-body-inner-2col #cn-cols .grid-12 .span-4 .calendar-month td,#cn-body-inner-2col #cn-cols .grid-12 .span-4 .calendar-month th{width:34px;height:32px;padding:2px 3px;}
+	.grid-12 .span-3 .calendar-month td,.grid-12 .span-3 .calendar-month th{width:34px;height:32px;padding:2px 3px;}
+/*** CSS Grid System ends / Fin du Système de grille CSS ***/

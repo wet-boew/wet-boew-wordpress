@@ -1,0 +1,28 @@
+@charset "utf-8";
+/*!
+ * GC Web Usability theme v1.0 / Thème de la facilité d'emploi Web GC v1.0
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * www.tbs.gc.ca/ws-nw/wet-boew/terms / www.sct.gc.ca/ws-nw/wet-boew/conditions
+ */
+
+@media screen,print {
+	/** Render invisible **/
+	#cn-gcnb h2, #cn-search-box label, #cn-psnb h2, #cn-sft h3, #cn-bc h2, #cn-search-box h2, #cn-gcft h3 {position: absolute; clip: rect(1px, 1px, 1px, 1px); height: 1px !important; width: 1px !important; overflow: hidden !important; margin: 0 !important;}
+
+	#cn-bc li {margin-left: -10px; padding-right: 5px;*clear: expression(((this.previousSibling==null)?(style.paddingLeft='0',style.paddingRight='0',style.marginLeft='auto',style.background='none'):(style.paddingLeft='11px',style.paddingRight='0',style.marginLeft='auto')),style.clear = "none", 0);}
+}
+
+/** Screen-only CSS **/
+@media screen {
+	#cn-aside {position:static;}
+
+	.cn-left-col-default li a{height:1%;}
+	.cn-left-col-default h3.top-section a:link,.cn-left-col-default h3.top-section a:visited,.cn-left-col-default h3.top-section a:link.nav-current,.cn-left-col-default h3.top-section a:visited.nav-current{color:#FFF;}
+	.cn-left-col-default h3 a:link,.cn-left-col-default h3 a:visited,.cn-left-col-default h4 a:link,.cn-left-col-default h4 a:visited,.cn-left-col-default .top-level a:link,.cn-left-col-default .top-level a:visited,.cn-left-col-default li a:link,.cn-left-col-default li a:visited{color:#333;}
+	.cn-left-col-default h3 a:link.nav-current,.cn-left-col-default h3 a:visited.nav-current,.cn-left-col-default h4 a:link.nav-current,.cn-left-col-default h4 a:visited.nav-current,.cn-left-col-default .top-level a:link.nav-current,.cn-left-col-default .top-level a:visited.nav-current,.cn-left-col-default li a:link.nav-current,.cn-left-col-default li a:visited.nav-current{color:#0F315B;}
+	.cn-minister ul {padding-bottom: 16px;}
+}
+
+/** Print-only CSS **/
+@media print {
+}

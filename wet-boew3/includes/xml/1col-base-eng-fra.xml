@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<html>
+	<base>../includes-1col-base-eng-fra.html</base>
+	<head>
+		<css>
+			<base>../inc/css-base.inc</base>
+		</css>
+		<params/>
+	</head>
+	<body>
+		<header>../inc/header-base-eng-fra.inc</header>
+		<content>../inc/content-base-eng-fra.inc</content>
+		<leftcol>
+			<prenav/>
+			<nav/>
+			<postnav/>
+		</leftcol>
+		<rightcol>
+			<prenav/>
+			<nav/>
+			<postnav/>
+		</rightcol>
+		<footer>../inc/footer-base-eng-fra.inc</footer>
+	</body>
+</html>

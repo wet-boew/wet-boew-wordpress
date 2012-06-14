@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<html>
+	<base>../includes-2col-rightnav-navdroite-base-eng.html</base>
+	<head>
+		<css>
+			<base>../inc/css-base.inc</base>
+		</css>
+		<params/>
+	</head>
+	<body>
+		<header>../inc/header-base-eng.inc</header>
+		<content>../inc/content-base-eng.inc</content>
+		<leftcol>
+			<prenav/>
+			<nav/>
+			<postnav/>
+		</leftcol>
+		<rightcol>
+			<prenav/>
+			<nav>../inc/primary-nav-base-eng.inc</nav>
+			<postnav/>
+		</rightcol>
+		<footer>../inc/footer-base-eng.inc</footer>
+	</body>
+</html>

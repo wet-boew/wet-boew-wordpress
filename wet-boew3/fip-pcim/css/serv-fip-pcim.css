@@ -1,0 +1,60 @@
+@charset "utf-8";
+/*!
+ * GC Web Usability theme v1.0 / Thème de la facilité d'emploi Web GC v1.0
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * www.tbs.gc.ca/ws-nw/wet-boew/terms / www.sct.gc.ca/ws-nw/wet-boew/conditions
+ */
+
+/** Screen and print CSS **/
+@media screen,print {
+	#cn-body-inner-1col{background:#fff;}
+	#cn-cols-inner,#cn-head-inner{background: #fff;}
+	a:link {color:#295376;}
+	a:visited {color:#5a306b;}
+
+	/** FIP signature **/
+	#cn-sig {margin-top: 20px; margin-bottom: 11px;}
+
+	/** Canada Wordmark **/
+	#cn-wmms {text-align: right; margin-top: 10px; margin-bottom: 11px;}
+
+	/** Site title **/
+	#cn-site-title a,#cn-site-title a:visited,#cn-site-title a:hover,#cn-site-title a:focus{color:#295376;text-decoration:none;}
+	#cn-site-title a:hover,#cn-site-title a:focus{text-decoration:underline;}
+	#cn-site-title-left, #cn-site-title-right, .cn-alt-site-title-left, .cn-alt-site-title-right {padding: 0; color: #000; font-size: 1.5em; font-weight: bold;}
+	.cn-alt-site-title-left, .cn-alt-site-title-right {padding: 0; color: #000; font-size: 1.2em; font-weight: bold;}
+
+	/** Content area **/
+	#cn-cols-inner  h2, #cn-cols-inner  p {margin-left: 0;}
+	#cn-cols-inner  li a {text-decoration: none;}
+	#cn-cols-inner  li a:hover, #cn-cols-inner  li a:focus, #cn-cols-inner  li a:active {text-decoration: underline;}
+}
+
+/** Screen-only CSS **/
+@media screen {
+	#cn-sig-inner {width: 214px; height: 20px;}
+	#cn-wmms-inner {float: right; width: 126px; height: 30px;}
+	
+	#cn-site-title-right, .cn-alt-site-title-right {text-align: right;}
+
+	/** Decorative bar **/
+	#cn-cols-inner div #cn-decoration-bar {height: 10px; background: #fff url(../images/background-waves.jpg) -100px center repeat-x; margin-bottom: 12px; padding-bottom: 0;}
+	
+	/** Terms and conditions links **/
+	#cn-foot-inner {background: #fff;}
+	.cn-tc-left {text-align: left;}
+	.cn-tc-right {text-align: right;}
+	#cn-tc ul {list-style:none; margin: 0; padding: 0;}
+	#cn-tc li {float: left; margin-bottom: 4px;}
+	#cn-tc li a {text-decoration: none; font-size: 0.9em;}
+	#cn-tc li a:hover, #cn-tc li a:focus, #cn-tc li a:active {text-decoration: underline;}
+}
+
+/** Print-only CSS **/
+@media print {
+	#cn-sig img {position: absolute; top: 10px; left: 0;}
+	#cn-wmms img {position: absolute; top: 0; right: 0;}
+	#cn-site-title {margin-top: 40px;}
+	#cn-site-title-left, #cn-site-title-right, .cn-alt-site-title-left, .cn-alt-site-title-right {margin: 0; padding: 0;width: 100%;}
+	#cn-tc {display: none;}
+}

@@ -1,0 +1,78 @@
+@charset "utf-8";
+/*!
+ * CSS Grid System v1.3b1 / Système de grille CSS v1.3b1
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * Terms and conditions of use: http://tbs-sct.ircan.gc.ca/projects/gcwwwtemplates/wiki/Terms
+ * Conditions régissant l'utilisation : http://tbs-sct.ircan.gc.ca/projects/gcwwwtemplates/wiki/Conditions
+ */
+body {background: #EEEEEE;}
+#cn-cols {background: #FFFFFF;}
+h1,h2,h3,h4,h5,h6,p,ul,dl,ol,blockquote,table,form,img,pre{margin-left:10px;margin-right:10px;}
+#cn-centre-col-inner .span-1, #cn-centre-col-inner .span-2, #cn-centre-col-inner .span-3, #cn-centre-col-inner .span-4, #cn-centre-col-inner .span-5, #cn-centre-col-inner .span-6, .span-full {margin-bottom: 20px !important;}
+#cn-centre-col-inner .margin-bottom-none {margin-bottom: 0 !important;}
+.span-1, .span-2, .span-3, .span-4, .span-5, .span-6, .span-6-full, .span-full {display: inline;float: left;position: relative;}
+.span-full {margin-left: 0 !important;margin-right: 0 !important;}
+.background-light p, .background-dark p, .background-accent p, .border-span-1 p, .border-span-2 p, .border-span-3 p, .border-span-4 p, .border-span-5 p, .border-span-6 p, .border-span-full p {margin-left: 10px !important;margin-right: 10px !important;}
+.border-span-1, .border-span-2, .border-span-3, .border-span-4, .border-span-5, .border-span-6, .border-span-full {background-repeat: no-repeat;border-bottom: 1px solid #CCCCCC !important;}
+
+/*Add margin left and right to elements that are used outside a grid cell, as they must still match the grid dimensions*/
+.float-right{margin-right:10px;}
+
+/*Reset margin left and right to elements that are used inside a grid cell*/
+#cn-body-inner-3col #cn-centre-col-inner h1,#cn-body-inner-3col #cn-centre-col-inner h2, #cn-body-inner-3col #cn-centre-col-inner h3, #cn-body-inner-3col #cn-centre-col-inner h4,
+.span-1 h2, .span-2 h2,.span-3 h2, .span-4 h2,.span-5 h2, .span-6 h2,.span-1 h3, .span-2 h3,.span-3 h3, .span-4 h3,.span-5 h3, .span-6 h3,.span-1 h4, .span-2 h4,.span-3 h4, .span-4 h4,.span-5 h4, .span-6 h4,.span-1 h5, .span-2 h5,.span-3 h5, .span-4 h5,.span-5 h5, .span-6 h5,.span-1 h6, .span-2 h6,.span-3 h6, .span-4 h6,.span-5 h6, .span-6 h6,.span-1 form,.span-2 form,.span-3 form,.span-4 form,.span-5 form,.span-6 form,.span-1 table,.span-2 table,.span-3 table,.span-4 table,.span-5 table,.span-6 table,.span-1 blockquote,.span-2 blockquote,.span-3 blockquote,.span-4 blockquote,.span-5 blockquote,.span-6 blockquote,.span-1 img,.span-2 img,.span-3 img,.span-4 img,.span-5 img,.span-6 img,.span-1 pre,.span-2 pre,.span-3 pre,.span-4 pre,.span-5 pre,.span-6 pre,#cn-sig img,#cn-wmms img{margin-left:0;margin-right:0;}
+.span-1 .float-right,.span-2 .float-right,.span-3 .float-right,.span-4 .float-right,.span-5 .float-right,.span-6 .float-right,img.float-right{margin-right:0;}
+img.float-right{margin-left:10px;}
+#cn-right-col h3,#cn-left-col h3,#cn-right-col ul,#cn-left-col ul,#cn-right-col form,#cn-left-col form{margin-left:0;margin-right:0;}
+
+/*basic styles*/
+#cn-banner{background:url(../images/banner-medium.jpg) 0 0 no-repeat #00556b;}
+h2.background-light, h3.background-light, h4.background-light, h5.background-light, h6.background-light {margin-top:0;margin-bottom:0;}
+#cn-left-col{margin-right:-220px;}
+#cn-cols, #cn-cols-inner, #cn-head-inner, #cn-foot-inner,.span-full  {width:940px;margin:auto;}
+#cn-body-inner-2col #cn-centre-col{width:720px;}
+#cn-body-inner-2col #cn-centre-col-inner{width:720px;padding-left: 10px;}
+* html #cn-body-inner-2col #cn-centre-col-inner{padding-left: 0;position: relative; left: 10px;}
+#cn-body-inner-3col #cn-centre-col{width:520px;}
+#cn-body-inner-3col #cn-centre-col-inner{width:480px;margin-left:0;margin-right:0;padding-left:10px;padding-right:10px;}
+#cn-right-col {left:510px;}
+* html #cn-right-col {left:530px;}
+.span-1{width:100px;}
+#cn-left-col,#cn-left-col-gap,#cn-right-col,#cn-right-col-gap,.span-2{width:220px;}
+.span-3{width:340px;}
+.span-4{width:460px;}
+.span-5{width:580px;}
+.span-6,.span-6-full{width:700px;}
+.border-span-1{background-image:url(../images/border-1024-span-1.gif);}
+.border-span-2,.module-versatile{background-image:url(../images/border-1024-span-2.gif);}
+.border-span-3{background-image:url(../images/border-1024-span-3.gif);}
+.border-span-4,.module-table-contents,.module-welcomepage{background-image:url(../images/border-1024-span-4.gif);}
+.border-span-5{background-image:url(../images/border-1024-span-5.gif);}
+.border-span-6{background-image:url(../images/border-1024-span-6.gif);}
+.border-span-full{background-image:url(../images/border-1024-span-full.gif);}
+.span-2 .calendar-month td,.span-2 .calendar-month th{width:30px;height:32px;padding:2px 3px;}
+#cn-body-inner-1col #cn-centre-col-inner {width:940px;}
+ul,dl,ol{margin:0 10px 8px 40px;padding:0;}
+#cn-right-col ul{margin-bottom:0;}
+#cn-left-col ul ul{margin-left:40px;}
+#cn-left-col li{margin:0;}
+#cn-right-col-inner li,#cn-left-col ul{margin-left:0;}
+ul#cn-pd-ul{padding:0;}
+
+/*Additional CSS for plugins that work within the grid system (delete if the plugin is not used by your site)*/
+
+/*Codaslider CSS*/
+.span-6 #slider,.span-6 .scroll {width: 700px}
+.span-6 .scroll-panel {width: 660px}
+.span-5 #slider,.span-5 .scroll {width: 580px}
+.span-5 .scroll-panel {width: 540px}
+.span-4 #slider,.span-4 .scroll {width: 460px}
+.span-4 .scroll-panel {width: 420px}
+.span-3 #slider,.span-3 .scroll {width: 340px}
+.span-3 .scroll-panel {width: 300px}
+.span-2 #slider,.span-2 .scroll {width: 220px}
+.span-2 .scroll-panel {width: 180px}
+.slider-nav img {width:auto !important;} /*for when JavaScript is turned off *
+
+/* ie6 fixes */
+* html .cn-left-col-default h3 {width: 98%}

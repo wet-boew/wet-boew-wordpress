@@ -1,0 +1,46 @@
+@charset "utf-8";
+/*!
+ * GC Web Usability theme v1.0 / Thème de la facilité d'emploi Web GC v1.0
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * www.tbs.gc.ca/ws-nw/wet-boew/terms / www.sct.gc.ca/ws-nw/wet-boew/conditions
+ */
+ 
+/** Screen and print CSS **/
+@media screen,print {
+}
+
+/** Screen-only CSS **/
+@media screen {
+	#cn-body-inner-1col, #cn-body-inner-2col, #cn-body-inner-2col-right, #cn-body-inner-3col, #cn-head-inner{background-position:center 3.1em;}
+	
+	#cn-banner {float:left;}
+	#cn-search-submit {padding:1px 0;}
+	
+	/** Site title **/
+	#cn-site-title{position:relative;}
+	#cn-site-title-inner{position:absolute;top:50%;}
+	#cn-site-title a{position:relative;top:-50%}
+	#cn-site-title, #cn-site-title a {filter: Shadow(Color=#333333, Direction=125,Strength=1);}
+
+	/** Site nav bar **/
+	#cn-psnb .mb-megamenu .mb-sm-open {background: url(../images/gradiant.jpg) repeat-x 0 0 #eee;}
+	#cn-psnb .mb-hsubmenu .mb-sm-open ul {width:960px;}
+
+	#cn-doc-dates {position:relative; float:right;margin-bottom:-15px;top:10px;}
+	
+	/** Footer **/
+	#cn-ft-tctr {padding: 7px 0 6px 0;}
+	#cn-ft-tctr li {float:left;}
+	#cn-ft-tctr li.terms {padding: 0 10px 0 10px;}
+	#cn-ft-tctr li.trans {padding-left: 10px;}
+	#cn-gcft li {margin: 13px 35px 14px 9px;}
+}
+
+/** Print-only CSS **/
+@media print {
+	#cn-banner {width: 100%; margin-top: 20px; margin-bottom: 20px;}
+	#cn-bc {padding: 5px 0;}
+	#cn-bc ol {line-height: normal;}
+	#cn-bc li {margin: 0; padding: 0 10px;border-left: 1px solid #000;}
+	#cn-bc li:first-child {border-left: none; padding-left: 0;}
+}
