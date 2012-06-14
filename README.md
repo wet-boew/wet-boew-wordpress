@@ -13,5 +13,10 @@ Based on Government of Canada Common Look and Feel (CLF) standard.
 ## Basic Setup
 ---------------------------------
 
+For instructions on how to install a WordPress theme:
+http://codex.wordpress.org/Using_Themes
+
+## Requirements
+
 - Requires the following WP plugins:
 qTranslate - http://www.qianqin.de/qtranslate/
