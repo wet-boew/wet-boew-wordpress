@@ -3,8 +3,8 @@
  * The Header for our theme.
  *
  * @package WordPress
- * @subpackage gcwu-fegc
- * @since gcwu-fegc 1.0
+ * @subpackage wet-boew
+ * @since wet-boew 1.0
  */
 ?>
 <!DOCTYPE html>
@@ -33,6 +33,7 @@ www.tbs.gc.ca/ws-nw/wet-boew/terms / www.sct.gc.ca/ws-nw/wet-boew/conditions -->
 <script src="<?php bloginfo('template_directory'); ?>/build/js/jquery.min.js"></script>
 <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/build/grids/css/util-min.css" />
 <!--[if lte IE 8]>
+<script src="<?php bloginfo('template_directory'); ?>/build/js/polyfills/html5shiv-min.js"></script>
 <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/build/js/css/pe-ap-ie-min.css" />
 <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/build/theme-gcwu-fegc/css/theme-ie-min.css" />
 <![endif]-->
@@ -83,7 +84,7 @@ if ($clf_col_num=='1') {
 <ul>
 <li id="gcwu-gcnb1"><a rel="external" href="http://www.canada.gc.ca/<?php _e("<!--:en-->home.html<!--:--><!--:fr-->accueil.html<!--:-->"); ?>">Canada.gc.ca</a></li>
 <li id="gcwu-gcnb2"><a rel="external" href="http://www.servicecanada.gc.ca/<?php _e("<!--:en-->eng/home.shtml<!--:--><!--:fr-->fra/accueil.shtml<!--:-->"); ?>">Services</a></li>
-<li id="gcwu-gcnb3"><a rel="external" href="http://www.canada.gc.ca/depts/major/depind-<?php _e("<!--:en-->eng<!--:--><!--:fr-->fra<!--:-->"); ?>.html">Departments</a></li>
+<li id="gcwu-gcnb3"><a rel="external" href="http://www.canada.gc.ca/aboutgov-ausujetgouv/depts/menu-<?php _e("<!--:en-->eng<!--:--><!--:fr-->fra<!--:-->"); ?>.html">Departments</a></li>
 <li id="gcwu-gcnb-lang"><a href="<?php _e("<!--:en-->" . qtrans_convertURL($url, 'fr') . "<!--:--><!--:fr-->" . qtrans_convertURL($url, 'en') . "<!--:-->"); ?>" lang="<?php _e("<!--:en-->fr<!--:--><!--:fr-->en<!--:-->"); ?>"><?php _e("<!--:en-->Français<!--:--><!--:fr-->English<!--:-->"); ?></a></li>
 </ul>
 </div></div></div></nav>
