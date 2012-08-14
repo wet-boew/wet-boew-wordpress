@@ -57,6 +57,7 @@
 </div></div></div>
 
 <!-- ScriptsStart -->
+<script src="<?php bloginfo('template_directory'); ?>/build/theme-gcwu-fegc/js/theme-min.js"></script>
 <script src="<?php bloginfo('template_directory'); ?>/build/js/settings.js"></script>
 <script src="<?php bloginfo('template_directory'); ?>/build/js/pe-ap-min.js"></script>
 <!-- ScriptsEnd -->
