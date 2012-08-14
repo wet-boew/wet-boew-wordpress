@@ -9,7 +9,7 @@ get_header();
 		<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 			
 			<!-- Content title begins / Début du titre du contenu -->
-			<h1 id="cn-cont"><?php the_title(); ?></h1>
+			<h1 id="wb-cont"><?php the_title(); ?></h1>
 			<!-- Content Title ends / Fin du titre du contenu -->
 			
 <!-- clf2-nsi2 theme begins / Début du thème clf2-nsi2 -->
@@ -21,7 +21,7 @@ get_header();
 		
 		<?php endwhile; else: ?>
 			<!-- Content title begins / Début du titre du contenu -->
-			<h1 id="cn-cont"><?php _e("<!--:en-->404 Error<!--:--><!--:fr-->Erreur 404<!--:-->"); ?></h1>
+			<h1 id="wb-cont"><?php _e("<!--:en-->404 Error<!--:--><!--:fr-->Erreur 404<!--:-->"); ?></h1>
 			<!-- Content Title ends / Fin du titre du contenu -->
 			
 <!-- clf2-nsi2 theme begins / Début du thème clf2-nsi2 -->
