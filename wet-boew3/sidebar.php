@@ -67,9 +67,9 @@ if ($clf_col_num=='1') {
 			</div>
 		</nav>
 		</div></div>
-		<!-- Side navigation (left column) ends / Fin de la navigation latérale (colonne gauche) -->
+	
 	</div></div>
-	<!-- Columns end / Fin des colonnes -->
+	
 <?php
 }
 ?>
