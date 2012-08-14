@@ -44,14 +44,14 @@
 			</div>    
 	<?php else :
 			if ( is_category() ) { // If this is a category archive
-				printf(__("<!--:en--><h1 id=\"cn-cont\">No article in this category %s</h2><!--:--><!--:fr--><h1 id=\"cn-cont\">Aucun article dans cette catégorie %s</h1><!--:-->"), single_cat_title('',false));
+				printf(__("<!--:en--><h1 id=\"wb-cont\">No article in this category %s</h2><!--:--><!--:fr--><h1 id=\"wb-cont\">Aucun article dans cette catégorie %s</h1><!--:-->"), single_cat_title('',false));
 			} else if ( is_date() ) { // If this is a date archive
-				echo(__("<!--:en--><h1 id=\"cn-cont\">Sorry, no article for this date<!--:--><!--:fr--><h1 id=\"cn-cont\">Désolé, aucun article pour cette date</h1><!--:-->"));
+				echo(__("<!--:en--><h1 id=\"wb-cont\">Sorry, no article for this date<!--:--><!--:fr--><h1 id=\"wb-cont\">Désolé, aucun article pour cette date</h1><!--:-->"));
 			} else if ( is_author() ) { // If this is a category archive
 				$userdata = get_userdatabylogin(get_query_var('author_name'));
-				printf(__("<!--:en--><h1 id=\"cn-cont\">Sorry, %s didn't write any articles yet</h1><!--:--><!--:fr--><h1 id=\"cn-cont\">Désolé, %s n'a pas écrit un article</h1><!--:-->"), $userdata->display_name);
+				printf(__("<!--:en--><h1 id=\"wb-cont\">Sorry, %s didn't write any articles yet</h1><!--:--><!--:fr--><h1 id=\"wb-cont\">Désolé, %s n'a pas écrit un article</h1><!--:-->"), $userdata->display_name);
 			} else {
-				echo(__("<!--:en--><h1 id=\"cn-cont\">Not found</h1><!--:--><!--:fr--><h1 id=\"cn-cont\">Introuvable</h1><!--:-->"));
+				echo(__("<!--:en--><h1 id=\"wb-cont\">Not found</h1><!--:--><!--:fr--><h1 id=\"wb-cont\">Introuvable</h1><!--:-->"));
 			}
 			get_search_form();
 
