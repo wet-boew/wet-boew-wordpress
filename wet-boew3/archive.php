@@ -12,19 +12,19 @@
 		<?php $post = $posts[0]; // Hack. Set $post so that the_date() works. ?>
 			<!-- Content title begins / Début du titre du contenu -->	
 		<?php /* If this is a category archive */ if (is_category()) { ?>
-			<h1 id="cn-cont"><?php _e("<!--:en-->Category:<!--:--><!--:fr-->Catégorie&#160;:<!--:-->"); ?> <?php single_cat_title(); ?></h1>
+			<h1 id="wb-cont"><?php _e("<!--:en-->Category:<!--:--><!--:fr-->Catégorie&#160;:<!--:-->"); ?> <?php single_cat_title(); ?></h1>
 		<?php /* If this is a tag archive */ } elseif( is_tag() ) { ?> 
-			<h1 id="cn-cont"><?php _e("<!--:en-->Tag:<!--:--><!--:fr-->Étiquette&#160;:<!--:-->"); ?> <?php single_tag_title(); ?></h1>
+			<h1 id="wb-cont"><?php _e("<!--:en-->Tag:<!--:--><!--:fr-->Étiquette&#160;:<!--:-->"); ?> <?php single_tag_title(); ?></h1>
 		<?php /* If this is a daily archive */ } elseif (is_day()) { ?>
-			<h1 id="cn-cont"><?php _e("<!--:en-->Day:<!--:--><!--:fr-->Jour&#160;:<!--:-->"); ?> <?php the_time('F j, Y'); ?></h1>
+			<h1 id="wb-cont"><?php _e("<!--:en-->Day:<!--:--><!--:fr-->Jour&#160;:<!--:-->"); ?> <?php the_time('F j, Y'); ?></h1>
 		<?php /* If this is a monthly archive */ } elseif (is_month()) { ?>
-			<h1 id="cn-cont"><?php _e("<!--:en-->Month:<!--:--><!--:fr-->Mois&#160;:<!--:-->"); ?> <?php the_time('F Y'); ?></h1>
+			<h1 id="wb-cont"><?php _e("<!--:en-->Month:<!--:--><!--:fr-->Mois&#160;:<!--:-->"); ?> <?php the_time('F Y'); ?></h1>
 		<?php /* If this is a yearly archive */ } elseif (is_year()) { ?>
-			<h1 id="cn-cont"><?php _e("<!--:en-->Year:<!--:--><!--:fr-->Année&#160;:<!--:-->"); ?> <?php the_time('Y'); ?></h1>
+			<h1 id="wb-cont"><?php _e("<!--:en-->Year:<!--:--><!--:fr-->Année&#160;:<!--:-->"); ?> <?php the_time('Y'); ?></h1>
 		<?php /* If this is an author archive */ } elseif (is_author()) { ?>
-			<h1 id="cn-cont"><?php _e("<!--:en-->Author<!--:--><!--:fr-->Auteur<!--:-->"); ?></h1>
+			<h1 id="wb-cont"><?php _e("<!--:en-->Author<!--:--><!--:fr-->Auteur<!--:-->"); ?></h1>
 		<?php /* If this is a paged archive */ } elseif (isset($_GET['paged']) && !empty($_GET['paged'])) { ?>
-			<h1 id="cn-cont"><?php _e("<!--:en-->Blog's Archives<!--:--><!--:fr-->Archives du blogue<!--:-->"); ?></h1>
+			<h1 id="wb-cont"><?php _e("<!--:en-->Blog's Archives<!--:--><!--:fr-->Archives du blogue<!--:-->"); ?></h1>
 		<?php } ?>
 			<!-- Content Title ends / Fin du titre du contenu -->
 
