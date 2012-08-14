@@ -4,13 +4,9 @@ if ($clf_col_num=='1') {
  echo "</div>";
 } elseif ($clf_col_num=='3') {
 ?>
-		<!-- Side navigation (left column) begins / Début de la navigation latérale (colonne gauche) -->
-        
-        
-        
-        
-        <div id="wb-sec"><div id="wb-sec-in"><nav role="navigation"><h2 id="wb-nav"><?php _e("<!--:en-->Side navigation (left column)<!--:--><!--:fr-->Navigation latérale (colonne gauche)<!--:-->"); ?></h2>
+		<div id="wb-sec"><div id="wb-sec-in"><nav role="navigation"><h2 id="wb-nav"><?php _e("<!--:en-->Secondary menu<!--:--><!--:fr-->Menu secondaire<!--:-->"); ?></h2>
 <div class="wb-sec-def">
+<!-- SecNavStart -->
 				<section>
 				<ul>
 				<?php   /* Widgetized sidebar, if you have the plugin installed. */ 
@@ -71,9 +67,9 @@ if ($clf_col_num=='1') {
 } else {
   
 ?>
-		<!-- Side navigation (left column) begins / Début de la navigation latérale (colonne gauche) -->
-		<div id="wb-sec"><div id="wb-sec-in"><nav role="navigation"><h2 id="wb-nav"><?php _e("<!--:en-->Side navigation (left column)<!--:--><!--:fr-->Navigation latérale (colonne gauche)<!--:-->"); ?></h2>
+		<div id="wb-sec"><div id="wb-sec-in"><nav role="navigation"><h2 id="wb-nav"><?php _e("<!--:en-->Secondary menu<!--:--><!--:fr-->Menu secondaire<!--:-->"); ?></h2>
 <div class="wb-sec-def">
+<!-- SecNavStart -->
 				<section>
 					<ul>
 					<?php   /* Widgetized sidebar, if you have the plugin installed. */ 
