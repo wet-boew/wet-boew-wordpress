@@ -111,7 +111,7 @@ if ($clf_col_num=='1') {
 <!-- Site navigation bar begins / Début de la barre de navigation du site -->
 <nav role="navigation">
 <div id="gcwu-psnb"><h2><span>Site</span> menu</h2><div id="gcwu-psnb-in"><div class="wet-boew-menubar mb-mega"><div>
-<ul class="mb-menu" data-ajax-replace="<?php bloginfo('template_directory'); ?>/demos/includes/menu-<?php _e("<!--:en-->eng<!--:--><!--:fr-->fra<!--:-->"); ?>.html">
+<ul class="mb-menu" data-ajax-replace="<?php bloginfo('template_directory'); ?>/demos/includes/menu-<?php _e("<!--:en-->eng<!--:--><!--:fr-->fra<!--:-->"); ?>.inc">
 <li><section><h3><a href="#">Section 1</a></h3></section></li>
 <li><section><h3><a href="section2-eng.html">Section 2</a></h3></section></li>
 <li><section><h3><a href="#">Section 3</a></h3></section></li>
