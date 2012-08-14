@@ -20,7 +20,7 @@ get_header();
 			<?php comments_template(); ?>
 		<?php endwhile; else: ?>
 			<!-- Content title begins / Début du titre du contenu -->
-			<h1 id="cn-cont"><?php _e("<!--:en-->404 Error<!--:--><!--:fr-->Erreur 404<!--:-->"); ?></h1>
+			<h1 id="wb-cont"><?php _e("<!--:en-->404 Error<!--:--><!--:fr-->Erreur 404<!--:-->"); ?></h1>
 			<!-- Content Title ends / Fin du titre du contenu -->
 
 <!-- clf2-nsi2 theme begins / Début du thème clf2-nsi2 -->        
