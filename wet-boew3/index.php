@@ -10,7 +10,7 @@
 		<!-- Content title begins / Début du titre du contenu -->
 		<header id="titre-<?php the_ID(); ?>">
 			<?php if ($postindex == 0) : ?> 
-			<h1 id="cn-cont"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php _e("<!--:en-->Permalink to<!--:--><!--:fr-->Permalien à<!--:-->"); ?> <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
+			<h1 id="wb-cont"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php _e("<!--:en-->Permalink to<!--:--><!--:fr-->Permalien à<!--:-->"); ?> <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
 			<?php else : ?>
 			<h1><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php _e("<!--:en-->Permalink to<!--:--><!--:fr-->Permalien à<!--:-->"); ?> <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
 			<?php endif; ?>
