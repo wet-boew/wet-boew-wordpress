@@ -25,3 +25,4 @@ http://codex.wordpress.org/Using_Themes
 - Requires the following WP plugins:
 qTranslate - http://www.qianqin.de/qtranslate/
 
+
