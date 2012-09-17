@@ -4,7 +4,7 @@
 <nav role="navigation"><div id="gcwu-sft"><h3><?php _e("<!--:en-->Site footer<!--:--><!--:fr-->Pied de page du site<!--:-->"); ?></h3><div id="gcwu-sft-in">
 <div id="gcwu-tctr">
 <ul>
-<li class="gcwu-tc"><a href="http://wet-boew.github.com/wet-boew/<?php _e("<!--:en-->License-eng.txt<!--:--><!--:fr-->Licence-fra.txt<!--:-->");" rel="license"><?php _e("<!--:en-->Terms and conditions<!--:--><!--:fr-->Avis<!--:-->"); ?></a></li>
+<li class="gcwu-tc"><a href="http://wet-boew.github.com/wet-boew/<?php _e("<!--:en-->License-eng.txt<!--:--><!--:fr-->Licence-fra.txt<!--:-->"); ?>" rel="license"><?php _e("<!--:en-->Terms and conditions<!--:--><!--:fr-->Avis<!--:-->"); ?></a></li>
 <li class="gcwu-tr"><a href="http://www.tbs-sct.gc.ca/pd-dp/gr-rg/index-eng.asp"><?php _e("<!--:en-->Transparency<!--:--><!--:fr-->Transparence<!--:-->"); ?></a></li>
 </ul>
 </div>
