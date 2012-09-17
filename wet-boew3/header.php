@@ -19,7 +19,7 @@
 wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Licence-fra.txt -->
 <title><?php bloginfo('name'); ?></title>
 
-<link rel="shortcut icon" href="../build/theme-gcwu-fegc/images/favicon.ico" />
+<link rel="shortcut icon" href="<?php bloginfo('template_directory'); ?>/build/theme-gcwu-fegc/images/favicon.ico" />
 <meta name="description" content="English description / Description en anglais" />
 <meta name="dcterms.creator" content="English name of the content author / Nom en anglais de l'auteur du contenu" />
 <meta name="dcterms.title" content="<?php bloginfo('name'); ?>" />
