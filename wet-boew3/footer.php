@@ -1,5 +1,5 @@
 <div id="wb-foot"><div id="wb-foot-in">
-<footer><h2><?php _e("<!--:en-->Footer<!--:--><!--:fr-->Pied de page<!--:-->"); ?></h2>
+<footer><h2<?php if ($clf_col_num=='1') {echo ' id="wb-nav"'} ?>><?php _e("<!--:en-->Footer<!--:--><!--:fr-->Pied de page<!--:-->"); ?></h2>
 <!-- FooterStart -->
 <nav role="navigation"><div id="gcwu-sft"><h3><?php _e("<!--:en-->Site footer<!--:--><!--:fr-->Pied de page du site<!--:-->"); ?></h3><div id="gcwu-sft-in">
 <div id="gcwu-tctr">

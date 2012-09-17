@@ -73,9 +73,11 @@ if ($clf_col_num=='1') {
 <div id="wb-skip">
 <ul id="wb-tphp">
 <li id="wb-skip1"><a href="#wb-cont"><?php _e("<!--:en-->Skip to main content<!--:--><!--:fr-->Passer au contenu principal<!--:-->"); ?></a></li>
-
-<li id="wb-skip2"><a href="#wb-nav"><?php _e("<!--:en-->Skip to secondary menu<!--:--><!--:fr-->Passer au menu secondaire<!--:-->"); ?></a></li>
-<li id="wb-skip3"><a href="#wb-foot"><?php _e("<!--:en-->Skip to footer<!--:--><!--:fr-->Passer au pied de page<!--:-->"); ?></a></li>
+<li id="wb-skip2"><a href="#wb-nav"><?php if ($clf_col_num=='1') {
+	_e("<!--:en-->Skip to footer<!--:--><!--:fr-->Passer au pied de page<!--:-->");
+} else {
+	_e("<!--:en-->Skip to secondary menu<!--:--><!--:fr-->Passer au menu secondaire<!--:-->");
+} ?></a></li>
 </ul>
 </div>
     
