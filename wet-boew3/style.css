@@ -395,8 +395,6 @@ h3#reply-title {
 /* The sidebar */
 /* *********** */
 
-.cn-left-col-default ul ul, .cn-right-col-default ul ul {list-style-type: none;}
-.cn-left-col-default li li, .cn-right-col-default li li {margin-left: -20px; padding: 0; border: none;}
 
 #sidebar {
 	margin-left: 660px;
@@ -417,11 +415,7 @@ h3#reply-title {
 	margin: 30px 0 20px 0;
 }
 
-#sidebar ul li ul {
-	font: 1.154em Arial, Helvetica, sans-serif;
-	list-style-image: url(images/arrow.gif);
-	padding:0 24px;
-}
+
 
 #sidebar ul li ul li {
 	margin: 10px 0;
@@ -460,28 +454,13 @@ h3#reply-title {
 
 }
 
-#rss-img {    /* background image */ 
-	width : 91%; 
-	height: 35px;
-	background: url(images/rss.png) top center no-repeat; 
-	margin-top: 5px;
-
-} 
 
 #zone1 {    /* link zone */ 
 	width : 100%; 
 	height: 100%;
 	float: left;
 
-} 
-
-#twitter-img {    /* background image */
-	width : 91%; 
-	height: 35px; 
-	background: url(images/twitter.png) top center no-repeat;
-	margin-top: 5px;
-
-} 
+}
 
 #zone2 {    /* link zone */ 
 	width : 100%; 
