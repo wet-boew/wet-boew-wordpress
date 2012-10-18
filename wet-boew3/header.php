@@ -44,7 +44,6 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 <noscript><link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/build/theme-gcwu-fegc/css/theme-ns-min.css" /></noscript>
 
 <!-- CustomScriptsCSSStart -->
-<?php gcwu_fegc_css_options();?>
 <!-- CustomScriptsCSSEnd -->
 
 <!-- WordPress Begins -->
