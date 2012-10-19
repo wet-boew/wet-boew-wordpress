@@ -45,7 +45,7 @@
 <li><a rel="external" href="http://www.voyage.gc.ca/index-<?php _e("<!--:en-->eng<!--:--><!--:fr-->fra<!--:-->"); ?>.asp"><span><?php _e("<!--:en-->Travel<!--:--><!--:fr-->Voyage<!--:-->"); ?></span><br /><?php _e("<!--:en-->travel.gc.ca<!--:--><!--:fr-->voyage.gc.ca<!--:-->"); ?></a></li>
 <li><a rel="external" href="http://www.servicecanada.gc.ca/<?php _e("<!--:en-->eng/home.shtml<!--:--><!--:fr-->fra/accueil.shtml<!--:-->"); ?>"><span>Service Canada</span><br />servicecanada.gc.ca</a></li>
 <li><a rel="external" href="http://www.jobbank.gc.ca/intro-<?php _e("<!--:en-->eng<!--:--><!--:fr-->fra<!--:-->"); ?>.aspx"><span><?php _e("<!--:en-->Jobs<!--:--><!--:fr-->Emplois<!--:-->"); ?></span><br /><?php _e("<!--:en-->jobbank.gc.ca<!--:--><!--:fr-->guichetemplois.gc.ca<!--:-->"); ?></a></li>
-<li><a rel="external" href="<?php _e("<!--:en-->http://actionplan.gc.ca/en<!--:--><!--:fr-->http://plandactionplan.gc.ca/fr<!--:-->"); ?>"><span><?php _e("<!--:en-->Economy<!--:--><!--:fr-->Économie<!--:-->"); ?></span><br /><?php _e("<!--:en-->actionplan.gc.ca<!--:--><!--:fr-->plandaction.gc.ca<!--:-->"); ?></a></li>
+<li><a rel="external" href="<?php _e("<!--:en-->http://actionplan.gc.ca/en<!--:--><!--:fr-->http://plandaction.gc.ca/fr<!--:-->"); ?>"><span><?php _e("<!--:en-->Economy<!--:--><!--:fr-->Économie<!--:-->"); ?></span><br /><?php _e("<!--:en-->actionplan.gc.ca<!--:--><!--:fr-->plandaction.gc.ca<!--:-->"); ?></a></li>
 <li id="gcwu-gcft-ca"><div><a rel="external" href="http://www.canada.gc.ca/menu-<?php _e("<!--:en-->eng<!--:--><!--:fr-->fra<!--:-->"); ?>.html">Canada.gc.ca</a></div></li>
 </ul>
 </div></div></div></nav>
