@@ -115,7 +115,7 @@ if ($clf_col_num=='1') {
 <div id="gcwu-psnb"><h2><?php _e("<!--:en--><span>Site </span>menu</h2><!--:--><!--:fr-->Menu<span> du site</span><!--:-->"); ?></h2><div id="gcwu-psnb-in"><div class="wet-boew-menubar mb-mega"><div>
 <ul class="mb-menu" data-ajax-replace="<?php bloginfo('template_directory'); ?>/demos/includes/menu-<?php _e("<!--:en-->eng<!--:--><!--:fr-->fra<!--:-->"); ?>.inc">
 <li><section><h3><a href="#">Section 1</a></h3></section></li>
-<li><section><h3><a href="section2-<?php _e("<!--:en-->eng<!--:--><!--:fr-->fra<!--:-->"); ?>.html">Section 2</a></h3></section></li>
+<li><section><h3><a href="#">Section 2</a></h3></section></li>
 <li><section><h3><a href="#">Section 3</a></h3></section></li>
 <li><section><h3><a href="#">Section 4</a></h3></section></li>
 <li><div><a href="#">Section 5</a></div></li>
