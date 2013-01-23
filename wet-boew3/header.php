@@ -19,7 +19,7 @@
 wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Licence-fra.txt -->
 <title><?php bloginfo('name'); ?></title>
 
-<link rel="shortcut icon" href="<?php bloginfo('template_directory'); ?>/build/theme-gcwu-fegc/images/favicon.ico" />
+<link rel="shortcut icon" href="<?php bloginfo('template_directory'); ?>/dist/theme-gcwu-fegc/images/favicon.ico" />
 <meta name="description" content="English description / Description en anglais" />
 <meta name="dcterms.creator" content="English name of the content author / Nom en anglais de l'auteur du contenu" />
 <meta name="dcterms.title" content="<?php bloginfo('name'); ?>" />
@@ -29,19 +29,19 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 <meta name="dcterms.language" title="ISO639-2" content="<?php _e("<!--:en-->eng<!--:--><!--:fr-->fra<!--:-->"); ?>" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 	
-<script src="<?php bloginfo('template_directory'); ?>/build/js/jquery.min.js"></script>
+<script src="<?php bloginfo('template_directory'); ?>/dist/js/jquery.min.js"></script>
 <!--[if lte IE 8]>
-<script src="<?php bloginfo('template_directory'); ?>/build/js/polyfills/html5shiv-min.js"></script>
-<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/build/grids/css/util-ie-min.css" />
-<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/build/js/css/pe-ap-ie-min.css" />
-<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/build/theme-gcwu-fegc/css/theme-ie-min.css" />
+<script src="<?php bloginfo('template_directory'); ?>/dist/js/polyfills/html5shiv-min.js"></script>
+<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/dist/grids/css/util-ie-min.css" />
+<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/dist/js/css/pe-ap-ie-min.css" />
+<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/dist/theme-gcwu-fegc/css/theme-ie-min.css" />
 <![endif]-->
 <!--[if gt IE 8]><!-->
-<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/build/grids/css/util-min.css" />
-<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/build/js/css/pe-ap-min.css" />
-<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/build/theme-gcwu-fegc/css/theme-min.css" />
+<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/dist/grids/css/util-min.css" />
+<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/dist/js/css/pe-ap-min.css" />
+<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/dist/theme-gcwu-fegc/css/theme-min.css" />
 <!--<![endif]-->
-<noscript><link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/build/theme-gcwu-fegc/css/theme-ns-min.css" /></noscript>
+<noscript><link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/dist/theme-gcwu-fegc/css/theme-ns-min.css" /></noscript>
 
 <!-- CustomScriptsCSSStart -->
 <!-- CustomScriptsCSSEnd -->
@@ -84,7 +84,7 @@ if ($clf_col_num=='1') {
 <!-- HeaderStart -->
 <nav role="navigation"><div id="gcwu-gcnb"><h2><?php _e("<!--:en-->Government of Canada navigation bar<!--:--><!--:fr-->Barre de navigation de la gouvernement de Canada<!--:-->"); ?></h2>
 <div id="gcwu-gcnb-in"><div id="gcwu-gcnb-fip">
-<div id="gcwu-sig"><div id="gcwu-sig-in"><div id="gcwu-sig-<?php _e("<!--:en-->eng<!--:--><!--:fr-->fra<!--:-->"); ?>" title="<?php _e("<!--:en-->Government of Canada<!--:--><!--:fr-->Gouvernement du Canada<!--:-->"); ?>"><img src="<?php bloginfo('template_directory'); ?>/build/theme-gcwu-fegc/images/sig-<?php _e("<!--:en-->eng<!--:--><!--:fr-->fra<!--:-->"); ?>.gif" width="214" height="20" alt="<?php _e("<!--:en-->Government of Canada<!--:--><!--:fr-->Gouvernement du Canada<!--:-->"); ?>" /></div></div></div>
+<div id="gcwu-sig"><div id="gcwu-sig-in"><div id="gcwu-sig-<?php _e("<!--:en-->eng<!--:--><!--:fr-->fra<!--:-->"); ?>" title="<?php _e("<!--:en-->Government of Canada<!--:--><!--:fr-->Gouvernement du Canada<!--:-->"); ?>"><img src="<?php bloginfo('template_directory'); ?>/dist/theme-gcwu-fegc/images/sig-<?php _e("<!--:en-->eng<!--:--><!--:fr-->fra<!--:-->"); ?>.gif" width="214" height="20" alt="<?php _e("<!--:en-->Government of Canada<!--:--><!--:fr-->Gouvernement du Canada<!--:-->"); ?>" /></div></div></div>
 <ul>
 <li id="gcwu-gcnb1"><a rel="external" href="http://www.canada.gc.ca/menu-<?php _e("<!--:en-->eng.html<!--:--><!--:fr-->fra.html<!--:-->"); ?>">Canada.gc.ca</a></li>
 <li id="gcwu-gcnb2"><a rel="external" href="http://www.servicecanada.gc.ca/<?php _e("<!--:en-->eng/home.shtml<!--:--><!--:fr-->fra/accueil.shtml<!--:-->"); ?>">Services</a></li>
@@ -94,7 +94,7 @@ if ($clf_col_num=='1') {
 </div></div></div></nav>
     
 <div id="gcwu-bnr" role="banner"><div id="gcwu-bnr-in">
-<div id="gcwu-wmms"><div id="gcwu-wmms-in"><div id="gcwu-wmms-fip" title="<?php _e("<!--:en-->Symbol of the Government of Canada<!--:--><!--:fr-->Symbole du gouvernement du Canada<!--:-->"); ?>"><img src="<?php bloginfo('template_directory'); ?>/build/theme-gcwu-fegc/images/wmms.gif" width="126" height="30" alt="<?php _e("<!--:en-->Symbol of the Government of Canada<!--:--><!--:fr-->Symbole du gouvernement du Canada<!--:-->"); ?>" /></div></div></div>
+<div id="gcwu-wmms"><div id="gcwu-wmms-in"><div id="gcwu-wmms-fip" title="<?php _e("<!--:en-->Symbol of the Government of Canada<!--:--><!--:fr-->Symbole du gouvernement du Canada<!--:-->"); ?>"><img src="<?php bloginfo('template_directory'); ?>/dist/theme-gcwu-fegc/images/wmms.gif" width="126" height="30" alt="<?php _e("<!--:en-->Symbol of the Government of Canada<!--:--><!--:fr-->Symbole du gouvernement du Canada<!--:-->"); ?>" /></div></div></div>
 <div id="gcwu-title"><p id="gcwu-title-in"><a href="<?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a></p></div>
 
 <section role="search"><div id="gcwu-srchbx">
