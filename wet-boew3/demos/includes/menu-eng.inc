@@ -14,7 +14,7 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 <div class="clear"></div>
 <div class="mb-main-link"><a href="http://wet-boew.github.com/wet-boew/index-eng.html">WET project - Main page</a></div>
 </div></section></li>
-<li><section><h3><a href="section2/index-eng.html">Section 2</a></h3><div class="mb-sm">
+<li><section><h3><a href="#">Section 2</a></h3><div class="mb-sm">
 <div class="span-2">
 <section><h4><a href="#">Section 2.1</a></h4>
 <ul>
@@ -28,7 +28,7 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 </section>
 </div>
 <div class="span-2">
-<section><h4><a href="section2/section22/index-eng.html">Section 2.2</a></h4>
+<section><h4><a href="#">Section 2.2</a></h4>
 <ul>
 <li><a href="#">Item 2.2.1</a></li>
 <li><a href="#">Item 2.2.2</a>
@@ -48,7 +48,7 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 </section>
 </div>
 <div class="clear"></div>
-<div class="mb-main-link"><a href="section2/index-eng.html">Section 2 - Main page</a></div>
+<div class="mb-main-link"><a href="#">Section 2 - Main page</a></div>
 </div></section></li>
 <li><section><h3><a href="#">Section 3</a></h3><div class="mb-sm">
 <div class="mb-highlight">
@@ -103,7 +103,7 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 <div class="clear"></div>
 <div class="mb-main-link"><a href="#">Section 3 - Main page</a></div>
 </div></section></li>
-<li><section><h3><a href="section4/index-eng.html">Section 4</a></h3><div class="mb-sm">
+<li><section><h3><a href="#">Section 4</a></h3><div class="mb-sm">
 <div class="span-2">
 <section><h4><a href="#">Section 4.1</a></h4>
 <ul>
@@ -122,7 +122,7 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 </section>
 </div>
 <div class="span-2">
-<section><h4><a href="section4/section43/index-eng.html">Section 4.3</a></h4>
+<section><h4><a href="#">Section 4.3</a></h4>
 <ul>
 <li><a href="#">Item 4.3.1</a></li>
 <li><a href="#">Item 4.3.2</a></li>
