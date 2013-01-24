@@ -3,6 +3,8 @@ wet-boew-wordpress
 
 WordPress variant for the Web Experience Toolkit (WET)
 
+Version: 3.0.3
+
 Author: Government of Canada
 
 Author URI: http://www.lostprototype.com/wet-boew3/
@@ -11,7 +13,7 @@ This theme uses HTML5 and CSS3 properties.
 
 Based on Government of Canada Common Look and Feel (CLF) standard:
 
-Web Experience Toolkit (WET) - Boîte à outils de l’expérience Web (BOEW)
+Web Experience Toolkit (WET) - Boï¿½te ï¿½ outils de lï¿½expï¿½rience Web (BOEW)
 
 ## Basic Setup
 ---------------------------------
