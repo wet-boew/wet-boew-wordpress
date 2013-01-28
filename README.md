@@ -15,6 +15,19 @@ Based on Government of Canada Common Look and Feel (CLF) standard:
 
 Web Experience Toolkit (WET) - Bo�te � outils de l�exp�rience Web (BOEW)
 
+
+## Versions
+---------------------------------
+
+WET-BEOW 3.0 Intranet theme
+
+Author URI: http://www.lostprototype.com/wet-boew-intra/
+
+WET-BEOW 3.1 theme
+
+Author URI: http://www.lostprototype.com/wet-boew31/
+
+
 ## Basic Setup
 ---------------------------------
 
