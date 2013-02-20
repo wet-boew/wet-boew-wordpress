@@ -128,12 +128,14 @@ endif;
 
 function the_breadcrumb($post) {
 	echo '<ol itemprop="breadcrumb">';
-	echo '<li><a href="';
-	bloginfo('url');
-	echo '/">';
-	$home_crumb = __("<!--:en-->Home<!--:--><!--:fr-->Accueil<!--:-->");
-	echo $home_crumb;
-	echo "</a></li>";
+	if (!is_front_page()) {
+		echo '<li><a href="';
+		bloginfo('url');
+		echo '/">';
+		$home_crumb = __("<!--:en-->Home<!--:--><!--:fr-->Accueil<!--:-->");
+		echo $home_crumb;
+		echo "</a></li>";
+	}
 	if (!is_home()) {
 		if (is_category() || is_single()) {
 			echo '<li>';
