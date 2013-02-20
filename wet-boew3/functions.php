@@ -150,7 +150,7 @@ function the_breadcrumb($post) {
                 $anc = get_post_ancestors( $post->ID );
                 foreach ( $anc as $ancestor ) {
             		//wp_cache_delete($post->ID, 'posts');
-                    $output = '<li><a href="' . get_permalink($parent) . '">'.get_the_title($ancestor).'</li>'.$output;
+                    $output = '<li><a href="' . get_permalink($ancestor) . '">'.get_the_title($ancestor).'</li>'.$output;
                 }
                 echo $output;
                 echo '<li>';
