@@ -29,19 +29,21 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 <meta name="dcterms.language" title="ISO639-2" content="<?php _e("<!--:en-->eng<!--:--><!--:fr-->fra<!--:-->"); ?>" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 	
-<script src="<?php bloginfo('template_directory'); ?>/dist/js/jquery.min.js"></script>
 <!--[if lte IE 8]>
+<script src="<?php bloginfo('template_directory'); ?>/dist/js/jquery-ie.min.js"></script>
 <script src="<?php bloginfo('template_directory'); ?>/dist/js/polyfills/html5shiv-min.js"></script>
 <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/dist/grids/css/util-ie-min.css" />
 <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/dist/js/css/pe-ap-ie-min.css" />
 <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/dist/theme-gcwu-fegc/css/theme-ie-min.css" />
+<noscript><link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/dist/theme-gcwu-fegc/css/theme-ns-ie-min.css" /></noscript>
 <![endif]-->
 <!--[if gt IE 8]><!-->
+<script src="<?php bloginfo('template_directory'); ?>/dist/js/jquery.min.js"></script>
 <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/dist/grids/css/util-min.css" />
 <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/dist/js/css/pe-ap-min.css" />
 <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/dist/theme-gcwu-fegc/css/theme-min.css" />
-<!--<![endif]-->
 <noscript><link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/dist/theme-gcwu-fegc/css/theme-ns-min.css" /></noscript>
+<!--<![endif]-->
 
 <!-- CustomScriptsCSSStart -->
 <!-- CustomScriptsCSSEnd -->
