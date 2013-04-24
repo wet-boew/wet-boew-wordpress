@@ -54,9 +54,17 @@
 </div></div></div>
 
 <!-- ScriptsStart -->
-<script src="<?php bloginfo('template_directory'); ?>/dist/theme-gcwu-fegc/js/theme-min.js"></script>
 <script src="<?php bloginfo('template_directory'); ?>/dist/js/settings.js"></script>
+<!--[if lte IE 8]>
+<script src="<?php bloginfo('template_directory'); ?>/dist/theme-gcwu-fegc/js/theme-ie-min.js"></script>
+<script src="<?php bloginfo('template_directory'); ?>/dist/js/pe-ap-ie-min.js"></script>
+<script src="<?php bloginfo('template_directory'); ?>/dist/js/jquerymobile/jquery.mobile-ie.min.js"></script>
+<![endif]-->
+<!--[if gt IE 8]><!-->
+<script src="<?php bloginfo('template_directory'); ?>/dist/theme-gcwu-fegc/js/theme-min.js"></script>
 <script src="<?php bloginfo('template_directory'); ?>/dist/js/pe-ap-min.js"></script>
+<script src="<?php bloginfo('template_directory'); ?>/dist/js/jquerymobile/jquery.mobile.min.js"></script>
+<!--<![endif]-->
 <!-- ScriptsEnd -->
 
 <?php wp_footer(); ?>
