@@ -3,8 +3,8 @@
  * The Header for our theme.
  *
  * @package WordPress
- * @subpackage wet-boew
- * @since wet-boew 1.0
+ * @subpackage wet-boew31
+ * @since wet-boew31 1.0
  */
 ?>
 <!DOCTYPE html>
