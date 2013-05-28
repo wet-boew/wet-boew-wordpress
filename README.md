@@ -3,7 +3,7 @@ wet-boew-wordpress
 
 WordPress variant for the Web Experience Toolkit (WET)
 
-Version: WET 3.0.3
+Version: WET 3.0.6
 
 Author: Government of Canada
 
