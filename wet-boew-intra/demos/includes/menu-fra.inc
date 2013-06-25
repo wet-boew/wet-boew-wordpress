@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="fr">
 <!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
-wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Licence-fra.txt -->
+wet-boew.github.io/wet-boew/License-eng.html / wet-boew.github.io/wet-boew/Licence-fra.html -->
 <!-- DataAjaxFragmentStart -->
-<li><section><h3><a href="http://wet-boew.github.com/wet-boew/index-fra.html">Projet de la BOEW</a></h3><div class="mb-sm">
+<li><section><h3><a href="http://wet-boew.github.io/wet-boew/index-fra.html">Projet de la BOEW</a></h3><div class="mb-sm">
 <div class="span-2">
 <ul>
 <li><a href="https://github.com/wet-boew/wet-boew/">Page principale du projet</a></li>
-<li><a href="http://wet-boew.github.com/wet-boew/Licence-fra.txt">Conditions régissant l'utilisation</a></li>
-<li><a href="http://wet-boew.github.com/wet-boew/demos/index-fra.html">Exemples pratiques</a></li>
+<li><a href="http://wet-boew.github.io/wet-boew/Licence-fra.html">Conditions régissant l'utilisation</a></li>
+<li><a href="http://wet-boew.github.io/wet-boew/demos/index-fra.html">Exemples pratiques</a></li>
 </ul>
 </div>
 <div class="clear"></div>
-<div class="mb-main-link"><a href="http://wet-boew.github.com/wet-boew/index-fra.html">Projet de la BOEW - Page principale</a></div>
+<div class="mb-main-link"><a href="http://wet-boew.github.io/wet-boew/index-fra.html">Projet de la BOEW - Page principale</a></div>
 </div></section></li>
 <li><section><h3><a href="section2/index-fra.html">Section 2</a></h3><div class="mb-sm">
 <div class="span-2">
