@@ -29,7 +29,7 @@
 </ul>
 </address>
 </div></section>
-<section><div class="span-2"><h4 class="gcwu-col-head"><a href="#"><?php _e("<!--:en-->Stay connected<!--:--><!--:fr-->Restez branchés<!--:-->"); ?></a></h4>
+<section><div class="span-2"><h4 class="gcwu-col-head"><a href="#"><?php _e("<!--:en-->Stay connected<!--:--><!--:fr-->Fils de nouvelles<!--:-->"); ?></a></h4>
 <ul>
 <li><a rel="external" href="#">YouTube</a></li>
 <li><a rel="external" href="#">Twitter</a></li>
