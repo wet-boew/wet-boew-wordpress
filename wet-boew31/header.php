@@ -84,9 +84,9 @@ if ($clf_col_num=='1') {
     
 <div id="wb-head"><div id="wb-head-in"><header>
 <!-- HeaderStart -->
-<nav role="navigation"><div id="gcwu-gcnb"><h2><?php _e("<!--:en-->Government of Canada navigation bar<!--:--><!--:fr-->Barre de navigation de la gouvernement de Canada<!--:-->"); ?></h2>
+<nav role="navigation"><div id="gcwu-gcnb"><h2>Government of Canada navigation bar</h2>
 <div id="gcwu-gcnb-in"><div id="gcwu-gcnb-fip">
-<div id="gcwu-sig"><div id="gcwu-sig-in"><div id="gcwu-sig-<?php _e("<!--:en-->eng<!--:--><!--:fr-->fra<!--:-->"); ?>" title="<?php _e("<!--:en-->Government of Canada<!--:--><!--:fr-->Gouvernement du Canada<!--:-->"); ?>"><img src="<?php bloginfo('template_directory'); ?>/dist/theme-gcwu-fegc/images/sig-<?php _e("<!--:en-->eng<!--:--><!--:fr-->fra<!--:-->"); ?>.gif" width="214" height="20" alt="<?php _e("<!--:en-->Government of Canada<!--:--><!--:fr-->Gouvernement du Canada<!--:-->"); ?>" /></div></div></div>
+<div id="gcwu-sig"><div id="gcwu-sig-in"><object data="<?php bloginfo('template_directory'); ?>/dist/theme-gcwu-fegc/images/sig-eng.svg" role="img" tabindex="-1" aria-label="<?php _e("<!--:en-->Government of Canada<!--:--><!--:fr-->Gouvernement du Canada<!--:-->"); ?>" type="image/svg+xml"><img src="<?php bloginfo('template_directory'); ?>/dist/theme-gcwu-fegc/images/sig-eng.png" alt="<?php _e("<!--:en-->Government of Canada<!--:--><!--:fr-->Gouvernement du Canada<!--:-->"); ?>" /></object></div></div>
 <ul>
 <li id="gcwu-gcnb1"><a rel="external" href="http://www.canada.gc.ca/menu-<?php _e("<!--:en-->eng.html<!--:--><!--:fr-->fra.html<!--:-->"); ?>">Canada.gc.ca</a></li>
 <li id="gcwu-gcnb2"><a rel="external" href="http://www.servicecanada.gc.ca/<?php _e("<!--:en-->eng/home.shtml<!--:--><!--:fr-->fra/accueil.shtml<!--:-->"); ?>">Services</a></li>
@@ -96,7 +96,7 @@ if ($clf_col_num=='1') {
 </div></div></div></nav>
     
 <div id="gcwu-bnr" role="banner"><div id="gcwu-bnr-in">
-<div id="gcwu-wmms"><div id="gcwu-wmms-in"><div id="gcwu-wmms-fip" title="<?php _e("<!--:en-->Symbol of the Government of Canada<!--:--><!--:fr-->Symbole du gouvernement du Canada<!--:-->"); ?>"><img src="<?php bloginfo('template_directory'); ?>/dist/theme-gcwu-fegc/images/wmms.gif" width="126" height="30" alt="<?php _e("<!--:en-->Symbol of the Government of Canada<!--:--><!--:fr-->Symbole du gouvernement du Canada<!--:-->"); ?>" /></div></div></div>
+<div id="gcwu-wmms"><div id="gcwu-wmms-in"><object data="<?php bloginfo('template_directory'); ?>/dist/theme-gcwu-fegc/images/wmms.svg" role="img" tabindex="-1" aria-label="<?php _e("<!--:en-->Symbol of the Government of Canada<!--:--><!--:fr-->Symbole du gouvernement du Canada<!--:-->"); ?>" type="image/svg+xml"><img src="<?php bloginfo('template_directory'); ?>/dist/theme-gcwu-fegc/images/wmms.png" alt="<?php _e("<!--:en-->Symbol of the Government of Canada<!--:--><!--:fr-->Symbole du gouvernement du Canada<!--:-->"); ?>" /></object></div></div>
 <div id="gcwu-title"><p id="gcwu-title-in"><a href="<?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a></p></div>
 
 <section role="search"><div id="gcwu-srchbx">
