@@ -12,5 +12,5 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
- */
+*/
 PR.registerLangHandler(PR.sourceDecorator({keywords:("bytes,default,double,enum,extend,extensions,false,group,import,max,message,option,optional,package,repeated,required,returns,rpc,service,syntax,to,true"),types:/^(bool|(double|s?fixed|[su]?int)(32|64)|float|string)\b/,cStyleComments:true}),["proto"]);
