@@ -25,3 +25,4 @@ http://codex.wordpress.org/Using_Themes
 qTranslate - http://www.qianqin.de/qtranslate/
 
 
+This plugin should be installed with both English and French enabled before you activate the WET WP theme.
