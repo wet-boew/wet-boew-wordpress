@@ -3,11 +3,11 @@ wet-boew-wordpress
 
 WordPress variant for the Web Experience Toolkit (WET)
 
-Version: WET 3.0.6
+Version: WET 3.1.3
 
 Author: Government of Canada
 
-Author URI: http://www.lostprototype.com/wet-boew3/
+Author URI: http://www.lostprototype.com/wet-boew31/
 
 This theme uses HTML5 and CSS3 properties.
 
@@ -21,9 +21,9 @@ WET-BEOW 3.0 Intranet theme
 
 Author URI: http://www.lostprototype.com/wet-boew-intra/
 
-WET-BEOW 3.1.3 theme
+WET-BEOW 3.0.6 theme
 
-Author URI: http://www.lostprototype.com/wet-boew31/
+Author URI: http://www.lostprototype.com/wet-boew3/
 
 
 ## Basic Setup
