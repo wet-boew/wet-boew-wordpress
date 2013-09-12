@@ -62,9 +62,6 @@ global $clf_col_num;
 if ($clf_col_num=='1') {
 	echo "<!-- One column layout begins / Début de la mise en page d\'une colonne -->\r\n";
 	echo "<div id=\"wb-body\">\r\n";
-} elseif ($clf_col_num=='3') {
-	echo "<!-- Three column layout begins / Début de la mise en page de trois colonnes -->\r\n";
-	echo "<div id=\"wp-body-thi\">\r\n";
 } else {
 	echo "<!-- Two column layout begins / Début de la mise en page de deux colonnes -->\r\n";
 	echo "<div id=\"wb-body-sec\">\r\n";
