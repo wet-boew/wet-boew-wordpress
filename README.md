@@ -14,6 +14,13 @@ This theme uses HTML5 and CSS3 properties.
 Based on Government of Canada Common Look and Feel (CLF) standard:
 
 Web Experience Toolkit (WET) - Boîte à outils de l'expérience Web (BOEW)
+
+## Known Issues
+---------------------------------
+
+Issue with version 3.1.3
+Secondary Navigation not displaying in mobile mode.
+
 ## Versions
 ---------------------------------
 
