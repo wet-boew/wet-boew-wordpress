@@ -21,7 +21,7 @@ WET-BEOW 3.0 Intranet theme
 
 Author URI: http://www.lostprototype.com/wet-boew-intra/
 
-WET-BEOW 3.0.6 theme
+WET-BEOW 3.0.3 theme
 
 Author URI: http://www.lostprototype.com/wet-boew3/
 
