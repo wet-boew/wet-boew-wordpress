@@ -53,6 +53,7 @@
 </footer>
 </div></div></div>
 
+
 <!-- ScriptsStart -->
 <script src="<?php bloginfo('template_directory'); ?>/dist/theme-gcwu-fegc/js/theme-min.js"></script>
 <script src="<?php bloginfo('template_directory'); ?>/dist/js/settings.js"></script>
