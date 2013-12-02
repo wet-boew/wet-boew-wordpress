@@ -11,7 +11,7 @@ This theme uses HTML5 and CSS3 properties.
 
 Based on Government of Canada Common Look and Feel (CLF) standard:
 
-Web Experience Toolkit (WET) - Bo”te ˆ outils de lÕexpŽrience Web (BOEW)
+Web Experience Toolkit (WET) - Boîte à outils de l'expérience Web (BOEW)
 
 ## Basic Setup
 ---------------------------------

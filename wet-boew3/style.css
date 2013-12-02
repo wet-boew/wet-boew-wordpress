@@ -1,12 +1,12 @@
 /*
 
-Theme Name: Government of Canada Web Usability Theme WET 3.0
+Theme Name: Government of Canada Web Usability Theme WET 3.0.3
 
 Theme URI: http://www.lostprototype.com/wet-boew3/
 
-Description: Government of Canada's Web Usability (GCWU) WET version 3.0b2 - This theme is based on the <a href="https://github.com/wet-boew/wet-boew" >Web Usability Theme WET-BOEW</a> and features HTML5 and CSS3 properties.
+Description: Government of Canada's Web Usability (GCWU) WET version 3.0.6 - This theme is based on the <a href="https://github.com/wet-boew/wet-boew" >Web Usability Theme WET-BOEW</a> and features HTML5 and CSS3 properties.
 
-Version: 3.0
+Version: 3.0.3
 
 Author: Jobe Roberts
 
@@ -14,15 +14,15 @@ Author URI: http://www.lostprototype.com/wet-boew3/
 
 Tags: fixed-width, two-columns, light
 
-License: MIT License (http://www.lostprototype.com/clf2v2-nsi2v2/wp-content/themes/CLF2-NSI2/License-eng.txt)
+License: MIT License (http://www.lostprototype.com/clf2v2-nsi2v2/wp-content/themes/CLF2-NSI2/License-eng.html)
 
 */
 
 /*!
- * WordPress variant v3.0 / Variante pour WordPress v3.0
- * Web Experience Toolkit (WET) / Bo�te � outils de l'exp�rience Web (BOEW)
+ * WordPress variant v3.0.3 / Variante pour WordPress v3.0.3
  * Terms and conditions of use: http://tbs-sct.ircan.gc.ca/projects/gcwwwtemplates/wiki/Terms
- * Conditions r�gissant l'utilisation : http://tbs-sct.ircan.gc.ca/projects/gcwwwtemplates/wiki/Conditions
+ * Conditions régissant l'utilisation : http://tbs-sct.ircan.gc.ca/projects/gcwwwtemplates/wiki/Conditions
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  */
 
 header, hgroup, section, footer, aside, nav, article { 
@@ -395,8 +395,6 @@ h3#reply-title {
 /* The sidebar */
 /* *********** */
 
-.cn-left-col-default ul ul, .cn-right-col-default ul ul {list-style-type: none;}
-.cn-left-col-default li li, .cn-right-col-default li li {margin-left: -20px; padding: 0; border: none;}
 
 #sidebar {
 	margin-left: 660px;
@@ -417,11 +415,7 @@ h3#reply-title {
 	margin: 30px 0 20px 0;
 }
 
-#sidebar ul li ul {
-	font: 1.154em Arial, Helvetica, sans-serif;
-	list-style-image: url(images/arrow.gif);
-	padding:0 24px;
-}
+
 
 #sidebar ul li ul li {
 	margin: 10px 0;
@@ -460,28 +454,13 @@ h3#reply-title {
 
 }
 
-#rss-img {    /* background image */ 
-	width : 91%; 
-	height: 35px;
-	background: url(images/rss.png) top center no-repeat; 
-	margin-top: 5px;
-
-} 
 
 #zone1 {    /* link zone */ 
 	width : 100%; 
 	height: 100%;
 	float: left;
 
-} 
-
-#twitter-img {    /* background image */
-	width : 91%; 
-	height: 35px; 
-	background: url(images/twitter.png) top center no-repeat;
-	margin-top: 5px;
-
-} 
+}
 
 #zone2 {    /* link zone */ 
 	width : 100%; 

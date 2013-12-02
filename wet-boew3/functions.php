@@ -128,12 +128,14 @@ endif;
 
 function the_breadcrumb($post) {
 	echo '<ol itemprop="breadcrumb">';
-	echo '<li><a href="';
-	bloginfo('url');
-	echo '/">';
-	$home_crumb = __("<!--:en-->Home<!--:--><!--:fr-->Accueil<!--:-->");
-	echo $home_crumb;
-	echo "</a></li>";
+	if (!is_front_page()) {
+		echo '<li><a href="';
+		bloginfo('url');
+		echo '/">';
+		$home_crumb = __("<!--:en-->Home<!--:--><!--:fr-->Accueil<!--:-->");
+		echo $home_crumb;
+		echo "</a></li>";
+	}
 	if (!is_home()) {
 		if (is_category() || is_single()) {
 			echo '<li>';
@@ -148,7 +150,7 @@ function the_breadcrumb($post) {
                 $anc = get_post_ancestors( $post->ID );
                 foreach ( $anc as $ancestor ) {
             		//wp_cache_delete($post->ID, 'posts');
-                    $output = '<li>'.get_the_title($ancestor).'</li>'.$output;
+                    $output = '<li><a href="' . get_permalink($ancestor) . '">'.get_the_title($ancestor).'</a></li>'.$output;
                 }
                 echo $output;
                 echo '<li>';
