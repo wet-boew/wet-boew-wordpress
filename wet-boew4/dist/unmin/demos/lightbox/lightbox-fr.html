@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<!--[if lt IE 9]><html class="no-js lt-ie9" lang="fr"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="fr">
+<!--<![endif]-->
+	<head>
+		<meta charset="utf-8" />
+		<!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+		wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
+		<title>Lightbox
+
+	
+		
+		 - Exemples pratiques
+	
+
+ - Boîte à outils de l'expérience Web
+</title>
+		<link href="../../assets/favicon.ico" rel="shortcut icon" />
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
+		<!-- Meta data -->
+		<meta name="description" content="Crée une galerie photo sur une page Web." />
+		<meta name="dcterms.title" content="Lightbox - Boîte à outils de l'expérience Web" />
+<meta name="dcterms.creator" content="French name of the content author / Nom en français de l'auteur du contenu" />
+<meta name="dcterms.issued" title="W3CDTF" content="Date published (YYYY-MM-DD) / Date de publication (AAAA-MM-JJ)" />
+<meta name="dcterms.modified" title="W3CDTF" content="Date modified (YYYY-MM-DD) / Date de modification (AAAA-MM-JJ)" />
+<meta name="dcterms.subject" title="scheme" content="French subject terms / Termes de sujet en français" />
+<meta name="dcterms.language" title="ISO639-2" content="fra" />
+		<!-- Meta data-->
+		<!--[if gte IE 9 | !IE ]><!-->
+<link rel="stylesheet" href="../../css/wet-boew.css" />
+<!--<![endif]-->
+<link rel="stylesheet" href="../../css/theme.css" />
+<link rel="stylesheet" href="demo/lightbox.css" />
+<!--[if lt IE 9]>
+<link rel="stylesheet" href="../../css/ie8-wet-boew.css" />
+<link rel="stylesheet" href="../../css/ie8-theme.css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
+<script src="../../js/ie8-wet-boew.js"></script>
+<![endif]-->
+
+<noscript><link rel="stylesheet" href="../../css/noscript.css" /></noscript>
+	</head>
+	<body vocab="http://schema.org/" typeof="WebPage">
+		<ul id="wb-tphp">
+			<li class="wb-slc">
+				<a class="wb-sl" href="#wb-cont">Passer au contenu principal</a>
+			</li>
+
+			<li class="wb-slc visible-md visible-lg">
+				<a class="wb-sl" href="#wb-info">Passer aux informations sur le site</a>
+			</li>
+
+
+		</ul>
+		<header role="banner">
+			<div id="wb-bnr">
+				<div id="wb-bar">
+					<div class="container">
+						<div class="row">
+							
+<object id="gcwu-sig" type="image/svg+xml" tabindex="-1" role="img" data="../../assets/sig-fr.svg" aria-label="Gouvernement du Canada"></object>
+<ul id="gc-bar" class="list-inline">
+
+	<li><a href="http://www.canada.ca/fr/index.html" rel="external">Canada.ca</a></li>
+	<li><a href="http://www.canada.ca/fr/services/index.html" rel="external">Services</a></li>
+	<li><a href="http://www.canada.ca/fr/gov/dept/index.html" rel="external">Ministères</a></li>
+
+
+	<li id="wb-lng"><h2>Sélection de la langue</h2>
+	<ul class="list-inline">
+
+
+		<li><a lang="en" href="lightbox-en.html">English</a></li>
+
+	</ul>
+</li>
+
+</ul>
+
+							<section class="wb-mb-links col-xs-12 visible-sm visible-xs" id="wb-glb-mn">
+								<h2>Menu</h2>
+								<ul class="pnl-btn list-inline text-right">
+	<li><a href="#mb-pnl" title="Menu" aria-controls="mb-pnl" class="overlay-lnk" role="button"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Menu</span></span></a></li>
+</ul>
+<div id="mb-pnl"></div>
+
+							</section>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="container">
+					<div class="row">
+						<div id="wb-sttl" class="col-md-5">
+							<a href="http://wet-boew.github.io/v4.0-ci/index-fr.html">
+	<span>Boîte à outils de l'expérience Web</span>
+</a>
+
+						</div>
+						<object id="wmms" type="image/svg+xml" tabindex="-1" role="img" data="./../../assets/wmms.svg" aria-label="Symbole du gouvernement du Canada"></object>
+
+
+						<section id="wb-srch" class="visible-md visible-lg">
+							<h2>Recherche</h2>
+							<form action="https://google.ca/search" method="get" role="search" class="form-inline">
+
+	<div class="form-group">
+		<label for="wb-srch-q">Recherchez le site Web</label>
+		<input id="wb-srch-q" class="form-control" name="q" type="search" value="" size="27" maxlength="150" />
+		<input type="hidden" name="q" value="site:wet-boew.github.io OR site:github.com/wet-boew/" />
+	</div>
+
+	<button type="submit" id="wb-srch-sub" class="btn btn-default">Recherche</button>
+
+</form>
+
+						</section>
+
+					</div>
+				</div>
+			</div>
+
+			<nav role="navigation" id="wb-sm" data-ajax-fetch="../../ajax/sitemenu-fr.html" data-trgt="mb-pnl" class="wb-menu visible-md visible-lg" typeof="SiteNavigationElement">
+				<div class="container nvbar">
+	<h2>Menu du site</h2>
+    <div class="row">
+        <ul class="list-inline menu">
+			<li><a href="../../index-fr.html">Projet de la BOEW</a></li>
+			<li><a href="http://wet-boew.github.io/wet-boew/docs/gs-cd/impl-fr.html">Mise en œuvre de la BOEW</a></li>
+			<li><a href="http://wet-boew.github.io/wet-boew/docs/gs-cd/contrib-fr.html">Contribuer à la BOEW</a></li>
+        </ul>
+    </div>
+</div>
+
+			</nav>
+
+
+			<nav role="navigation" id="wb-bc" property="breadcrumb">
+				<h2>Vous êtes dans :</h2>
+				<div class="container">
+	<div class="row">
+		<ol class="breadcrumb">
+			<li>
+				<a href="http://wet-boew.github.io/v4.0-ci/index-fr.html">Accueil</a>
+			</li>
+			<li>
+				<a href="http://wet-boew.github.io/v4.0-ci/demos/index-fr.html">Exemples pratiques</a>
+			</li>
+
+			<li>Lightbox</li>
+		</ol>
+	</div>
+</div>
+
+			</nav>
+
+		</header>
+
+
+		<main role="main" property="mainContentOfPage" class="container">
+			<h1 id="wb-cont" property="name">Lightbox</h1>
+			
+
+
+
+			
+<section>
+	<h2>Table des matières</h2>
+	<ul>
+		<li><a href="#features">Caractéristiques</a></li>
+		<li><a href="#examples">Exemples</a>
+			<ul>
+				<li><a href="#examples1">Articles seules</a></li>
+				<li><a href="#examples2">Galeries d'articles</a></li>
+				<li><a href="#examples3">Galeries d'articles cachées</a></li>
+				<li><a href="#examples4">Titre de l'image alternative</a></li>
+			</ul>
+		</li>
+	</ul>
+</section>
+
+<section>
+	<h2 id="features">Caractéristiques</h2>
+	<ul>
+		<li>Affiche les images dans l'outil <a href="http://dimsemenov.com/plugins/magnific-popup/" lang="en" rel="external">Magnific Popup</a></li>
+		<li>Utilisation d'un souris, écran tactile ou clavier pour une navigation facile.</li>
+	</ul>
+</section>
+
+<div class="wb-prettify all-pre wb-lbx-demo">
+	<section>
+		<h2 id="examples">Exemples</h2>
+
+		<details>
+			<summary>Description longue d'image 2</summary>
+			<p id="image2-desc">Exemple d'une description longue d'image 2 (référencé par <code lang="en">aria-describedby</code>).</p>
+		</details>
+
+		<section>
+			<h3 id="examples1">Articles seules</h3>
+			<section>
+				<h4>Exemple</h4>
+				<ul class="list-inline">
+					<li>
+						<a class="wb-lbx" href="demo/1_b.jpg" title="Image 1">
+							<img src="demo/1_s.jpg" alt="Image 1" />
+						</a>
+					</li>
+					<li class="box">
+						<a class="wb-lbx" title="AJAX - Exemple 1 de contenu AJAX" href="ajax/ajax1-fr.html">AJAX - Exemple 1</a>
+					</li>
+					<li class="box">
+						<a class="wb-lbx" title="Exemple de contenu incorporé" href="#inline_content">Contenu incorporé</a>
+						<section id="inline_content" class="mfp-hide modal-dialog modal-content overlay-def">
+							<header class="modal-header">
+								<h2 class="modal-title">Titre</h2>
+							</header>
+							<div class="modal-body">
+								<ol>
+									<li>liste ordonnée (<code>ol</code>) premier niveau - apparence par défaut</li>
+									<li>liste ordonnée (<code>ol</code>) premier niveau - apparence par défaut
+										<ol>
+											<li>liste ordonnée (<code>ol</code>) deuxième niveau - apparence par défaut</li>
+											<li>liste ordonnée (<code>ol</code>) deuxième niveau - apparence par défaut
+												<ol>
+													<li>liste ordonnée (<code>ol</code>) troisième niveau - apparence par défaut</li>
+													<li>liste ordonnée (<code>ol</code>) troisième niveau - apparence par défaut</li>
+												</ol>
+											</li>
+										</ol>
+									</li>
+								</ol>
+								<p><a href="#">Lien - apparence par défaut</a></p>
+							</div>
+						</section>
+					</li>
+					<li class="box">
+						<a class="wb-lbx lbx-modal" title="Exemple de contenu superposé modal" href="#inline_content_modal">Contenu superposé modal</a>
+						<section id="inline_content_modal" class="mfp-hide modal-dialog modal-content overlay-def">
+							<header class="modal-header">
+								<h2 class="modal-title">Titre</h2>
+							</header>
+							<div class="modal-body">
+								<ol>
+									<li>liste ordonnée (<code>ol</code>) premier niveau - apparence par défaut</li>
+									<li>liste ordonnée (<code>ol</code>) premier niveau - apparence par défaut
+										<ol>
+											<li>liste ordonnée (<code>ol</code>) deuxième niveau - apparence par défaut</li>
+											<li>liste ordonnée (<code>ol</code>) deuxième niveau - apparence par défaut
+												<ol>
+													<li>liste ordonnée (<code>ol</code>) troisième niveau - apparence par défaut</li>
+													<li>liste ordonnée (<code>ol</code>) troisième niveau - apparence par défaut</li>
+												</ol>
+											</li>
+										</ol>
+									</li>
+								</ol>
+								<p><a href="#">Lien - apparence par défaut</a></p>
+								<button class="btn btn-primary popup-modal-dismiss">Fermer le contenu superposé modal</button>
+							</div>
+						</section>
+					</li>
+				</ul>
+
+				<details>
+					<summary>Visualiser le code</summary>
+					<pre><code>&lt;ul class="list-inline"&gt;
+	&lt;li&gt;
+		&lt;a class="wb-lbx" href="demo/1_b.jpg" title="Image 1"&gt;
+			&lt;img src="demo/1_s.jpg" alt="Image 1" /&gt;
+		&lt;/a&gt;
+	&lt;/li&gt;
+	&lt;li&gt;
+		&lt;a class="wb-lbx" title="Exemple de contenu AJAX" href="ajax/ajax-en.html"&gt;Contenu AJAX&lt;/a&gt;
+	&lt;/li&gt;
+	&lt;li&gt;
+		&lt;a class="wb-lbx" title="Exemple de contenu incorporé" href="#inline_content"&gt;Contenu incorporé&lt;/a&gt;
+		&lt;div id="inline_content" class="mfp-hide modal-dialog modal-content overlay-def"&gt;
+			&lt;section class="modal-content"&gt;
+				&lt;header class="modal-header overlay-hd"&gt;
+					&lt;h2 class="modal-title"&gt;Titre&lt;/h2&gt;
+				&lt;/header&gt;
+				&lt;div class="modal-body"&gt;
+					&lt;ol&gt;
+						&lt;li&gt;liste ordonnée (&lt;code&gt;ol&lt;/code&gt;) premier niveau - apparence par défaut&lt;/li&gt;
+						&lt;li&gt;liste ordonnée (&lt;code&gt;ol&lt;/code&gt;) premier niveau - apparence par défaut
+							&lt;ol&gt;
+								&lt;li&gt;liste ordonnée (&lt;code&gt;ol&lt;/code&gt;) deuxième niveau - apparence par défaut&lt;/li&gt;
+								&lt;li&gt;liste ordonnée (&lt;code&gt;ol&lt;/code&gt;) deuxième niveau - apparence par défaut
+									&lt;ol&gt;
+										&lt;li&gt;liste ordonnée (&lt;code&gt;ol&lt;/code&gt;) troisième niveau - apparence par défaut&lt;/li&gt;
+										&lt;li&gt;liste ordonnée (&lt;code&gt;ol&lt;/code&gt;) troisième niveau - apparence par défaut&lt;/li&gt;
+									&lt;/ol&gt;
+								&lt;/li&gt;
+							&lt;/ol&gt;
+						&lt;/li&gt;
+					&lt;/ol&gt;
+					&lt;p&gt;&lt;a href="#"&gt;Lien - apparence par défaut&lt;/a&gt;&lt;/p&gt;
+				&lt;/div&gt;
+			&lt;/section&gt;
+		&lt;/div&gt;
+	&lt;/li&gt;
+	&lt;li&gt;
+		&lt;a class="wb-lbx lbx-modal" title="Exemple de contenu superposé modal" href="#inline_content_modal"&gt;Contenu superposé modal&lt;/a&gt;
+		&lt;div id="inline_content_modal" class="mfp-hide modal-dialog modal-content overlay-def"&gt;
+			&lt;section class="modal-content"&gt;
+				&lt;header class="modal-header overlay-hd"&gt;
+					&lt;h2 class="modal-title"&gt;Titre&lt;/h2&gt;
+				&lt;/header&gt;
+				&lt;div class="modal-body"&gt;
+					&lt;ol&gt;
+						&lt;li&gt;liste ordonnée (&lt;code&gt;ol&lt;/code&gt;) premier niveau - apparence par défaut&lt;/li&gt;
+						&lt;li&gt;liste ordonnée (&lt;code&gt;ol&lt;/code&gt;) premier niveau - apparence par défaut
+							&lt;ol&gt;
+								&lt;li&gt;liste ordonnée (&lt;code&gt;ol&lt;/code&gt;) deuxième niveau - apparence par défaut&lt;/li&gt;
+								&lt;li&gt;liste ordonnée (&lt;code&gt;ol&lt;/code&gt;) deuxième niveau - apparence par défaut
+									&lt;ol&gt;
+										&lt;li&gt;liste ordonnée (&lt;code&gt;ol&lt;/code&gt;) troisième niveau - apparence par défaut&lt;/li&gt;
+										&lt;li&gt;liste ordonnée (&lt;code&gt;ol&lt;/code&gt;) troisième niveau - apparence par défaut&lt;/li&gt;
+									&lt;/ol&gt;
+								&lt;/li&gt;
+							&lt;/ol&gt;
+						&lt;/li&gt;
+					&lt;/ol&gt;
+					&lt;button class="btn btn-primary popup-modal-dismiss"&gt;Fermer le contenu superposé modal&lt;/button&gt;
+				&lt;/div&gt;
+			&lt;/section&gt;
+		&lt;/div&gt;
+	&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+				</details>
+			</section>
+		</section>
+
+		<section>
+			<h3 id="examples2">Galeries</h3>
+			<section>
+				<h4>Exemples</h4>
+				<section class="wb-lbx lbx-gal">
+					<h5>Galerie d'images</h5>
+					<ul class="list-inline">
+						<li>
+							<a href="demo/1_b.jpg" title="Image 1">
+								<img src="demo/1_s.jpg" alt="Image 1" />
+							</a>
+						</li>
+						<li>
+							<a href="demo/2_b.jpg" title="Image 2">
+								<img src="demo/2_s.jpg" alt="Image 2" aria-describedby="image2-desc" longdesc="#image2-desc" />
+							</a>
+						</li>
+						<li>
+							<a href="demo/3_b.jpg" title="Image 3">
+								<img src="demo/3_s.jpg" alt="Image 3" />
+							</a>
+						</li>
+						<li>
+							<a href="demo/4_b.jpg" title="Image 4">
+								<img src="demo/4_s.jpg" alt="Image 4" />
+							</a>
+						</li>
+					</ul>
+				</section>
+				<section class="wb-lbx lbx-gal">
+					<h5>Galerie d'AJAX</h5>
+					<ul class="list-inline">
+						<li class="box">
+							<a title="AJAX - Exemple 1 de contenu AJAX" href="ajax/ajax1-fr.html">AJAX - Exemple 1</a>
+						</li>
+						<li class="box">
+							<a title="AJAX - Exemple 2 de contenu AJAX" href="ajax/ajax2-fr.html">AJAX - Exemple 2</a>
+						</li>
+						<li class="box">
+							<a title="AJAX - Exemple 3 de contenu AJAX" href="ajax/ajax3-fr.html">AJAX - Exemple 3</a>
+						</li>
+					</ul>
+				</section>
+				<details>
+					<summary>Visualier le code</summary>
+					<pre><code>&lt;section class="wb-lbx lbx-gal inline-lst"&gt;
+	&lt;h5&gt;Galerie d'images&lt;/h5&gt;
+	&lt;ul class="list-inline"&gt;
+		&lt;li&gt;
+			&lt;a href="demo/1_b.jpg" title="Image 1"&gt;
+				&lt;img src="demo/1_s.jpg" alt="Image 1" /&gt;
+			&lt;/a&gt;
+		&lt;/li&gt;
+		&lt;li&gt;
+			&lt;a href="demo/2_b.jpg" title="Image 2"&gt;
+				&lt;img src="demo/2_s.jpg" alt="Image 2" aria-describedby="image2-desc" longdesc="#image2-desc" /&gt;
+			&lt;/a&gt;
+		&lt;/li&gt;
+		&lt;li&gt;
+			&lt;a href="demo/3_b.jpg" title="Image 3"&gt;
+				&lt;img src="demo/3_s.jpg" alt="Image 3" /&gt;
+			&lt;/a&gt;
+		&lt;/li&gt;
+		&lt;li&gt;
+			&lt;a href="demo/4_b.jpg" title="Image 4"&gt;
+				&lt;img src="demo/4_s.jpg" alt="Image 4" /&gt;
+			&lt;/a&gt;
+		&lt;/li&gt;
+	&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section class="wb-lbx lbx-gal inline-lst"&gt;
+	&lt;h5&gt;Galerie d'AJAX&lt;/h5&gt;
+	&lt;ul class="list-inline"&gt;
+		&lt;li&gt;
+			&lt;a title="AJAX - Exemple 1 de contenu AJAX" href="ajax/ajax1-fr.html"&gt;AJAX - Exemple 1&lt;/a&gt;
+		&lt;/li&gt;
+		&lt;li&gt;
+			&lt;a title="AJAX - Exemple 2 de contenu AJAX" href="ajax/ajax2-fr.html"&gt;AJAX - Exemple 2&lt;/a&gt;
+		&lt;/li&gt
+		&lt;li&gt;
+			&lt;a title="AJAX - Exemple 3 de contenu AJAX" href="ajax/ajax3-fr.html"&gt;AJAX - Exemple 3&lt;/a&gt;
+		&lt;/li&gt
+	&lt;/ul&gt;
+&lt;/section&gt;</code></pre>
+				</details>
+			</section>
+		</section>
+
+		<section>
+			<h3 id="examples3">Galeries cachés</h3>
+			<section>
+				<h4>Exemples</h4>
+				<section class="wb-lbx lbx-hide-gal">
+					<h5>Galerie d'images</h5>
+					<ul class="list-inline">
+						<li>
+							<a href="demo/1_b.jpg" title="Image 1">
+								<img src="demo/1_s.jpg" alt="Image 1" />
+							</a>
+						</li>
+						<li>
+							<a href="demo/2_b.jpg" title="Image 2">
+								<img src="demo/2_s.jpg" alt="Image 2" aria-describedby="image2-desc" longdesc="#image2-desc" />
+							</a>
+						</li>
+						<li>
+							<a href="demo/3_b.jpg" title="Image 3">
+								<img src="demo/3_s.jpg" alt="Image 3" />
+							</a>
+						</li>
+						<li>
+							<a href="demo/4_b.jpg" title="Image 4">
+								<img src="demo/4_s.jpg" alt="Image 4" />
+							</a>
+						</li>
+					</ul>
+				</section>
+				<section class="wb-lbx lbx-hide-gal">
+					<h5>Galerie d'AJAX</h5>
+					<ul class="list-inline">
+						<li class="box">
+							<a title="AJAX - Exemple 1 de contenu AJAX" href="ajax/ajax1-fr.html">AJAX - Exemple 1</a>
+						</li>
+						<li class="box">
+							<a title="AJAX - Exemple 2 de contenu AJAX" href="ajax/ajax2-fr.html">AJAX - Exemple 2</a>
+						</li>
+						<li class="box">
+							<a title="AJAX - Exemple 3 de contenu AJAX" href="ajax/ajax3-fr.html">AJAX - Exemple 3</a>
+						</li>
+					</ul>
+				</section>
+
+				<details>
+					<summary>Visualiser le code</summary>
+					<pre><code>&lt;section class="wb-lbx lbx-hide-gal"&gt;
+	&lt;h5&gt;Galerie d'images&lt;/h5&gt;
+	&lt;ul class="list-inline"&gt;
+		&lt;li&gt;
+			&lt;a href="demo/1_b.jpg" title="Image 1"&gt;
+				&lt;img src="demo/1_s.jpg" alt="Image 1" /&gt;
+			&lt;/a&gt;
+		&lt;/li&gt;
+		&lt;li&gt;
+			&lt;a href="demo/2_b.jpg" title="Image 2"&gt;
+				&lt;img src="demo/2_s.jpg" alt="Image 2" aria-describedby="image2-desc" longdesc="#image2-desc" /&gt;
+			&lt;/a&gt;
+		&lt;/li&gt;
+		&lt;li&gt;
+			&lt;a href="demo/3_b.jpg" title="Image 3"&gt;
+				&lt;img src="demo/3_s.jpg" alt="Image 3" /&gt;
+			&lt;/a&gt;
+		&lt;/li&gt;
+		&lt;li&gt;
+			&lt;a href="demo/4_b.jpg" title="Image 4"&gt;
+				&lt;img src="demo/4_s.jpg" alt="Image 4" /&gt;
+			&lt;/a&gt;
+		&lt;/li&gt;
+	&lt;/ul&gt;
+&lt;/section&gt;
+&lt;section class="wb-lbx lbx-hide-gal"&gt;
+	&lt;h5&gt;Galerie d'AJAX&lt;/h5&gt;
+	&lt;ul class="list-inline"&gt;
+		&lt;li&gt;
+			&lt;a title="AJAX - Exemple 1 de contenu AJAX" href="ajax/ajax1-fr.html"&gt;AJAX - Exemple 1&lt;/a&gt;
+		&lt;/li&gt;
+		&lt;li&gt;
+			&lt;a title="AJAX - Exemple 2 de contenu AJAX" href="ajax/ajax2-fr.html"&gt;AJAX - Exemple 2&lt;/a&gt;
+		&lt;/li&gt
+		&lt;li&gt;
+			&lt;a title="AJAX - Exemple 3 de contenu AJAX" href="ajax/ajax3-fr.html"&gt;AJAX - Exemple 3&lt;/a&gt;
+		&lt;/li&gt
+	&lt;/ul&gt;
+&lt;/section&gt;</code></pre>
+				</details>
+			</section>
+		</section>
+
+		<section>
+			<h3 id="examples4">Titre de l'image alternative</h3>
+			<section>
+				<h4>Example</h4>
+				<div class="wb-lbx lbx-gal inline-lst">
+					<ul>
+						<li>
+							<a href="demo/1_b.jpg" title="Image 1" data-title="image_1_b">
+								<img src="demo/1_s.jpg" alt="Image 1" />
+							</a>
+						</li>
+						<li>
+							<a href="demo/2_b.jpg" title="Image 2" data-title="image_2_b">
+								<img src="demo/2_s.jpg" alt="Image 2" aria-describedby="image2-desc" longdesc="#image2-desc" />
+							</a>
+						</li>
+					</ul>
+				</div>
+
+				<p id="image_1_b"><strong>Image 1&#160;:</strong> Lorem ipsum consectetur <em>adipiscing elit</em>.</p>
+				<p id="image_2_b"><strong>Image 2&#160;:</strong> Nulla mollis dolor leo. Quisque laoreet tincidunt mollis. Duis posuere scelerisque lectus quis lobortis.</p>
+
+				<details>
+					<summary>Visualiser le code</summary>
+					<pre><code>&lt;div class="wb-lbx lbx-gal inline-lst"&gt;
+	&lt;ul&gt;
+		&lt;li&gt;
+			&lt;a href="demo/1_b.jpg" title="Image 1" data-title="image_1_b"&gt;
+				&lt;img src="demo/1_s.jpg" alt="Image 1" /&gt;
+			&lt;/a&gt;
+		&lt;/li&gt;
+		&lt;li&gt;
+			&lt;a href="demo/2_b.jpg" title="Image 2" data-title="image_2_b"&gt;
+				&lt;img src="demo/2_s.jpg" alt="Image 2" aria-describedby="image2-desc" longdesc="#image2-desc" /&gt;
+			&lt;/a&gt;
+		&lt;/li&gt;
+	&lt;/ul&gt;
+&lt;/div&gt;
+&lt;p id="image_1_b"&gt;&lt;strong&gt;Image 1&amp;#160;:&lt;/strong&gt; Lorem ipsum consectetur &lt;em&gt;adipiscing elit&lt;/em&gt;.&lt;/p&gt;
+&lt;p id="image_2_b"&gt;&lt;strong&gt;Image 2&amp;#160;:&lt;/strong&gt; Nulla mollis dolor leo. Quisque laoreet tincidunt mollis. Duis posuere scelerisque lectus quis lobortis.&lt;/p&gt;</code></pre>
+				</details>
+			</section>
+		</section>
+	</section>
+</div>
+
+
+			<dl id="wb-dtmd" role="contentinfo" property="dateModified">
+	<dt>Date de modification&#160&#32;</dt>
+	<dd><time>2014-02-19</time></dd>
+</dl>
+
+
+		</main>
+
+
+
+		<footer role="contentinfo" id="wb-info" class="visible-md visible-lg">
+			<div class="container">
+				<nav role="navigation">
+					<h2>Informations sur le site</h2>
+					<ul id="gc-tctr" class="list-inline">
+	<li><a rel="license" href="http://wet-boew.github.io/wet-boew/License-fr.html">Avis</a></li>
+	<li><a href="http://www.tbs-sct.gc.ca/pd-dp/index-fr.asp">Transparence</a></li>
+</ul>
+					<div class="row">
+						<section class="col-sm-3">
+	<h3>À propos</h3>
+	<ul class="list-unstyled">
+		<li><a href="http://wet-boew.github.io/v4.0-ci/index-fr.html#apropos">À propos de la Boîte à outils de l’expérience Web</a></li>
+		<li><a href="http://www.tbs-sct.gc.ca/ws-nw/index-fra.asp">À propos des normes Web</a></li>
+	</ul>
+</section>
+<section class="col-sm-3">
+	<h3>Contactez-nous</h3>
+	<ul class="list-unstyled">
+		<li><a href="https://github.com/wet-boew/wet-boew/issues/new">Questions ou commentaires?</a></li>
+	</ul>
+</section>
+<section class="col-sm-3">
+	<h3>Nouvelles</h3>
+	<ul class="list-unstyled">
+		<li><a href="https://github.com/wet-boew/wet-boew/pulse">Activité du projet récente</a></li>
+		<li><a href="https://github.com/wet-boew/wet-boew/graphs">Statistiques du projet</a></li>
+	</ul>
+</section>
+<section class="col-sm-3">
+	<h3>Restez branchés</h3>
+	<ul class="list-unstyled">
+		<li><a href="https://twitter.com/BoiteExpWeb">Twitter</a></li>
+	</ul>
+</section>
+
+					</div>
+				</nav>
+			</div>
+			<div id="gc-info">
+				<div class="container">
+					<nav role="navigation">
+						<h2>Pied de page du gouvernement du Canada</h2>
+						
+<ul class="list-inline">
+
+	<li><a href="http://healthycanadians.gc.ca/index-fra.php"><span>Santé</span>canadiensensante.gc.ca</a></li>
+	<li><a href="http://www.travel.gc.ca/index-fra.asp"><span>Voyage</span>voyage.gc.ca</a></li>
+	<li><a href="http://www.servicecanada.gc.ca/fra/home.shtml"><span>Service Canada</span>servicecanada.gc.ca</a></li>
+	<li><a href="http://www.jobbank.gc.ca/intro-fra.aspx"><span>Emplois</span>guichetemplois.gc.ca</a></li>
+	<li><a href="http://actionplan.gc.ca/fr"><span>Économie</span>plandaction.gc.ca</a></li>
+
+	<li id="canada-ca"><a href="http://www.canada.ca/fr/index.html">Canada.ca</a></li>
+</ul>
+					</nav>
+				</div>
+			</div>
+		</footer>
+
+		<!--[if gte IE 9 | !IE ]><!-->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.js"></script>
+<script src="../../js/wet-boew.js"></script>
+<!--<![endif]-->
+<!--[if lt IE 9]>
+<script src="../../js/ie8-wet-boew2.js"></script>
+<![endif]-->
+
+
+	</body>
+</html>
