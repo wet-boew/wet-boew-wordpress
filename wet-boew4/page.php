@@ -1,6 +1,9 @@
 <?php get_header(); ?>
-	<div id="wb-core"><div id="wb-core-in" class="equalize">
-    <div id="wb-main" role="main"><div id="wb-main-in">
+
+<div class="container">
+<div class="row">
+
+<main role="main" property="mainContentOfPage" class="col-md-9 col-md-push-3">
     <!-- MainContentStart -->
 	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
@@ -18,14 +21,16 @@
 			<?php comments_template(); ?>
 	<?php endwhile; endif; ?>
 <!-- Date Modified begins / Début de la date de modification -->
-			<dl id="gcwu-date-mod" role="contentinfo">
-				<dt><?php _e("<!--:en-->Date modified: <!--:--><!--:fr-->Date de modification&#160;:<!--:-->"); ?></dt>
-				<dd><span><time><?php the_time('Y-m-d') ?></time></span></dd>
-			</dl>
-			<div class="clear"></div>
-<!-- clf2-nsi2 theme ends / Fin du thème clf2-nsi2 -->
-		</div></div>
+			<!-- Date Modified begins / Début de la date de modification -->
+			<dl id="wb-dtmd" role="contentinfo" property="dateModified">
+            <dt><?php _e("<!--:en-->Date modified: <!--:--><!--:fr-->Date de modification&#160;:<!--:-->"); ?></dt> 
+                 <dd>
+                   <time><?php the_time('Y-m-d') ?></time>
+                 </dd>
+            </dl>
+		</main>
 		<!-- Main content ends / Fin du contenu principal --> 
 			
 <?php get_sidebar(); ?>
+</div></div>
 <?php get_footer(); ?>
