@@ -7,7 +7,7 @@ Version: WET 4.0b2
 
 Author: Government of Canada
 
-Author URI: http://www.lostprototype.com/wet-boew4/
+Author URI: http://www.lostprototype.com/wet-boew-4/
 
 This theme uses HTML5 and CSS3 properties.
 
@@ -23,6 +23,10 @@ Secondary Navigation style is different but otherwise working.
 
 ## Versions
 ---------------------------------
+
+WET-BEOW 4.0b2 theme
+
+Author URI: http://www.lostprototype.com/wet-boew-4/
 
 WET-BEOW 3.0 Intranet theme
 
