@@ -1,7 +1,11 @@
+<?php
+/*
+Template Name: Single Column
+*/
+?>
 <?php get_header(); ?>
 
-<main role="main" property="mainContentOfPage" class="col-md-9 col-md-push-3">
-
+<main role="main" property="mainContentOfPage" class="container">
     <!-- MainContentStart -->
     
 		<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
