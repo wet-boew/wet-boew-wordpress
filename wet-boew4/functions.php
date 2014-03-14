@@ -367,10 +367,10 @@ function gcwu_fegc_widgets_init() {
 		'name' => __( 'left_column', 'gcwu_fegc' ),
 		'id' => 'primary-widget-area',
 		'description' => __( 'The primary widget area', 'gcwu_fegc' ),
-		'before_widget' => '<li id="%1$s" class="widget-container %2$s">', 
-		'after_widget' => '</li>',
-		'before_title' => '<li class="widget-title">', 
-		'after_title' => '</li>',
+		'before_widget' => '<div id="%1$s" class="widget-container %2$s">', 
+		'after_widget' => '</div>',
+		'before_title' => '<h5 class="widget-title">', 
+		'after_title' => '</h5>',
 	) );
 
 	// Area 2, located below the Primary Widget Area in the sidebar. Empty by default.
@@ -378,10 +378,10 @@ function gcwu_fegc_widgets_init() {
 		'name' => __( 'right_column', 'gcwu_fegc' ),
 		'id' => 'secondary-widget-area',
 		'description' => __( 'The secondary widget area', 'gcwu_fegc' ),
-		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</li>',
-		'before_title' => '<li class="widget-title">',
-		'after_title' => '</li>',
+		'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
+		'after_widget' => '</div>',
+		'before_title' => '<h5 class="widget-title">',
+		'after_title' => '</h5>',
 	) );
 
 	// Area 3, located in the mega menu. Empty by default.
@@ -389,10 +389,10 @@ function gcwu_fegc_widgets_init() {
 		'name' => __( 'mega_menu_area', 'gcwu_fegc' ),
 		'id' => 'mega-menu-area',
 		'description' => __( 'Mega menu area', 'gcwu_fegc' ),
-		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</li>',
-		'before_title' => '<li class="widget-title">',
-		'after_title' => '</li>',
+		'before_widget' => '<div id="%1$s" class="widget-container %2$s">',
+		'after_widget' => '</div>',
+		'before_title' => '<h5 class="widget-title">',
+		'after_title' => '</h5>',
 	) );
 
 }
