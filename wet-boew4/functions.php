@@ -371,8 +371,8 @@ function gcwu_fegc_widgets_init() {
 		'description' => __( 'The primary widget area', 'gcwu_fegc' ),
 		'before_widget' => '<aside id="%1$s" class="widget-container %2$s">', 
 		'after_widget' => '</aside>', 
-		'before_title' => '<li class="widget-title">', 
-		'after_title' => '</li>',
+		'before_title' => '<h5 class="widget-title">', 
+		'after_title' => '</h5>',
 	) );
 
 	// Area 2, located below the Primary Widget Area in the sidebar. Empty by default.
@@ -382,8 +382,8 @@ function gcwu_fegc_widgets_init() {
 		'description' => __( 'The secondary widget area', 'gcwu_fegc' ),
 		'before_widget' => '<aside id="%1$s" class="widget-container %2$s">',
 		'after_widget' => '</aside>',
-		'before_title' => '<li class="widget-title">',
-		'after_title' => '</li>',
+		'before_title' => '<h5 class="widget-title">',
+		'after_title' => '</h5>',
 	) );
 
 	// Area 3, located in the mega menu. Empty by default.
@@ -393,8 +393,8 @@ function gcwu_fegc_widgets_init() {
 		'description' => __( 'Mega menu area', 'gcwu_fegc' ),
 		'before_widget' => '<aside id="%1$s" class="widget-container %2$s">',
 		'after_widget' => '</aside>',
-		'before_title' => '<li class="widget-title">',
-		'after_title' => '</li>',
+		'before_title' => '<h5 class="widget-title">',
+		'after_title' => '</h5>',
 	) );
 
 }
