@@ -17,6 +17,7 @@
  - Web Experience Toolkit
 </title>
 		<link href="../../assets/favicon.ico" rel="shortcut icon" />
+		<link rel="schema.dcterms" href="http://purl.org/dc/terms/">
 		<meta content="width=device-width, initial-scale=1" name="viewport" />
 		<!-- Meta data -->
 		<meta name="description" content="Facilitates sharing Web content on social media platforms." />
@@ -230,6 +231,27 @@
 <hr />
 
 <section>
+	<h2>Filter the displayed sites</h2>
+
+	<div class="wb-share" data-wet-boew='{"filter": ["twitter", "facebook"], "pnlId": "pnl4"}'></div>
+	<div class="text-right">
+		<strong>Add a second link:</strong>
+		<div class="wb-share link-only text-right" data-wet-boew='{"pnlId": "pnl4"}'></div>
+	</div>
+
+	<details>
+		<summary>View code</summary>
+		<pre class="wb-prettify"><code>&lt;div class="wb-share" data-wet-boew='{"filter": ["twitter", "facebook"], "pnlId": "pnl4"}'&gt;&lt;/div&gt;
+&lt;div class="text-right"&gt;
+	&lt;strong&gt;Add a second link:&lt;/strong&gt;
+	&lt;div class="wb-share link-only text-right" data-wet-boew='{"pnlId": "pnl4"}'&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+	</details>
+</section>
+
+<hr />
+
+<section>
 	<h2>Options</h2>
 	<table class="table table-striped">
 		<thead>
@@ -243,68 +265,75 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td>link-only</td>
+				<td><code>link-only</code></td>
 				<td>Class name</td>
 				<td>n/a</td>
 				<td><code>class="wb-share link-only"</code></td>
 				<td>Used to specify additional links for an existing panel.</td>
 			</tr>
 			<tr>
-				<td>pnlId</td>
+				<td><code>pnlId</code></td>
 				<td>String</td>
 				<td>n/a</td>
 				<td><code>data-wet-boew='{"pnlId": "pnl1"}'</code></td>
 				<td>Unique identifier for the panel. Only required if providing a second link for the same panel (needs to be specified on all <code>wb-share</code> calls for that panel).</td>
 			</tr>
 			<tr>
-				<td>type</td>
+				<td><code>type</code></td>
 				<td>"<code>page</code>", "<code>video</code>"</td>
 				<td>"<code>page</code>"</td>
 				<td><code>data-wet-boew='{"type": "video"}'</code></td>
 				<td>Type of content to share.</td>
 			</tr>
 			<tr>
-				<td>custType</td>
+				<td><code>custType</code></td>
 				<td>String</td>
 				<td>""</td>
 				<td><code>data-wet-boew='{"custType": "&#160;this comment"}'</code></td>
 				<td>Text to use after "Share" on the share button and the panel header (overrides the text associated to the type option).</td>
 			</tr>
 			<tr>
-				<td>title</td>
+				<td><code>title</code></td>
 				<td>String</td>
 				<td>Page title or the main <code>h1</code> text</td>
 				<td><code>data-wet-boew='{"title": "Page title"}'</code></td>
 				<td>Text to use instead of the page title or the main <code>h1</code> text. Recommended for the video type if the page title is not the title of the video.</td>
 			</tr>
 			<tr>
-				<td>url</td>
+				<td><code>url</code></td>
 				<td>URL</td>
 				<td>URL of the current page (excluding the hash and query string)</td>
 				<td><code>data-wet-boew='{"url": "http://page.url"}'</code></td>
 				<td>URL to use instead of the URL of the current page.</td>
 			</tr>
 			<tr>
-				<td>desc</td>
+				<td><code>desc</code></td>
 				<td>String</td>
 				<td>""</td>
 				<td><code>data-wet-boew='{"desc": "Description of the page."}'</code></td>
 				<td>Optional description of the item to share. <strong>Note:</strong> A separate description is not supported by all social media sites.</td>
 			</tr>
 			<tr>
-				<td>img</td>
+				<td><code>img</code></td>
 				<td>URL</td>
 				<td>""</td>
 				<td><code>data-wet-boew='{"img": "http://img.url"}'</code></td>
 				<td>Optional image for the item to share (mainly for Pinterest). <strong>Note:</strong> Very few social media sites support specifying a separate image through a URL request.</td>
 			</tr>
+			<tr>
+				<td><code>filter</code></td>
+				<td>Array</td>
+				<td>[]</td>
+				<td><code>data-wet-boew='{"filter": ["twitter", "facebook"]}'</code></td>
+				<td>Optional filter for the sites to display in the panel. Only the sites listed in the array will be displayed. If no sites are listed, then all sites will be displayed.</td>
+			</tr>
 		</tbody>
 	</table>
 </section>
 
-			<dl id="wb-dtmd" role="contentinfo" property="dateModified">
+			<dl id="wb-dtmd" property="dateModified">
 	<dt>Date modified:&#32;</dt>
-	<dd><time>2014-02-19</time></dd>
+	<dd><time>2014-03-11</time></dd>
 </dl>
 
 
@@ -315,7 +344,7 @@
 		<footer role="contentinfo" id="wb-info" class="visible-md visible-lg">
 			<div class="container">
 				<nav role="navigation">
-					<h2>Site Information</h2>
+					<h2>Site information</h2>
 					<ul id="gc-tctr" class="list-inline">
 	<li><a rel="license" href="http://wet-boew.github.io/wet-boew/License-en.html">Terms and conditions</a></li>
 	<li><a href="http://www.tbs-sct.gc.ca/pd-dp/index-en.asp">Transparency</a></li>
@@ -358,10 +387,10 @@
 						
 <ul class="list-inline">
 
-	<li><a href="http://healthycanadians.gc.ca/index-eng.php"><span>Health</span>healthycanadians.gc.ca</a></li>
-	<li><a href="http://www.travel.gc.ca/index-eng.asp"><span>Travel</span>travel.gc.ca</a></li>
-	<li><a href="http://www.servicecanada.gc.ca/eng/home.shtml"><span>ServiceCanada</span>servicecanada.gc.ca</a></li>
-	<li><a href="http://www.jobbank.gc.ca/intro-eng.aspx"><span>Jobs</span>jobbank.gc.ca</a></li>
+	<li><a href="http://healthycanadians.gc.ca"><span>Health</span>healthycanadians.gc.ca</a></li>
+	<li><a href="http://travel.gc.ca"><span>Travel</span>travel.gc.ca</a></li>
+	<li><a href="http://www.servicecanada.gc.ca/eng/home.shtml"><span>Service Canada</span>servicecanada.gc.ca</a></li>
+	<li><a href="http://www.jobbank.gc.ca"><span>Jobs</span>jobbank.gc.ca</a></li>
 	<li><a href="http://actionplan.gc.ca/en"><span>Economy</span>actionplan.gc.ca</a></li>
 
 	<li id="canada-ca"><a href="http://www.canada.ca/en/index.html">Canada.ca</a></li>

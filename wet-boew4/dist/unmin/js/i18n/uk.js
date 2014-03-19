@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0-b2-development - 2014-02-26
+ * v4.0.0-rc1 - 2014-03-18
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -59,6 +59,7 @@ wb.i18nDict = {
 	first: "Перший",
 	last: "Oстанній",
 	menu: "Меню",
+	email: "Електронна пошта",
 	"menu-close": "Закрийте меню",
 	"overlay-close": "Закрийте допоміжних ліній",
 	"esc-key": "(клавішею «escape»)",

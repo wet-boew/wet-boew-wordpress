@@ -17,6 +17,7 @@
  - Web Experience Toolkit
 </title>
 		<link href="../../assets/favicon.ico" rel="shortcut icon" />
+		<link rel="schema.dcterms" href="http://purl.org/dc/terms/">
 		<meta content="width=device-width, initial-scale=1" name="viewport" />
 		<!-- Meta data -->
 		<meta name="description" content="Provides an accessible multimedia player for embedding video into web pages." />
@@ -185,8 +186,8 @@
 		<section class="wb-mltmd col-md-6">
 			<h3 class="wb-inv">MPEG4 (H264 + AAC) and WebM (VP8) source and HTML captions</h3>
 			<video poster="http://www.servicecanada.gc.ca/eng/video/images/te-lj-eng.jpg" title="Video Example">
-				<source type="video/webm" src="http://video2.servicecanada.gc.ca/video/boew-wet/te-lj-eng.webm"></source>
-				<source type="video/mp4" src="http://video2.servicecanada.gc.ca/video/boew-wet/te-lj-eng.mp4"></source>
+				<source type="video/webm" src="http://video2.servicecanada.gc.ca/video/boew-wet/te-lj-eng.webm" />
+				<source type="video/mp4" src="http://video2.servicecanada.gc.ca/video/boew-wet/te-lj-eng.mp4" />
 				<track src="cpts-lg-en.html" kind="captions" data-type="text/html" srclang="en" label="English" />
 				</video>
 				<p><a href="http://www.servicecanada.gc.ca/eng/video/lj.shtml">Transcript</a></p>
@@ -194,8 +195,8 @@
 		<section class="wb-mltmd col-md-6">
 			<h3 class="wb-inv">MPEG4 (H264 + AAC) and WebM (VP8) source and HTML captions</h3>
 			<video poster="http://www.servicecanada.gc.ca/eng/video/images/dc-td-eng.jpg" title="Video Example">
-				<source type="video/webm" src="http://video2.servicecanada.gc.ca/video/boew-wet/dc-td-eng.webm"></source>
-				<source type="video/mp4" src="http://video2.servicecanada.gc.ca/video/boew-wet/dc-td-eng.mp4"></source>
+				<source type="video/webm" src="http://video2.servicecanada.gc.ca/video/boew-wet/dc-td-eng.webm" />
+				<source type="video/mp4" src="http://video2.servicecanada.gc.ca/video/boew-wet/dc-td-eng.mp4" />
 				<track src="cpts-lg2-en.html" kind="captions" data-type="text/html" srclang="en" label="English" />
 				</video>
 				<p><a href="http://www.servicecanada.gc.ca/eng/video/td.shtml">Transcript</a></p>
@@ -206,7 +207,7 @@
 			<h3>MPEG4 (H264 + AAC) source with inline HTML captions</h3>
 			<p>This example illustrates the use of an inline transcript to provide captions. This example can also demonstrate the fallback mechanism in Web browsers that don't support HTML5 videos.</p>
 			<video poster="http://www.servicecanada.gc.ca/eng/video/images/te-lj-eng.jpg" title="Video Example">
-				<source type="video/mp4" src="http://video2.servicecanada.gc.ca/video/boew-wet/te-lj-eng.mp4"></source>
+				<source type="video/mp4" src="http://video2.servicecanada.gc.ca/video/boew-wet/te-lj-eng.mp4" />
 				<track src="#inline-captions" kind="captions" data-type="text/html" srclang="en" label="English" />
 			</video>
 			<details id="inline-captions">
@@ -274,7 +275,7 @@
 
 
 
-			<dl id="wb-dtmd" role="contentinfo" property="dateModified">
+			<dl id="wb-dtmd" property="dateModified">
 	<dt>Date modified:&#32;</dt>
 	<dd><time>2014-02-19</time></dd>
 </dl>
@@ -287,7 +288,7 @@
 		<footer role="contentinfo" id="wb-info" class="visible-md visible-lg">
 			<div class="container">
 				<nav role="navigation">
-					<h2>Site Information</h2>
+					<h2>Site information</h2>
 					<ul id="gc-tctr" class="list-inline">
 	<li><a rel="license" href="http://wet-boew.github.io/wet-boew/License-en.html">Terms and conditions</a></li>
 	<li><a href="http://www.tbs-sct.gc.ca/pd-dp/index-en.asp">Transparency</a></li>
@@ -330,10 +331,10 @@
 						
 <ul class="list-inline">
 
-	<li><a href="http://healthycanadians.gc.ca/index-eng.php"><span>Health</span>healthycanadians.gc.ca</a></li>
-	<li><a href="http://www.travel.gc.ca/index-eng.asp"><span>Travel</span>travel.gc.ca</a></li>
-	<li><a href="http://www.servicecanada.gc.ca/eng/home.shtml"><span>ServiceCanada</span>servicecanada.gc.ca</a></li>
-	<li><a href="http://www.jobbank.gc.ca/intro-eng.aspx"><span>Jobs</span>jobbank.gc.ca</a></li>
+	<li><a href="http://healthycanadians.gc.ca"><span>Health</span>healthycanadians.gc.ca</a></li>
+	<li><a href="http://travel.gc.ca"><span>Travel</span>travel.gc.ca</a></li>
+	<li><a href="http://www.servicecanada.gc.ca/eng/home.shtml"><span>Service Canada</span>servicecanada.gc.ca</a></li>
+	<li><a href="http://www.jobbank.gc.ca"><span>Jobs</span>jobbank.gc.ca</a></li>
 	<li><a href="http://actionplan.gc.ca/en"><span>Economy</span>actionplan.gc.ca</a></li>
 
 	<li id="canada-ca"><a href="http://www.canada.ca/en/index.html">Canada.ca</a></li>

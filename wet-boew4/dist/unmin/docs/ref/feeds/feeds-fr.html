@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<!--[if lt IE 9]><html class="no-js lt-ie9" lang="fr"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lt-ie9" lang="fr" dir="ltr"><![endif]-->
 <!--[if gt IE 8]><!-->
-<html class="no-js" lang="fr">
+<html class="no-js" lang="fr" dir="ltr">
 <!--<![endif]-->
 	<head>
 		<meta charset="utf-8" />
@@ -36,6 +36,7 @@
 <![endif]-->
 
 <noscript><link rel="stylesheet" href="../../../css/noscript.css" /></noscript>
+
 	</head>
 	<body vocab="http://schema.org/" typeof="WebPage">
 		<ul id="wb-tphp">
@@ -59,7 +60,7 @@
 								<h2>Sélection de la langue</h2>
 								<ul class="text-right">
 
-	<li class="curr">Français&#32;<span>(courant)</span></li>
+	<li class="curr">Français&#32;<span>(actuel)</span></li>
 
 
 	<li><a lang="en" hreflang="en" href="feeds-en.html">English</a></li>
@@ -130,7 +131,7 @@
 
 	
 			<nav role="navigation" id="wb-bc" property="breadcrumb">
-				<h2>Vous êtes dans :</h2>
+				<h2>Vous êtes ici :</h2>
 				<div class="container">
 	<div class="row">
 		<ol class="breadcrumb">
@@ -177,46 +178,56 @@
 <p><strong>Needs translation</strong></p>
 <section>
 	<h2>Purpose</h2>
-	<p>A brief description of the component.</p>
+	<p>The purpose of this feature is to provides a widget for aggregating and displaying the entries from one or more Web feeds on a Web page. Supported Web feed formats are Atom, RSS, and Media RSS.</p>
 </section>
 
 <section>
 	<h2>Use when</h2>
 	<ul>
-		<li>Use case 1</li>
-		<li>Use case 2</li>
-		<li>Use case 3</li>
-	</ul>
-</section>
-
-<section>
-	<h2>Do not use when</h2>
-	<ul>
-		<li>Use case 1</li>
-		<li>Use case 2</li>
-		<li>Use case 3</li>
+		<li>Promoting and sharing information from Web feeds on a Web page </li>
 	</ul>
 </section>
 
 <section>
 	<h2>Working example</h2>
-	<p><a href="#">Link to a working example</a></p>
+	<ul>
+		<li><a href="../../../demos/feeds/feeds-en.html">English working examples</a></li>
+		<li><a href="../../../demos/feeds/feeds-fr.html">French working examples</a></li>
+	</ul>
 </section>
 
 <section>
 	<h2>How to implement</h2>
 	<ol>
-		<li>Step 1</li>
-		<li>Step 2
-			<pre><code>Example code</code></pre>
+		<li>For each Web feed, create a <code>div</code> element with <code>class="wb-feeds"</code>.
+			<pre><code>&lt;div class="wb-feeds"&gt;&lt;/div&gt;</code></pre>
 		</li>
-		<li>Step 3
-			<pre><code>Example of multi-line code
-Example of multi-line code
-Example of multi-line code</code></pre>
+		<li>Inside the <code>div</code> element created in the previous step add a <code>section</code> element.</li>
+		<li>Inside the <code>section</code> element add a heading (<code>h1</code> - <code>h6</code>).</li>
+		<li>Add an unordered list (<code>ul</code>) after the heading with the <code>feeds-cont</code> class.</li>
+		<li>For every Web feed source to display, add a list element containing a link to the feed:
+			<pre><code>&lt;li&gt;
+	&lt;a href="http://canada.ca/sample.atom"&gt;Sample Atom Feed&lt;/a&gt;
+&lt;/li&gt;</code></pre>
 		</li>
-		<li>Step 4</li>
 	</ol>
+
+	<section>
+		<h3>Example code</h3>
+		<pre><code>&lt;div class="wb-feeds limit-5"&gt;
+	&lt;section&gt;
+		&lt;h3&gt;Road News Releases and Safety Recalls&lt;/h3&gt;
+		&lt;ul class="feeds-cont"&gt;
+			&lt;li&gt;
+				&lt;a href="http://www.tc.gc.ca/mediaroom/rss/road.xml" rel="external"&gt;Road News Releases (All)&lt;/a&gt;
+			&lt;/li&gt;
+			&lt;li&gt;
+				&lt;a href="http://wwwapps.tc.gc.ca/Saf-Sec-Sur/7/VRDB-BDRV/Search/Rss-Search.aspx" rel="external"&gt;Road Safety Recalls&lt;/a&gt;
+			&lt;/li&gt;
+		&lt;/ul&gt;
+	&lt;/section&gt;
+&lt;/div&gt;</code></pre>
+	</section>
 </section>
 
 <section>
@@ -233,32 +244,13 @@ Example of multi-line code</code></pre>
 		</thead>
 		<tbody>
 			<tr>
-				<td>Option 1</td>
-				<td>Brief description of the option</td>
-				<td>How to configure the option</td>
+				<td><code>limit-x</code></td>
+				<td>Controls the amount of items the Web feeds widget will display.</td>
+				<td>Add the <code>limit-x</code> class after the <code>wb-feeds</code> class and replace <code>x</code> with an integer.</td>
 				<td>
 					<dl>
-						<dt>Value 1 (default):</dt>
-						<dd>Brief description</dd>
-						<dt>Value 2:</dt>
-						<dd>Brief description</dd>
-						<dt>Value 3:</dt>
-						<dd>Brief description</dd>
-					</dl>
-				</td>
-			</tr>
-			<tr>
-				<td>Option 2</td>
-				<td>Brief description of the option</td>
-				<td>How to configure the option</td>
-				<td>
-					<dl>
-						<dt>Value 1 (default):</dt>
-						<dd>Brief description</dd>
-						<dt>Value 2:</dt>
-						<dd>Brief description</dd>
-						<dt>Value 3:</dt>
-						<dd>Brief description</dd>
+						<dt><code>limit-4</code> (default):</dt>
+						<dd>Limits display to four items.</dd>
 					</dl>
 				</td>
 			</tr>
@@ -279,14 +271,9 @@ Example of multi-line code</code></pre>
 		</thead>
 		<tbody>
 			<tr>
-				<td>Event 1</td>
-				<td>When the event is triggered and how to trigger it manually (where supported)</td>
-				<td>Brief description of what it does.</td>
-			</tr>
-			<tr>
-				<td>Event 2</td>
-				<td>When the event is triggered and how to trigger it manually (where supported)</td>
-				<td>Brief description of what it does.</td>
+				<td>wb-init.wb-feeds</td>
+				<td>Triggered manually (e.g., <code>$elm.trigger( "wb-init.wb-feeds" );</code>).</td>
+				<td>Used to manually initialize the Feeds widget. <strong>Note:</strong> The Feeds widget will be initialized automatically unless it is added after the page has already loaded.</td>
 			</tr>
 		</tbody>
 	</table>
@@ -294,13 +281,13 @@ Example of multi-line code</code></pre>
 
 <section>
 	<h2>Source code</h2>
-	<p><a href="#">Link to the folder on GitHub containing the files for the component</a></p>
+	<p><a href="https://github.com/wet-boew/wet-boew/tree/v4.0/src/plugins/feeds">Feeds widget source code on GitHub</a></p>
 </section>
 </div>
 
 
-			<dl id="wb-dtmd" role="contentinfo" property="dateModified">
-	<dt>Date de modification&#160&#32;</dt>
+			<dl id="wb-dtmd" property="dateModified">
+	<dt>Date de modification&#160;:&#32;</dt>
 	<dd><time>2014-02-19</time></dd>
 </dl>
 

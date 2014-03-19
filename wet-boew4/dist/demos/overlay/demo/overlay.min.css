@@ -1,0 +1,8 @@
+@charset "utf-8";
+/*!
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ * v4.0.0-rc1 - 2014-03-18
+ *
+ */
+.wb-bar-b header,.wb-bar-b ul,.wb-bar-t header,.wb-bar-t ul{display:inline-block}.wb-panel-l ul li,.wb-panel-r ul li{margin-bottom:10px}.wb-bar-b ul,.wb-bar-t ul{margin-bottom:0}.wb-bar-b ul li,.wb-bar-t ul li{margin-bottom:5px}.wb-bar-b ul>li:first-child,.wb-bar-t ul>li:first-child{padding-left:5px}

@@ -17,6 +17,7 @@
  - Web Experience Toolkit
 </title>
 		<link href="../../assets/favicon.ico" rel="shortcut icon" />
+		<link rel="schema.dcterms" href="http://purl.org/dc/terms/">
 		<meta content="width=device-width, initial-scale=1" name="viewport" />
 		<!-- Meta data -->
 		<meta name="description" content="Aggregates and displays entries from one or more Web feeds." />
@@ -169,19 +170,6 @@
 <p>This feature provides a widget for aggregating and displaying the entries from one or more Web feeds on a Web page. Supported Web feed formats are Atom, RSS, and Media RSS.</p>
 
 <section>
-	<h2>Benefits</h2>
-	<ul>
-		<li>Displays entries from one or more Atom, RSS, and Media RSS feeds on a Web page without the need for a Web feed reader</li>
-		<li>Dynamically fetches the top five items of any public Atom, RSS, or Media RSS feed</li>
-		<li>Enables cross-promotion and sharing of information between Web sites</li>
-		<li>Conforms to WCAG 2.0 AA</li>
-		<li>Uses WAI-ARIA to enhance accessibility</li>
-		<li>Progressive enhancement approach</li>
-		<li>Supports Firefox, Opera, Safari, Chrome, and IE 8+</li>
-	</ul>
-</section>
-
-<section>
 	<h2>Examples</h2>
 	<div class="wb-feeds limit-5">
 		<section>
@@ -211,7 +199,7 @@
 
 <section>
 	<h2>Parameters</h2>
-	<table>
+	<table class="table">
 		<thead>
 			<tr>
 				<th scope="col">Class (parameter)</th>
@@ -222,20 +210,20 @@
 		<tbody>
 			<tr>
 				<td><code>wb-feeds</code></td>
-				<td>identifier</td>
-				<td>main targeting class that identifies the codeblock used for the Web feeds widget</td>
+				<td>Identifier</td>
+				<td>Main targeting class that identifies the code block used for the Web feeds widget.</td>
 			</tr>
 			<tr>
-				<td><code>limit-<em>xxx</em></code></td>
-				<td>display</td>
-				<td>controls the amount of items the Web feeds widget will display</td>
+				<td><code>limit-<em>x</em></code></td>
+				<td>Display</td>
+				<td>Controls the amount of items the Web feeds widget will display.</td>
 			</tr>
 		</tbody>
 	</table>
 </section>
 
 
-			<dl id="wb-dtmd" role="contentinfo" property="dateModified">
+			<dl id="wb-dtmd" property="dateModified">
 	<dt>Date modified:&#32;</dt>
 	<dd><time>2014-02-19</time></dd>
 </dl>
@@ -248,7 +236,7 @@
 		<footer role="contentinfo" id="wb-info" class="visible-md visible-lg">
 			<div class="container">
 				<nav role="navigation">
-					<h2>Site Information</h2>
+					<h2>Site information</h2>
 					<ul id="gc-tctr" class="list-inline">
 	<li><a rel="license" href="http://wet-boew.github.io/wet-boew/License-en.html">Terms and conditions</a></li>
 	<li><a href="http://www.tbs-sct.gc.ca/pd-dp/index-en.asp">Transparency</a></li>
@@ -291,10 +279,10 @@
 						
 <ul class="list-inline">
 
-	<li><a href="http://healthycanadians.gc.ca/index-eng.php"><span>Health</span>healthycanadians.gc.ca</a></li>
-	<li><a href="http://www.travel.gc.ca/index-eng.asp"><span>Travel</span>travel.gc.ca</a></li>
-	<li><a href="http://www.servicecanada.gc.ca/eng/home.shtml"><span>ServiceCanada</span>servicecanada.gc.ca</a></li>
-	<li><a href="http://www.jobbank.gc.ca/intro-eng.aspx"><span>Jobs</span>jobbank.gc.ca</a></li>
+	<li><a href="http://healthycanadians.gc.ca"><span>Health</span>healthycanadians.gc.ca</a></li>
+	<li><a href="http://travel.gc.ca"><span>Travel</span>travel.gc.ca</a></li>
+	<li><a href="http://www.servicecanada.gc.ca/eng/home.shtml"><span>Service Canada</span>servicecanada.gc.ca</a></li>
+	<li><a href="http://www.jobbank.gc.ca"><span>Jobs</span>jobbank.gc.ca</a></li>
 	<li><a href="http://actionplan.gc.ca/en"><span>Economy</span>actionplan.gc.ca</a></li>
 
 	<li id="canada-ca"><a href="http://www.canada.ca/en/index.html">Canada.ca</a></li>

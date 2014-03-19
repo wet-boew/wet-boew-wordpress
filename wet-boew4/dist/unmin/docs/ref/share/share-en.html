@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<!--[if lt IE 9]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lt-ie9" lang="en" dir="ltr"><![endif]-->
 <!--[if gt IE 8]><!-->
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" dir="ltr">
 <!--<![endif]-->
 	<head>
 		<meta charset="utf-8" />
@@ -36,6 +36,7 @@
 <![endif]-->
 
 <noscript><link rel="stylesheet" href="../../../css/noscript.css" /></noscript>
+
 	</head>
 	<body vocab="http://schema.org/" typeof="WebPage">
 		<ul id="wb-tphp">
@@ -209,7 +210,7 @@
 		<li>Add a unique id for the share panel.
 			<pre><code>&lt;div class="wb-share" data-wet-boew='{"pnlId": "pnl1"}'&gt;&lt;/div&gt;</code></pre>
 		</li>
-		<li><strong>Optional:</strong> Override the default settings using the <a href="#config">configuration options</a>.</li></li>
+		<li><strong>Optional:</strong> Override the default settings using the <a href="#config">configuration options</a>.</li>
 		<li><strong>Optional:</strong> Add additional links using the <code>link-only</code> class.
 			<pre><code>&lt;div class="wb-share link-only" data-wet-boew='{"pnlId": "pnl1"}'&gt;&lt;/div&gt;</code></pre>
 		</li>
@@ -237,6 +238,25 @@
 					<dl>
 						<dt><code>uniqueId</code>:</dt>
 						<dd>Valid unique id (e.g., <code>pnl1</code>)</dd>
+					</dl>
+				</td>
+			</tr>
+			<tr>
+				<td><code>hdLvl</code></td>
+				<td>Heading level for the share panel.</td>
+				<td>Add <code>"hdLvl": "headingLevel"</code> to the <code>data-wet-boew</code> attribute where <code>headingLevel</code> is the heading level.</td>
+				<td>
+					<dl>
+						<dt><code>h2</code> (default):</dt>
+						<dd>Heading level 2</dd>
+						<dt><code>h3</code>:</dt>
+						<dd>Heading level 3</dd>
+						<dt><code>h4</code>:</dt>
+						<dd>Heading level 4</dd>
+						<dt><code>h5</code>:</dt>
+						<dd>Heading level 5</dd>
+						<dt><code>h6</code>:</dt>
+						<dd>Heading level 6</dd>
 					</dl>
 				</td>
 			</tr>
@@ -308,6 +328,17 @@
 					</dl>
 				</td>
 			</tr>
+			<tr>
+				<td><code>filter</code></td>
+				<td>Optional filter for the sites to display in the panel. Only the sites listed in the array will be displayed. If no sites are listed, then all sites will be displayed.</td>
+				<td>Add <code>"filter": ["site-1", "site-2", ... "site-n"]</code> to the <code>data-wet-boew</code> attribute.</td>
+				<td>
+					<dl>
+						<dt>None (default):</dt>
+						<dd>Sites are not filtered by default.</dd>
+					</dl>
+				</td>
+			</tr>
 		</tbody>
 	</table>
 </section>
@@ -338,9 +369,9 @@
 </section>
 
 
-			<dl id="wb-dtmd" role="contentinfo" property="dateModified">
+			<dl id="wb-dtmd" property="dateModified">
 	<dt>Date modified:&#32;</dt>
-	<dd><time>2014-02-26</time></dd>
+	<dd><time>2014-03-17</time></dd>
 </dl>
 
 
@@ -350,7 +381,7 @@
 
 		<footer role="contentinfo" id="wb-info" class="container visible-md visible-lg">
 			<nav role="navigation" class="row">
-				<h2>Site Information</h2>
+				<h2>Site information</h2>
 				<section class="col-sm-3">
 	<h3>About</h3>
 	<ul class="list-unstyled">

@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0-b2-development - 2014-02-26
+ * v4.0.0-rc1 - 2014-03-18
  *
  *//*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
@@ -12,19 +12,6 @@
 /*
  Plugins
  */
-
-/*
- * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
- * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- */
-
-.wb-fdbck {
-  display: none;
-}
-
-.wb-fdbck-off {
-  display: block;
-}
 
 /*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
@@ -44,7 +31,7 @@
   opacity: 1;
 }
 
-.wb-tabs> details> summary {
+.wb-tabs > details > summary {
   display: block !important;
 }
 
@@ -77,7 +64,7 @@
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  */
 
-details> * {
+details > * {
   display: block !important;
 }
 
@@ -88,4 +75,12 @@ details> * {
 
 .datepicker-format {
   display: inline;
+}
+
+.nojs-show {
+  display: block !important;
+}
+
+.nojs-hide {
+  display: none !important;
 }

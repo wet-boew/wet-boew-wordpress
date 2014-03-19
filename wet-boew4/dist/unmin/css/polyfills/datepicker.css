@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0-b2-development - 2014-02-26
+ * v4.0.0-rc1 - 2014-03-18
  *
  *//*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
@@ -12,13 +12,22 @@
 .cal-days td.datepicker-selected a,
 .cal-days a:hover,
 .cal-days a:focus {
-  color: white !important;
+  color: #FFF !important;
+}
+
+.form-group .wb-date-wrap input,
+.form-inline .form-group .wb-date-wrap {
+  display: inline-block;
 }
 
 .cal-cnt.picker-overlay {
   position: absolute;
   z-index: 498 !important;
   margin-top: -2em;
+}
+
+.form-group .wb-date-wrap {
+  display: block;
 }
 
 .picker-close {
@@ -50,11 +59,11 @@
 }
 
 .cal-days td.datepicker-selected a {
-  background-color: #333333;
+  background-color: #333;
 }
 
 .cal-days a {
-  color: #111111;
+  color: #111;
 }
 
 .datepicker-format {

@@ -17,6 +17,7 @@
  - Web Experience Toolkit
 </title>
 		<link href="../../assets/favicon.ico" rel="shortcut icon" />
+		<link rel="schema.dcterms" href="http://purl.org/dc/terms/">
 		<meta content="width=device-width, initial-scale=1" name="viewport" />
 		<!-- Meta data -->
 		<meta name="description" content="Customizing a pie chart to create a donut chart." />
@@ -406,7 +407,7 @@ var wet_boew_charts = {
 }'</code></pre>
 
 	<pre><code>&lt;table class="wb-charts wb-charts-pie table" data-flot='{"series": { "pie": { "radius": 1,"label": { "radius": 1,"show": true }, "innerRadius": 0.45, "tilt": 0.5 } } }'&gt;</code></pre>
-	<table class="wb-charts wb-charts-pie table" data-flot='{"series": { "pie": { "radius": 1,"label": { "radius": 1,"show": true }, "innerRadius": 0.45, "tilt": 0.5  } } }'>
+	<table class="wb-charts wb-charts-pie table" data-flot='{"series": { "pie": { "radius": 1,"label": { "radius": 1,"show": true }, "innerRadius": 0.45, "tilt": 0.5 } } }'>
 		<caption>Tilted pie</caption>
 		<thead>
 			<tr>
@@ -459,7 +460,7 @@ var wet_boew_charts = {
 
 	<pre><code>&lt;table class="wb-charts wb-charts-pie wb-charts-nolegend table" data-flot='{"series": { "pie": { "radius": 5000,"label": { "radius": 1,"show": true }, "innerRadius": 0.45, "tilt": 0.5 } } }'&gt;</code></pre>
 
-	<table class="wb-charts wb-charts-pie wb-charts-nolegend table" data-flot='{"series": { "pie": { "radius": 5000,"label": { "radius": 1,"show": true }, "innerRadius": 0.45, "tilt": 0.5  } } }'>
+	<table class="wb-charts wb-charts-pie wb-charts-nolegend table" data-flot='{"series": { "pie": { "radius": 5000,"label": { "radius": 1,"show": true }, "innerRadius": 0.45, "tilt": 0.5 } } }'>
 		<caption>Rectangular pie</caption>
 		<thead>
 			<tr>
@@ -515,7 +516,7 @@ var wet_boew_charts = {
 
 	<pre><code>&lt;table class="wb-charts wb-charts-pie table" data-flot='{"series": { "pie": { "radius": 1,"label": { "radius": 1,"show": true }, "innerRadius": 0.45, "tilt": 0.5 } }, "grid": { "hoverable": true } }'&gt;</code></pre>
 
-	<table class="wb-charts wb-charts-pie table" data-flot='{"series": { "pie": { "radius": 1,"label": { "radius": 1,"show": true }, "innerRadius": 0.45, "tilt": 0.5  } }, "grid": { "hoverable": true } }'>
+	<table class="wb-charts wb-charts-pie table" data-flot='{"series": { "pie": { "radius": 1,"label": { "radius": 1,"show": true }, "innerRadius": 0.45, "tilt": 0.5 } }, "grid": { "hoverable": true } }'>
 		<caption>Hovering effect</caption>
 		<thead>
 			<tr>
@@ -576,7 +577,7 @@ var wet_boew_charts = {
 
 	<pre><code>&lt;table class="wb-charts wb-charts-pie wb-charts-decimal-1 table" data-flot='{"series": { "pie": { "radius": 1,"label": { "radius": 1,"show": true }, "innerRadius": 0.45, "tilt": 0.5 } }, "grid": { "hoverable": true } }' data-wet-boew='{ "decimal": 1 }'&gt;</code></pre>
 
-	<table class="wb-charts wb-charts-pie wb-charts-decimal-1 table" data-flot='{"series": { "pie": { "radius": 1,"label": { "radius": 1,"show": true }, "innerRadius": 0.45, "tilt": 0.5  } }, "grid": { "hoverable": true } }' data-wet-boew='{ "decimal": 1 }'>
+	<table class="wb-charts wb-charts-pie wb-charts-decimal-1 table" data-flot='{"series": { "pie": { "radius": 1,"label": { "radius": 1,"show": true }, "innerRadius": 0.45, "tilt": 0.5 } }, "grid": { "hoverable": true } }' data-wet-boew='{ "decimal": 1 }'>
 		<caption>Decimal precision</caption>
 		<thead>
 			<tr>
@@ -638,7 +639,7 @@ var wet_boew_charts = {
 
 	<pre><code>&lt;table class="wb-charts wb-charts-pie wb-charts-decimal-1 wb-charts-legendinline table" data-flot='{"series": { "pie": { "radius": 1,"label": { "radius": 1,"show": true, "threshold": 0.08 }, "innerRadius": 0.45, "tilt": 0.5 } }, "grid": { "hoverable": true } }' data-wet-boew='{ "decimal": 1 }'&gt;</code></pre>
 
-	<table class="wb-charts wb-charts-pie wb-charts-decimal-1 wb-charts-legendinline table" data-flot='{"series": { "pie": { "radius": 1,"label": { "radius": 1,"show": true, "threshold": 0.08 }, "innerRadius": 0.45, "tilt": 0.5  } }, "grid": { "hoverable": true } }' data-wet-boew='{ "decimal": 1 }'>
+	<table class="wb-charts wb-charts-pie wb-charts-decimal-1 wb-charts-legendinline table" data-flot='{"series": { "pie": { "radius": 1,"label": { "radius": 1,"show": true, "threshold": 0.08 }, "innerRadius": 0.45, "tilt": 0.5 } }, "grid": { "hoverable": true } }' data-wet-boew='{ "decimal": 1 }'>
 		<caption>Labelling threshold</caption>
 		<thead>
 			<tr>
@@ -735,7 +736,7 @@ var wet_boew_charts = {
 </section>
 
 
-			<dl id="wb-dtmd" role="contentinfo" property="dateModified">
+			<dl id="wb-dtmd" property="dateModified">
 	<dt>Date modified:&#32;</dt>
 	<dd><time>2014-02-19</time></dd>
 </dl>
@@ -748,7 +749,7 @@ var wet_boew_charts = {
 		<footer role="contentinfo" id="wb-info" class="visible-md visible-lg">
 			<div class="container">
 				<nav role="navigation">
-					<h2>Site Information</h2>
+					<h2>Site information</h2>
 					<ul id="gc-tctr" class="list-inline">
 	<li><a rel="license" href="http://wet-boew.github.io/wet-boew/License-en.html">Terms and conditions</a></li>
 	<li><a href="http://www.tbs-sct.gc.ca/pd-dp/index-en.asp">Transparency</a></li>
@@ -791,10 +792,10 @@ var wet_boew_charts = {
 						
 <ul class="list-inline">
 
-	<li><a href="http://healthycanadians.gc.ca/index-eng.php"><span>Health</span>healthycanadians.gc.ca</a></li>
-	<li><a href="http://www.travel.gc.ca/index-eng.asp"><span>Travel</span>travel.gc.ca</a></li>
-	<li><a href="http://www.servicecanada.gc.ca/eng/home.shtml"><span>ServiceCanada</span>servicecanada.gc.ca</a></li>
-	<li><a href="http://www.jobbank.gc.ca/intro-eng.aspx"><span>Jobs</span>jobbank.gc.ca</a></li>
+	<li><a href="http://healthycanadians.gc.ca"><span>Health</span>healthycanadians.gc.ca</a></li>
+	<li><a href="http://travel.gc.ca"><span>Travel</span>travel.gc.ca</a></li>
+	<li><a href="http://www.servicecanada.gc.ca/eng/home.shtml"><span>Service Canada</span>servicecanada.gc.ca</a></li>
+	<li><a href="http://www.jobbank.gc.ca"><span>Jobs</span>jobbank.gc.ca</a></li>
 	<li><a href="http://actionplan.gc.ca/en"><span>Economy</span>actionplan.gc.ca</a></li>
 
 	<li id="canada-ca"><a href="http://www.canada.ca/en/index.html">Canada.ca</a></li>
