@@ -24,7 +24,7 @@ Secondary Navigation style is different but otherwise working.
 ## Versions
 ---------------------------------
 
-WET-BEOW 4.0rc1 theme
+WET-BEOW 4.0rc1 gcwu-fegc theme
 
 Author URI: http://www.lostprototype.com/wet-boew-4/
 
@@ -32,7 +32,7 @@ WET-BEOW 3.0 Intranet theme
 
 Author URI: http://www.lostprototype.com/wet-boew-intra/
 
-WET-BEOW 3.0.3 theme
+WET-BEOW 3.0.3 gcwu-fegc theme
 
 Author URI: http://www.lostprototype.com/wet-boew3/
 
