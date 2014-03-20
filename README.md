@@ -9,7 +9,7 @@ Author: Government of Canada
 
 Author URI: http://www.lostprototype.com/wet-boew-4/
 
-This theme uses HTML5 and CSS3 properties.
+This theme uses HTML5, CSS3 properties and bootstrap.
 
 Based on Government of Canada Common Look and Feel (CLF) standard:
 
