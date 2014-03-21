@@ -19,7 +19,8 @@ Web Experience Toolkit (WET) - Boîte à outils de l'expérience Web (BOEW)
 ---------------------------------
 
 Issue with version 4.0rc1
-Secondary Navigation style is different but otherwise working.
+
+Secondary Navigation does not display in mobile mode.
 
 ## Versions
 ---------------------------------
