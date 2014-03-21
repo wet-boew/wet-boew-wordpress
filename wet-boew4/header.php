@@ -131,11 +131,13 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
                     <object id="wmms" type="image/svg+xml" tabindex="-1" role="img" data="<?php bloginfo('template_directory'); ?>/dist/assets/wmms.svg" aria-label="Symbol of the Government of Canada"></object>
                     <section id="wb-srch" class="visible-md visible-lg">
                         <h2><?php _e("<!--:en-->Search<!--:--><!--:fr-->Recherche<!--:-->"); ?></h2> 
-                        <form action="https://google.ca/search" method="get" role="search" class="form-inline">
+                        <form action="<?php bloginfo('url'); ?>" method="get" role="search" class="form-inline">
                             <div class="form-group">
                                 <label for="wb-srch-q"><?php _e("<!--:en-->Search website<!--:--><!--:fr-->Recherchez le site Web<!--:-->"); ?></label>
-                                <input id="wb-srch-q" class="form-control" name="q" type="search" value="" size="27" maxlength="150" />
-                                <input type="hidden" name="q" value="site:wet-boew.github.io OR site:github.com/wet-boew/" />
+                                <input id="wb-srch-q" class="form-control" name="s" type="search" value="<?php the_search_query(); ?>" size="27" maxlength="150" />
+                                <?php if(qtrans_getLanguage()=='fr'): ?>
+                                  <input id="lang" name="lang" type="hidden" value="fr" />
+                                <?php endif; ?>
                             </div>
                             <button type="submit" id="wb-srch-sub" class="btn btn-default"><?php _e("<!--:en-->Search<!--:--><!--:fr-->Recherche<!--:-->"); ?></button>
                         </form>
