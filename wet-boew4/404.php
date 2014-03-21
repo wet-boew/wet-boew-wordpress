@@ -7,7 +7,7 @@
 
     <!-- MainContentStart -->
 			<!-- Content title begins / Début du titre du contenu -->
-			<h1 id="wb-cont" property="name">Page not found: 404 error</h1>
+			<h1 id="wb-cont" property="name"><?php _e("<!--:en-->Page not found: 404 error<!--:--><!--:fr-->Erreur HTTP 404 - Non trouvé<!--:-->"); ?></h1>
 			<!-- Content Title ends / Fin du titre du contenu -->
 			
 <!-- clf2-nsi2 theme begins / Début du thème clf2-nsi2 -->
