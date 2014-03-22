@@ -3,13 +3,13 @@ wet-boew-wordpress
 
 WordPress variant for the Web Experience Toolkit (WET)
 
-Version: WET 3.1.3
+Version: WET 4.0rc1
 
 Author: Government of Canada
 
-Author URI: http://www.lostprototype.com/wet-boew31/
+Author URI: http://www.lostprototype.com/wet-boew-4/
 
-This theme uses HTML5 and CSS3 properties.
+This theme uses HTML5, CSS3 properties and bootstrap.
 
 Based on Government of Canada Common Look and Feel (CLF) standard:
 
@@ -18,17 +18,22 @@ Web Experience Toolkit (WET) - Boîte à outils de l'expérience Web (BOEW)
 ## Known Issues
 ---------------------------------
 
-Issue with version 3.1.3
-Secondary Navigation not displaying in mobile mode.
+Issue with version 4.0rc1
+
+Secondary Navigation does not display in mobile mode.
 
 ## Versions
 ---------------------------------
+
+WET-BEOW 4.0rc1 gcwu-fegc theme
+
+Author URI: http://www.lostprototype.com/wet-boew-4/
 
 WET-BEOW 3.0 Intranet theme
 
 Author URI: http://www.lostprototype.com/wet-boew-intra/
 
-WET-BEOW 3.0.3 theme
+WET-BEOW 3.0.3 gcwu-fegc theme
 
 Author URI: http://www.lostprototype.com/wet-boew3/
 
