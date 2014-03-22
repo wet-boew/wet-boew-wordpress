@@ -8,8 +8,8 @@
  * located in the functions.php file.
  *
  * @package WordPress
- * @subpackage clf2v2_nsi2v2
- * @since clf2v2_nsi2v2 1.0
+ * @subpackage WET-BOEW
+ * @since WET-BOEW 4.0
  */
 ?>
 
