@@ -125,7 +125,7 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
             <div class="container">
                 <div class="row">
                     <div id="wb-sttl" class="col-md-5">
-                        <a href="http://wet-boew.github.io/v4.0-ci/index-en.html"> <span><?php bloginfo('name'); ?></span> 
+                        <a href="<?php bloginfo('url'); ?>"> <span><?php bloginfo('name'); ?></span> 
                         </a>
                     </div>
                     <object id="wmms" type="image/svg+xml" tabindex="-1" role="img" data="<?php bloginfo('template_directory'); ?>/dist/assets/wmms.svg" aria-label="Symbol of the Government of Canada"></object>
