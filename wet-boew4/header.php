@@ -3,7 +3,7 @@
  * The Header for our theme.
  *
  * @package WordPress
- * @subpackage wet-boew4
+ * @subpackage wet-boew-4
  * @since wet-boew 4.0
  */
 ?>
@@ -52,8 +52,6 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 <script src="<?php bloginfo('template_directory'); ?>/dist/js/ie8-wet-boew.min.js"></script>
 <![endif]-->
 
-    
-
 <noscript>
         <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/dist/css/noscript.min.css" />
 </noscript>
@@ -79,19 +77,12 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
         </li>
         <li class="wb-slc visible-md visible-lg"> <a class="wb-sl" href="#wb-info"><?php _e("<!--:en-->Skip to site information<!--:--><!--:fr-->Passer aux informations sur le site<!--:-->"); ?></a> 
         </li>
-<<<<<<< HEAD
-<<<<<<< HEAD
         <?php if ($clf_col_num=='1') {
 		} else {
 	_e("<!--:en--><li class=\"wb-slc visible-md visible-lg\"> <a class=\"wb-sl\" href=\"#wb-sec\">Skip to secondary menu</a></li><!--:--><!--:fr--><li class=\"wb-slc visible-md visible-lg\"> <a class=\"wb-sl\" href=\"#wb-sec\">Passer au menu secondaire</a></li><!--:-->");
 
 } ?>
-=======
-        <?php _e("<!--:en--><li class=\"wb-slc visible-md visible-lg\"> <a class=\"wb-sl\" href=\"#wb-sec\">Skip to secondary menu</a></li><!--:--><!--:fr--><li class=\"wb-slc visible-md visible-lg\"> <a class=\"wb-sl\" href=\"#wb-sec\">Passer au menu secondaire</a></li><!--:-->");} ?>
->>>>>>> FETCH_HEAD
-=======
-        <?php _e("<!--:en--><li class=\"wb-slc visible-md visible-lg\"> <a class=\"wb-sl\" href=\"#wb-sec\">Skip to secondary menu</a></li><!--:--><!--:fr--><li class=\"wb-slc visible-md visible-lg\"> <a class=\"wb-sl\" href=\"#wb-sec\">Passer au menu secondaire</a></li><!--:-->");} ?>
->>>>>>> FETCH_HEAD
+
 </ul>
 
 <!-- HeaderStart -->
