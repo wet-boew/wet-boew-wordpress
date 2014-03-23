@@ -143,7 +143,7 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
                 <h2><?php _e("<!--:en-->Site menu<!--:--><!--:fr-->Menu du site<!--:-->"); ?></h2> 
                 <div class="row">
                     <ul class="list-inline menu">
-                        <li><a href="./index-en.html">WET project</a>
+                        <li><a href="http://wet-boew.github.io/wet-boew/index-en.html">WET project</a>
                         </li>
                         <li><a href="http://wet-boew.github.io/wet-boew/docs/gs-cd/impl-en.html">Implement WET</a>
                         </li>
