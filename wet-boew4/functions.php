@@ -375,9 +375,9 @@ function gcwu_fegc_widgets_init() {
 
 	// Area 2, located below the Primary Widget Area in the sidebar. Empty by default.
 	register_sidebar( array(
-		'name' => __( 'right_column', 'gcwu_fegc' ),
+		'name' => __( 'Footer', 'gcwu_fegc' ),
 		'id' => 'secondary-widget-area',
-		'description' => __( 'The secondary widget area', 'gcwu_fegc' ),
+		'description' => __( 'Footer - currently disabled', 'gcwu_fegc' ),
 		'before_widget' => '<aside id="%1$s" class="widget-container %2$s">',
 		'after_widget' => '</aside>',
 		'before_title' => '<h5 class="widget-title">',
@@ -386,9 +386,9 @@ function gcwu_fegc_widgets_init() {
 
 	// Area 3, located in the mega menu. Empty by default.
 	register_sidebar( array(
-		'name' => __( 'mega_menu_area', 'gcwu_fegc' ),
+		'name' => __( 'Mega Menu', 'gcwu_fegc' ),
 		'id' => 'mega-menu-area',
-		'description' => __( 'Mega menu area', 'gcwu_fegc' ),
+		'description' => __( 'Mega menu area - currentlly disabled', 'gcwu_fegc' ),
 		'before_widget' => '<aside id="%1$s" class="widget-container %2$s">',
 		'after_widget' => '</aside>',
 		'before_title' => '<h5 class="widget-title">',

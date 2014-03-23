@@ -456,10 +456,10 @@ function gcwu_fegc_widgets_init() {
 		'name' => __( 'Footer', 'gcwu_fegc' ),
 		'id' => 'secondary-widget-area',
 		'description' => __( 'Footer - currently disabled', 'gcwu_fegc' ),
-		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</li>',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
+		'before_widget' => '<aside id="%1$s" class="widget-container %2$s">',
+		'after_widget' => '</aside>',
+		'before_title' => '<h5 class="widget-title">',
+		'after_title' => '</h5>',
 	) );
 
 	// Area 3, located in the mega menu. Empty by default.
@@ -467,10 +467,10 @@ function gcwu_fegc_widgets_init() {
 		'name' => __( 'Mega Menu', 'gcwu_fegc' ),
 		'id' => 'mega-menu-area',
 		'description' => __( 'Mega menu area - currentlly disabled', 'gcwu_fegc' ),
-		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</li>',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
+		'before_widget' => '<aside id="%1$s" class="widget-container %2$s">',
+		'after_widget' => '</aside>',
+		'before_title' => '<h5 class="widget-title">',
+		'after_title' => '</h5>',
 	) );
 
 }
