@@ -7,7 +7,7 @@ Version: WET 4.0rc1
 
 Author: Government of Canada
 
-Author URI: http://www.lostprototype.com/wet-boew-4/
+Author URI: http://www.lostprototype.com/wet-boew4/
 
 This theme uses HTML5, CSS3 properties and bootstrap.
 
@@ -31,7 +31,7 @@ Footer items are hard coded in footer.php
 
 WET-BEOW 4.0rc1 gcwu-fegc theme
 
-Author URI: http://www.lostprototype.com/wet-boew-4/
+Author URI: http://www.lostprototype.com/wet-boew4/
 
 WET-BEOW 4.0 Intranet theme
 
