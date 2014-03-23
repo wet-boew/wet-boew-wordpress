@@ -22,6 +22,10 @@ Issue with version 4.0rc1
 
 Secondary Navigation does not display in mobile mode.
 
+Currently mega menu uses 'ajax/sitemenu-en/fr.html' instead of widgets.
+
+Footer items are hard coded in footer.php
+
 ## Versions
 ---------------------------------
 
