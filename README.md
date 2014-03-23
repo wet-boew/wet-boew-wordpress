@@ -29,7 +29,7 @@ WET-BEOW 4.0rc1 gcwu-fegc theme
 
 Author URI: http://www.lostprototype.com/wet-boew-4/
 
-WET-BEOW 3.0 Intranet theme
+WET-BEOW 4.0 Intranet theme
 
 Author URI: http://www.lostprototype.com/wet-boew-intra/
 
