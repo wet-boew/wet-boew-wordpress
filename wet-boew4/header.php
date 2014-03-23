@@ -3,7 +3,7 @@
  * The Header for our theme.
  *
  * @package WordPress
- * @subpackage wet-boew-4
+ * @subpackage wet-boew4
  * @since wet-boew 4.0
  */
 ?>
