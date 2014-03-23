@@ -80,11 +80,15 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
         <li class="wb-slc visible-md visible-lg"> <a class="wb-sl" href="#wb-info"><?php _e("<!--:en-->Skip to site information<!--:--><!--:fr-->Passer aux informations sur le site<!--:-->"); ?></a> 
         </li>
 <<<<<<< HEAD
+<<<<<<< HEAD
         <?php if ($clf_col_num=='1') {
 		} else {
 	_e("<!--:en--><li class=\"wb-slc visible-md visible-lg\"> <a class=\"wb-sl\" href=\"#wb-sec\">Skip to secondary menu</a></li><!--:--><!--:fr--><li class=\"wb-slc visible-md visible-lg\"> <a class=\"wb-sl\" href=\"#wb-sec\">Passer au menu secondaire</a></li><!--:-->");
 
 } ?>
+=======
+        <?php _e("<!--:en--><li class=\"wb-slc visible-md visible-lg\"> <a class=\"wb-sl\" href=\"#wb-sec\">Skip to secondary menu</a></li><!--:--><!--:fr--><li class=\"wb-slc visible-md visible-lg\"> <a class=\"wb-sl\" href=\"#wb-sec\">Passer au menu secondaire</a></li><!--:-->");} ?>
+>>>>>>> FETCH_HEAD
 =======
         <?php _e("<!--:en--><li class=\"wb-slc visible-md visible-lg\"> <a class=\"wb-sl\" href=\"#wb-sec\">Skip to secondary menu</a></li><!--:--><!--:fr--><li class=\"wb-slc visible-md visible-lg\"> <a class=\"wb-sl\" href=\"#wb-sec\">Passer au menu secondaire</a></li><!--:-->");} ?>
 >>>>>>> FETCH_HEAD
