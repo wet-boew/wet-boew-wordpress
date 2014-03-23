@@ -79,15 +79,16 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
         </li>
         <li class="wb-slc visible-md visible-lg"> <a class="wb-sl" href="#wb-info"><?php _e("<!--:en-->Skip to site information<!--:--><!--:fr-->Passer aux informations sur le site<!--:-->"); ?></a> 
         </li>
-        <?php if ($clf_col_num=='2') {
+<<<<<<< HEAD
+        <?php if ($clf_col_num=='1') {
+		} else {
 	_e("<!--:en--><li class=\"wb-slc visible-md visible-lg\"> <a class=\"wb-sl\" href=\"#wb-sec\">Skip to secondary menu</a></li><!--:--><!--:fr--><li class=\"wb-slc visible-md visible-lg\"> <a class=\"wb-sl\" href=\"#wb-sec\">Passer au menu secondaire</a></li><!--:-->");
 
 } ?>
+=======
+        <?php _e("<!--:en--><li class=\"wb-slc visible-md visible-lg\"> <a class=\"wb-sl\" href=\"#wb-sec\">Skip to secondary menu</a></li><!--:--><!--:fr--><li class=\"wb-slc visible-md visible-lg\"> <a class=\"wb-sl\" href=\"#wb-sec\">Passer au menu secondaire</a></li><!--:-->");} ?>
+>>>>>>> FETCH_HEAD
 </ul>
-
-
-
-
 
 <!-- HeaderStart -->
 <header role="banner">
@@ -125,7 +126,7 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
             <div class="container">
                 <div class="row">
                     <div id="wb-sttl" class="col-md-5">
-                        <a href="http://wet-boew.github.io/v4.0-ci/index-en.html"> <span><?php bloginfo('name'); ?></span> 
+                        <a href="<?php bloginfo('url'); ?>"> <span><?php bloginfo('name'); ?></span> 
                         </a>
                     </div>
                     <object id="wmms" type="image/svg+xml" tabindex="-1" role="img" data="<?php bloginfo('template_directory'); ?>/dist/assets/wmms.svg" aria-label="Symbol of the Government of Canada"></object>
@@ -150,7 +151,7 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
                 <h2><?php _e("<!--:en-->Site menu<!--:--><!--:fr-->Menu du site<!--:-->"); ?></h2> 
                 <div class="row">
                     <ul class="list-inline menu">
-                        <li><a href="./index-en.html">WET project</a>
+                        <li><a href="http://wet-boew.github.io/wet-boew/index-en.html">WET project</a>
                         </li>
                         <li><a href="http://wet-boew.github.io/wet-boew/docs/gs-cd/impl-en.html">Implement WET</a>
                         </li>

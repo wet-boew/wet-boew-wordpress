@@ -26,7 +26,7 @@
                         </ul>
                     </section>
                     <section class="col-sm-3">
-                        <h3>News</h3> 
+                        <h3><?php _e("<!--:en-->News<!--:--><!--:fr-->Nouvelles<!--:-->"); ?></h3> 
                         <ul class="list-unstyled">
                             <li><a href="https://github.com/wet-boew/wet-boew/pulse">Recent project activity</a>
                             </li>
@@ -35,7 +35,7 @@
                         </ul>
                     </section>
                     <section class="col-sm-3">
-                        <h3>Stay connected</h3> 
+                        <h3><?php _e("<!--:en-->Stay connected<!--:--><!--:fr-->Restez branchés<!--:-->"); ?></h3> 
                         <ul class="list-unstyled">
                             <li><a href="https://twitter.com/WebExpToolkit">Twitter</a>
                             </li>
