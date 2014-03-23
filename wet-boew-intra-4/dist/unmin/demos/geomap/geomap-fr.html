@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<!--[if lt IE 9]><html class="no-js lt-ie9" lang="fr"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="fr">
+<!--<![endif]-->
+	<head>
+		<meta charset="utf-8" />
+		<!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+		wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
+		<title>Géocarte
+
+	
+		
+		 - Exemples pratiques
+	
+
+ - Boîte à outils de l'expérience Web
+</title>
+		<link href="../../assets/favicon.ico" rel="shortcut icon" />
+		<link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
+		<!-- Meta data -->
+		<meta name="description" content="Affiche une carte dynamique sur laquelle des informations de sources supplémentaires peuvent être superposées." />
+		<meta name="dcterms.title" content="Géocarte - Boîte à outils de l'expérience Web" />
+<meta name="dcterms.creator" content="French name of the content author / Nom en français de l'auteur du contenu" />
+<meta name="dcterms.issued" title="W3CDTF" content="Date published (YYYY-MM-DD) / Date de publication (AAAA-MM-JJ)" />
+<meta name="dcterms.modified" title="W3CDTF" content="Date modified (YYYY-MM-DD) / Date de modification (AAAA-MM-JJ)" />
+<meta name="dcterms.subject" title="scheme" content="French subject terms / Termes de sujet en français" />
+<meta name="dcterms.language" title="ISO639-2" content="fra" />
+		<!-- Meta data-->
+		<!--[if gte IE 9 | !IE ]><!-->
+<link rel="stylesheet" href="../../css/wet-boew.css" />
+<!--<![endif]-->
+<link rel="stylesheet" href="../../css/theme.css" />
+
+<!--[if lt IE 9]>
+<link rel="stylesheet" href="../../css/ie8-wet-boew.css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
+<script src="../../js/ie8-wet-boew.js"></script>
+<![endif]-->
+
+<noscript><link rel="stylesheet" href="../../css/noscript.css" /></noscript>
+
+	</head>
+	<body vocab="http://schema.org/" typeof="WebPage">
+		<ul id="wb-tphp">
+			<li class="wb-slc">
+				<a class="wb-sl" href="#wb-cont">Passer au contenu principal</a>
+			</li>
+
+			<li class="wb-slc visible-md visible-lg">
+				<a class="wb-sl" href="#wb-info">Passer aux informations sur le site</a>
+			</li>
+
+
+		</ul>
+		<header role="banner">
+			<div id="wb-bnr">
+				<div id="wb-bar">
+					<div class="container">
+						<div class="row">
+							
+<object id="gcwu-sig" type="image/svg+xml" tabindex="-1" role="img" data="../../assets/sig-blk-fr.svg" aria-label="Gouvernement du Canada"></object>
+
+	<section id="wb-lng"><h2>Sélection de la langue</h2>
+	<ul class="list-inline">
+
+
+		<li><a lang="en" href="geomap-en.html">English</a></li>
+
+	</ul>
+</section>
+
+</ul>
+
+							<section class="wb-mb-links col-xs-12 visible-sm visible-xs" id="wb-glb-mn">
+								<h2>Menu</h2>
+								<ul class="pnl-btn list-inline text-right">
+	<li><a href="#mb-pnl" title="Menu" aria-controls="mb-pnl" class="overlay-lnk" role="button"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Menu</span></span></a></li>
+</ul>
+<div id="mb-pnl"></div>
+
+							</section>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="container">
+					<div class="row">
+						<div id="wb-sttl" class="col-md-12">
+							<a href="http://wet-boew.github.io/v4.0-ci/index-fr.html">
+	<span>Boîte à outils de l'expérience Web</span>
+</a>
+<object id="wmms" type="image/svg+xml" tabindex="-1" role="img" data="./../../assets/wmms-intra.svg" aria-label="Symbole du gouvernement du Canada"></object>
+						</div>
+
+						<section id="wb-srch" class="visible-md visible-lg">
+							<h2>Recherche</h2>
+							<form action="https://google.ca/search" method="get" role="search" class="form-inline">
+
+	<div class="form-group">
+		<label for="wb-srch-q">Recherchez le site Web</label>
+		<input id="wb-srch-q" class="form-control" name="q" type="search" value="" size="27" maxlength="150" />
+		<input type="hidden" name="q" value="site:wet-boew.github.io OR site:github.com/wet-boew/" />
+	</div>
+
+	<button type="submit" id="wb-srch-sub" class="btn btn-default">Recherche</button>
+
+</form>
+
+						</section>
+
+					</div>
+				</div>
+			</div>
+
+
+
+			<nav role="navigation" id="wb-sm" data-ajax-fetch="../../ajax/sitemenu-fr.html" data-trgt="mb-pnl" class="wb-menu visible-md visible-lg" typeof="SiteNavigationElement">
+				<div class="container nvbar">
+	<h2>Menu du site</h2>
+    <div class="row">
+        <ul class="list-inline menu">
+			<li><a href="../../index-fr.html">Projet de la BOEW</a></li>
+			<li><a href="http://wet-boew.github.io/wet-boew/docs/gs-cd/impl-fr.html">Mise en œuvre de la BOEW</a></li>
+			<li><a href="http://wet-boew.github.io/wet-boew/docs/gs-cd/contrib-fr.html">Contribuer à la BOEW</a></li>
+        </ul>
+    </div>
+</div>
+
+			</nav>
+
+
+			<nav role="navigation" id="wb-bc" property="breadcrumb">
+				<h2>Vous êtes ici :</h2>
+				<div class="container">
+	<div class="row">
+		<ol class="breadcrumb">
+			<li>
+				<a href="http://wet-boew.github.io/v4.0-ci/index-fr.html">Accueil</a>
+			</li>
+			<li>
+				<a href="http://wet-boew.github.io/v4.0-ci/demos/index-fr.html">Exemples pratiques</a>
+			</li>
+
+			<li>Géocarte</li>
+		</ol>
+	</div>
+</div>
+
+			</nav>
+
+		</header>
+
+
+		<main role="main" property="mainContentOfPage" class="container">
+			<h1 id="wb-cont" property="name">Géocarte</h1>
+			
+
+
+
+			
+<!-- GeomapStart -->
+<div id="sample_map"
+	class="wb-geomap position scaleline tab"
+	data-wet-boew='{
+		"layersFile": "demo/config-fr.js",
+		"tables": [{
+			"id": "cities",
+			"zoom": true,
+			"tab": false,
+			"popups": true,
+			"popupsInfo": {
+				"id": "citiesPopup",
+				"height": 200,
+				"width": 300,
+				"close": true,
+				"content": "<div style=\"white-space:nowrap;\"><p><strong>Subdivision de recensement: </strong>_Subdivision de recensement<div><a href=\"#\" class=\"button\" role=\"button\" title=\"Zoom à la ville\" aria-label=\"Zoom à la ville\" onclick=\"wb.doc.zoomFeature()\">Zoom à la ville</a></div></div>"
+			},
+			"style": {
+				"type": "rule",
+				"rule": [
+				{
+					"field": "Population de 2011",
+					"value": [1000000],
+					"filter": "LESS_THAN",
+					"init": {
+						"strokeColor": "#0083f5",
+						"fillColor": "#57a8f0",
+						"pointRadius": "6",
+						"fillOpacity": 0.80,
+						"strokeWidth": 1.0
+					}
+				},
+				{
+					"field": "Population de 2011",
+					"value": [1000000, 2000000],
+					"filter": "BETWEEN",
+					"init": {
+						"strokeColor": "#F90",
+						"fillColor": "#F90",
+						"pointRadius": "8",
+						"fillOpacity": 0.80,
+						"strokeWidth": 1.0
+					}
+				},
+				{
+					"field": "Population de 2011",
+					"value": [2000000],
+					"filter": "GREATER_THAN",
+					"init": {
+						"strokeColor": "#F00",
+						"fillColor": "#F00",
+						"pointRadius": "10",
+						"fillOpacity": 0.80,
+						"strokeWidth": 1.0
+					}
+				}
+			]}
+		},
+		{
+			"id": "bbox",
+			"tab": true,
+			"zoom": true,
+			"popups": true
+		}]
+	}'>
+
+	<div class="row">
+		<div class="col-md-12">
+			<!-- Insert Map Start (mandatory) -->
+			<div class="wb-geomap-map col-sm-9"></div>
+			<!-- Insert Map End -->
+		
+			<!-- Insert Legend Start (optional) -->
+			<div class="wb-geomap-legend col-md-3">
+				<h2>Légende</h2>
+			</div>
+			<!-- Insert Legend End -->
+		</div>
+	</div>
+
+	<!-- Insert Layer Data Start (mandatory) -->
+	<div class="col-md-12">
+		<h2>Exemple - Données extérieure &amp; provenant de fichiers</h2>
+		<p>Les données sont créées à partir de fichiers, fils ou d'API web.</p>
+	</div>
+	<div class="wb-geomap-layers row">
+		<div class="col-md-12">
+			<h2>Exemple - Données dans le fichier HTML</h2>
+			<p>Les données est créées à partir des tables suivantes. Un attribut <em>data-geometry</em> contient la géometry et un attribut <em>data-type</em> contient le type (wkt ou bbox) ont été ajoutés à chaque ligne.</p>
+			<h3>Points</h3>
+			<table id="cities" aria-label="Villes" class="table wb-tables">
+				<caption>
+					Table de géométrie point.
+				</caption>
+				<thead>
+					<tr>
+						<th>Rang</th>
+						<th>Subdivision de recensement</th>
+						<th>Population de 2011</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr data-geometry="POINT (-79.3847, 43.6476)" data-type="wkt">
+						<td>1</td>
+						<td><a href="http://www.wikipedia.org/wiki/Toronto" title="Toronto">Toronto</a></td>
+						<td>2615060</td>
+					</tr>
+					<tr data-geometry="POINT (-73.56123, 45.52927)" data-type="wkt">
+						<td>2</td>
+						<td><a href="http://www.wikipedia.org/wiki/Montreal" title="Montreal">Montreal</a></td>
+						<td>1649519</td>
+					</tr>
+					<tr data-geometry="POINT (-114.05879, 51.04668)" data-type="wkt">
+						<td>3</td>
+						<td><a href="http://www.wikipedia.org/wiki/Calgary" title="Calgary">Calgary</a></td>
+						<td>1096833</td>
+					</tr>
+					<tr data-geometry="POINT (-75.68937, 45.41072)" data-type="wkt">
+						<td>4</td>
+						<td class="select"><a href="http://www.wikipedia.org/wiki/Ottawa" title="Ottawa">Ottawa</a></td>
+						<td>883391</td>
+					</tr>
+					<tr data-geometry="POINT (-113.49590, 53.53398)" data-type="wkt">
+						<td>5</td>
+						<td><a href="http://www.wikipedia.org/wiki/Edmonton" title="Edmonton">Edmonton</a></td>
+						<td>812201</td>
+					</tr>
+					<tr data-geometry="POINT (-79.65, 43.60)" data-type="wkt">
+						<td>6</td>
+						<td><a href="http://www.wikipedia.org/wiki/Mississauga" title="Mississauga">Mississauga</a></td>
+						<td>713443</td>
+					</tr>
+					<tr data-geometry="POINT (-97.14352, 49.89375)" data-type="wkt">
+						<td>7</td>
+						<td><a href="http://www.wikipedia.org/wiki/Winnipeg" title="Winnipeg">Winnipeg</a></td>
+						<td>663617</td>
+					</tr>
+					<tr data-geometry="POINT (-123.10091, 49.26428)" data-type="wkt">
+						<td>8</td>
+						<td><a href="http://www.wikipedia.org/wiki/Vancouver" title="Vancouver">Vancouver</a></td>
+						<td>603502</td>
+					</tr>
+					<tr data-geometry="POINT (-79.76181, 43.68686)" data-type="wkt">
+						<td>9</td>
+						<td><a href="http://www.wikipedia.org/wiki/Brampton" title="Brampton">Brampton</a></td>
+						<td>523911</td>
+					</tr>
+					<tr data-geometry="POINT (-79.86788, 43.25717)" data-type="wkt">
+						<td>10</td>
+						<td><a href="http://www.wikipedia.org/wiki/Hamilton,_Ontario" title="Hamilton, Ontario">Hamilton</a></td>
+						<td>519949</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-md-12">
+			<h3>Résultats de la recherche</h3>
+			<table id="bbox" aria-label="Résultats de la recherche" class="table table-condensed">
+				<caption>
+					Tableau des résultats de la recherche contenant la géométries des étendues des éléments.
+				</caption>
+				<thead>
+					<tr>
+						<th>Titre</th>
+						<th>Géometrie</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr data-geometry="-136, 61, -118, 70" data-type="bbox">
+						<td>Rapport de 2011 sur les activités terrain et la collecte de données terrain dont les couches thermiques et active dans le corridor du Mackenzie, Territoires du Nord, n ° de licence 14918</td>
+						<td>-136, 61, -118, 70</td>
+					</tr>
+					<tr data-geometry="-92.5, 72.75, -79, 75.5" data-type="bbox">
+						<td>Dinokystes du Crétacé supérieur-inférieur tertiaire, îles de Bylot et Devon, archipel arctique</td>
+						<td>-92.5, 72.75, -79, 75.5</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<!-- Insert Layer Data End-->
+</div>
+<!-- GeomapEnd -->
+
+<!-- GeomapStart -->
+<div id="location_map"
+	class="wb-geomap static"
+	data-wet-boew='{
+		"tables": [{
+			"id": "addNRCan"
+		}]
+	}'>
+	<div class="row">
+		<div class="col-md-12">
+			<h2>Exemple - Carte statique</h2>
+			<p>GeoMap peux être configuré pour créer une carte statique afin de situer un endroit comme un bureau ou une étendue à l'aide d'une "bbox".</p>
+			<!-- Insert Map Start (mandatory) -->
+			<div class="wb-geomap-map col-md-4"></div>
+			<!-- Insert Map End -->
+
+			<!-- Insert Layer Data Start (mandatory) -->
+			<div class="wb-geomap-layers col-md-4">
+				<table id="addNRCan" aria-label="Adresse des bureaux de RNCan Ottawa" class="table">
+					<caption class="wb-inv">Adresse des bureaux de Ressources naturelles Canada Ottawa</caption>
+					<thead>
+						<tr>
+							<th>Adresse</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr data-geometry="POINT (-75.70535, 45.3995)" data-type="wkt">
+							<td>615 rue Booth,<br />Ottawa (ON),<br />Canada,<br />K1A 0E8</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		<!-- Insert Layer Data End -->
+		</div>
+	</div>
+</div>
+
+<!-- GeomapEnd -->
+
+
+			<dl id="wb-dtmd" property="dateModified">
+	<dt>Date de modification&#160;:&#32;</dt>
+	<dd><time>2014-03-07</time></dd>
+</dl>
+
+
+		</main>
+
+
+
+		<footer role="contentinfo" id="wb-info" class="visible-md visible-lg">
+			<div class="container">
+				<nav role="navigation">
+					<h2>Informations sur le site</h2>
+					<div class="row">
+						<section class="col-sm-3">
+	<h3>À propos</h3>
+	<ul class="list-unstyled">
+		<li><a href="http://wet-boew.github.io/v4.0-ci/index-fr.html#apropos">À propos de la Boîte à outils de l’expérience Web</a></li>
+		<li><a href="http://www.tbs-sct.gc.ca/ws-nw/index-fra.asp">À propos des normes Web</a></li>
+	</ul>
+</section>
+<section class="col-sm-3">
+	<h3>Contactez-nous</h3>
+	<ul class="list-unstyled">
+		<li><a href="https://github.com/wet-boew/wet-boew/issues/new">Questions ou commentaires?</a></li>
+	</ul>
+</section>
+<section class="col-sm-3">
+	<h3>Nouvelles</h3>
+	<ul class="list-unstyled">
+		<li><a href="https://github.com/wet-boew/wet-boew/pulse">Activité du projet récente</a></li>
+		<li><a href="https://github.com/wet-boew/wet-boew/graphs">Statistiques du projet</a></li>
+	</ul>
+</section>
+<section class="col-sm-3">
+	<h3>Restez branchés</h3>
+	<ul class="list-unstyled">
+		<li><a href="https://twitter.com/BoiteExpWeb">Twitter</a></li>
+	</ul>
+</section>
+
+					</div>
+					<ul id="gc-tctr" class="list-inline">
+	<li><a rel="license" href="http://wet-boew.github.io/wet-boew/License-fr.html">Avis</a></li>
+	<li><a href="http://www.tbs-sct.gc.ca/pd-dp/index-fr.asp">Transparence</a></li>
+</ul>
+				</nav>
+			</div>
+		</footer>
+
+		<!--[if gte IE 9 | !IE ]><!-->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.js"></script>
+<script src="../../js/wet-boew.js"></script>
+<!--<![endif]-->
+<!--[if lt IE 9]>
+<script src="../../js/ie8-wet-boew2.js"></script>
+<![endif]-->
+<script src="../../js/theme.js"></script>
+<script src="demo/popup_function.js"></script>
+
+	</body>
+</html>

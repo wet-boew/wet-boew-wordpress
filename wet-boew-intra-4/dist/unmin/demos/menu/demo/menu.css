@@ -1,0 +1,281 @@
+/*
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ */
+
+/*
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ */
+
+.menu-demo .menu {
+  text-shadow: 1px 1px 1px #666;
+  margin-bottom: 0;
+}
+
+.menu-demo .menu > li {
+  margin: 0;
+  padding: 0;
+}
+
+.menu-demo .menu > li > a {
+  color: #fff;
+  padding: 1em;
+  border-right: 2px ridge #284468;
+}
+
+.menu-demo .menu > li:first-child a {
+  border-left: 2px ridge #284468;
+}
+
+.menu-demo .sm.open {
+  -webkit-box-shadow: 0 3px 3px -2px rgba(0, 0, 0, 0.3), 3px 3px 3px -2px rgba(0, 0, 0, 0.3), -3px 3px 3px -2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 3px 3px -2px rgba(0, 0, 0, 0.3), 3px 3px 3px -2px rgba(0, 0, 0, 0.3), -3px 3px 3px -2px rgba(0, 0, 0, 0.3);
+  border-left: none;
+  border-right: none;
+  padding: 0;
+  background: #ccc;
+  min-width: 200px;
+}
+
+.menu-demo .sm.open li a {
+  font-size: 0.95em;
+  color: #444;
+  border-left: none;
+  border-right: none;
+  text-shadow: none;
+  padding: 5px 10px;
+}
+
+.menu-demo .sm.open .slflnk {
+  background: #bbb;
+}
+
+.menu-demo .sm .row {
+  background: transparent;
+}
+
+.menu-demo .sm .row a {
+  color: #6e6e6e;
+}
+
+#menu-demo-1 {
+  background: #0B3048;
+}
+
+#menu-demo-1 .menu .active {
+  text-shadow: none;
+  background: #335075;
+}
+
+#menu-demo-1 .menu a {
+  text-decoration: none;
+}
+
+#menu-demo-1 .menu > li > a {
+  padding: 0.8em;
+}
+
+#menu-demo-1 .menu > li > a:hover,
+#menu-demo-1 .menu > li > a:focus {
+  text-decoration: underline;
+}
+
+#menu-demo-1 .sm.open {
+  border-bottom: 5px solid #243850;
+}
+
+#menu-demo-1 .sm.open li a:hover,
+#menu-demo-1 .sm.open li a:focus {
+  background: #243850;
+  color: #fff;
+}
+
+#menu-demo-1 .expicon {
+  margin-right: 5px;
+}
+
+#menu-demo-2 {
+  background: #335075;
+}
+
+#menu-demo-2 .menu {
+  width: 100%;
+}
+
+#menu-demo-2 .menu .active {
+  text-shadow: none;
+  background: #0B3048;
+}
+
+#menu-demo-2 .menu > li > a {
+  padding: 1em;
+}
+
+#menu-demo-2 .sm.open {
+  border-bottom: 5px solid #335075;
+}
+
+#menu-demo-2 .sm.open li a:hover,
+#menu-demo-2 .sm.open li a:focus {
+  background: #335075;
+  color: #fff;
+}
+
+/* Mobile flyout */
+
+@media screen and (max-width: 767px) {
+  #wb-sm {
+    background: #114F7A;
+  }
+
+  #wb-sm .nav-close {
+    background: none repeat scroll 0 0 #305277;
+    height: 44px;
+    margin-top: 20px;
+    color: #fff;
+    text-decoration: none;
+    vertical-align: middle;
+    margin-left: -20px;
+    padding-top: 10px;
+    text-transform: lowercase;
+  }
+
+  #wb-sm .nav-close span {
+    margin: -3px 10px 0;
+    font-size: 1.5em;
+    vertical-align: middle;
+  }
+
+  #wb-sm .row {
+    border: 0;
+  }
+
+  #wb-sm .menu {
+    text-transform: none;
+    color: #fff;
+  }
+
+  #wb-sm .menu a {
+    color: #fff;
+  }
+
+  #wb-sm .menu li a:hover,
+  #wb-sm .menu li a:focus,
+  #wb-sm .menu li a:active {
+    background: transparent;
+  }
+
+  #wb-sm .menu .expicon {
+    position: absolute;
+    top: 0.8em;
+    border-top-color: transparent;
+    border-left-color: #90a4b4;
+    border-bottom: 5px solid transparent;
+  }
+
+  #wb-sm .menu ul li {
+    background: transparent !important;
+    border: none !important;
+    color: #fff !important;
+  }
+
+  #wb-sm .menu .active {
+    background: transparent !important;
+    border: none !important;
+    color: #fff !important;
+  }
+
+  #wb-sm .menu .active:hover {
+    background: transparent !important;
+    border: none !important;
+    color: #fff !important;
+  }
+
+  #wb-sm .menu > li a {
+    padding-left: 25px;
+    color: #fff;
+  }
+
+  #wb-sm .menu > li.active > a {
+    background: transparent !important;
+    border: none !important;
+    color: #fff !important;
+  }
+
+  #wb-sm .menu > li.active .expicon {
+    border-top-color: #fff !important;
+    /* note the !important is there to override the !important being used in base.css */
+    border-left-color: transparent;
+    top: 1.1em;
+  }
+
+  #wb-sm .menu .sm {
+    border: 0;
+  }
+
+  #wb-sm .menu .sm.open {
+    border: 0;
+  }
+
+  #wb-sm .menu .sm.open li a {
+    padding-left: 35px;
+    color: #fff;
+  }
+
+  #wb-sm .menu:target .wb-info {
+    background: #1b3452;
+    padding: 20px 0;
+    font-size: 14px;
+    color: #90a4b4;
+  }
+
+  #wb-sm .wb-info > ul > li {
+    padding: 0 10px 0 25px;
+  }
+
+  #wb-sm .wb-info a {
+    padding: 5px 5px 5px 10px;
+    color: #fff;
+    text-decoration: none;
+    display: block;
+  }
+
+  #wb-sm .wb-info .list-unstyled li {
+    color: #fff;
+  }
+
+  #wb-sm .wb-info .list-unstyled li a {
+    color: #fff;
+  }
+
+  #wb-sm .wb-info .list-unstyled li ul li {
+    color: #eee;
+  }
+
+  #wb-sm #wb-imrpt-1 {
+    padding: 20px 30px;
+  }
+
+  #wb-sm #wb-imrpt-1 h2 {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    border: 0;
+  }
+
+  #wb-sm label[for=wb-srch-q-imprt] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    border: 0;
+  }
+}
