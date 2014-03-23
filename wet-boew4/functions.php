@@ -363,8 +363,6 @@ endif;
  */
 function gcwu_fegc_widgets_init() {
 	// Area 1, located at the top of the sidebar.
-function gcwu_fegc_widgets_init() {
-	// Area 1, located at the top of the sidebar.
 	register_sidebar( array(
 		'name' => __( 'left_column', 'gcwu_fegc' ),
 		'id' => 'primary-widget-area',
