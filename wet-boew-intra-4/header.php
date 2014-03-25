@@ -23,7 +23,7 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 
 <title><?php bloginfo('name'); ?></title>
 
-<link href="<?php bloginfo('template_directory'); ?>/dist/assets/favicon.ico" rel="shortcut icon" />
+<link href="<?php bloginfo('template_directory'); ?>/dist/assets/favicon.ico" rel="icon" />
 
 <meta name="description" content="English description / Description en anglais" />
 
