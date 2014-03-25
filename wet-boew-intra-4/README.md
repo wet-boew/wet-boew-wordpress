@@ -25,13 +25,13 @@ Secondary Navigation does not display in mobile mode.
 ## Versions
 ---------------------------------
 
-WET-BEOW 4.0 gcwu-fegc theme
-
-Author URI: http://www.lostprototype.com/wet-boew-4/
-
 WET-BEOW 4.0 Intranet theme
 
 Author URI: http://www.lostprototype.com/wet-boew-intra/
+
+WET-BEOW 4.0 gcwu-fegc theme
+
+Author URI: http://www.lostprototype.com/wet-boew-4/
 
 WET-BEOW 3.0.3 gcwu-fegc theme
 
