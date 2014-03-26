@@ -4,18 +4,18 @@
  *
  * The area of the page that contains both current comments
  * and the comment form.  The actual display of comments is
- * handled by a callback to clf2v2_nsi2v2_comment which is
+ * handled by a callback to gcwu_fegc_comment which is
  * located in the functions.php file.
  *
  * @package WordPress
- * @subpackage WET-BOEW
- * @since WET-BOEW 4.0
+ * @subpackage wet-boew-intra
+ * @since wet-boew 4.0
  */
 ?>
 
-		<div id="comments">
+<div id="comments">
 <?php if ( post_password_required() ) : ?>
-				<p class="nopassword"><?php _e( '[:en]This post is password protected. Enter the password to view any comments.[:fr]Ce poste est protégé par mot de passe. Entrez le mot de passe pour voir tous les commentaires.', 'clf2v2_nsi2v2' ); ?></p>
+				<p class="nopassword"><?php _e( '[:en]This post is password protected. Enter the password to view any comments.[:fr]Ce poste est protégé par mot de passe. Entrez le mot de passe pour voir tous les commentaires.', 'gcwu_fegc' ); ?></p>
 			</div><!-- #comments -->
 <?php
 		/* Stop the rest of comments.php from being processed,
@@ -26,14 +26,10 @@
 	endif;
 ?>
 
-<?php
-	// You can start editing here -- including this comment!
-?>
-
 <?php if ( have_comments() ) : ?>
 		<section>
 			<h2 id="comments-title"><?php
-			printf( _n( __("<!--:en-->One Response to<!--:--><!--:fr-->Une réponse à<!--:-->") . ' %2$s', '%1$s ' . __("<!--:en-->Responses to<!--:--><!--:fr-->réponses à<!--:-->") . ' %2$s', get_comments_number(), 'clf2v2_nsi2v2' ),
+			printf( _n( __("<!--:en-->One Response to<!--:--><!--:fr-->Une réponse à<!--:-->") . ' %2$s', '%1$s ' . __("<!--:en-->Responses to<!--:--><!--:fr-->réponses à<!--:-->") . ' %2$s', get_comments_number(), 'gcwu_fegc' ),
 			number_format_i18n( get_comments_number() ), '<em>' . get_the_title() . '</em>' );
 			?></h2>
 
@@ -41,7 +37,7 @@
 			<div class="navigation">
 				<div class="nav-previous"><?php previous_comments_link( __( '<span class="meta-nav">&larr;</span> [:en]Older Comments[:fr]Commentaires plus anciens', 'clf2v2_nsi2v2' ) ); ?></div>
 				<div class="nav-next"><?php next_comments_link( __( '[:en]Newer Comments [:fr]Commentaires plus récents <span class="meta-nav">&rarr;</span>', 'clf2v2_nsi2v2' ) ); ?></div>
-			</div> <!-- .navigation -->
+			</div>
 	<?php endif; // check for comment navigation ?>
 
 			<ol class="commentlist">
@@ -52,25 +48,25 @@
 					 * define clf2v2_nsi2v2_comment() and that will be used instead.
 					 * See clf2v2_nsi2v2_comment() in clf2v2_nsi2v2/functions.php for more.
 					 */
-					wp_list_comments( array( 'reply_text' => __("<!--:en-->Reply<!--:--><!--:fr-->Répondre<!--:-->"), 'login_text' => __("<!--:en-->Log in to leave a comment<!--:--><!--:fr-->Connecter pour soumettre un commentaire<!--:-->"), 'callback' => 'clf2v2_nsi2v2_comment' ) );
+					wp_list_comments( array( 'reply_text' => __("<!--:en-->Reply<!--:--><!--:fr-->Répondre<!--:-->"), 'login_text' => __("<!--:en-->Log in to leave a comment<!--:--><!--:fr-->Connecter pour soumettre un commentaire<!--:-->"), 'callback' => 'gcwu_fegc_comment' ) );
 				?>
 			</ol>
 
 	<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
 			<div class="navigation">
-				<div class="nav-previous"><?php previous_comments_link( __( '<span class="meta-nav">&larr;</span>[:en]Older Comments[:fr]Commentaires plus anciens', 'clf2v2_nsi2v2' ) ); ?></div>
-				<div class="nav-next"><?php next_comments_link( __( '[:en]Newer Comments [:fr]Commentaires plus récents <span class="meta-nav">&rarr;</span>', 'clf2v2_nsi2v2' ) ); ?></div>
-			</div><!-- .navigation -->
+				<div class="nav-previous"><?php previous_comments_link( __( '<span class="meta-nav">&larr;</span>[:en]Older Comments[:fr]Commentaires plus anciens', 'gcwu_fegc' ) ); ?></div>
+				<div class="nav-next"><?php next_comments_link( __( '[:en]Newer Comments [:fr]Commentaires plus récents <span class="meta-nav">&rarr;</span>', 'gcwu_fegc' ) ); ?></div>
+			</div>
 	<?php endif; // check for comment navigation ?>
 		</section>
-<?php else : // or, if we don't have comments:
+<?php else :
 
 	/* If there are no comments and comments are closed,
 	 * let's leave a little note, shall we?
 	 */
 	if ( ! comments_open() ) :
 ?>
-			<p class="nocomments"><?php _e( '[:en]Comments are closed.[:fr]Les commentaires sont fermés.', 'clf2v2_nsi2v2' ); ?></p>
+			<p class="nocomments"><?php _e( '[:en]Comments are closed.[:fr]Les commentaires sont fermés.', 'gcwu_fegc' ); ?></p>
 	<?php endif; // end ! comments_open() ?>
 
 <?php endif; // end have_comments() ?>
