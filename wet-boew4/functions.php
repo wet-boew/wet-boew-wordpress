@@ -45,10 +45,6 @@ if ( ! function_exists( 'gcwu_fegc_setup' ) ):
  * @since gcwu-fegc 1.0
  */
 function gcwu_fegc_setup() {
-
-	// This theme styles the visual editor with editor-style.css to match the theme style.
-	add_editor_style();
-
 	// This theme uses post thumbnails
 	add_theme_support( 'post-thumbnails' );
 
@@ -69,60 +65,6 @@ function gcwu_fegc_setup() {
 		'primary' => __( 'Primary Navigation', 'gcwu_fegc' ),
 	) );
 
-	// This theme allows users to set a custom background
-	//add_custom_background();
-
-	// Your changeable header business starts here
-	define( 'HEADER_TEXTCOLOR', '' );
-	// No CSS, just IMG call. The %s is a placeholder for the theme template directory URI.
-	define( 'HEADER_IMAGE', '%s/images/banners/path.jpg' );
-
-	// The height and width of your custom header. You can hook into the theme's own filters to change these values.
-	// Add a filter to gcwu_fegc_header_image_width and gcwu_fegc_header_image_height to change these values.
-	define( 'HEADER_IMAGE_WIDTH', apply_filters( 'gcwu_fegc_header_image_width', 760 ) );
-	define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'gcwu_fegc_header_image_height', 80 ) );
-
-	// We'll be using post thumbnails for custom header images on posts and pages.
-	// We want them to be 940 pixels wide by 198 pixels tall.
-	// Larger images will be auto-cropped to fit, smaller ones will be ignored. See header.php.
-	set_post_thumbnail_size( HEADER_IMAGE_WIDTH, HEADER_IMAGE_HEIGHT, true );
-
-	// Don't support text inside the header image.
-	define( 'NO_HEADER_TEXT', true );
-
-	// Add a way for the custom header to be styled in the admin panel that controls
-	// custom headers. See gcwu_fegc_admin_header_style(), below.
-	add_custom_image_header( '', 'gcwu_fegc_admin_header_style' );
-
-	// ... and thus ends the changeable header business.
-
-	// Default custom headers packaged with the theme. %s is a placeholder for the theme template directory URI.
-	register_default_headers( array(
-		'DFO-MPO' => array(
-			'url' => '%s/images/banners/banner-dfo-mpo.jpg',
-			'thumbnail_url' => '%s/images/banners/banner-dfo-mpo-thumbnail.jpg',
-			/* translators: header image description */
-			'description' => __( 'DFO-MPO', 'gcwu_fegc' )
-		),
-		'Canada' => array(
-			'url' => '%s/images/banners/banner-canada-eng.jpg',
-			'thumbnail_url' => '%s/images/banners/banner-canada-eng-thumbnail.jpg',
-			/* translators: header image description */
-			'description' => __( 'Canada', 'gcwu_fegc' )
-		),
-		'TBS-SCT' => array(
-			'url' => '%s/images/banners/banner-tbs-sct.jpg',
-			'thumbnail_url' => '%s/images/banners/banner-tbs-sct-thumbnail.jpg',
-			/* translators: header image description */
-			'description' => __( 'TBS-SCT', 'gcwu_fegc' )
-		),
-		'TC' => array(
-			'url' => '%s/images/banners/banner-tc.gif',
-			'thumbnail_url' => '%s/images/banners/banner-tc-thumbnail.gif',
-			/* translators: header image description */
-			'description' => __( 'TC', 'gcwu_fegc' )
-		)
-	) );
 }
 endif;
 
