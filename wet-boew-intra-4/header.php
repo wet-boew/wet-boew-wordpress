@@ -25,59 +25,7 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 
 <link href="<?php bloginfo('template_directory'); ?>/dist/assets/favicon.ico" rel="icon" />
 
-<meta name="description" content="English description / Description en anglais" />
-
-<meta name="dcterms.creator" content="English name of the content author / Nom en anglais de l'auteur du contenu" />
-
-<meta name="dcterms.title" content="<?php bloginfo('name'); ?>" />
-
-<meta name="dcterms.issued" title="W3CDTF" content="<?php the_time('Y-m-d') ?>" />
-
-<meta name="dcterms.modified" title="W3CDTF" content="<?php the_modified_time('Y-m-d') ?>" />
-
-<meta name="dcterms.subject" title="scheme" content="English subject terms / Termes de sujet en anglais" />
-
-<meta name="dcterms.language" title="ISO639-2" content="<?php _e("<!--:en-->eng<!--:--><!--:fr-->fra<!--:-->"); ?>" />
-
-<!--[if gte IE 9 | !IE ]><!-->
-    <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/dist/css/wet-boew.min.css" />
-    <!--<![endif]-->
-    <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/dist/css/theme.min.css" />
-    <!--[if lt IE 9]>
-    	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/dist/css/ie8-wet-boew.min.css"/>
-    	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    	<script src="<?php bloginfo('template_directory'); ?>/dist/js/ie8-wet-boew.min.js"></script
-    <![endif]-->
-    <noscript>
-        <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/dist/css/noscript.min.css" />
-    </noscript>
-
-<!-- WordPress Begins --><?php
-/**
- * The Header for our theme.
- *
- * @package WordPress
- * @subpackage wet-boew-intra
- * @since wet-boew 4.0
- */
-?>
-<!DOCTYPE html>
-<!--[if lt IE 9]><html class="no-js lt-ie9" lang="<?php _e("<!--:en-->en<!--:--><!--:fr-->fr<!--:-->"); ?>"><![endif]-->
-<!--[if gt IE 8]><!-->
-<html class="no-js" lang="<?php _e("<!--:en-->en<!--:--><!--:fr-->fr<!--:-->"); ?>">
-<!--<![endif]-->
-
-<head>
-
-	<meta charset="utf-8" />
-
-<!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
-
-wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Licence-fra.txt -->
-
-<title><?php bloginfo('name'); ?></title>
-
-<link href="<?php bloginfo('template_directory'); ?>/dist/assets/favicon.ico" rel="shortcut icon" />
+<meta content="width=device-width, initial-scale=1" name="viewport" />
 
 <meta name="description" content="English description / Description en anglais" />
 
