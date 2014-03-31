@@ -47,9 +47,9 @@
         <div id="gc-info">
             <div class="container">
                 <nav role="navigation">
-                    <h2>Government of Canada footer</h2> 
+                    <h2><?php _e("<!--:en-->Government of Canada footer<!--:--><!--:fr-->Pied de page du gouvernement du Canada<!--:-->"); ?></h2> 
                     <ul class="list-inline">
-                        <li><a href="http://healthycanadians.gc.ca/index-eng.php"><span>Health</span>healthycanadians.gc.ca</a>
+                        <li><a href="http://healthycanadians.gc.ca/index-<?php _e("<!--:en-->eng<!--:--><!--:fr-->fra<!--:-->"); ?>.php"><span><?php _e("<!--:en-->Health<!--:--><!--:fr-->Santé<!--:-->"); ?></span><?php _e("<!--:en-->healthycanadians.gc.ca<!--:--><!--:fr-->canadiensensante.gc.ca<!--:-->"); ?></a>
                         </li>
                         <li><a href="http://www.travel.gc.ca/index-eng.asp"><span>Travel</span>travel.gc.ca</a>
                         </li>
