@@ -51,15 +51,15 @@
                     <ul class="list-inline">
                         <li><a href="http://healthycanadians.gc.ca/index-<?php _e("<!--:en-->eng<!--:--><!--:fr-->fra<!--:-->"); ?>.php"><span><?php _e("<!--:en-->Health<!--:--><!--:fr-->Santé<!--:-->"); ?></span><?php _e("<!--:en-->healthycanadians.gc.ca<!--:--><!--:fr-->canadiensensante.gc.ca<!--:-->"); ?></a>
                         </li>
-                        <li><a href="http://www.travel.gc.ca/index-eng.asp"><span>Travel</span>travel.gc.ca</a>
+                        <li><a href="http://www.travel.gc.ca/index-<?php _e("<!--:en-->eng<!--:--><!--:fr-->fra<!--:-->"); ?>.asp"><span><?php _e("<!--:en-->Travel<!--:--><!--:fr-->Voyage<!--:-->"); ?></span><?php _e("<!--:en-->travel.gc.ca<!--:--><!--:fr-->voyage.gc.ca<!--:-->"); ?></a>
                         </li>
-                        <li><a href="http://www.servicecanada.gc.ca/eng/home.shtml"><span>ServiceCanada</span>servicecanada.gc.ca</a>
+                        <li><a href="http://www.servicecanada.gc.ca/eng/home.shtml"><span>Service Canada</span>servicecanada.gc.ca</a>
                         </li>
-                        <li><a href="http://www.jobbank.gc.ca/intro-eng.aspx"><span>Jobs</span>jobbank.gc.ca</a>
+                        <li><a href="http://www.jobbank.gc.ca/intro-<?php _e("<!--:en-->eng<!--:--><!--:fr-->fra<!--:-->"); ?>.aspx"><span><?php _e("<!--:en-->Jobs<!--:--><!--:fr-->Emplois<!--:-->"); ?></span>jobbank.gc.ca</a>
                         </li>
-                        <li><a href="http://actionplan.gc.ca/en"><span>Economy</span>actionplan.gc.ca</a>
+                        <li><a href="http://actionplan.gc.ca/<?php _e("<!--:en-->en<!--:--><!--:fr-->fr<!--:-->"); ?>"><span><?php _e("<!--:en-->Economy<!--:--><!--:fr-->Économie<!--:-->"); ?></span><?php _e("<!--:en-->actionplan.gc.ca<!--:--><!--:fr-->plandaction.gc.ca<!--:-->"); ?></a>
                         </li>
-                        <li id="canada-ca"><a href="http://www.canada.ca/en/index.html">Canada.ca</a>
+                        <li id="canada-ca"><a href="http://www.canada.ca/<?php _e("<!--:en-->en<!--:--><!--:fr-->fr<!--:-->"); ?>/index.html">Canada.ca</a>
                         </li>
                     </ul>
                 </nav>
