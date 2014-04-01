@@ -55,7 +55,7 @@
                         </li>
                         <li><a href="http://www.servicecanada.gc.ca/eng/home.shtml"><span>Service Canada</span>servicecanada.gc.ca</a>
                         </li>
-                        <li><a href="http://www.jobbank.gc.ca/intro-<?php _e("<!--:en-->eng<!--:--><!--:fr-->fra<!--:-->"); ?>.aspx"><span><?php _e("<!--:en-->Jobs<!--:--><!--:fr-->Emplois<!--:-->"); ?></span>jobbank.gc.ca</a>
+                        <li><a href="http://<?php _e("<!--:en-->www.jobbank.gc.ca/intro-eng.aspx<!--:--><!--:fr-->www.guichetemplois.gc.ca/accueil-fra.do?lang=fra<!--:-->"); ?>"><span><?php _e("<!--:en-->Jobs<!--:--><!--:fr-->Emplois<!--:-->"); ?></span><?php _e("<!--:en-->jobbank.gc.ca<!--:--><!--:fr-->www.guichetemplois.gc.ca<!--:-->"); ?></a>
                         </li>
                         <li><a href="http://actionplan.gc.ca/<?php _e("<!--:en-->en<!--:--><!--:fr-->fr<!--:-->"); ?>"><span><?php _e("<!--:en-->Economy<!--:--><!--:fr-->Économie<!--:-->"); ?></span><?php _e("<!--:en-->actionplan.gc.ca<!--:--><!--:fr-->plandaction.gc.ca<!--:-->"); ?></a>
                         </li>
