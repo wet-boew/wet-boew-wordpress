@@ -16,7 +16,6 @@
 
  - Web Experience Toolkit
 </title>
-		<link href="../../assets/favicon.ico" rel="shortcut icon" />
 		<meta content="width=device-width, initial-scale=1" name="viewport" />
 		<!-- Meta data -->
 		<meta name="description" content="Provides generic validation and error message handling for Web forms." />
@@ -28,11 +27,13 @@
 <meta name="dcterms.language" title="ISO639-2" content="eng" />
 		<!-- Meta data-->
 		<!--[if gte IE 9 | !IE ]><!-->
+<link href="../../assets/favicon.ico" rel="icon" type="image/x-icon" />
 <link rel="stylesheet" href="../../css/wet-boew.css" />
 <!--<![endif]-->
 <link rel="stylesheet" href="../../css/theme.css" />
 
 <!--[if lt IE 9]>
+<link href="../../assets/favicon.ico" rel="shortcut icon" />
 <link rel="stylesheet" href="../../css/ie8-wet-boew.css" />
 <link rel="stylesheet" href="../../css/ie8-theme.css" />
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
@@ -81,7 +82,7 @@
 							<section class="wb-mb-links col-xs-12 visible-sm visible-xs" id="wb-glb-mn">
 								<h2>Menu</h2>
 								<ul class="pnl-btn list-inline text-right">
-	<li><a href="#mb-pnl" title="Menu" aria-controls="mb-pnl" class="overlay-lnk" role="button"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Menu</span></span></a></li>
+	<li><a href="#mb-pnl" title="Menu" aria-controls="mb-pnl" class="overlay-lnk btn btn-xs btn-default" role="button"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Menu</span></span></a></li>
 </ul>
 <div id="mb-pnl"></div>
 
@@ -99,7 +100,7 @@
 </a>
 
 						</div>
-						<object id="wmms" type="image/svg+xml" tabindex="-1" role="img" data="./../../assets/wmms.svg" aria-label="Symbol of the Government of Canada"></object>
+						<object id="wmms" type="image/svg+xml" tabindex="-1" role="img" data="../../assets/wmms.svg" aria-label="Symbol of the Government of Canada"></object>
 
 
 						<section id="wb-srch" class="visible-md visible-lg">
@@ -127,9 +128,11 @@
 	<h2>Site menu</h2>
     <div class="row">
         <ul class="list-inline menu">
+
 			<li><a href="../../index-en.html">WET project</a></li>
 			<li><a href="http://wet-boew.github.io/wet-boew/docs/gs-cd/impl-en.html">Implement WET</a></li>
 			<li><a href="http://wet-boew.github.io/wet-boew/docs/gs-cd/contrib-en.html">Contribute to WET</a></li>
+
         </ul>
     </div>
 </div>
@@ -193,7 +196,7 @@
 				<input class="form-control" id="tel1" name="tel1" type="tel" required="required" data-rule-phoneUS="true" />
 			</div>
 			<div class="form-group">
-				<label for="email1"><span class="field-name">Email Address</span></label>
+				<label for="email1"><span class="field-name">Email Address</span> (yourname@domain.com)</label>
 				<input class="form-control" id="email1" name="email1" type="email" />
 			</div>
 			<div class="form-group">
@@ -217,7 +220,7 @@
 				<input class="form-control" id="an1" name="an1" type="text" pattern="[A-Za-z0-9\s]{4,}" data-rule-alphanumeric="true" data-rule-minlength="4" />
 			</div>
 			<div class="form-group">
-				<label for="digits1"><span class="field-name">Digits only</span></label>
+				<label for="digits1"><span class="field-name">Digits only</span> (0 to 9)</label>
 				<input class="form-control" id="digits1" name="digits1" type="number" />
 			</div>
 			<div class="form-group">
@@ -294,7 +297,7 @@
 
 
 
-		<footer role="contentinfo" id="wb-info" class="visible-md visible-lg">
+		<footer role="contentinfo" id="wb-info" class="visible-sm visible-md visible-lg wb-navcurr">
 			<div class="container">
 				<nav role="navigation">
 					<h2>Site information</h2>

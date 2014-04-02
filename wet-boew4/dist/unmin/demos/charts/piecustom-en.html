@@ -16,7 +16,6 @@
 
  - Web Experience Toolkit
 </title>
-		<link href="../../assets/favicon.ico" rel="shortcut icon" />
 		<meta content="width=device-width, initial-scale=1" name="viewport" />
 		<!-- Meta data -->
 		<meta name="description" content="Customizing a pie chart to create a donut chart." />
@@ -28,11 +27,13 @@
 <meta name="dcterms.language" title="ISO639-2" content="eng" />
 		<!-- Meta data-->
 		<!--[if gte IE 9 | !IE ]><!-->
+<link href="../../assets/favicon.ico" rel="icon" type="image/x-icon" />
 <link rel="stylesheet" href="../../css/wet-boew.css" />
 <!--<![endif]-->
 <link rel="stylesheet" href="../../css/theme.css" />
 
 <!--[if lt IE 9]>
+<link href="../../assets/favicon.ico" rel="shortcut icon" />
 <link rel="stylesheet" href="../../css/ie8-wet-boew.css" />
 <link rel="stylesheet" href="../../css/ie8-theme.css" />
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
@@ -81,7 +82,7 @@
 							<section class="wb-mb-links col-xs-12 visible-sm visible-xs" id="wb-glb-mn">
 								<h2>Menu</h2>
 								<ul class="pnl-btn list-inline text-right">
-	<li><a href="#mb-pnl" title="Menu" aria-controls="mb-pnl" class="overlay-lnk" role="button"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Menu</span></span></a></li>
+	<li><a href="#mb-pnl" title="Menu" aria-controls="mb-pnl" class="overlay-lnk btn btn-xs btn-default" role="button"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Menu</span></span></a></li>
 </ul>
 <div id="mb-pnl"></div>
 
@@ -99,7 +100,7 @@
 </a>
 
 						</div>
-						<object id="wmms" type="image/svg+xml" tabindex="-1" role="img" data="./../../assets/wmms.svg" aria-label="Symbol of the Government of Canada"></object>
+						<object id="wmms" type="image/svg+xml" tabindex="-1" role="img" data="../../assets/wmms.svg" aria-label="Symbol of the Government of Canada"></object>
 
 
 						<section id="wb-srch" class="visible-md visible-lg">
@@ -127,9 +128,11 @@
 	<h2>Site menu</h2>
     <div class="row">
         <ul class="list-inline menu">
+
 			<li><a href="../../index-en.html">WET project</a></li>
 			<li><a href="http://wet-boew.github.io/wet-boew/docs/gs-cd/impl-en.html">Implement WET</a></li>
 			<li><a href="http://wet-boew.github.io/wet-boew/docs/gs-cd/contrib-en.html">Contribute to WET</a></li>
+
         </ul>
     </div>
 </div>
@@ -184,7 +187,7 @@
 	<details>
 		<summary>View code</summary>
 		<pre><code>// FYI - The "Donut" preset is already defined by default, this are just to show an example on you may reproduce it in your own preset.
-var wet_boew_charts = {
+window[ "wb-charts" ] = {
 	flot: {
 		donut: {
 			series: {
@@ -210,7 +213,7 @@ var wet_boew_charts = {
 			decimal: 1
 		}
 	}
-}</code></pre>
+};</code></pre>
 	</details>
 
 	<table class="wb-charts wb-charts-donut table">
@@ -552,7 +555,7 @@ var wet_boew_charts = {
 	<h2>Decimal precision</h2>
 
 	<p><strong>Plugin settings:</strong></p>
-	<pre><code>data-wet-boew = '{
+	<pre><code>data-wb-charts = '{
 	"decimal": 1
 }'</code></pre>
 
@@ -574,9 +577,9 @@ var wet_boew_charts = {
 	}
 }'</code></pre>
 
-	<pre><code>&lt;table class="wb-charts wb-charts-pie wb-charts-decimal-1 table" data-flot='{"series": { "pie": { "radius": 1,"label": { "radius": 1,"show": true }, "innerRadius": 0.45, "tilt": 0.5 } }, "grid": { "hoverable": true } }' data-wet-boew='{ "decimal": 1 }'&gt;</code></pre>
+	<pre><code>&lt;table class="wb-charts wb-charts-pie wb-charts-decimal-1 table" data-flot='{"series": { "pie": { "radius": 1,"label": { "radius": 1,"show": true }, "innerRadius": 0.45, "tilt": 0.5 } }, "grid": { "hoverable": true } }' data-wb-charts='{ "decimal": 1 }'&gt;</code></pre>
 
-	<table class="wb-charts wb-charts-pie wb-charts-decimal-1 table" data-flot='{"series": { "pie": { "radius": 1,"label": { "radius": 1,"show": true }, "innerRadius": 0.45, "tilt": 0.5 } }, "grid": { "hoverable": true } }' data-wet-boew='{ "decimal": 1 }'>
+	<table class="wb-charts wb-charts-pie wb-charts-decimal-1 table" data-flot='{"series": { "pie": { "radius": 1,"label": { "radius": 1,"show": true }, "innerRadius": 0.45, "tilt": 0.5 } }, "grid": { "hoverable": true } }' data-wb-charts='{ "decimal": 1 }'>
 		<caption>Decimal precision</caption>
 		<thead>
 			<tr>
@@ -613,7 +616,7 @@ var wet_boew_charts = {
 	<h2>Labelling threshold</h2>
 
 	<p><strong>Plugin settings:</strong></p>
-	<pre><code>data-wet-boew = '{
+	<pre><code>data-wb-charts = '{
 	"decimal": 1
 }'</code></pre>
 
@@ -636,9 +639,9 @@ var wet_boew_charts = {
 	}
 }'</code></pre>
 
-	<pre><code>&lt;table class="wb-charts wb-charts-pie wb-charts-decimal-1 wb-charts-legendinline table" data-flot='{"series": { "pie": { "radius": 1,"label": { "radius": 1,"show": true, "threshold": 0.08 }, "innerRadius": 0.45, "tilt": 0.5 } }, "grid": { "hoverable": true } }' data-wet-boew='{ "decimal": 1 }'&gt;</code></pre>
+	<pre><code>&lt;table class="wb-charts wb-charts-pie wb-charts-decimal-1 wb-charts-legendinline table" data-flot='{"series": { "pie": { "radius": 1,"label": { "radius": 1,"show": true, "threshold": 0.08 }, "innerRadius": 0.45, "tilt": 0.5 } }, "grid": { "hoverable": true } }' data-wb-charts='{ "decimal": 1 }'&gt;</code></pre>
 
-	<table class="wb-charts wb-charts-pie wb-charts-decimal-1 wb-charts-legendinline table" data-flot='{"series": { "pie": { "radius": 1,"label": { "radius": 1,"show": true, "threshold": 0.08 }, "innerRadius": 0.45, "tilt": 0.5 } }, "grid": { "hoverable": true } }' data-wet-boew='{ "decimal": 1 }'>
+	<table class="wb-charts wb-charts-pie wb-charts-decimal-1 wb-charts-legendinline table" data-flot='{"series": { "pie": { "radius": 1,"label": { "radius": 1,"show": true, "threshold": 0.08 }, "innerRadius": 0.45, "tilt": 0.5 } }, "grid": { "hoverable": true } }' data-wb-charts='{ "decimal": 1 }'>
 		<caption>Labelling threshold</caption>
 		<thead>
 			<tr>
@@ -675,7 +678,7 @@ var wet_boew_charts = {
 	<h2>Starting angle</h2>
 
 	<p><strong>Plugin settings:</strong></p>
-	<pre><code>data-wet-boew = '{
+	<pre><code>data-wb-charts = '{
 	"decimal": 1
 }'</code></pre>
 
@@ -699,9 +702,9 @@ var wet_boew_charts = {
 	}
 }'</code></pre>
 
-	<pre><code>&lt;table class="wb-charts wb-charts-pie wb-charts-decimal-1 wb-charts-legendinline table" data-flot='{"series": { "pie": { "radius": 1,"label": { "radius": 1,"show": true, "threshold": 0.08 }, "innerRadius": 0.45, "tilt": 0.5, "startAngle": 1 } }, "grid": { "hoverable": true } }' data-wet-boew='{ "decimal": 1 }'&gt;</code></pre>
+	<pre><code>&lt;table class="wb-charts wb-charts-pie wb-charts-decimal-1 wb-charts-legendinline table" data-flot='{"series": { "pie": { "radius": 1,"label": { "radius": 1,"show": true, "threshold": 0.08 }, "innerRadius": 0.45, "tilt": 0.5, "startAngle": 1 } }, "grid": { "hoverable": true } }' data-wb-charts='{ "decimal": 1 }'&gt;</code></pre>
 
-	<table class="wb-charts wb-charts-pie wb-charts-decimal-1 wb-charts-legendinline table" data-flot='{"series": { "pie": { "radius": 1,"label": { "radius": 1,"show": true, "threshold": 0.08 }, "innerRadius": 0.45, "tilt": 0.5, "startAngle": 1 } }, "grid": { "hoverable": true } }' data-wet-boew='{ "decimal": 1 }'>
+	<table class="wb-charts wb-charts-pie wb-charts-decimal-1 wb-charts-legendinline table" data-flot='{"series": { "pie": { "radius": 1,"label": { "radius": 1,"show": true, "threshold": 0.08 }, "innerRadius": 0.45, "tilt": 0.5, "startAngle": 1 } }, "grid": { "hoverable": true } }' data-wb-charts='{ "decimal": 1 }'>
 		<caption>Start Angle</caption>
 		<thead>
 			<tr>
@@ -745,7 +748,7 @@ var wet_boew_charts = {
 
 
 
-		<footer role="contentinfo" id="wb-info" class="visible-md visible-lg">
+		<footer role="contentinfo" id="wb-info" class="visible-sm visible-md visible-lg wb-navcurr">
 			<div class="container">
 				<nav role="navigation">
 					<h2>Site information</h2>

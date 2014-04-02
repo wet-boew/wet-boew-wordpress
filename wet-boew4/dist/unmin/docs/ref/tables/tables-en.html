@@ -19,17 +19,18 @@
 
  - Web Experience Toolkit
 </title>
-		<link href="../../../assets/favicon.ico" rel="shortcut icon" />
 		<meta content="width=device-width, initial-scale=1" name="viewport" />
 		<!-- Meta data -->
 		<meta name="description" content="Integrates the DataTables plugin into WET providing searching, sorting, filtering, pagination and other advanced features for tables." />
 		<!-- Meta data-->
 		<!--[if gte IE 9 | !IE ]><!-->
+<link href="../../../assets/favicon.ico" rel="icon" type="image/x-icon" />
 <link rel="stylesheet" href="../../../css/wet-boew.css" />
 <!--<![endif]-->
 <link rel="stylesheet" href="../../../css/theme.css" />
 
 <!--[if lt IE 9]>
+<link href="../../../assets/favicon.ico" rel="shortcut icon" />
 <link rel="stylesheet" href="../../../css/ie8-wet-boew.css" />
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
 <script src="../../../js/ie8-wet-boew.js"></script>
@@ -74,7 +75,7 @@
 							<section class="wb-mb-links col-xs-12 visible-sm visible-xs" id="wb-glb-mn">
 								<h2>Menu</h2>
 								<ul class="pnl-btn list-inline text-right">
-	<li><a href="#mb-pnl" title="Menu" aria-controls="mb-pnl" class="overlay-lnk" role="button"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Menu</span></span></a></li>
+	<li><a href="#mb-pnl" title="Menu" aria-controls="mb-pnl" class="overlay-lnk btn btn-xs btn-default" role="button"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Menu</span></span></a></li>
 </ul>
 <div id="mb-pnl"></div>
 
@@ -120,9 +121,11 @@
 	<h2>Site menu</h2>
     <div class="row">
         <ul class="list-inline menu">
+
 			<li><a href="../../../index-en.html">WET project</a></li>
 			<li><a href="http://wet-boew.github.io/wet-boew/docs/gs-cd/impl-en.html">Implement WET</a></li>
 			<li><a href="http://wet-boew.github.io/wet-boew/docs/gs-cd/contrib-en.html">Contribute to WET</a></li>
+
         </ul>
     </div>
 </div>
@@ -177,9 +180,10 @@
 
 <section>
 	<h2>Purpose</h2>
-	<p>A brief description of the component.</p>
+	<p>Integrates the DataTables plugin into WET providing searching, sorting, filtering, pagination and other advanced features for tables.</p>
 </section>
 
+<!--
 <section>
 	<h2>Use when</h2>
 	<ul>
@@ -197,13 +201,19 @@
 		<li>Use case 3</li>
 	</ul>
 </section>
+-->
 
 <section>
 	<h2>Working example</h2>
-	<p><a href="#">Link to a working example</a></p>
+	<ul>
+		<li><a href="../../../demos/tables/tables-en.html">English example</a></li>
+		<li><a href="../../../demos/tables/tables-fr.html">French example</a></li>
+	</ul>
 </section>
 
 <section>
+	<p>Coming soon</p>
+	<!--
 	<h2>How to implement</h2>
 	<ol>
 		<li>Step 1</li>
@@ -217,10 +227,13 @@ Example of multi-line code</code></pre>
 		</li>
 		<li>Step 4</li>
 	</ol>
+	-->
 </section>
 
 <section>
 	<h2>Configuration options</h2>
+	<p>Coming soon</p>
+	<!--
 	<p>Document the public configuration options that can be used by implementers or developers.</p>
 	<table class="table">
 		<thead>
@@ -264,11 +277,11 @@ Example of multi-line code</code></pre>
 			</tr>
 		</tbody>
 	</table>
+	-->
 </section>
 
 <section>
 	<h2>Events</h2>
-	<p>Document the public events that can be used by implementers or developers.</p>
 	<table class="table">
 		<thead>
 			<tr>
@@ -279,14 +292,9 @@ Example of multi-line code</code></pre>
 		</thead>
 		<tbody>
 			<tr>
-				<td>Event 1</td>
-				<td>When the event is triggered and how to trigger it manually (where supported)</td>
-				<td>Brief description of what it does.</td>
-			</tr>
-			<tr>
-				<td>Event 2</td>
-				<td>When the event is triggered and how to trigger it manually (where supported)</td>
-				<td>Brief description of what it does.</td>
+				<td>wb-init.wb-tables</td>
+				<td>Triggered manually (e.g., <code>$elm.trigger( "wb-init.wb-inview" );</code>).</td>
+				<td>Used to manually initialize the Tables plugin. <strong>Note:</strong> The Tables plugin will be initialized automatically unless the required markup is added after the page has already loaded.</td>
 			</tr>
 		</tbody>
 	</table>
@@ -294,13 +302,13 @@ Example of multi-line code</code></pre>
 
 <section>
 	<h2>Source code</h2>
-	<p><a href="#">Link to the folder on GitHub containing the files for the component</a></p>
+	<p><a href="https://github.com/wet-boew/wet-boew/tree/v4.0/src/plugins/tables">Data Inview plugin source code on GitHub</a></p>
 </section>
 
 
 			<dl id="wb-dtmd" property="dateModified">
 	<dt>Date modified:&#32;</dt>
-	<dd><time>2014-02-19</time></dd>
+	<dd><time>2014-03-31</time></dd>
 </dl>
 
 
@@ -308,7 +316,7 @@ Example of multi-line code</code></pre>
 
 
 
-		<footer role="contentinfo" id="wb-info" class="container visible-md visible-lg">
+		<footer role="contentinfo" id="wb-info" class="container visible-sm visible-md visible-lg wb-navcurr">
 			<nav role="navigation" class="row">
 				<h2>Site information</h2>
 				<section class="col-sm-3">

@@ -16,7 +16,6 @@
 
  - Web Experience Toolkit
 </title>
-		<link href="../../assets/favicon.ico" rel="shortcut icon" />
 		<meta content="width=device-width, initial-scale=1" name="viewport" />
 		<!-- Meta data -->
 		<meta name="description" content="Customization, custom presets and multiple charts and graphs types." />
@@ -28,11 +27,13 @@
 <meta name="dcterms.language" title="ISO639-2" content="eng" />
 		<!-- Meta data-->
 		<!--[if gte IE 9 | !IE ]><!-->
+<link href="../../assets/favicon.ico" rel="icon" type="image/x-icon" />
 <link rel="stylesheet" href="../../css/wet-boew.css" />
 <!--<![endif]-->
 <link rel="stylesheet" href="../../css/theme.css" />
 
 <!--[if lt IE 9]>
+<link href="../../assets/favicon.ico" rel="shortcut icon" />
 <link rel="stylesheet" href="../../css/ie8-wet-boew.css" />
 <link rel="stylesheet" href="../../css/ie8-theme.css" />
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
@@ -81,7 +82,7 @@
 							<section class="wb-mb-links col-xs-12 visible-sm visible-xs" id="wb-glb-mn">
 								<h2>Menu</h2>
 								<ul class="pnl-btn list-inline text-right">
-	<li><a href="#mb-pnl" title="Menu" aria-controls="mb-pnl" class="overlay-lnk" role="button"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Menu</span></span></a></li>
+	<li><a href="#mb-pnl" title="Menu" aria-controls="mb-pnl" class="overlay-lnk btn btn-xs btn-default" role="button"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Menu</span></span></a></li>
 </ul>
 <div id="mb-pnl"></div>
 
@@ -99,7 +100,7 @@
 </a>
 
 						</div>
-						<object id="wmms" type="image/svg+xml" tabindex="-1" role="img" data="./../../assets/wmms.svg" aria-label="Symbol of the Government of Canada"></object>
+						<object id="wmms" type="image/svg+xml" tabindex="-1" role="img" data="../../assets/wmms.svg" aria-label="Symbol of the Government of Canada"></object>
 
 
 						<section id="wb-srch" class="visible-md visible-lg">
@@ -127,9 +128,11 @@
 	<h2>Site menu</h2>
     <div class="row">
         <ul class="list-inline menu">
+
 			<li><a href="../../index-en.html">WET project</a></li>
 			<li><a href="http://wet-boew.github.io/wet-boew/docs/gs-cd/impl-en.html">Implement WET</a></li>
 			<li><a href="http://wet-boew.github.io/wet-boew/docs/gs-cd/contrib-en.html">Contribute to WET</a></li>
+
         </ul>
     </div>
 </div>
@@ -316,7 +319,7 @@
 	<p>Custom presets can be declared using embedded JavaScript where <code>custom</code> (name of the preset) can be any name. The custom preset can be applied using a class name with <code>wb-charts-</code> as the prefix followed by your custom preset name.</p>
 
 	<pre><code>&lt;script&gt;
-var wet_boew_charts = {
+window[ "wb-charts" ] = {
 	flot: {
 		<strong>custom</strong>: {
 			colors: [ &quot;#ff0000&quot;,
@@ -330,10 +333,10 @@ var wet_boew_charts = {
 					&quot;#0000ff&quot;]
 		}
 	}
-}
+};
 &lt;/script&gt;</code></pre>
 	<script>
-	var wet_boew_charts = {
+	window[ "wb-charts" ] = {
 		flot: {
 			custom: {
 				colors: [ "#ff0000",
@@ -347,7 +350,7 @@ var wet_boew_charts = {
 						"#0000ff"]
 			}
 		}
-	}
+	};
 	</script>
 
 	<p><code>&lt;table class=&quot;wb-charts <strong>wb-charts-custom</strong> table&quot;&gt;</code></p>
@@ -476,7 +479,7 @@ var wet_boew_charts = {
 		<p>It is possible to apply a preset to multiple settings. When the same preset name exists and is applied to multiple settings, the preset is applied across all those settings.</p>
 
 		<pre><code>&lt;script&gt;
-var wet_boew_charts = {
+window[ "wb-charts" ] = {
 
 	// Flot global settings. Equivalent to applying &quot;data-flot&quot; to the table element.
 	flot: { },
@@ -484,9 +487,9 @@ var wet_boew_charts = {
 	// Flot series-specific setting. Equivalent to applying &quot;data-flot&quot; to the th element.
 	series: { },
 
-	// WET chart-specific setting. Equivalent to applying &quot;data-wet-boew&quot; on the table element.
+	// WET chart-specific setting. Equivalent to applying &quot;data-wb-charts&quot; on the table element.
 	charts: { }
-}
+};
 &lt;/script&gt;</code></pre>
 	</section>
 </section>
@@ -567,7 +570,7 @@ var wet_boew_charts = {
 	&lt;/tr&gt;
 &lt;/thead&gt;</code></pre>
 
-	<table class="wb-charts wb-charts-pie table" data-wet-boew='{ "height": 300, "decimal": 1 }'>
+	<table class="wb-charts wb-charts-pie table" data-wb-charts='{ "height": 300, "decimal": 1 }'>
 		<caption>Number of pages with tasks as a main purpose per audience</caption>
 		<colgroup><col /></colgroup>
 		<colgroup>
@@ -611,7 +614,7 @@ var wet_boew_charts = {
 
 
 
-		<footer role="contentinfo" id="wb-info" class="visible-md visible-lg">
+		<footer role="contentinfo" id="wb-info" class="visible-sm visible-md visible-lg wb-navcurr">
 			<div class="container">
 				<nav role="navigation">
 					<h2>Site information</h2>

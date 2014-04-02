@@ -19,17 +19,18 @@
 
  - Boîte à outils de l'expérience Web
 </title>
-		<link href="../../../assets/favicon.ico" rel="shortcut icon" />
 		<meta content="width=device-width, initial-scale=1" name="viewport" />
 		<!-- Meta data -->
 		<meta name="description" content="Permet à l&#x27;utilisateur de partager un contenu Web sur les plateformes de médias sociaux." />
 		<!-- Meta data-->
 		<!--[if gte IE 9 | !IE ]><!-->
+<link href="../../../assets/favicon.ico" rel="icon" type="image/x-icon" />
 <link rel="stylesheet" href="../../../css/wet-boew.css" />
 <!--<![endif]-->
 <link rel="stylesheet" href="../../../css/theme.css" />
 
 <!--[if lt IE 9]>
+<link href="../../../assets/favicon.ico" rel="shortcut icon" />
 <link rel="stylesheet" href="../../../css/ie8-wet-boew.css" />
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
 <script src="../../../js/ie8-wet-boew.js"></script>
@@ -73,7 +74,7 @@
 							<section class="wb-mb-links col-xs-12 visible-sm visible-xs" id="wb-glb-mn">
 								<h2>Menu</h2>
 								<ul class="pnl-btn list-inline text-right">
-	<li><a href="#mb-pnl" title="Menu" aria-controls="mb-pnl" class="overlay-lnk" role="button"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Menu</span></span></a></li>
+	<li><a href="#mb-pnl" title="Menu" aria-controls="mb-pnl" class="overlay-lnk btn btn-xs btn-default" role="button"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Menu</span></span></a></li>
 </ul>
 <div id="mb-pnl"></div>
 
@@ -119,9 +120,11 @@
 	<h2>Menu du site</h2>
     <div class="row">
         <ul class="list-inline menu">
+
 			<li><a href="../../../index-fr.html">Projet de la BOEW</a></li>
 			<li><a href="http://wet-boew.github.io/wet-boew/docs/gs-cd/impl-fr.html">Mise en œuvre de la BOEW</a></li>
 			<li><a href="http://wet-boew.github.io/wet-boew/docs/gs-cd/contrib-fr.html">Contribuer à la BOEW</a></li>
+
         </ul>
     </div>
 </div>
@@ -209,18 +212,17 @@
 	<ol>
 		<li>Add <code>&lt;div class="wb-share"&gt;&lt;/div&gt;</code> to the Web page.</li>
 		<li>Add a unique id for the share panel.
-			<pre><code>&lt;div class="wb-share" data-wet-boew='{"pnlId": "pnl1"}'&gt;&lt;/div&gt;</code></pre>
+			<pre><code>&lt;div class="wb-share" data-wb-share='{"pnlId": "pnl1"}'&gt;&lt;/div&gt;</code></pre>
 		</li>
 		<li><strong>Optional:</strong> Override the default settings using the <a href="#config">configuration options</a>.</li>
 		<li><strong>Optional:</strong> Add additional links using the <code>link-only</code> class.
-			<pre><code>&lt;div class="wb-share link-only" data-wet-boew='{"pnlId": "pnl1"}'&gt;&lt;/div&gt;</code></pre>
+			<pre><code>&lt;div class="wb-share link-only" data-wb-share='{"pnlId": "pnl1"}'&gt;&lt;/div&gt;</code></pre>
 		</li>
 	</ol>
 </section>
 
 <section>
 	<h2 id="config">Configuration options</h2>
-	<p>Document the public configuration options that can be used by implementers or developers.</p>
 	<table class="table">
 		<thead>
 			<tr>
@@ -234,7 +236,7 @@
 			<tr>
 				<td><code>pnlId</code></td>
 				<td>Unique identifier for the panel. Only required if providing a second link for the same panel (needs to be specified on all <code>wb-share</code> calls for that panel).</td>
-				<td>Add <code>"pnlId": "uniqueId"</code> to the <code>data-wet-boew</code> attribute where <code>uniqueId</code> is a valid unique id.</td>
+				<td>Add <code>"pnlId": "uniqueId"</code> to the <code>data-wb-share</code> attribute where <code>uniqueId</code> is a valid unique id.</td>
 				<td>
 					<dl>
 						<dt><code>uniqueId</code>:</dt>
@@ -245,7 +247,7 @@
 			<tr>
 				<td><code>hdLvl</code></td>
 				<td>Heading level for the share panel.</td>
-				<td>Add <code>"hdLvl": "headingLevel"</code> to the <code>data-wet-boew</code> attribute where <code>headingLevel</code> is the heading level.</td>
+				<td>Add <code>"hdLvl": "headingLevel"</code> to the <code>data-wb-share</code> attribute where <code>headingLevel</code> is the heading level. Use the following JavaScript code instead to configure all instances of the plugin: <code>window[ "wb-share" ] = {"hdLvl": "headingLevel"};</code>.</td>
 				<td>
 					<dl>
 						<dt><code>h2</code> (default):</dt>
@@ -262,9 +264,19 @@
 				</td>
 			</tr>
 			<tr>
+				<td><code>lnkClass</code></td>
+				<td>Classes to be applied to the class attribute of the generated link.</td>
+				<td>Add <code>"lnkClass": "class1 class2"</code> to the <code>data-wb-share</code> attribute where <code>class1 class2</code> are the classes to be added separated by spaces. Use the following JavaScript code instead to configure all instances of the plugin: <code>window[ "wb-share" ] = {"hdLvl": "lnkClass": "class1 class2"};</code>.</td>
+				<td>
+					<ul>
+						<li>None (default)</li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
 				<td><code>type</code></td>
 				<td>Type of content to share.</td>
-				<td>Add <code>"type": "value"</code> to the <code>data-wet-boew</code> attribute.</td>
+				<td>Add <code>"type": "value"</code> to the <code>data-wb-share</code> attribute.</td>
 				<td>
 					<dl>
 						<dt><code>page</code> (default):</dt>
@@ -277,7 +289,7 @@
 			<tr>
 				<td><code>custType</code></td>
 				<td>Text to use after "Share" on the share button and the panel header (overrides the text associated to the type option).</td>
-				<td>Add <code>"custType": "string"</code> to the <code>data-wet-boew</code> attribute.</td>
+				<td>Add <code>"custType": "string"</code> to the <code>data-wb-share</code> attribute.</td>
 				<td>
 					<dl>
 						<dt><code> this page</code> or <code> this video</code> (default):</dt>
@@ -288,7 +300,7 @@
 			<tr>
 				<td><code>title</code></td>
 				<td>Text to use instead of the page title or the main h1 text. Recommended for the video type if the page title is not the title of the video.</td>
-				<td>Add <code>"title": "Page title"</code> to the <code>data-wet-boew</code> attribute.</td>
+				<td>Add <code>"title": "Page title"</code> to the <code>data-wb-share</code> attribute.</td>
 				<td>
 					<dl>
 						<dt>Page title or the main h1 text (default):</dt>
@@ -299,7 +311,7 @@
 			<tr>
 				<td><code>url</code></td>
 				<td>URL to use instead of the URL of the current page.</td>
-				<td>Add <code>"url": "newURL"</code> to the <code>data-wet-boew</code> attribute.</td>
+				<td>Add <code>"url": "newURL"</code> to the <code>data-wb-share</code> attribute.</td>
 				<td>
 					<dl>
 						<dt>Page URL (default):</dt>
@@ -310,7 +322,7 @@
 			<tr>
 				<td><code>desc</code></td>
 				<td>Optional description of the item to share. <strong>Note:</strong> A separate description is not supported by all social media sites.</td>
-				<td>Add <code>"desc": "description"</code> to the <code>data-wet-boew</code> attribute.</td>
+				<td>Add <code>"desc": "description"</code> to the <code>data-wb-share</code> attribute.</td>
 				<td>
 					<dl>
 						<dt>None (default):</dt>
@@ -321,7 +333,7 @@
 			<tr>
 				<td><code>img</code></td>
 				<td>Optional image for the item to share (mainly for Pinterest). <strong>Note:</strong> Very few social media sites support specifying a separate image through a URL request.</td>
-				<td>Add <code>"img": "imageURL"</code> to the <code>data-wet-boew</code> attribute.</td>
+				<td>Add <code>"img": "imageURL"</code> to the <code>data-wb-share</code> attribute.</td>
 				<td>
 					<dl>
 						<dt>None (default):</dt>
@@ -332,11 +344,64 @@
 			<tr>
 				<td><code>filter</code></td>
 				<td>Optional filter for the sites to display in the panel. Only the sites listed in the array will be displayed. If no sites are listed, then all sites will be displayed.</td>
-				<td>Add <code>"filter": ["site-1", "site-2", ... "site-n"]</code> to the <code>data-wet-boew</code> attribute.</td>
+				<td>Add <code>"filter": ["site-1", "site-2", ... "site-n"]</code> to the <code>data-wb-share</code> attribute. Use the following JavaScript code instead to configure all instances of the plugin: <code>window[ "wb-share" ] = {"filter": ["site-1", "site-2", ... "site-n"]};</code>.</td>
 				<td>
 					<dl>
 						<dt>None (default):</dt>
 						<dd>Sites are not filtered by default.</dd>
+					</dl>
+				</td>
+			</tr>
+			<tr>
+				<td><code>sites</code></td>
+				<td>Add one or more sites to the panel.</td>
+				<td>
+					<ol>
+						<li>
+							<p>Add the following to the <code>data-wb-share</code> attribute:</p>
+							<pre><code>"sites": {
+	"siteId1": {
+		"name": "siteName1",
+		"url": "siteUrl1"
+	},
+	"siteId2": {
+		"name": "siteName2",
+		"url": "siteUrl2"
+	}
+}</code></pre>
+							<p>For example "siteId1" could be "yahoomail", "name1" could be "Yahoo! Mail" and "url1" could be
+								"<code>http://compose.mail.yahoo.com/?to=&amp;subject={t}&amp;body={u}%0A{d}</code>" where "{u}" is
+								the page URL, "{t}" is the page title, {i} is the image URL, and '{d}' is the description.</p>
+							<p>
+							<p>Use the following JavaScript code instead to configure all instances of the plugin:</p>
+							<pre><code>window[ "wb-share" ] = {
+	"sites": {
+		"siteId1": {
+			"name": "siteName1",
+			"url": "siteUrl1"
+		},
+		"siteId2": {
+			"name": "siteName2",
+			"url": "siteUrl2"
+		}
+	}
+};</code></pre>
+						</li>
+						<li>Create a 32 pixel by 32 pixel image for each site.</li>
+						<li>Add the following CSS:
+							<pre><code>.wb-share .siteId1:before {
+	background: url("../assets/site1.png") no-repeat;
+}
+.wb-share .siteId2:before {
+	background: url("../assets/site2.png") no-repeat;
+}</code></pre>
+						</li>
+					</ol>
+				</td>
+				<td>
+					<dl>
+						<dt>None (default):</dt>
+						<dd>Sites are not added this way by default.</dd>
 					</dl>
 				</td>
 			</tr>
@@ -373,7 +438,7 @@
 
 			<dl id="wb-dtmd" property="dateModified">
 	<dt>Date de modification&#160;:&#32;</dt>
-	<dd><time>2014-03-17</time></dd>
+	<dd><time>2014-03-27</time></dd>
 </dl>
 
 
@@ -381,7 +446,7 @@
 
 
 
-		<footer role="contentinfo" id="wb-info" class="container visible-md visible-lg">
+		<footer role="contentinfo" id="wb-info" class="container visible-sm visible-md visible-lg wb-navcurr">
 			<nav role="navigation" class="row">
 				<h2>Informations sur le site</h2>
 				<section class="col-sm-3">

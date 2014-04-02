@@ -8,7 +8,8 @@
 (function( $, window, document, wb ) {
 "use strict";
 
-var selector = ".wb-geomap",
+var pluginName = "wb-geomap",
+	selector = "." + pluginName,
 	$document = wb.doc,
 
 	// timeout for overlay loading in milliseconds
@@ -97,8 +98,7 @@ var selector = ".wb-geomap",
 			};
 
 			// Merge default settings with overrides from the selected plugin element.
-			// There may be more than one, so don't override defaults globally!
-			$.extend( settings, defaults, overrides, wb.getData( $elm, "wet-boew" ) );
+			$.extend( settings, defaults, overrides, window[ pluginName ], wb.getData( $elm, pluginName ) );
 
 			// Bind the merged settings to the element node for faster access in other events.
 			$elm.data( { settings: settings } );
@@ -798,20 +798,19 @@ var selector = ".wb-geomap",
 				feature: evt.features[ 0 ]
 			},
 			targetTable = document.getElementById( $table.attr( "id" ) ),
+			targetTableHead = targetTable.getElementsByTagName( "thead" )[ 0 ],
 			targetTableBody = targetTable.getElementsByTagName( "tbody" )[ 0 ],
 			selectControl = geomap.selectControl,
 			features = evt.features,
 			len = features.length,
 			geoRegex = /\W/g,
+			headRow = createRow( geomap, rowObj, zoom, mapControl ),
+			tableBody = targetTableBody.innerHTML,
 			feature, i;
-
-		targetTable
-			.getElementsByTagName( "thead" )[ 0 ]
-				.innerHTML = createRow( geomap, rowObj, zoom, mapControl );
 
 		for ( i = 0; i !== len; i += 1 ) {
 			feature = features[ i ];
-			targetTableBody.innerHTML += createRow(
+			tableBody += createRow(
 				geomap,
 				{
 					type: "body",
@@ -822,6 +821,15 @@ var selector = ".wb-geomap",
 				zoom,
 				mapControl
 			);
+		}
+
+		// Temporary fix for unknown runtime error in IE8
+		if ( wb.ielt9 ) {
+			$( targetTableHead ).html( headRow );
+			$( targetTableBody ).html( tableBody );
+		} else {
+			targetTableHead.innerHTML = headRow;
+			targetTableBody.innerHTML += tableBody;
 		}
 	},
 
@@ -852,11 +860,17 @@ var selector = ".wb-geomap",
 
 		// Find the row
 		var featureId = feature.id.replace( /\W/g, "_" ),
-			tr = document.getElementById( featureId );
+			tr = document.getElementById( featureId ),
+			newTr = addChkBox( geomap, feature, featureId ) + tr.innerHTML +
+				( mapControl && zoom ? addZoomTo( geomap, feature ) : "" );
 
 		// Add select checkbox and zoom column
-		tr.innerHTML = addChkBox( geomap, feature, featureId ) + tr.innerHTML +
-				( mapControl && zoom ? addZoomTo( geomap, feature ) : "" );
+		// Temporary fix for IE8 unknown runtime error bug
+		if ( wb.ielt9 ) {
+			$( tr ).html( newTr );
+		} else {
+			tr.innerHTML = newTr;
+		}
 	},
 
 	/*

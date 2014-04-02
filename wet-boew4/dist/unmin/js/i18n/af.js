@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0-rc1 - 2014-03-18
+ * v4.0.0 - 2014-03-31
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -107,7 +107,6 @@ wb.i18nDict = {
 	"errs-fnd": " foute is gevind nie.",
 	"err-fnd": " fout gevind word.",
 	/* Date picker */
-	"date-hide": "Steek kalender",
 	"date-show": "Kies 'n datum van 'n kalender vir die veld:",
 	"date-sel": "Gekies",
 	/* Calendar */

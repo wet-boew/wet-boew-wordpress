@@ -1,13 +1,13 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0-rc1 - 2014-03-18
+ * v4.0.0 - 2014-03-31
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /* Modernizr (Custom Build) | MIT & BSD
  * Build: http://modernizr.com/download/#-elem_details-elem_progress_meter-mathml-load-mq-css3-input-inputtypes-svg-cssclasses-csstransitions-fontface-backgroundsize-borderimage-teststyles-testprops-testallprops-hasevents-prefixes-domprefixes
  */
-;window.Modernizr=function(e,t,n){function L(e){f.cssText=e}function A(e,t){return L(p.join(e+";")+(t||""))}function O(e,t){return typeof e===t}function M(e,t){return!!~(""+e).indexOf(t)}function _(e,t){for(var r in e){var i=e[r];if(!M(i,"-")&&f[i]!==n)return t=="pfx"?i:!0}return!1}function D(e,t,r){for(var i in e){var s=t[e[i]];if(s!==n)return r===!1?e[i]:O(s,"function")?s.bind(r||t):s}return!1}function P(e,t,n){var r=e.charAt(0).toUpperCase()+e.slice(1),i=(e+" "+v.join(r+" ")+r).split(" ");return O(t,"string")||O(t,"undefined")?_(i,t):(i=(e+" "+m.join(r+" ")+r).split(" "),D(i,t,n))}function H(){i.input=function(n){for(var r=0,i=n.length;r<i;r++)w[n[r]]=n[r]in l;return w.list&&(w.list=!!t.createElement("datalist")&&!!e.HTMLDataListElement),w}("autocomplete autofocus list placeholder max min multiple pattern required step".split(" ")),i.inputtypes=function(e){for(var r=0,i,s,u,a=e.length;r<a;r++)l.setAttribute("type",s=e[r]),i=l.type!=="text",i&&(l.value=c,l.style.cssText="position:absolute;visibility:hidden;",/^range$/.test(s)&&l.style.WebkitAppearance!==n?(o.appendChild(l),u=t.defaultView,i=u.getComputedStyle&&u.getComputedStyle(l,null).WebkitAppearance!=="textfield"&&l.offsetHeight!==0,o.removeChild(l)):/^(search|tel)$/.test(s)||(/^(url|email)$/.test(s)?i=l.checkValidity&&l.checkValidity()===!1:i=l.value!=c)),b[e[r]]=!!i;return b}("search tel url email datetime date month week time datetime-local number range color".split(" "))}var r="2.7.1",i={},s=!0,o=t.documentElement,u="modernizr",a=t.createElement(u),f=a.style,l=t.createElement("input"),c=":)",h={}.toString,p=" -webkit- -moz- -o- -ms- ".split(" "),d="Webkit Moz O ms",v=d.split(" "),m=d.toLowerCase().split(" "),g={svg:"http://www.w3.org/2000/svg"},y={},b={},w={},E=[],S=E.slice,x,T=function(e,n,r,i){var s,a,f,l,c=t.createElement("div"),h=t.body,p=h||t.createElement("body");if(parseInt(r,10))while(r--)f=t.createElement("div"),f.id=i?i[r]:u+(r+1),c.appendChild(f);return s=["&#173;",'<style id="s',u,'">',e,"</style>"].join(""),c.id=u,(h?c:p).innerHTML+=s,p.appendChild(c),h||(p.style.background="",p.style.overflow="hidden",l=o.style.overflow,o.style.overflow="hidden",o.appendChild(p)),a=n(c,e),h?c.parentNode.removeChild(c):(p.parentNode.removeChild(p),o.style.overflow=l),!!a},N=function(t){var n=e.matchMedia||e.msMatchMedia;if(n)return n(t).matches;var r;return T("@media "+t+" { #"+u+" { position: absolute; } }",function(t){r=(e.getComputedStyle?getComputedStyle(t,null):t.currentStyle)["position"]=="absolute"}),r},C={}.hasOwnProperty,k;!O(C,"undefined")&&!O(C.call,"undefined")?k=function(e,t){return C.call(e,t)}:k=function(e,t){return t in e&&O(e.constructor.prototype[t],"undefined")},Function.prototype.bind||(Function.prototype.bind=function(t){var n=this;if(typeof n!="function")throw new TypeError;var r=S.call(arguments,1),i=function(){if(this instanceof i){var e=function(){};e.prototype=n.prototype;var s=new e,o=n.apply(s,r.concat(S.call(arguments)));return Object(o)===o?o:s}return n.apply(t,r.concat(S.call(arguments)))};return i}),y.backgroundsize=function(){return P("backgroundSize")},y.borderimage=function(){return P("borderImage")},y.csstransitions=function(){return P("transition")},y.fontface=function(){var e;return T('@font-face {font-family:"font";src:url("https://")}',function(n,r){var i=t.getElementById("smodernizr"),s=i.sheet||i.styleSheet,o=s?s.cssRules&&s.cssRules[0]?s.cssRules[0].cssText:s.cssText||"":"";e=/src/i.test(o)&&o.indexOf(r.split(" ")[0])===0}),e},y.svg=function(){return!!t.createElementNS&&!!t.createElementNS(g.svg,"svg").createSVGRect};for(var B in y)k(y,B)&&(x=B.toLowerCase(),i[x]=y[B](),E.push((i[x]?"":"no-")+x));return i.input||H(),i.addTest=function(e,t){if(typeof e=="object")for(var r in e)k(e,r)&&i.addTest(r,e[r]);else{e=e.toLowerCase();if(i[e]!==n)return i;t=typeof t=="function"?t():t,typeof s!="undefined"&&s&&(o.className+=" "+(t?"":"no-")+e),i[e]=t}return i},L(""),a=l=null,i._version=r,i._prefixes=p,i._domPrefixes=m,i._cssomPrefixes=v,i.mq=N,i.testProp=function(e){return _([e])},i.testAllProps=P,i.testStyles=T,o.className=o.className.replace(/(^|\s)no-js(\s|$)/,"$1$2")+(s?" js "+E.join(" "):""),i}(this,this.document),function(e,t,n){function r(e){return"[object Function]"==d.call(e)}function i(e){return"string"==typeof e}function s(){}function o(e){return!e||"loaded"==e||"complete"==e||"uninitialized"==e}function u(){var e=v.shift();m=1,e?e.t?h(function(){("c"==e.t?k.injectCss:k.injectJs)(e.s,0,e.a,e.x,e.e,1)},0):(e(),u()):m=0}function a(e,n,r,i,s,a,f){function l(t){if(!d&&o(c.readyState)&&(w.r=d=1,!m&&u(),c.onload=c.onreadystatechange=null,t)){"img"!=e&&h(function(){b.removeChild(c)},50);for(var r in T[n])T[n].hasOwnProperty(r)&&T[n][r].onload()}}var f=f||k.errorTimeout,c=t.createElement(e),d=0,g=0,w={t:r,s:n,e:s,a:a,x:f};1===T[n]&&(g=1,T[n]=[]),"object"==e?c.data=n:(c.src=n,c.type=e),c.width=c.height="0",c.onerror=c.onload=c.onreadystatechange=function(){l.call(this,g)},v.splice(i,0,w),"img"!=e&&(g||2===T[n]?(b.insertBefore(c,y?null:p),h(l,f)):T[n].push(c))}function f(e,t,n,r,s){return m=0,t=t||"j",i(e)?a("c"==t?E:w,e,t,this.i++,n,r,s):(v.splice(this.i++,0,e),1==v.length&&u()),this}function l(){var e=k;return e.loader={load:f,i:0},e}var c=t.documentElement,h=e.setTimeout,p=t.getElementsByTagName("script")[0],d={}.toString,v=[],m=0,g="MozAppearance"in c.style,y=g&&!!t.createRange().compareNode,b=y?c:p.parentNode,c=e.opera&&"[object Opera]"==d.call(e.opera),c=!!t.attachEvent&&!c,w=g?"object":c?"script":"img",E=c?"script":w,S=Array.isArray||function(e){return"[object Array]"==d.call(e)},x=[],T={},N={timeout:function(e,t){return t.length&&(e.timeout=t[0]),e}},C,k;k=function(e){function t(e){var e=e.split("!"),t=x.length,n=e.pop(),r=e.length,n={url:n,origUrl:n,prefixes:e},i,s,o;for(s=0;s<r;s++)o=e[s].split("="),(i=N[o.shift()])&&(n=i(n,o));for(s=0;s<t;s++)n=x[s](n);return n}function o(e,i,s,o,u){var a=t(e),f=a.autoCallback;a.url.split(".").pop().split("?").shift(),a.bypass||(i&&(i=r(i)?i:i[e]||i[o]||i[e.split("/").pop().split("?")[0]]),a.instead?a.instead(e,i,s,o,u):(T[a.url]?a.noexec=!0:T[a.url]=1,s.load(a.url,a.forceCSS||!a.forceJS&&"css"==a.url.split(".").pop().split("?").shift()?"c":n,a.noexec,a.attrs,a.timeout),(r(i)||r(f))&&s.load(function(){l(),i&&i(a.origUrl,u,o),f&&f(a.origUrl,u,o),T[a.url]=2})))}function u(e,t){function n(e,n){if(e){if(i(e))n||(f=function(){var e=[].slice.call(arguments);l.apply(this,e),c()}),o(e,f,t,0,u);else if(Object(e)===e)for(p in h=function(){var t=0,n;for(n in e)e.hasOwnProperty(n)&&t++;return t}(),e)e.hasOwnProperty(p)&&(!n&&!--h&&(r(f)?f=function(){var e=[].slice.call(arguments);l.apply(this,e),c()}:f[p]=function(e){return function(){var t=[].slice.call(arguments);e&&e.apply(this,t),c()}}(l[p])),o(e[p],f,t,p,u))}else!n&&c()}var u=!!e.test,a=e.load||e.both,f=e.callback||s,l=f,c=e.complete||s,h,p;n(u?e.yep:e.nope,!!a),a&&n(a)}var a,f,c=this.yepnope.loader;if(i(e))o(e,0,c,0);else if(S(e))for(a=0;a<e.length;a++)f=e[a],i(f)?o(f,0,c,0):S(f)?k(f):Object(f)===f&&u(f,c);else Object(e)===e&&u(e,c)},k.addPrefix=function(e,t){N[e]=t},k.addFilter=function(e){x.push(e)},k.errorTimeout=1e4,null==t.readyState&&t.addEventListener&&(t.readyState="loading",t.addEventListener("DOMContentLoaded",C=function(){t.removeEventListener("DOMContentLoaded",C,0),t.readyState="complete"},0)),e.yepnope=l(),e.yepnope.executeStack=u,e.yepnope.injectJs=function(e,n,r,i,a,f){var l=t.createElement("script"),c,d,i=i||k.errorTimeout;l.src=e;for(d in r)l.setAttribute(d,r[d]);n=f?u:n||s,l.onreadystatechange=l.onload=function(){!c&&o(l.readyState)&&(c=1,n(),l.onload=l.onreadystatechange=null)},h(function(){c||(c=1,n(1))},i),a?l.onload():p.parentNode.insertBefore(l,p)},e.yepnope.injectCss=function(e,n,r,i,o,a){var i=t.createElement("link"),f,n=a?u:n||s;i.href=e,i.rel="stylesheet",i.type="text/css";for(f in r)i.setAttribute(f,r[f]);o||(p.parentNode.insertBefore(i,p),h(n,0))}}(this,document),Modernizr.load=function(){yepnope.apply(window,[].slice.call(arguments,0))},Modernizr.addTest("progressbar",function(){return document.createElement("progress").max!==undefined}),Modernizr.addTest("meter",function(){return document.createElement("meter").max!==undefined}),Modernizr.addTest("details",function(){var e=document,t=e.createElement("details"),n,r,i;return"open"in t?(r=e.body||function(){var t=e.documentElement;return n=!0,t.insertBefore(e.createElement("body"),t.firstElementChild||t.firstChild)}(),t.innerHTML="<summary>a</summary>b",t.style.display="block",r.appendChild(t),i=t.offsetHeight,t.open=!0,i=i!=t.offsetHeight,r.removeChild(t),n&&r.parentNode.removeChild(r),i):!1}),Modernizr.addTest("mathml",function(){var e=!1;if(document.createElementNS){var t="http://www.w3.org/1998/Math/MathML",n=document.createElement("div");n.style.position="absolute";var r=n.appendChild(document.createElementNS(t,"math")).appendChild(document.createElementNS(t,"mfrac"));r.appendChild(document.createElementNS(t,"mi")).appendChild(document.createTextNode("xx")),r.appendChild(document.createElementNS(t,"mi")).appendChild(document.createTextNode("yy")),document.body.appendChild(n),e=n.offsetHeight>n.offsetWidth}return e});
+;window.Modernizr=function(e,t,n){function L(e){f.cssText=e}function A(e,t){return L(p.join(e+";")+(t||""))}function O(e,t){return typeof e===t}function M(e,t){return!!~(""+e).indexOf(t)}function _(e,t){for(var r in e){var i=e[r];if(!M(i,"-")&&f[i]!==n)return t=="pfx"?i:!0}return!1}function D(e,t,r){for(var i in e){var s=t[e[i]];if(s!==n)return r===!1?e[i]:O(s,"function")?s.bind(r||t):s}return!1}function P(e,t,n){var r=e.charAt(0).toUpperCase()+e.slice(1),i=(e+" "+v.join(r+" ")+r).split(" ");return O(t,"string")||O(t,"undefined")?_(i,t):(i=(e+" "+m.join(r+" ")+r).split(" "),D(i,t,n))}function H(){i.input=function(n){for(var r=0,i=n.length;r<i;r++)w[n[r]]=n[r]in l;return w.list&&(w.list=!!t.createElement("datalist")&&!!e.HTMLDataListElement),w}("autocomplete autofocus list placeholder max min multiple pattern required step".split(" ")),i.inputtypes=function(e){for(var r=0,i,s,u,a=e.length;r<a;r++)l.setAttribute("type",s=e[r]),i=l.type!=="text",i&&(l.value=c,l.style.cssText="position:absolute;visibility:hidden;",/^range$/.test(s)&&l.style.WebkitAppearance!==n?(o.appendChild(l),u=t.defaultView,i=u.getComputedStyle&&u.getComputedStyle(l,null).WebkitAppearance!=="textfield"&&l.offsetHeight!==0,o.removeChild(l)):/^(search|tel)$/.test(s)||(/^(url|email)$/.test(s)?i=l.checkValidity&&l.checkValidity()===!1:i=l.value!=c)),b[e[r]]=!!i;return b}("search tel url email datetime date month week time datetime-local number range color".split(" "))}var r="2.7.1",i={},s=!0,o=t.documentElement,u="modernizr",a=t.createElement(u),f=a.style,l=t.createElement("input"),c=":)",h={}.toString,p=" -webkit- -moz- -o- -ms- ".split(" "),d="Webkit Moz O ms",v=d.split(" "),m=d.toLowerCase().split(" "),g={svg:"http://www.w3.org/2000/svg"},y={},b={},w={},E=[],S=E.slice,x,T=function(e,n,r,i){var s,a,f,l,c=t.createElement("div"),h=t.body,p=h||t.createElement("body");if(parseInt(r,10))while(r--)f=t.createElement("div"),f.id=i?i[r]:u+(r+1),c.appendChild(f);return s=["&#173;",'<style id="s',u,'">',e,"</style>"].join(""),c.id=u,(h?c:p).innerHTML+=s,p.appendChild(c),h||(p.style.background="",p.style.overflow="hidden",l=o.style.overflow,o.style.overflow="hidden",o.appendChild(p)),a=n(c,e),h?c.parentNode.removeChild(c):(p.parentNode.removeChild(p),o.style.overflow=l),!!a},N=function(t){var n=e.matchMedia||e.msMatchMedia;if(n)return n(t).matches;var r;return T("@media "+t+" { #"+u+" { position: absolute; } }",function(t){r=(e.getComputedStyle?getComputedStyle(t,null):t.currentStyle)["position"]=="absolute"}),r},C={}.hasOwnProperty,k;!O(C,"undefined")&&!O(C.call,"undefined")?k=function(e,t){return C.call(e,t)}:k=function(e,t){return t in e&&O(e.constructor.prototype[t],"undefined")},Function.prototype.bind||(Function.prototype.bind=function(t){var n=this;if(typeof n!="function")throw new TypeError;var r=S.call(arguments,1),i=function(){if(this instanceof i){var e=function(){};e.prototype=n.prototype;var s=new e,o=n.apply(s,r.concat(S.call(arguments)));return Object(o)===o?o:s}return n.apply(t,r.concat(S.call(arguments)))};return i}),y.backgroundsize=function(){return P("backgroundSize")},y.borderimage=function(){return P("borderImage")},y.csstransitions=function(){return P("transition")},y.fontface=function(){var e;return T('@font-face {font-family:"font";src:url("https://")}',function(n,r){var i=t.getElementById("smodernizr"),s=i.sheet||i.styleSheet,o=s?s.cssRules&&s.cssRules[0]?s.cssRules[0].cssText:s.cssText||"":"";e=/src/i.test(o)&&o.indexOf(r.split(" ")[0])===0}),e},y.svg=function(){return!!t.createElementNS&&!!t.createElementNS(g.svg,"svg").createSVGRect};for(var B in y)k(y,B)&&(x=B.toLowerCase(),i[x]=y[B](),E.push((i[x]?"":"no-")+x));return i.input||H(),i.addTest=function(e,t){if(typeof e=="object")for(var r in e)k(e,r)&&i.addTest(r,e[r]);else{e=e.toLowerCase();if(i[e]!==n)return i;t=typeof t=="function"?t():t,typeof s!="undefined"&&s&&(o.className+=" "+(t?"":"no-")+e),i[e]=t}return i},L(""),a=l=null,i._version=r,i._prefixes=p,i._domPrefixes=m,i._cssomPrefixes=v,i.mq=N,i.testProp=function(e){return _([e])},i.testAllProps=P,i.testStyles=T,o.className=o.className.replace(/(^|\s)no-js(\s|$)/,"$1$2")+(s?" js "+E.join(" "):""),i}(this,this.document),function(e,t,n){function r(e){return"[object Function]"==d.call(e)}function i(e){return"string"==typeof e}function s(){}function o(e){return!e||"loaded"==e||"complete"==e||"uninitialized"==e}function u(){var e=v.shift();m=1,e?e.t?h(function(){("c"==e.t?k.injectCss:k.injectJs)(e.s,0,e.a,e.x,e.e,1)},0):(e(),u()):m=0}function a(e,n,r,i,s,a,f){function l(t){if(!d&&o(c.readyState)&&(w.r=d=1,!m&&u(),c.onload=c.onreadystatechange=null,t)){"img"!=e&&h(function(){b.removeChild(c)},50);for(var r in T[n])T[n].hasOwnProperty(r)&&T[n][r].onload()}}var f=f||k.errorTimeout,c=t.createElement(e),d=0,g=0,w={t:r,s:n,e:s,a:a,x:f};1===T[n]&&(g=1,T[n]=[]),"object"==e?c.data=n:(c.src=n,c.type=e),c.width=c.height="0",c.onerror=c.onload=c.onreadystatechange=function(){l.call(this,g)},v.splice(i,0,w),"img"!=e&&(g||2===T[n]?(b.insertBefore(c,y?null:p),h(l,f)):T[n].push(c))}function f(e,t,n,r,s){return m=0,t=t||"j",i(e)?a("c"==t?E:w,e,t,this.i++,n,r,s):(v.splice(this.i++,0,e),1==v.length&&u()),this}function l(){var e=k;return e.loader={load:f,i:0},e}var c=t.documentElement,h=e.setTimeout,p=t.getElementsByTagName("script")[0],d={}.toString,v=[],m=0,g="MozAppearance"in c.style,y=g&&!!t.createRange().compareNode,b=y?c:p.parentNode,c=e.opera&&"[object Opera]"==d.call(e.opera),c=!!t.attachEvent&&!c,w=g?"object":c?"script":"img",E=c?"script":w,S=Array.isArray||function(e){return"[object Array]"==d.call(e)},x=[],T={},N={timeout:function(e,t){return t.length&&(e.timeout=t[0]),e}},C,k;k=function(e){function t(e){var e=e.split("!"),t=x.length,n=e.pop(),r=e.length,n={url:n,origUrl:n,prefixes:e},i,s,o;for(s=0;s<r;s++)o=e[s].split("="),(i=N[o.shift()])&&(n=i(n,o));for(s=0;s<t;s++)n=x[s](n);return n}function o(e,i,s,o,u){var a=t(e),f=a.autoCallback;a.url.split(".").pop().split("?").shift(),a.bypass||(i&&(i=r(i)?i:i[e]||i[o]||i[e.split("/").pop().split("?")[0]]),a.instead?a.instead(e,i,s,o,u):(T[a.url]?a.noexec=!0:T[a.url]=1,s.load(a.url,a.forceCSS||!a.forceJS&&"css"==a.url.split(".").pop().split("?").shift()?"c":n,a.noexec,a.attrs,a.timeout),(r(i)||r(f))&&s.load(function(){l(),i&&i(a.origUrl,u,o),f&&f(a.origUrl,u,o),T[a.url]=2})))}function u(e,t){function n(e,n){if(e){if(i(e))n||(f=function(){var e=[].slice.call(arguments);l.apply(this,e),c()}),o(e,f,t,0,u);else if(Object(e)===e)for(p in h=function(){var t=0,n;for(n in e)e.hasOwnProperty(n)&&t++;return t}(),e)e.hasOwnProperty(p)&&(!n&&!--h&&(r(f)?f=function(){var e=[].slice.call(arguments);l.apply(this,e),c()}:f[p]=function(e){return function(){var t=[].slice.call(arguments);e&&e.apply(this,t),c()}}(l[p])),o(e[p],f,t,p,u))}else!n&&c()}var u=!!e.test,a=e.load||e.both,f=e.callback||s,l=f,c=e.complete||s,h,p;n(u?e.yep:e.nope,!!a),a&&n(a)}var a,f,c=this.yepnope.loader;if(i(e))o(e,0,c,0);else if(S(e))for(a=0;a<e.length;a++)f=e[a],i(f)?o(f,0,c,0):S(f)?k(f):Object(f)===f&&u(f,c);else Object(e)===e&&u(e,c)},k.addPrefix=function(e,t){N[e]=t},k.addFilter=function(e){x.push(e)},k.errorTimeout=1e4,null==t.readyState&&t.addEventListener&&(t.readyState="loading",t.addEventListener("DOMContentLoaded",C=function(){t.removeEventListener("DOMContentLoaded",C,0),t.readyState="complete"},0)),e.yepnope=l(),e.yepnope.executeStack=u,e.yepnope.injectJs=function(e,n,r,i,a,f){var l=t.createElement("script"),c,d,i=i||k.errorTimeout;l.src=e;for(d in r)l.setAttribute(d,r[d]);n=f?u:n||s,l.onreadystatechange=l.onload=function(){!c&&o(l.readyState)&&(c=1,n(),l.onload=l.onreadystatechange=null)},h(function(){c||(c=1,n(1))},i),a?l.onload():p.parentNode.insertBefore(l,p)},e.yepnope.injectCss=function(e,n,r,i,o,a){var i=t.createElement("link"),f,n=a?u:n||s;i.href=e,i.rel="stylesheet",i.type="text/css";for(f in r)i.setAttribute(f,r[f]);o||(p.parentNode.insertBefore(i,p),h(n,0))}}(this,document),Modernizr.load=function(){yepnope.apply(window,[].slice.call(arguments,0))},Modernizr.addTest("details",function(){var e=document,t=e.createElement("details"),n,r,i;return"open"in t?(r=e.body||function(){var t=e.documentElement;return n=!0,t.insertBefore(e.createElement("body"),t.firstElementChild||t.firstChild)}(),t.innerHTML="<summary>a</summary>b",t.style.display="block",r.appendChild(t),i=t.offsetHeight,t.open=!0,i=i!=t.offsetHeight,r.removeChild(t),n&&r.parentNode.removeChild(r),i):!1}),Modernizr.addTest("progressbar",function(){return document.createElement("progress").max!==undefined}),Modernizr.addTest("meter",function(){return document.createElement("meter").max!==undefined}),Modernizr.addTest("mathml",function(){var e=!1;if(document.createElementNS){var t="http://www.w3.org/1998/Math/MathML",n=document.createElement("div");n.style.position="absolute";var r=n.appendChild(document.createElementNS(t,"math")).appendChild(document.createElementNS(t,"mfrac"));r.appendChild(document.createElementNS(t,"mi")).appendChild(document.createTextNode("xx")),r.appendChild(document.createElementNS(t,"mi")).appendChild(document.createTextNode("yy")),document.body.appendChild(n),e=n.offsetHeight>n.offsetWidth}return e});
 /**
  * @title WET-BOEW Vapour loader
  * @overview Helper methods for WET
@@ -447,12 +447,12 @@ Modernizr.load([
 		if ( dataAttr ) {
 			try {
 				dataObj = JSON.parse( dataAttr );
+				$.data( elm, dataName, dataObj );
 			} catch ( error ) {
 				$.error( "Bad JSON array in data-" + dataName + " attribute" );
 			}
 		}
 
-		$.data( elm, dataName, dataObj );
 		return dataObj;
 	};
 })( jQuery, wb );
@@ -1795,10 +1795,7 @@ var pluginName = "wb-calevt",
 				events.maxDate
 			]
 		);
-		$containerId.attr({
-			role: "application",
-			"aria-label": i18nText.calendar
-		});
+		$containerId.attr( "aria-label", i18nText.calendar );
 	},
 
 	daysBetween = function( dateLow, dateHigh ) {
@@ -2848,7 +2845,7 @@ $document.on( "setFocus.wb-cal", setFocus );
 			i, iLength, j, jLength, parsedData, rIndex, currVectorOptions,
 			currentRowGroup, reverseTblParsing, dataGroupVector,
 			dataCell, previousDataCell, currDataVector,
-			pieQuaterFlotSeries, optionFlot, optionsCharts,
+			pieQuaterFlotSeries, optionFlot, optionsCharts, globalOptions,
 			defaultsOptions = {
 
 				// Flot Global Options
@@ -3018,12 +3015,12 @@ $document.on( "setFocus.wb-cal", setFocus );
 			};
 
 		/**
-		 * A little function to ovewrite and add preset into the default options
+		 * A little function to overwrite and add preset into the default options
 		 *
 		 * @method overwriteDefaultsOptions
 		 * @param {string} scopekey - Key that represent the subject of the setting, [flot, charts, series,...]
-		 * @param {json object} target - DefaultOptions that wiil be overwritten
-		 * @param {json object} object - User defined object for overwritting options
+		 * @param {json object} target - DefaultOptions that will be overwritten
+		 * @param {json object} object - User defined object for overwriting options
 		 * @return {json object} - Return the new object
 		 */
 		function overwriteDefaultsOptions( scopekey, target, object ) {
@@ -3043,13 +3040,16 @@ $document.on( "setFocus.wb-cal", setFocus );
 		}
 
 		// User defined options
-		if ( !window.chartsGraphOpts ){
+		if ( !window.chartsGraphOpts ) {
+			globalOptions = window[ pluginName ];
+
 			// Global setting
-			if ( window.wet_boew_charts !== undefined ) {
-				overwriteDefaultsOptions( "flot", defaultsOptions, window.wet_boew_charts );
-				overwriteDefaultsOptions( "series", defaultsOptions, window.wet_boew_charts );
-				overwriteDefaultsOptions( "charts", defaultsOptions, window.wet_boew_charts );
+			if ( globalOptions ) {
+				overwriteDefaultsOptions( "flot", defaultsOptions, globalOptions );
+				overwriteDefaultsOptions( "series", defaultsOptions, globalOptions );
+				overwriteDefaultsOptions( "charts", defaultsOptions, globalOptions );
 			}
+
 			// Save the setting here in a case of a second graphic on the same page
 			window.chartsGraphOpts = defaultsOptions;
 		}
@@ -3116,7 +3116,7 @@ $document.on( "setFocus.wb-cal", setFocus );
 			// Extend the config from the element @data attribute
 			config = $.extend( true, config, wb.getData( $elem, attribute ) );
 
-			// Merge and Overide the function.
+			// Merge and override the function.
 			for ( key in fn ) {
 				if ( !fn.hasOwnProperty( key ) ) {
 					continue;
@@ -3143,7 +3143,7 @@ $document.on( "setFocus.wb-cal", setFocus );
 		optionFlot = applyPreset( defaultsOptions.flot, $elm, "flot" );
 
 		// Apply any preset
-		optionsCharts = applyPreset( defaultsOptions.charts, $elm, "wet-boew" );
+		optionsCharts = applyPreset( defaultsOptions.charts, $elm, pluginName );
 
 		// Fix default width and height in case the table is hidden.
 		optionsCharts.width = optionsCharts.width | 250;
@@ -5096,7 +5096,13 @@ var pluginName = "wb-frmvld",
 						submitted = false,
 						$required = $form.find( "[required]" ).attr( "aria-required", "true" ),
 						errorFormId = "errors-" + ( !formId ? "default" : formId ),
-						settings = $.extend( true, {}, defaults, wb.getData( $elm, "wet-boew" ) ),
+						settings = $.extend(
+							true,
+							{},
+							defaults,
+							window[ pluginName ],
+							wb.getData( $elm, pluginName )
+						),
 						summaryHeading = settings.hdLvl,
 						i, len, validator;
 
@@ -5153,14 +5159,14 @@ var pluginName = "wb-frmvld",
 									$fieldset = $element.closest( "fieldset" );
 									if ( $fieldset.length !== 0 ) {
 										$legend = $fieldset.find( "legend" ).first();
-										if ( $legend.length !== 0 && $fieldset.find( "input[name=" + $element.attr( "name" ) + "]" ) !== 1) {
+										if ( $legend.length !== 0 && $fieldset.find( "input[name='" + $element.attr( "name" ) + "']" ) !== 1) {
 											$error.appendTo( $legend );
 											return;
 										}
 									}
 								}
 							}
-							$error.appendTo( $form.find( "label[for=" + $element.attr( "id" ) + "]" ) );
+							$error.appendTo( $form.find( "label[for='" + $element.attr( "id" ) + "']" ) );
 							return;
 						},
 
@@ -5488,7 +5494,8 @@ var pluginName = "wb-lbx",
 							// TODO: Better if dealt with upstream by Magnific popup
 							var $item = this.currItem,
 								$content = this.contentContainer,
-								$buttons = this.wrap.find( ".mfp-close, .mfp-arrow" ),
+								$wrap = this.wrap,
+								$buttons = $wrap.find( ".mfp-close, .mfp-arrow" ),
 								len = $buttons.length,
 								i, button, $bottomBar;
 
@@ -5502,6 +5509,8 @@ var pluginName = "wb-lbx",
 							} else {
 								$content.attr( "role", "document" );
 							}
+
+							$wrap.append( "<span tabindex='0' class='lbx-end wb-inv'></span>" );
 						},
 						change: function() {
 							var $item = this.currItem,
@@ -5572,12 +5581,13 @@ var pluginName = "wb-lbx",
 						settings.modal = true;
 					}
 
-					// Extend the settings with data-wet-boew then
+					// Extend the settings with data-wb-lbx then
 					$elm.magnificPopup(
 						$.extend(
 							true,
 							settings,
-							wb.getData( $elm, "wet-boew" )
+							window[ pluginName ],
+							wb.getData( $elm, pluginName )
 						)
 					);
 				}
@@ -5599,12 +5609,30 @@ $document.on( "keydown", ".mfp-wrap", function( event ) {
 		length = $focusable.length;
 		index = $focusable.index( event.target ) + ( event.shiftKey ? -1 : 1 );
 		if ( index === -1 ) {
-			index = length - 1;
-		} else if ( index === length ) {
+			index = length - 2;
+		} else if ( index === length - 1 ) {
 			index = 0;
 		}
 		$focusable.eq( index ).trigger( "setfocus.wb" );
 	}
+
+	/*
+	 * Since we are working with events we want to ensure that we are being passive about our control,
+	 * so returning true allows for events to always continue
+	 */
+	return true;
+});
+
+/*
+ * Sends focus to the close button if focus moves beyond the Lightbox (Jaws fix)
+ */
+$document.on( "focus", ".lbx-end", function( event ) {
+	event.preventDefault();
+	$( this )
+		.closest( ".mfp-wrap" )
+			.find( ":focusable" )
+				.eq( 0 )
+					.trigger( "setfocus.wb" );
 
 	/*
 	 * Since we are working with events we want to ensure that we are being passive about our control,
@@ -5646,6 +5674,7 @@ var pluginName = "wb-menu",
 	breadcrumb = document.getElementById( "wb-bc" ),
 	navCurrentEvent = "navcurr.wb",
 	focusEvent = "setfocus.wb",
+	menuItemSelector = "> a, > details > summary",
 	i18n, i18nText,
 	$document = wb.doc,
 
@@ -5705,7 +5734,7 @@ var pluginName = "wb-menu",
 		// Lets tweak for aria
 		for ( i = 0; i !== length; i += 1 ) {
 			$elm = $elements.eq( i );
-			$subMenu = $elm.siblings( ".sm" );
+			$subMenu = $elm.siblings( "ul" );
 
 			$elm.attr({
 				"aria-posinset": ( i + 1 ),
@@ -5724,9 +5753,47 @@ var pluginName = "wb-menu",
 				});
 
 				// recurse into submenu
-				drizzleAria( $subMenu.find( ":discoverable" ) );
+				drizzleAria( $subMenu.children( "li" ).find( menuItemSelector ) );
 			}
 		}
+	},
+
+	/**
+	 * @method createCollapsibleSection
+	 * @return {string}
+	 */
+	createCollapsibleSection = function( section, sectionIndex, sectionsLength, $items, itemsLength ) {
+
+		// Use details/summary for the collapsible mechanism
+		var k, $elm, elm, $item, $subItems,
+			$section = $( section ),
+			posinset = "' aria-posinset='",
+			menuitem = "role='menuitem' aria-setsize='",
+			sectionHtml = "<li><details>" + "<summary class='mb-item" +
+				( $section.hasClass( "wb-navcurr" ) || $section.children( ".wb-navcurr" ).length !== 0 ? " wb-navcurr'" : "'" ) +
+				"' " + menuitem + sectionsLength + posinset + ( sectionIndex + 1 ) +
+				"' aria-haspopup='true'>" + $section.text() + "</summary>" +
+				"<ul class='list-unstyled mb-sm' role='menu' aria-expanded='false' aria-hidden='true'>";
+
+		// Convert each of the list items into WAI-ARIA menuitems
+		for ( k = 0; k !== itemsLength; k += 1 ) {
+			$item = $items.eq( k );
+			$elm = $item.find( menuItemSelector );
+			elm = $elm[ 0 ];
+			if ( elm.nodeName.toLowerCase() === "a" ) {
+				sectionHtml += "<li>" + $item[ 0 ].innerHTML.replace(
+						/(<a\s)/,
+						"$1 " + menuitem + itemsLength +
+							posinset + ( k + 1 ) +
+							"' tabindex='-1' "
+					) + "</li>";
+			} else {
+				$subItems = $elm.parent().find( "> ul > li" );
+				sectionHtml += createCollapsibleSection( elm, k, itemsLength, $subItems, $subItems.length );
+			}
+		}
+
+		return sectionHtml + "</ul></details></li>";
 	},
 
 	/**
@@ -5735,20 +5802,9 @@ var pluginName = "wb-menu",
 	 * @return {string}
 	 */
 	createMobilePanelMenu = function( allProperties ) {
-		var navOpen = "<nav role='navigation'",
-			siteNavElement = " typeof='SiteNavigationElement'",
-			navClose = "</nav>",
-			detailsOpen = "<li><details>",
-			detailsClose = "</details></li>",
-			listOpen = "<ul class='list-unstyled ",
-			menuItemReplace1 = "role='menuitem' aria-setsize='",
-			menuItemReplace2 = "' aria-posinset='",
-			menuItemReplace3 = "' tabindex='-1' ",
-			summaryOpen = "<summary class='mb-item' " + menuItemReplace1,
-			summaryClose = "</summary>",
-			panel = "",
-			sectionHtml, properties, sections, section, parent, items,
-			href, linkHtml, i, j, k, len, len2, len3;
+		var panel = "",
+			sectionHtml, properties, sections, section, parent, $items,
+			href, linkHtml, i, j, len, sectionsLength, itemsLength;
 
 		// Process the secondary and site menus
 		len = allProperties.length;
@@ -5756,34 +5812,16 @@ var pluginName = "wb-menu",
 			properties = allProperties[ i ];
 			sectionHtml = "";
 			sections = properties[ 0 ];
-			len2 = sections.length;
-			for ( j = 0; j !== len2; j += 1 ) {
+			sectionsLength = sections.length;
+			for ( j = 0; j !== sectionsLength; j += 1 ) {
 				section = sections[ j ];
 				href = section.getAttribute( "href" );
-				items = section.parentNode.getElementsByTagName( "li" );
-				len3 = items.length;
+				$items = $( section.parentNode ).find( "> ul > li" );
+				itemsLength = $items.length;
 
 				// Collapsible section
-				if ( len3 !== 0 && ( !href || href.charAt( 0 ) === "#" ) ) {
-
-					// Use details/summary for the collapsible mechanism
-					sectionHtml += detailsOpen +
-						summaryOpen + len2 + menuItemReplace2 +
-						( j + 1 ) + "' aria-haspopup='true'>" +
-						section.innerHTML + summaryClose +
-						listOpen + "mb-sm' role='menu' aria-expanded='false' aria-hidden='true'>";
-
-					// Convert each of the list items in WAI-ARIA menuitems
-					for ( k = 0; k !== len3; k += 1 ) {
-						sectionHtml += "<li>" + items[ k ].innerHTML.replace(
-								/(<a\s)/,
-								"$1 " + menuItemReplace1 + len3 +
-									menuItemReplace2 + ( k + 1 ) +
-									menuItemReplace3
-							) + "</li>";
-					}
-
-					sectionHtml += "</ul>" + detailsClose;
+				if ( itemsLength !== 0 ) {
+					sectionHtml += createCollapsibleSection( section, j, sectionsLength, $items, itemsLength );
 				} else {
 					parent = section.parentNode;
 
@@ -5802,19 +5840,19 @@ var pluginName = "wb-menu",
 					sectionHtml += "<li class='no-sect'>" +
 						linkHtml.replace(
 							/(<a\s)/,
-							"$1 class='mb-item' " + menuItemReplace1 +
-								len2 + menuItemReplace2 + ( j + 1 ) +
-								menuItemReplace3
+							"$1 class='mb-item' " + "role='menuitem' aria-setsize='" +
+								sectionsLength + "' aria-posinset='" + ( j + 1 ) +
+								"' tabindex='-1' "
 						) + "</li>";
 				}
 			}
 
 			// Create the panel section
-			panel += navOpen + siteNavElement + " id='" + properties[ 1 ] +
-				"' class='" + properties[ 1 ] + " wb-menu'>" +
+			panel += "<nav role='navigation' typeof='SiteNavigationElement' id='" +
+				properties[ 1 ] + "' class='" + properties[ 1 ] + " wb-menu'>" +
 				"<h3>" + properties[ 2 ] + "</h3>" +
-				listOpen + "mb-menu' role='menu'>" +
-				sectionHtml + "</ul>" + navClose;
+				"<ul class='list-unstyled mb-menu' role='menu'>" +
+				sectionHtml + "</ul></nav>";
 		}
 
 		return panel.replace( /list-group-item/gi, "" ) + "</div>";
@@ -6229,7 +6267,7 @@ $document.on( "keydown", selector + " [role=menuitem]", function( event ) {
 				}
 
 				// Set focus on the first submenu item
-				$subMenu.find( "a:first" ).trigger( focusEvent );
+				$subMenu.children( "li" ).eq( 0 ).find( menuItemSelector ).trigger( focusEvent );
 
 			// Hide sub-menus and set focus
 			} else if ( which === 27 ) {
@@ -6247,7 +6285,7 @@ $document.on( "keydown", selector + " [role=menuitem]", function( event ) {
 
 		// Menu item is not within a menu bar
 		} else {
-			menuitemSelector = "> a, > details > summary";
+			menuitemSelector = menuItemSelector;
 
 			// Up / down arrow = Previous / next menu item
 			if ( which === 38 || which === 40 ) {
@@ -6410,8 +6448,8 @@ var pluginName = "wb-mltmd",
 	selector = "." + pluginName,
 	initedClass = pluginName + "-inited",
 	initEvent = "wb-init" + selector,
-	seed = 0,
-	templatetriggered = false,
+	uniqueCount = 0,
+	template,
 	i18n, i18nText,
 	captionsLoadedEvent = "ccloaded" + selector,
 	captionsLoadFailedEvent = "ccloadfail" + selector,
@@ -6432,7 +6470,8 @@ var pluginName = "wb-mltmd",
 	 * @param {jQuery Event} event Event that triggered this handler
 	 */
 	init = function( event ) {
-		var eventTarget = event.target;
+		var eventTarget = event.target,
+			elmId = eventTarget.id;
 
 		// Filter out any events triggered by descendants
 		// and only initialize the element once
@@ -6460,12 +6499,22 @@ var pluginName = "wb-mltmd",
 				};
 			}
 
-			if ( !templatetriggered ) {
-				templatetriggered = true;
+			// Ensure there is an id on the element
+			if ( !elmId ) {
+				elmId = "wb-mm-" + uniqueCount;
+				eventTarget.id = elmId;
+				uniqueCount += 1;
+			}
+
+			if ( template === undef ) {
 				$document.trigger({
 					type: "ajax-fetch.wb",
-					element: $( selector ),
+					element: selector,
 					fetch: wb.getPath( "/assets" ) + "/mediacontrols.html"
+				});
+			} else {
+				$( eventTarget ).trigger({
+					type: "templateloaded.wb"
 				});
 			}
 		}
@@ -6765,9 +6814,6 @@ var pluginName = "wb-mltmd",
 			}
 			$this.trigger( captionsVisibleChangeEvent );
 			break;
-		case "setPreviousTime":
-			this.object.previousTime = args;
-			break;
 		case "getBuffering":
 			return this.object.buffering || false;
 		case "setBuffering":
@@ -6904,9 +6950,12 @@ var pluginName = "wb-mltmd",
 
 $document.on( "timerpoke.wb " + initEvent, selector, init );
 
-$document.on( "ajax-fetched.wb", selector, function( event ) {
-	var $this = $( this ),
+$document.on( "ajax-fetched.wb templateloaded.wb", selector, function( event ) {
+	var $this = $( this );
+
+	if ( event.type === "ajax-fetched" ) {
 		template = event.pointer.html();
+	}
 
 	$this.data( "template", template );
 	$this.trigger({
@@ -6918,7 +6967,7 @@ $document.on( initializedEvent, selector, function() {
 	var $this = $( this ),
 		$media = $this.children( "audio, video" ).eq( 0 ),
 		captions = $media.children( "track[kind='captions']" ).attr( "src" ) || undef,
-		id = $this.attr( "id" ) || "wb-mm-" + ( seed++ ),
+		id = $this.attr( "id" ),
 		mId = $media.attr( "id" ) || id + "-md",
 		type = $media.is( "video" ) ? "video" : "audio",
 		width = type === "video" ? $media.attr( "width" ) || $media.width() : 0,
@@ -6934,10 +6983,6 @@ $document.on( initializedEvent, selector, function() {
 		}, i18nText),
 		media = $media.get( 0 ),
 		url;
-
-	if ( !$this.attr( "id" ) ) {
-		$this.attr( "id", id );
-	}
 
 	if ( $media.attr( "id" ) === undef ) {
 		$media.attr( "id", mId );
@@ -7562,7 +7607,7 @@ var pluginName = "wb-overlay",
 			}
 			closeText = closeText.replace( "'", "&#39;" );
 			overlayClose = "<button class='mfp-close " + closeClass +
-				"' title='" + closeText + "'>×<span class='wb-inv'> " +
+				"' title='" + closeText + "'>&#xd7;<span class='wb-inv'> " +
 				closeText + "</span></button>";
 
 			$elm.append( overlayClose );
@@ -7578,7 +7623,9 @@ var pluginName = "wb-overlay",
 			.attr( "aria-hidden", "false" );
 
 		if ( !noFocus ) {
-			$overlay.trigger( setFocusEvent );
+			$overlay
+				.scrollTop( 0 )
+				.trigger( setFocusEvent );
 		}
 	},
 
@@ -8435,7 +8482,6 @@ var pluginName = "wb-share",
 	/*
 	 * Plugin users can override these defaults by setting attributes on the html elements that the
 	 * selector matches.
-	 * For example, adding the attribute data-option1="false", will override option1 for that plugin instance.
 	 */
 	defaults = {
 		hdLvl: "h2",
@@ -8451,6 +8497,7 @@ var pluginName = "wb-share",
 		title: document.title || $document.find( "h1:first" ).text(),
 
 		pnlId: "",
+		lnkClass: "",
 		img: "",
 		desc: "",
 
@@ -8580,7 +8627,13 @@ var pluginName = "wb-share",
 			}
 
 			$elm = $( elm );
-			settings = $.extend( true, {}, defaults, wb.getData( $elm, "wet-boew" ) );
+			settings = $.extend(
+				true,
+				{},
+				defaults,
+				window[ pluginName ],
+				wb.getData( $elm, pluginName )
+			);
 			sites = settings.sites;
 			filter = settings.filter;
 			heading = settings.hdLvl;
@@ -8601,7 +8654,7 @@ var pluginName = "wb-share",
 			if ( elm.className.indexOf( "link-only" ) === -1 ) {
 				panel = "<section id='" + id  + "' class='shr-pg wb-overlay modal-content overlay-def wb-panel-r" +
 					"'><header class='modal-header'><" + heading + " class='modal-title'>" +
-					shareText + "</" + heading + "></header><ul class='colcount-xs-2'>";
+					shareText + "</" + heading + "></header><ul class='list-unstyled colcount-xs-2'>";
 
 				// If there is no filter array of site keys, then generate an array of site keys
 				if ( !filter || filter.length === 0 ) {
@@ -8639,7 +8692,7 @@ var pluginName = "wb-share",
 				panel += "</ul><div class='clearfix'></div><p class='col-sm-12'>" + i18nText.disclaimer + "</p></section>";
 				panelCount += 1;
 			}
-			link = "<a href='#" + id + "' aria-controls='" + id + "' class='shr-opn overlay-lnk'><span class='glyphicon glyphicon-share'></span> " +
+			link = "<a href='#" + id + "' aria-controls='" + id + "' class='shr-opn overlay-lnk " + settings.lnkClass + "'><span class='glyphicon glyphicon-share'></span> " +
 				shareText + "</a>";
 
 			$share = $( ( panel ? panel : "" ) + link );
@@ -8771,7 +8824,7 @@ var pluginName = "wb-tables",
 					$.fn.dataTableExt.oSort[ "string-case-asc" ] = i18nSortAscend;
 					$.fn.dataTableExt.oSort[ "string-case-desc" ] = i18nSortDescend;
 
-					$elm.dataTable( $.extend( true, {}, defaults, wb.getData( $elm, "wet-boew" ) ) );
+					$elm.dataTable( $.extend( true, {}, defaults, window[ pluginName ], wb.getData( $elm, pluginName ) ) );
 				}
 			});
 		}
@@ -9076,8 +9129,8 @@ var pluginName = "wb-tabs",
 				nextText + "'>" + glyphiconStart + "chevron-right'></span>" +
 				wbInvStart + nextText + btnEnd,
 			playControl =  tabsToggleStart + "plypause'><a class='plypause" +
-				btnMiddle + state + "'>" + iconState + " <i>" + state +
-				"</i>" + wbInvStart + spaceText + i18nText.hyphen + spaceText +
+				btnMiddle + state + "'>" + iconState + " <span>" + state +
+				"</span>" + wbInvStart + spaceText + i18nText.hyphen + spaceText +
 				hidden + btnEnd;
 
 		$tablist.prepend( prevControl + tabCount + nextControl );
@@ -9325,29 +9378,39 @@ var pluginName = "wb-tabs",
  // Bind the init event of the plugin
  $document.on( "timerpoke.wb " + initEvent + " " + shiftEvent, selector, function( event ) {
 	var eventType = event.type,
+		currentTarget = event.currentTarget,
+		isOrigin = currentTarget === event.target,
 
 		// "this" is cached for all events to utilize
-		$elm = $( this );
+		$elm = $( currentTarget );
 
-	switch ( eventType ) {
-	case "timerpoke":
-		onTimerPoke( $elm );
-		break;
+		switch ( eventType ) {
+		case "timerpoke":
 
-	/*
-	 * Init
-	 */
-	case "wb-init":
-		init( $elm );
-		break;
+			// Filter out any events triggered by descendants
+			if ( isOrigin ) {
+				onTimerPoke( $elm );
+			}
+			break;
 
-	/*
-	 * Change Slides
-	 */
-	case "shift":
-		onShift( $elm, event );
-		break;
-	}
+		/*
+		 * Init
+		 */
+		case "wb-init":
+
+			// Filter out any events triggered by descendants
+			if ( isOrigin ) {
+				init( $elm );
+			}
+			break;
+
+		/*
+		 * Change Slides
+		 */
+		case "shift":
+			onShift( $elm, event );
+			break;
+		}
 
 	/*
 	 * Since we are working with events we want to ensure that we are being passive about our control,
@@ -9389,7 +9452,7 @@ var pluginName = "wb-tabs",
 					.toggleClass( "glyphicon-play glyphicon-pause" );
 			$sldr.toggleClass( "playing" );
 
-			text = $plypause[ 0 ].getElementsByTagName( "i" )[ 0 ];
+			text = $plypause[ 0 ].getElementsByTagName( "span" )[ 0 ];
 			text.innerHTML = text.innerHTML === playText ?
 				i18nText.pause :
 				playText;
@@ -10225,7 +10288,7 @@ $document.on( setFocusEvent, function( event ) {
 
 	// Set the tabindex to -1 (as needed) to ensure the element is focusable
 	$elm
-		.filter( ":not([tabindex], a, button, input, textarea, select)" )
+		.filter( ":not([tabindex], a[href], button, input, textarea, select)" )
 			.attr( "tabindex", "-1" );
 
 	// Assigns focus to an element (delay allows for revealing of hidden content)

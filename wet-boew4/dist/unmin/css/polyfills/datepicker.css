@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0-rc1 - 2014-03-18
+ * v4.0.0 - 2014-03-31
  *
  *//*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
@@ -39,15 +39,17 @@
 }
 
 .picker-toggle {
-  margin: 0;
+  display: inline-block;
+  margin-left: 5px;
   background: none;
   border: none;
   vertical-align: middle;
 }
 
+.picker-toggle:link,
+.picker-toggle:visited,
 .picker-toggle:focus {
-  outline: 1px dotted;
-  outline-offset: -2px;
+  color: #000;
 }
 
 .picker-toggle span {

@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0-rc1 - 2014-03-18
+ * v4.0.0 - 2014-03-31
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -107,7 +107,6 @@ wb.i18nDict = {
 	"errs-fnd": " erreurs ont été trouvées.",
 	"err-fnd": " erreur a été trouvée.",
 	/* Date picker */
-	"date-hide": "Masquer le calendrier",
 	"date-show": "Sélectionner une date à partir d'un calendrier pour le champ:",
 	"date-sel": "Sélectionné",
 	/* Calendar */

@@ -19,17 +19,18 @@
 
  - Web Experience Toolkit
 </title>
-		<link href="../../../assets/favicon.ico" rel="shortcut icon" />
 		<meta content="width=device-width, initial-scale=1" name="viewport" />
 		<!-- Meta data -->
 		<meta name="description" content="Dynamically generates charts and graphs from table data." />
 		<!-- Meta data-->
 		<!--[if gte IE 9 | !IE ]><!-->
+<link href="../../../assets/favicon.ico" rel="icon" type="image/x-icon" />
 <link rel="stylesheet" href="../../../css/wet-boew.css" />
 <!--<![endif]-->
 <link rel="stylesheet" href="../../../css/theme.css" />
 
 <!--[if lt IE 9]>
+<link href="../../../assets/favicon.ico" rel="shortcut icon" />
 <link rel="stylesheet" href="../../../css/ie8-wet-boew.css" />
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
 <script src="../../../js/ie8-wet-boew.js"></script>
@@ -74,7 +75,7 @@
 							<section class="wb-mb-links col-xs-12 visible-sm visible-xs" id="wb-glb-mn">
 								<h2>Menu</h2>
 								<ul class="pnl-btn list-inline text-right">
-	<li><a href="#mb-pnl" title="Menu" aria-controls="mb-pnl" class="overlay-lnk" role="button"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Menu</span></span></a></li>
+	<li><a href="#mb-pnl" title="Menu" aria-controls="mb-pnl" class="overlay-lnk btn btn-xs btn-default" role="button"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Menu</span></span></a></li>
 </ul>
 <div id="mb-pnl"></div>
 
@@ -120,9 +121,11 @@
 	<h2>Site menu</h2>
     <div class="row">
         <ul class="list-inline menu">
+
 			<li><a href="../../../index-en.html">WET project</a></li>
 			<li><a href="http://wet-boew.github.io/wet-boew/docs/gs-cd/impl-en.html">Implement WET</a></li>
 			<li><a href="http://wet-boew.github.io/wet-boew/docs/gs-cd/contrib-en.html">Contribute to WET</a></li>
+
         </ul>
     </div>
 </div>
@@ -177,10 +180,8 @@
 
 <section>
 	<h2>Purpose</h2>
-	<p class="alert alert-info">Dynamically generates charts and graphs from table data.</p>
-	
+	<p>Dynamically generates charts and graphs from table data.</p>
 	<p>This feature dynamically generates charts from table data. The table data used to generate the graphic need to have a structure as defined in the techniques for tables. The graphic generated can be easily customized by using the CSS Option set to the tables elements.</p>
-	
 	<p>The charts plugin is a interface between data table and a drawing charts engine. Currently, for extensibility and to ease support, <a href="http://www.flotcharts.org/">Flot</a> is the charts drawing engine used.</p>
 </section>
 
@@ -243,8 +244,8 @@
 
 	<h3>Customize your chart</h3>
 	<ul>
-		<li>Configure the plugin using the <b>data-wet-boew</b> on the <code>table</code>code> element. This parameter allow you configure the options on how your data table will be interpreted in a programmatically determined way.
-			<pre><code>&lt;table class=&quot;wb-charts table&quot; data-wet-boew='{ &quot;referencevalue&quot;: 1, &quot;labelposition&quot;: 1, &quot;noencapsulation&quot;: true }'&gt;</code></pre>
+		<li>Configure the plugin using the <b>data-wb-charts</b> on the <code>table</code>code> element. This parameter allow you configure the options on how your data table will be interpreted in a programmatically determined way.
+			<pre><code>&lt;table class=&quot;wb-charts table&quot; data-wb-charts='{ &quot;referencevalue&quot;: 1, &quot;labelposition&quot;: 1, &quot;noencapsulation&quot;: true }'&gt;</code></pre>
 		</li>
 		<li>Configure the plugin using the <b>data-flot</b> on the <code>table</code>code> element. This parameter allow you to set the global Flot options.
 			<pre><code>&lt;!-- The following example configure gradients background color for the grid --&gt;
@@ -349,7 +350,7 @@
 			<tr>
 				<td>reversettblparsing</td>
 				<td>Define how the data table should be traversed. The default traversal direction is the same as the direction defined in HTML spec. The HTML spec direction is row base. Hold boolean value.</td>
-				<td>data-wet-boew='{ &quot;reversettblparsing&quot;: true }'</td>
+				<td>data-wb-charts='{ &quot;reversettblparsing&quot;: true }'</td>
 				<td>
 					<dl>
 						<dt>false (default):</dt>
@@ -362,7 +363,7 @@
 			<tr>
 				<td>labelposition</td>
 				<td>Specify the row or the column to use to set label on the charts. A <dfn>vector</dfn> is a row or column where the direction have no importance. Hold numeric value.</td>
-				<td>data-wet-boew='{ &quot;labelposition&quot;: 1 }'</td>
+				<td>data-wb-charts='{ &quot;labelposition&quot;: 1 }'</td>
 				<td>
 					<dl>
 						<dt>false (default):</dt>
@@ -379,7 +380,7 @@
 			<tr>
 				<td>referencevalue</td>
 				<td>Specify the row or the column to use as the value of reference to set the steps (x-axis ticks) on the charts. A <dfn>vector</dfn> is a row or column where the direction have no importance. Hold numeric value.</td>
-				<td>data-wet-boew='{ &quot;referencevalue&quot;: 1 }'</td>
+				<td>data-wb-charts='{ &quot;referencevalue&quot;: 1 }'</td>
 				<td>
 					<dl>
 						<dt>false (default):</dt>
@@ -396,7 +397,7 @@
 			<tr>
 				<td>decimal</td>
 				<td>For pie charts, it set the number of decimal precision to include for the percentage label. Hold numeric value</td>
-				<td>data-wet-boew='{ &quot;decimal&quot;: 1 }'</td>
+				<td>data-wb-charts='{ &quot;decimal&quot;: 1 }'</td>
 				<td>
 					<dl>
 						<dt>0 (default):</dt>
@@ -411,7 +412,7 @@
 			<tr>
 				<td>nolegend</td>
 				<td>Ability to destroy the flot generated legend. Hold boolean value.</td>
-				<td>data-wet-boew='{ &quot;nolegend&quot;: true }'</td>
+				<td>data-wb-charts='{ &quot;nolegend&quot;: true }'</td>
 				<td>
 					<dl>
 						<dt>false (default):</dt>
@@ -424,7 +425,7 @@
 			<tr>
 				<td>legendinline</td>
 				<td>Ability to move the flot generated legend after the table to meet WCAG 2.0 Level AA purpose. Hold boolean value.</td>
-				<td>data-wet-boew='{ &quot;legendinline&quot;: true }'</td>
+				<td>data-wb-charts='{ &quot;legendinline&quot;: true }'</td>
 				<td>
 					<dl>
 						<dt>false (default):</dt>
@@ -437,7 +438,7 @@
 			<tr>
 				<td>noencapsulation</td>
 				<td>Wrap or not the table in a details/summary elements. Hold boolean value.</td>
-				<td>data-wet-boew='{ &quot;noencapsulation&quot;: true }'</td>
+				<td>data-wb-charts='{ &quot;noencapsulation&quot;: true }'</td>
 				<td>
 					<dl>
 						<dt>false (default):</dt>
@@ -450,7 +451,7 @@
 			<tr>
 				<td>height</td>
 				<td>Set the height of a charts. Hold numeric value mesured in pixel.</td>
-				<td>data-wet-boew='{ &quot;height&quot;: 350 }'</td>
+				<td>data-wb-charts='{ &quot;height&quot;: 350 }'</td>
 				<td>
 					<dl>
 						<dt>$elm.height() (default):</dt>
@@ -463,7 +464,7 @@
 			<tr>
 				<td>width</td>
 				<td>Set the width of a charts. It may useful for pie charts but are useless for other charts because the Flot Canvas plugin will allow the charts to fit the full width of the table container. Hold numeric value mesured in pixel.</td>
-				<td>data-wet-boew='{ &quot;width&quot;: 350 }'</td>
+				<td>data-wb-charts='{ &quot;width&quot;: 350 }'</td>
 				<td>
 					<dl>
 						<dt>$elm.width() (default):</dt>
@@ -529,7 +530,7 @@
 
 
 
-		<footer role="contentinfo" id="wb-info" class="container visible-md visible-lg">
+		<footer role="contentinfo" id="wb-info" class="container visible-sm visible-md visible-lg wb-navcurr">
 			<nav role="navigation" class="row">
 				<h2>Site information</h2>
 				<section class="col-sm-3">

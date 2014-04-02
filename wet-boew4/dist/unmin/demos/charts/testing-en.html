@@ -16,7 +16,6 @@
 
  - Web Experience Toolkit
 </title>
-		<link href="../../assets/favicon.ico" rel="shortcut icon" />
 		<meta content="width=device-width, initial-scale=1" name="viewport" />
 		<!-- Meta data -->
 		<meta name="description" content="Specific test cases for testing purposes." />
@@ -28,11 +27,13 @@
 <meta name="dcterms.language" title="ISO639-2" content="eng" />
 		<!-- Meta data-->
 		<!--[if gte IE 9 | !IE ]><!-->
+<link href="../../assets/favicon.ico" rel="icon" type="image/x-icon" />
 <link rel="stylesheet" href="../../css/wet-boew.css" />
 <!--<![endif]-->
 <link rel="stylesheet" href="../../css/theme.css" />
 
 <!--[if lt IE 9]>
+<link href="../../assets/favicon.ico" rel="shortcut icon" />
 <link rel="stylesheet" href="../../css/ie8-wet-boew.css" />
 <link rel="stylesheet" href="../../css/ie8-theme.css" />
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
@@ -81,7 +82,7 @@
 							<section class="wb-mb-links col-xs-12 visible-sm visible-xs" id="wb-glb-mn">
 								<h2>Menu</h2>
 								<ul class="pnl-btn list-inline text-right">
-	<li><a href="#mb-pnl" title="Menu" aria-controls="mb-pnl" class="overlay-lnk" role="button"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Menu</span></span></a></li>
+	<li><a href="#mb-pnl" title="Menu" aria-controls="mb-pnl" class="overlay-lnk btn btn-xs btn-default" role="button"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Menu</span></span></a></li>
 </ul>
 <div id="mb-pnl"></div>
 
@@ -99,7 +100,7 @@
 </a>
 
 						</div>
-						<object id="wmms" type="image/svg+xml" tabindex="-1" role="img" data="./../../assets/wmms.svg" aria-label="Symbol of the Government of Canada"></object>
+						<object id="wmms" type="image/svg+xml" tabindex="-1" role="img" data="../../assets/wmms.svg" aria-label="Symbol of the Government of Canada"></object>
 
 
 						<section id="wb-srch" class="visible-md visible-lg">
@@ -127,9 +128,11 @@
 	<h2>Site menu</h2>
     <div class="row">
         <ul class="list-inline menu">
+
 			<li><a href="../../index-en.html">WET project</a></li>
 			<li><a href="http://wet-boew.github.io/wet-boew/docs/gs-cd/impl-en.html">Implement WET</a></li>
 			<li><a href="http://wet-boew.github.io/wet-boew/docs/gs-cd/contrib-en.html">Contribute to WET</a></li>
+
         </ul>
     </div>
 </div>
@@ -210,9 +213,9 @@
 		<li><em>Internal needs</em>, x-axis position 5 of 5</li>
 	</ul> 
 
-	<p><code>&lt;table class=&quot;wb-charts table&quot; data-wet-boew='{&quot;labelposition&quot;: 1, &quot;noencapsulation&quot;: true}'&gt;</code></p>
+	<p><code>&lt;table class=&quot;wb-charts table&quot; data-wb-charts='{&quot;labelposition&quot;: 1, &quot;noencapsulation&quot;: true}'&gt;</code></p>
 
-	<table class="wb-charts table" data-wet-boew='{"labelposition": 1, "noencapsulation": true}'>
+	<table class="wb-charts table" data-wb-charts='{"labelposition": 1, "noencapsulation": true}'>
 		<caption>Number of pages by main purpose and audience</caption>
 		<thead>
 			<tr>
@@ -282,9 +285,9 @@
 
 	<hr />
 
-	<p><code>&lt;table class=&quot;wb-charts table&quot; data-wet-boew='{&quot;labelposition&quot;: 1, &quot;noencapsulation&quot;: true, &quot;reversettblparsing&quot;: true}'&gt;</code></p>
+	<p><code>&lt;table class=&quot;wb-charts table&quot; data-wb-charts='{&quot;labelposition&quot;: 1, &quot;noencapsulation&quot;: true, &quot;reversettblparsing&quot;: true}'&gt;</code></p>
 
-	<table class="wb-charts table" data-wet-boew='{"labelposition": 1, "noencapsulation": true, "reversettblparsing": true}'>
+	<table class="wb-charts table" data-wb-charts='{"labelposition": 1, "noencapsulation": true, "reversettblparsing": true}'>
 	<caption>Number of pages by main purpose and audience</caption>
 		<thead>
 			<tr>
@@ -356,9 +359,9 @@
 	<h2>Pie charts and reversed table parsing</h2>
 	<p>The expecting result is the table produceds the same chart or graph. There is one exception where the width of both pie charts could be different.</p> 
 
-	<p><code>&lt;table class=&quot;wb-charts wb-charts-pie table&quot; data-wet-boew='{ &quot;height&quot;: 500, &quot;decimal&quot;: 1 }'&gt;</code></p>
+	<p><code>&lt;table class=&quot;wb-charts wb-charts-pie table&quot; data-wb-charts='{ &quot;height&quot;: 500, &quot;decimal&quot;: 1 }'&gt;</code></p>
 
-	<table class="wb-charts wb-charts-pie table" data-wet-boew='{ "height": 500, "decimal": 1 }'>
+	<table class="wb-charts wb-charts-pie table" data-wb-charts='{ "height": 500, "decimal": 1 }'>
 		<caption>Number of pages with tasks as a main purpose per audience</caption>
 		<colgroup><col /></colgroup>
 		<colgroup>
@@ -394,9 +397,9 @@
 
 	<p>Please note that <code>&lt;colgroup&gt;</code> elements are required for creating the following pie charts.</p>
 
-	<p><code>&lt;table class=&quot;wb-charts wb-charts-pie table&quot; data-wet-boew='{ &quot;height&quot;: 500, &quot;decimal&quot;: 1, &quot;reversettblparsing&quot;: true }'&gt;</code></p>
+	<p><code>&lt;table class=&quot;wb-charts wb-charts-pie table&quot; data-wb-charts='{ &quot;height&quot;: 500, &quot;decimal&quot;: 1, &quot;reversettblparsing&quot;: true }'&gt;</code></p>
 
-	<table class="wb-charts wb-charts-pie table" data-wet-boew='{ "height": 500, "decimal": 1, "reversettblparsing": true }'>
+	<table class="wb-charts wb-charts-pie table" data-wb-charts='{ "height": 500, "decimal": 1, "reversettblparsing": true }'>
 		<caption>Number of pages with tasks as a main purpose per audience</caption>
 		<colgroup><col /></colgroup>
 		<colgroup><col /></colgroup>
@@ -446,7 +449,7 @@
 
 
 
-		<footer role="contentinfo" id="wb-info" class="visible-md visible-lg">
+		<footer role="contentinfo" id="wb-info" class="visible-sm visible-md visible-lg wb-navcurr">
 			<div class="container">
 				<nav role="navigation">
 					<h2>Site information</h2>

@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0-rc1 - 2014-03-18
+ * v4.0.0 - 2014-03-31
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -19,12 +19,12 @@
 		if ( dataAttr ) {
 			try {
 				dataObj = JSON.parse( dataAttr );
+				$.data( elm, dataName, dataObj );
 			} catch ( error ) {
 				$.error( "Bad JSON array in data-" + dataName + " attribute" );
 			}
 		}
 
-		$.data( elm, dataName, dataObj );
 		return dataObj;
 	};
 })( jQuery, wb );
@@ -1367,10 +1367,7 @@ var pluginName = "wb-calevt",
 				events.maxDate
 			]
 		);
-		$containerId.attr({
-			role: "application",
-			"aria-label": i18nText.calendar
-		});
+		$containerId.attr( "aria-label", i18nText.calendar );
 	},
 
 	daysBetween = function( dateLow, dateHigh ) {
@@ -2420,7 +2417,7 @@ $document.on( "setFocus.wb-cal", setFocus );
 			i, iLength, j, jLength, parsedData, rIndex, currVectorOptions,
 			currentRowGroup, reverseTblParsing, dataGroupVector,
 			dataCell, previousDataCell, currDataVector,
-			pieQuaterFlotSeries, optionFlot, optionsCharts,
+			pieQuaterFlotSeries, optionFlot, optionsCharts, globalOptions,
 			defaultsOptions = {
 
 				// Flot Global Options
@@ -2590,12 +2587,12 @@ $document.on( "setFocus.wb-cal", setFocus );
 			};
 
 		/**
-		 * A little function to ovewrite and add preset into the default options
+		 * A little function to overwrite and add preset into the default options
 		 *
 		 * @method overwriteDefaultsOptions
 		 * @param {string} scopekey - Key that represent the subject of the setting, [flot, charts, series,...]
-		 * @param {json object} target - DefaultOptions that wiil be overwritten
-		 * @param {json object} object - User defined object for overwritting options
+		 * @param {json object} target - DefaultOptions that will be overwritten
+		 * @param {json object} object - User defined object for overwriting options
 		 * @return {json object} - Return the new object
 		 */
 		function overwriteDefaultsOptions( scopekey, target, object ) {
@@ -2615,13 +2612,16 @@ $document.on( "setFocus.wb-cal", setFocus );
 		}
 
 		// User defined options
-		if ( !window.chartsGraphOpts ){
+		if ( !window.chartsGraphOpts ) {
+			globalOptions = window[ pluginName ];
+
 			// Global setting
-			if ( window.wet_boew_charts !== undefined ) {
-				overwriteDefaultsOptions( "flot", defaultsOptions, window.wet_boew_charts );
-				overwriteDefaultsOptions( "series", defaultsOptions, window.wet_boew_charts );
-				overwriteDefaultsOptions( "charts", defaultsOptions, window.wet_boew_charts );
+			if ( globalOptions ) {
+				overwriteDefaultsOptions( "flot", defaultsOptions, globalOptions );
+				overwriteDefaultsOptions( "series", defaultsOptions, globalOptions );
+				overwriteDefaultsOptions( "charts", defaultsOptions, globalOptions );
 			}
+
 			// Save the setting here in a case of a second graphic on the same page
 			window.chartsGraphOpts = defaultsOptions;
 		}
@@ -2688,7 +2688,7 @@ $document.on( "setFocus.wb-cal", setFocus );
 			// Extend the config from the element @data attribute
 			config = $.extend( true, config, wb.getData( $elem, attribute ) );
 
-			// Merge and Overide the function.
+			// Merge and override the function.
 			for ( key in fn ) {
 				if ( !fn.hasOwnProperty( key ) ) {
 					continue;
@@ -2715,7 +2715,7 @@ $document.on( "setFocus.wb-cal", setFocus );
 		optionFlot = applyPreset( defaultsOptions.flot, $elm, "flot" );
 
 		// Apply any preset
-		optionsCharts = applyPreset( defaultsOptions.charts, $elm, "wet-boew" );
+		optionsCharts = applyPreset( defaultsOptions.charts, $elm, pluginName );
 
 		// Fix default width and height in case the table is hidden.
 		optionsCharts.width = optionsCharts.width | 250;
@@ -4668,7 +4668,13 @@ var pluginName = "wb-frmvld",
 						submitted = false,
 						$required = $form.find( "[required]" ).attr( "aria-required", "true" ),
 						errorFormId = "errors-" + ( !formId ? "default" : formId ),
-						settings = $.extend( true, {}, defaults, wb.getData( $elm, "wet-boew" ) ),
+						settings = $.extend(
+							true,
+							{},
+							defaults,
+							window[ pluginName ],
+							wb.getData( $elm, pluginName )
+						),
 						summaryHeading = settings.hdLvl,
 						i, len, validator;
 
@@ -4725,14 +4731,14 @@ var pluginName = "wb-frmvld",
 									$fieldset = $element.closest( "fieldset" );
 									if ( $fieldset.length !== 0 ) {
 										$legend = $fieldset.find( "legend" ).first();
-										if ( $legend.length !== 0 && $fieldset.find( "input[name=" + $element.attr( "name" ) + "]" ) !== 1) {
+										if ( $legend.length !== 0 && $fieldset.find( "input[name='" + $element.attr( "name" ) + "']" ) !== 1) {
 											$error.appendTo( $legend );
 											return;
 										}
 									}
 								}
 							}
-							$error.appendTo( $form.find( "label[for=" + $element.attr( "id" ) + "]" ) );
+							$error.appendTo( $form.find( "label[for='" + $element.attr( "id" ) + "']" ) );
 							return;
 						},
 
@@ -5060,7 +5066,8 @@ var pluginName = "wb-lbx",
 							// TODO: Better if dealt with upstream by Magnific popup
 							var $item = this.currItem,
 								$content = this.contentContainer,
-								$buttons = this.wrap.find( ".mfp-close, .mfp-arrow" ),
+								$wrap = this.wrap,
+								$buttons = $wrap.find( ".mfp-close, .mfp-arrow" ),
 								len = $buttons.length,
 								i, button, $bottomBar;
 
@@ -5074,6 +5081,8 @@ var pluginName = "wb-lbx",
 							} else {
 								$content.attr( "role", "document" );
 							}
+
+							$wrap.append( "<span tabindex='0' class='lbx-end wb-inv'></span>" );
 						},
 						change: function() {
 							var $item = this.currItem,
@@ -5144,12 +5153,13 @@ var pluginName = "wb-lbx",
 						settings.modal = true;
 					}
 
-					// Extend the settings with data-wet-boew then
+					// Extend the settings with data-wb-lbx then
 					$elm.magnificPopup(
 						$.extend(
 							true,
 							settings,
-							wb.getData( $elm, "wet-boew" )
+							window[ pluginName ],
+							wb.getData( $elm, pluginName )
 						)
 					);
 				}
@@ -5171,12 +5181,30 @@ $document.on( "keydown", ".mfp-wrap", function( event ) {
 		length = $focusable.length;
 		index = $focusable.index( event.target ) + ( event.shiftKey ? -1 : 1 );
 		if ( index === -1 ) {
-			index = length - 1;
-		} else if ( index === length ) {
+			index = length - 2;
+		} else if ( index === length - 1 ) {
 			index = 0;
 		}
 		$focusable.eq( index ).trigger( "setfocus.wb" );
 	}
+
+	/*
+	 * Since we are working with events we want to ensure that we are being passive about our control,
+	 * so returning true allows for events to always continue
+	 */
+	return true;
+});
+
+/*
+ * Sends focus to the close button if focus moves beyond the Lightbox (Jaws fix)
+ */
+$document.on( "focus", ".lbx-end", function( event ) {
+	event.preventDefault();
+	$( this )
+		.closest( ".mfp-wrap" )
+			.find( ":focusable" )
+				.eq( 0 )
+					.trigger( "setfocus.wb" );
 
 	/*
 	 * Since we are working with events we want to ensure that we are being passive about our control,
@@ -5218,6 +5246,7 @@ var pluginName = "wb-menu",
 	breadcrumb = document.getElementById( "wb-bc" ),
 	navCurrentEvent = "navcurr.wb",
 	focusEvent = "setfocus.wb",
+	menuItemSelector = "> a, > details > summary",
 	i18n, i18nText,
 	$document = wb.doc,
 
@@ -5277,7 +5306,7 @@ var pluginName = "wb-menu",
 		// Lets tweak for aria
 		for ( i = 0; i !== length; i += 1 ) {
 			$elm = $elements.eq( i );
-			$subMenu = $elm.siblings( ".sm" );
+			$subMenu = $elm.siblings( "ul" );
 
 			$elm.attr({
 				"aria-posinset": ( i + 1 ),
@@ -5296,9 +5325,47 @@ var pluginName = "wb-menu",
 				});
 
 				// recurse into submenu
-				drizzleAria( $subMenu.find( ":discoverable" ) );
+				drizzleAria( $subMenu.children( "li" ).find( menuItemSelector ) );
 			}
 		}
+	},
+
+	/**
+	 * @method createCollapsibleSection
+	 * @return {string}
+	 */
+	createCollapsibleSection = function( section, sectionIndex, sectionsLength, $items, itemsLength ) {
+
+		// Use details/summary for the collapsible mechanism
+		var k, $elm, elm, $item, $subItems,
+			$section = $( section ),
+			posinset = "' aria-posinset='",
+			menuitem = "role='menuitem' aria-setsize='",
+			sectionHtml = "<li><details>" + "<summary class='mb-item" +
+				( $section.hasClass( "wb-navcurr" ) || $section.children( ".wb-navcurr" ).length !== 0 ? " wb-navcurr'" : "'" ) +
+				"' " + menuitem + sectionsLength + posinset + ( sectionIndex + 1 ) +
+				"' aria-haspopup='true'>" + $section.text() + "</summary>" +
+				"<ul class='list-unstyled mb-sm' role='menu' aria-expanded='false' aria-hidden='true'>";
+
+		// Convert each of the list items into WAI-ARIA menuitems
+		for ( k = 0; k !== itemsLength; k += 1 ) {
+			$item = $items.eq( k );
+			$elm = $item.find( menuItemSelector );
+			elm = $elm[ 0 ];
+			if ( elm.nodeName.toLowerCase() === "a" ) {
+				sectionHtml += "<li>" + $item[ 0 ].innerHTML.replace(
+						/(<a\s)/,
+						"$1 " + menuitem + itemsLength +
+							posinset + ( k + 1 ) +
+							"' tabindex='-1' "
+					) + "</li>";
+			} else {
+				$subItems = $elm.parent().find( "> ul > li" );
+				sectionHtml += createCollapsibleSection( elm, k, itemsLength, $subItems, $subItems.length );
+			}
+		}
+
+		return sectionHtml + "</ul></details></li>";
 	},
 
 	/**
@@ -5307,20 +5374,9 @@ var pluginName = "wb-menu",
 	 * @return {string}
 	 */
 	createMobilePanelMenu = function( allProperties ) {
-		var navOpen = "<nav role='navigation'",
-			siteNavElement = " typeof='SiteNavigationElement'",
-			navClose = "</nav>",
-			detailsOpen = "<li><details>",
-			detailsClose = "</details></li>",
-			listOpen = "<ul class='list-unstyled ",
-			menuItemReplace1 = "role='menuitem' aria-setsize='",
-			menuItemReplace2 = "' aria-posinset='",
-			menuItemReplace3 = "' tabindex='-1' ",
-			summaryOpen = "<summary class='mb-item' " + menuItemReplace1,
-			summaryClose = "</summary>",
-			panel = "",
-			sectionHtml, properties, sections, section, parent, items,
-			href, linkHtml, i, j, k, len, len2, len3;
+		var panel = "",
+			sectionHtml, properties, sections, section, parent, $items,
+			href, linkHtml, i, j, len, sectionsLength, itemsLength;
 
 		// Process the secondary and site menus
 		len = allProperties.length;
@@ -5328,34 +5384,16 @@ var pluginName = "wb-menu",
 			properties = allProperties[ i ];
 			sectionHtml = "";
 			sections = properties[ 0 ];
-			len2 = sections.length;
-			for ( j = 0; j !== len2; j += 1 ) {
+			sectionsLength = sections.length;
+			for ( j = 0; j !== sectionsLength; j += 1 ) {
 				section = sections[ j ];
 				href = section.getAttribute( "href" );
-				items = section.parentNode.getElementsByTagName( "li" );
-				len3 = items.length;
+				$items = $( section.parentNode ).find( "> ul > li" );
+				itemsLength = $items.length;
 
 				// Collapsible section
-				if ( len3 !== 0 && ( !href || href.charAt( 0 ) === "#" ) ) {
-
-					// Use details/summary for the collapsible mechanism
-					sectionHtml += detailsOpen +
-						summaryOpen + len2 + menuItemReplace2 +
-						( j + 1 ) + "' aria-haspopup='true'>" +
-						section.innerHTML + summaryClose +
-						listOpen + "mb-sm' role='menu' aria-expanded='false' aria-hidden='true'>";
-
-					// Convert each of the list items in WAI-ARIA menuitems
-					for ( k = 0; k !== len3; k += 1 ) {
-						sectionHtml += "<li>" + items[ k ].innerHTML.replace(
-								/(<a\s)/,
-								"$1 " + menuItemReplace1 + len3 +
-									menuItemReplace2 + ( k + 1 ) +
-									menuItemReplace3
-							) + "</li>";
-					}
-
-					sectionHtml += "</ul>" + detailsClose;
+				if ( itemsLength !== 0 ) {
+					sectionHtml += createCollapsibleSection( section, j, sectionsLength, $items, itemsLength );
 				} else {
 					parent = section.parentNode;
 
@@ -5374,19 +5412,19 @@ var pluginName = "wb-menu",
 					sectionHtml += "<li class='no-sect'>" +
 						linkHtml.replace(
 							/(<a\s)/,
-							"$1 class='mb-item' " + menuItemReplace1 +
-								len2 + menuItemReplace2 + ( j + 1 ) +
-								menuItemReplace3
+							"$1 class='mb-item' " + "role='menuitem' aria-setsize='" +
+								sectionsLength + "' aria-posinset='" + ( j + 1 ) +
+								"' tabindex='-1' "
 						) + "</li>";
 				}
 			}
 
 			// Create the panel section
-			panel += navOpen + siteNavElement + " id='" + properties[ 1 ] +
-				"' class='" + properties[ 1 ] + " wb-menu'>" +
+			panel += "<nav role='navigation' typeof='SiteNavigationElement' id='" +
+				properties[ 1 ] + "' class='" + properties[ 1 ] + " wb-menu'>" +
 				"<h3>" + properties[ 2 ] + "</h3>" +
-				listOpen + "mb-menu' role='menu'>" +
-				sectionHtml + "</ul>" + navClose;
+				"<ul class='list-unstyled mb-menu' role='menu'>" +
+				sectionHtml + "</ul></nav>";
 		}
 
 		return panel.replace( /list-group-item/gi, "" ) + "</div>";
@@ -5801,7 +5839,7 @@ $document.on( "keydown", selector + " [role=menuitem]", function( event ) {
 				}
 
 				// Set focus on the first submenu item
-				$subMenu.find( "a:first" ).trigger( focusEvent );
+				$subMenu.children( "li" ).eq( 0 ).find( menuItemSelector ).trigger( focusEvent );
 
 			// Hide sub-menus and set focus
 			} else if ( which === 27 ) {
@@ -5819,7 +5857,7 @@ $document.on( "keydown", selector + " [role=menuitem]", function( event ) {
 
 		// Menu item is not within a menu bar
 		} else {
-			menuitemSelector = "> a, > details > summary";
+			menuitemSelector = menuItemSelector;
 
 			// Up / down arrow = Previous / next menu item
 			if ( which === 38 || which === 40 ) {
@@ -5982,8 +6020,8 @@ var pluginName = "wb-mltmd",
 	selector = "." + pluginName,
 	initedClass = pluginName + "-inited",
 	initEvent = "wb-init" + selector,
-	seed = 0,
-	templatetriggered = false,
+	uniqueCount = 0,
+	template,
 	i18n, i18nText,
 	captionsLoadedEvent = "ccloaded" + selector,
 	captionsLoadFailedEvent = "ccloadfail" + selector,
@@ -6004,7 +6042,8 @@ var pluginName = "wb-mltmd",
 	 * @param {jQuery Event} event Event that triggered this handler
 	 */
 	init = function( event ) {
-		var eventTarget = event.target;
+		var eventTarget = event.target,
+			elmId = eventTarget.id;
 
 		// Filter out any events triggered by descendants
 		// and only initialize the element once
@@ -6032,12 +6071,22 @@ var pluginName = "wb-mltmd",
 				};
 			}
 
-			if ( !templatetriggered ) {
-				templatetriggered = true;
+			// Ensure there is an id on the element
+			if ( !elmId ) {
+				elmId = "wb-mm-" + uniqueCount;
+				eventTarget.id = elmId;
+				uniqueCount += 1;
+			}
+
+			if ( template === undef ) {
 				$document.trigger({
 					type: "ajax-fetch.wb",
-					element: $( selector ),
+					element: selector,
 					fetch: wb.getPath( "/assets" ) + "/mediacontrols.html"
+				});
+			} else {
+				$( eventTarget ).trigger({
+					type: "templateloaded.wb"
 				});
 			}
 		}
@@ -6337,9 +6386,6 @@ var pluginName = "wb-mltmd",
 			}
 			$this.trigger( captionsVisibleChangeEvent );
 			break;
-		case "setPreviousTime":
-			this.object.previousTime = args;
-			break;
 		case "getBuffering":
 			return this.object.buffering || false;
 		case "setBuffering":
@@ -6476,9 +6522,12 @@ var pluginName = "wb-mltmd",
 
 $document.on( "timerpoke.wb " + initEvent, selector, init );
 
-$document.on( "ajax-fetched.wb", selector, function( event ) {
-	var $this = $( this ),
+$document.on( "ajax-fetched.wb templateloaded.wb", selector, function( event ) {
+	var $this = $( this );
+
+	if ( event.type === "ajax-fetched" ) {
 		template = event.pointer.html();
+	}
 
 	$this.data( "template", template );
 	$this.trigger({
@@ -6490,7 +6539,7 @@ $document.on( initializedEvent, selector, function() {
 	var $this = $( this ),
 		$media = $this.children( "audio, video" ).eq( 0 ),
 		captions = $media.children( "track[kind='captions']" ).attr( "src" ) || undef,
-		id = $this.attr( "id" ) || "wb-mm-" + ( seed++ ),
+		id = $this.attr( "id" ),
 		mId = $media.attr( "id" ) || id + "-md",
 		type = $media.is( "video" ) ? "video" : "audio",
 		width = type === "video" ? $media.attr( "width" ) || $media.width() : 0,
@@ -6506,10 +6555,6 @@ $document.on( initializedEvent, selector, function() {
 		}, i18nText),
 		media = $media.get( 0 ),
 		url;
-
-	if ( !$this.attr( "id" ) ) {
-		$this.attr( "id", id );
-	}
 
 	if ( $media.attr( "id" ) === undef ) {
 		$media.attr( "id", mId );
@@ -7134,7 +7179,7 @@ var pluginName = "wb-overlay",
 			}
 			closeText = closeText.replace( "'", "&#39;" );
 			overlayClose = "<button class='mfp-close " + closeClass +
-				"' title='" + closeText + "'>×<span class='wb-inv'> " +
+				"' title='" + closeText + "'>&#xd7;<span class='wb-inv'> " +
 				closeText + "</span></button>";
 
 			$elm.append( overlayClose );
@@ -7150,7 +7195,9 @@ var pluginName = "wb-overlay",
 			.attr( "aria-hidden", "false" );
 
 		if ( !noFocus ) {
-			$overlay.trigger( setFocusEvent );
+			$overlay
+				.scrollTop( 0 )
+				.trigger( setFocusEvent );
 		}
 	},
 
@@ -8007,7 +8054,6 @@ var pluginName = "wb-share",
 	/*
 	 * Plugin users can override these defaults by setting attributes on the html elements that the
 	 * selector matches.
-	 * For example, adding the attribute data-option1="false", will override option1 for that plugin instance.
 	 */
 	defaults = {
 		hdLvl: "h2",
@@ -8023,6 +8069,7 @@ var pluginName = "wb-share",
 		title: document.title || $document.find( "h1:first" ).text(),
 
 		pnlId: "",
+		lnkClass: "",
 		img: "",
 		desc: "",
 
@@ -8152,7 +8199,13 @@ var pluginName = "wb-share",
 			}
 
 			$elm = $( elm );
-			settings = $.extend( true, {}, defaults, wb.getData( $elm, "wet-boew" ) );
+			settings = $.extend(
+				true,
+				{},
+				defaults,
+				window[ pluginName ],
+				wb.getData( $elm, pluginName )
+			);
 			sites = settings.sites;
 			filter = settings.filter;
 			heading = settings.hdLvl;
@@ -8173,7 +8226,7 @@ var pluginName = "wb-share",
 			if ( elm.className.indexOf( "link-only" ) === -1 ) {
 				panel = "<section id='" + id  + "' class='shr-pg wb-overlay modal-content overlay-def wb-panel-r" +
 					"'><header class='modal-header'><" + heading + " class='modal-title'>" +
-					shareText + "</" + heading + "></header><ul class='colcount-xs-2'>";
+					shareText + "</" + heading + "></header><ul class='list-unstyled colcount-xs-2'>";
 
 				// If there is no filter array of site keys, then generate an array of site keys
 				if ( !filter || filter.length === 0 ) {
@@ -8211,7 +8264,7 @@ var pluginName = "wb-share",
 				panel += "</ul><div class='clearfix'></div><p class='col-sm-12'>" + i18nText.disclaimer + "</p></section>";
 				panelCount += 1;
 			}
-			link = "<a href='#" + id + "' aria-controls='" + id + "' class='shr-opn overlay-lnk'><span class='glyphicon glyphicon-share'></span> " +
+			link = "<a href='#" + id + "' aria-controls='" + id + "' class='shr-opn overlay-lnk " + settings.lnkClass + "'><span class='glyphicon glyphicon-share'></span> " +
 				shareText + "</a>";
 
 			$share = $( ( panel ? panel : "" ) + link );
@@ -8343,7 +8396,7 @@ var pluginName = "wb-tables",
 					$.fn.dataTableExt.oSort[ "string-case-asc" ] = i18nSortAscend;
 					$.fn.dataTableExt.oSort[ "string-case-desc" ] = i18nSortDescend;
 
-					$elm.dataTable( $.extend( true, {}, defaults, wb.getData( $elm, "wet-boew" ) ) );
+					$elm.dataTable( $.extend( true, {}, defaults, window[ pluginName ], wb.getData( $elm, pluginName ) ) );
 				}
 			});
 		}
@@ -8648,8 +8701,8 @@ var pluginName = "wb-tabs",
 				nextText + "'>" + glyphiconStart + "chevron-right'></span>" +
 				wbInvStart + nextText + btnEnd,
 			playControl =  tabsToggleStart + "plypause'><a class='plypause" +
-				btnMiddle + state + "'>" + iconState + " <i>" + state +
-				"</i>" + wbInvStart + spaceText + i18nText.hyphen + spaceText +
+				btnMiddle + state + "'>" + iconState + " <span>" + state +
+				"</span>" + wbInvStart + spaceText + i18nText.hyphen + spaceText +
 				hidden + btnEnd;
 
 		$tablist.prepend( prevControl + tabCount + nextControl );
@@ -8897,29 +8950,39 @@ var pluginName = "wb-tabs",
  // Bind the init event of the plugin
  $document.on( "timerpoke.wb " + initEvent + " " + shiftEvent, selector, function( event ) {
 	var eventType = event.type,
+		currentTarget = event.currentTarget,
+		isOrigin = currentTarget === event.target,
 
 		// "this" is cached for all events to utilize
-		$elm = $( this );
+		$elm = $( currentTarget );
 
-	switch ( eventType ) {
-	case "timerpoke":
-		onTimerPoke( $elm );
-		break;
+		switch ( eventType ) {
+		case "timerpoke":
 
-	/*
-	 * Init
-	 */
-	case "wb-init":
-		init( $elm );
-		break;
+			// Filter out any events triggered by descendants
+			if ( isOrigin ) {
+				onTimerPoke( $elm );
+			}
+			break;
 
-	/*
-	 * Change Slides
-	 */
-	case "shift":
-		onShift( $elm, event );
-		break;
-	}
+		/*
+		 * Init
+		 */
+		case "wb-init":
+
+			// Filter out any events triggered by descendants
+			if ( isOrigin ) {
+				init( $elm );
+			}
+			break;
+
+		/*
+		 * Change Slides
+		 */
+		case "shift":
+			onShift( $elm, event );
+			break;
+		}
 
 	/*
 	 * Since we are working with events we want to ensure that we are being passive about our control,
@@ -8961,7 +9024,7 @@ var pluginName = "wb-tabs",
 					.toggleClass( "glyphicon-play glyphicon-pause" );
 			$sldr.toggleClass( "playing" );
 
-			text = $plypause[ 0 ].getElementsByTagName( "i" )[ 0 ];
+			text = $plypause[ 0 ].getElementsByTagName( "span" )[ 0 ];
 			text.innerHTML = text.innerHTML === playText ?
 				i18nText.pause :
 				playText;
@@ -9797,7 +9860,7 @@ $document.on( setFocusEvent, function( event ) {
 
 	// Set the tabindex to -1 (as needed) to ensure the element is focusable
 	$elm
-		.filter( ":not([tabindex], a, button, input, textarea, select)" )
+		.filter( ":not([tabindex], a[href], button, input, textarea, select)" )
 			.attr( "tabindex", "-1" );
 
 	// Assigns focus to an element (delay allows for revealing of hidden content)
