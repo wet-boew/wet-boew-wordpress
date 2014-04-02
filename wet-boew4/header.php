@@ -23,8 +23,6 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 
 <title><?php bloginfo('name'); ?></title>
 
-<link href="<?php bloginfo('template_directory'); ?>/dist/assets/favicon.ico" rel="icon" />
-
 <meta name="description" content="English description / Description en anglais" />
 
 <meta name="dcterms.creator" content="English name of the content author / Nom en anglais de l'auteur du contenu" />
@@ -42,10 +40,12 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <!--[if gte IE 9 | !IE ]><!-->
+<link href="<?php bloginfo('template_directory'); ?>/dist/assets/favicon.ico" rel="icon" type="image/x-icon" />
 <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/dist/css/wet-boew.min.css" />
 <!--<![endif]-->
 <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/dist/css/theme.min.css" />
 <!--[if lt IE 9]>
+<link href="<?php bloginfo('template_directory'); ?>/dist/assets/favicon.ico" rel="shortcut icon"/>
 <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/dist/css/ie8-wet-boew.css"/>
 <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/dist/css/ie8-theme.min.css"/>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
