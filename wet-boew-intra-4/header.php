@@ -15,15 +15,9 @@
 
 <head>
 
-	<meta charset="utf-8" />
-
-<!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
-
-wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Licence-fra.txt -->
+<meta charset="utf-8" />
 
 <title><?php bloginfo('name'); ?></title>
-
-<link href="<?php bloginfo('template_directory'); ?>/dist/assets/favicon.ico" rel="icon" />
 
 <meta content="width=device-width, initial-scale=1" name="viewport" />
 
@@ -42,10 +36,12 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 <meta name="dcterms.language" title="ISO639-2" content="<?php _e("<!--:en-->eng<!--:--><!--:fr-->fra<!--:-->"); ?>" />
 
 <!--[if gte IE 9 | !IE ]><!-->
+    <link href="<?php bloginfo('template_directory'); ?>/dist/assets/favicon.ico" rel="icon" type="image/x-icon" />
     <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/dist/css/wet-boew.min.css" />
     <!--<![endif]-->
     <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/dist/css/theme.min.css" />
     <!--[if lt IE 9]>
+        <link href="<?php bloginfo('template_directory'); ?>/dist/assets/favicon.ico" rel="shortcut icon"/>
     	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/dist/css/ie8-wet-boew.min.css"/>
     	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     	<script src="<?php bloginfo('template_directory'); ?>/dist/js/ie8-wet-boew.min.js"></script
