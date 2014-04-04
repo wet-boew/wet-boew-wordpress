@@ -15,11 +15,7 @@
 
 <head>
 
-	<meta charset="utf-8" />
-
-<!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
-
-wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Licence-fra.txt -->
+<meta charset="utf-8" />
 
 <title><?php bloginfo('name'); ?></title>
 
