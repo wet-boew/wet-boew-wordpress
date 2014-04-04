@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<!--[if lt IE 9]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+	<head>
+		<meta charset="utf-8" />
+		<!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+		wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
+		<title>Charts and graphs - Labels and reference values
+
+	
+		
+		 - Working examples
+	
+
+ - Web Experience Toolkit
+</title>
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
+		<!-- Meta data -->
+		<meta name="description" content="How to manage the chart labels and the reference values used to determine the points on the chart." />
+		<meta name="dcterms.title" content="Charts and graphs - Labels and reference values - Web Experience Toolkit" />
+<meta name="dcterms.creator" content="French name of the content author / Nom en français de l'auteur du contenu" />
+<meta name="dcterms.issued" title="W3CDTF" content="Date published (YYYY-MM-DD) / Date de publication (AAAA-MM-JJ)" />
+<meta name="dcterms.modified" title="W3CDTF" content="Date modified (YYYY-MM-DD) / Date de modification (AAAA-MM-JJ)" />
+<meta name="dcterms.subject" title="scheme" content="French subject terms / Termes de sujet en français" />
+<meta name="dcterms.language" title="ISO639-2" content="eng" />
+		<!-- Meta data-->
+		<!--[if gte IE 9 | !IE ]><!-->
+<link href="../../assets/favicon.ico" rel="icon" type="image/x-icon" />
+<link rel="stylesheet" href="../../css/wet-boew.css" />
+<!--<![endif]-->
+<link rel="stylesheet" href="../../css/theme.css" />
+
+<!--[if lt IE 9]>
+<link href="../../assets/favicon.ico" rel="shortcut icon" />
+<link rel="stylesheet" href="../../css/ie8-wet-boew.css" />
+<link rel="stylesheet" href="../../css/ie8-theme.css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
+<script src="../../js/ie8-wet-boew.js"></script>
+<![endif]-->
+
+<noscript><link rel="stylesheet" href="../../css/noscript.css" /></noscript>
+	</head>
+	<body vocab="http://schema.org/" typeof="WebPage">
+		<ul id="wb-tphp">
+			<li class="wb-slc">
+				<a class="wb-sl" href="#wb-cont">Skip to main content</a>
+			</li>
+
+			<li class="wb-slc visible-md visible-lg">
+				<a class="wb-sl" href="#wb-info">Skip to site information</a>
+			</li>
+
+
+		</ul>
+		<header role="banner">
+			<div id="wb-bnr">
+				<div id="wb-bar">
+					<div class="container">
+						<div class="row">
+							
+<object id="gcwu-sig" type="image/svg+xml" tabindex="-1" role="img" data="../../assets/sig-en.svg" aria-label="Government of Canada"></object>
+<ul id="gc-bar" class="list-inline">
+
+	<li><a href="http://www.canada.ca/en/index.html" rel="external">Canada.ca</a></li>
+	<li><a href="http://www.canada.ca/en/services/index.html" rel="external">Services</a></li>
+	<li><a href="http://www.canada.ca/en/gov/dept/index.html" rel="external">Departments</a></li>
+
+
+	<li id="wb-lng"><h2>Language selection</h2>
+	<ul class="list-inline">
+
+		<li><a lang="fr" href="labelsandreferencevalue-fr.html">Français</a></li>
+
+
+	</ul>
+</li>
+
+</ul>
+
+							<section class="wb-mb-links col-xs-12 visible-sm visible-xs" id="wb-glb-mn">
+								<h2>Menu</h2>
+								<ul class="pnl-btn list-inline text-right">
+	<li><a href="#mb-pnl" title="Menu" aria-controls="mb-pnl" class="overlay-lnk btn btn-xs btn-default" role="button"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Menu</span></span></a></li>
+</ul>
+<div id="mb-pnl"></div>
+
+							</section>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="container">
+					<div class="row">
+						<div id="wb-sttl" class="col-md-5">
+							<a href="http://wet-boew.github.io/v4.0-ci/index-en.html">
+	<span>Web Experience Toolkit</span>
+</a>
+
+						</div>
+						<object id="wmms" type="image/svg+xml" tabindex="-1" role="img" data="../../assets/wmms.svg" aria-label="Symbol of the Government of Canada"></object>
+
+
+						<section id="wb-srch" class="visible-md visible-lg">
+							<h2>Search</h2>
+							<form action="https://google.ca/search" method="get" role="search" class="form-inline">
+
+	<div class="form-group">
+		<label for="wb-srch-q">Search website</label>
+		<input id="wb-srch-q" class="form-control" name="q" type="search" value="" size="27" maxlength="150" />
+		<input type="hidden" name="q" value="site:wet-boew.github.io OR site:github.com/wet-boew/" />
+	</div>
+
+	<button type="submit" id="wb-srch-sub" class="btn btn-default">Search</button>
+
+</form>
+
+						</section>
+
+					</div>
+				</div>
+			</div>
+
+			<nav role="navigation" id="wb-sm" data-ajax-fetch="../../ajax/sitemenu-en.html" data-trgt="mb-pnl" class="wb-menu visible-md visible-lg" typeof="SiteNavigationElement">
+				<div class="container nvbar">
+	<h2>Site menu</h2>
+    <div class="row">
+        <ul class="list-inline menu">
+
+			<li><a href="../../index-en.html">WET project</a></li>
+			<li><a href="http://wet-boew.github.io/wet-boew/docs/gs-cd/impl-en.html">Implement WET</a></li>
+			<li><a href="http://wet-boew.github.io/wet-boew/docs/gs-cd/contrib-en.html">Contribute to WET</a></li>
+
+        </ul>
+    </div>
+</div>
+
+			</nav>
+
+
+			<nav role="navigation" id="wb-bc" property="breadcrumb">
+				<h2>You are here:</h2>
+				<div class="container">
+	<div class="row">
+		<ol class="breadcrumb">
+			<li>
+				<a href="http://wet-boew.github.io/v4.0-ci/index-en.html">Home</a>
+			</li>
+			<li>
+				<a href="http://wet-boew.github.io/v4.0-ci/demos/index-en.html">Working examples</a>
+			</li>
+
+			<li>Charts and graphs - Labels and reference values</li>
+		</ol>
+	</div>
+</div>
+
+			</nav>
+
+		</header>
+
+
+		<main role="main" property="mainContentOfPage" class="container">
+			<h1 id="wb-cont" property="name">Charts and graphs - Labels and reference values</h1>
+			
+
+
+
+			
+
+<ul>
+	<li><a href="charts-en.html">Charts and graphs - Simple and easy</a></li>
+	<li><a href="custom-en.html">Customization, custom presets and multiple charts and graphs types</a></li>
+	<li><a href="piecustom-en.html">Customizing pie charts</a></li>
+	<li><a href="functionandnumbers-en.html">Thousands separator</a></li>
+	<li><a href="functionandnumbers-en.html#functionpreset">Custom preset functions</a></li>
+	<li><a href="testing-en.html">Specific test cases</a></li>
+</ul>
+<hr />
+
+<section>
+	<h2>Default</h2>
+
+	<pre><code>data-wb-charts = '{
+	"noencapsulation": true 
+}'</code></pre>
+
+	<table class="wb-charts wb-charts-line table" data-wb-charts='{ "noencapsulation": true }'>
+		<thead>
+			<tr>
+				<td rowspan="3"></td>
+				<th colspan="6">Group A</th>
+				<th rowspan="3">Group B</th>
+				<th rowspan="3">Group C</th>
+			</tr>
+			<tr>
+				<th colspan="2">Subject</th>
+				<th colspan="4">Topic</th>
+			</tr>
+			<tr>
+				<th>Item 1</th>
+				<th>Item 2</th>
+				<th>Object 1</th>
+				<th>Object 2</th>
+				<th>Object 3</th>
+				<th>Object 4</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th>Series one</th>
+				<td>5</td>
+				<td>10</td>
+				<td>5</td>
+				<td>10</td>
+				<td>5</td>
+				<td>10</td>
+				<td>5</td>
+				<td>10</td>
+			</tr>
+			<tr>
+				<th>Series two</th>
+				<td>3</td>
+				<td>9</td>
+				<td>3</td>
+				<td>9</td>
+				<td>3</td>
+				<td>9</td>
+				<td>3</td>
+				<td>9</td>
+			</tr>
+			<tr>
+				<th>Series three</th>
+				<td>4</td>
+				<td>12</td>
+				<td>4</td>
+				<td>12</td>
+				<td>4</td>
+				<td>12</td>
+				<td>4</td>
+				<td>12</td>
+			</tr>
+		</tbody>
+	</table>
+</section>
+
+<section>
+	<h2>Labels and reference values from the first table row</h2>
+
+	<pre><code>data-wb-charts = '{
+	"referencevalue": 1,
+	"labelposition": 1,
+	"noencapsulation": true 
+}'</code></pre>
+
+	<table class="wb-charts wb-charts-line table" data-wb-charts='{ "referencevalue": 1, "labelposition": 1, "noencapsulation": true }'>
+		<thead>
+			<tr>
+				<td rowspan="3"></td>
+				<th colspan="6">Group A</th>
+				<th rowspan="3">Group B</th>
+				<th rowspan="3">Group C</th>
+			</tr>
+			<tr>
+				<th colspan="2">Subject</th>
+				<th colspan="4">Topic</th>
+			</tr>
+			<tr>
+				<th>Item 1</th>
+				<th>Item 2</th>
+				<th>Object 1</th>
+				<th>Object 2</th>
+				<th>Object 3</th>
+				<th>Object 4</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th>Series one</th>
+				<td>5</td>
+				<td>10</td>
+				<td>5</td>
+				<td>10</td>
+				<td>5</td>
+				<td>10</td>
+				<td>5</td>
+				<td>10</td>
+			</tr>
+			<tr>
+				<th>Series two</th>
+				<td>3</td>
+				<td>9</td>
+				<td>3</td>
+				<td>9</td>
+				<td>3</td>
+				<td>9</td>
+				<td>3</td>
+				<td>9</td>
+			</tr>
+			<tr>
+				<th>Series three</th>
+				<td>4</td>
+				<td>12</td>
+				<td>4</td>
+				<td>12</td>
+				<td>4</td>
+				<td>12</td>
+				<td>4</td>
+				<td>12</td>
+			</tr>
+		</tbody>
+	</table>
+</section>
+
+<section>
+	<h2>Labels from the first table row and reference values from the second table row</h2>
+
+	<pre><code>data-wb-charts = '{
+	"referencevalue": 2,
+	"labelposition": 1,
+	"noencapsulation": true 
+}'</code></pre>
+
+	<table class="wb-charts wb-charts-line table" data-wb-charts='{ "referencevalue": 2, "labelposition": 1, "noencapsulation": true }'>
+		<thead>
+			<tr>
+				<td rowspan="3"></td>
+				<th colspan="6">Group A</th>
+				<th rowspan="3">Group B</th>
+				<th rowspan="3">Group C</th>
+			</tr>
+			<tr>
+				<th colspan="2">Subject</th>
+				<th colspan="4">Topic</th>
+			</tr>
+			<tr>
+				<th>Item 1</th>
+				<th>Item 2</th>
+				<th>Object 1</th>
+				<th>Object 2</th>
+				<th>Object 3</th>
+				<th>Object 4</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th>Series one</th>
+				<td>5</td>
+				<td>10</td>
+				<td>5</td>
+				<td>10</td>
+				<td>5</td>
+				<td>10</td>
+				<td>5</td>
+				<td>10</td>
+			</tr>
+			<tr>
+				<th>Series two</th>
+				<td>3</td>
+				<td>9</td>
+				<td>3</td>
+				<td>9</td>
+				<td>3</td>
+				<td>9</td>
+				<td>3</td>
+				<td>9</td>
+			</tr>
+			<tr>
+				<th>Series three</th>
+				<td>4</td>
+				<td>12</td>
+				<td>4</td>
+				<td>12</td>
+				<td>4</td>
+				<td>12</td>
+				<td>4</td>
+				<td>12</td>
+			</tr>
+		</tbody>
+	</table>
+</section>
+
+<section>
+	<h2>Labels from the first table row and reference values from the third table row</h2>
+
+	<pre><code>data-wb-charts = '{
+	"referencevalue": 3,
+	"labelposition": 1,
+	"noencapsulation": true 
+}'</code></pre>
+
+	<table class="wb-charts wb-charts-line table" data-wb-charts='{ "referencevalue": 3, "labelposition": 1, "noencapsulation": true }'>
+		<thead>
+			<tr>
+				<td rowspan="3"></td>
+				<th colspan="6">Group A</th>
+				<th rowspan="3">Group B</th>
+				<th rowspan="3">Group C</th>
+			</tr>
+			<tr>
+				<th colspan="2">Subject</th>
+				<th colspan="4">Topic</th>
+			</tr>
+			<tr>
+				<th>Item 1</th>
+				<th>Item 2</th>
+				<th>Object 1</th>
+				<th>Object 2</th>
+				<th>Object 3</th>
+				<th>Object 4</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th>Series one</th>
+				<td>5</td>
+				<td>10</td>
+				<td>5</td>
+				<td>10</td>
+				<td>5</td>
+				<td>10</td>
+				<td>5</td>
+				<td>10</td>
+			</tr>
+			<tr>
+				<th>Series two</th>
+				<td>3</td>
+				<td>9</td>
+				<td>3</td>
+				<td>9</td>
+				<td>3</td>
+				<td>9</td>
+				<td>3</td>
+				<td>9</td>
+			</tr>
+			<tr>
+				<th>Series three</th>
+				<td>4</td>
+				<td>12</td>
+				<td>4</td>
+				<td>12</td>
+				<td>4</td>
+				<td>12</td>
+				<td>4</td>
+				<td>12</td>
+			</tr>
+		</tbody>
+	</table>
+</section>
+
+<section>
+	<h2>Labels from the second table row and reference values from the third table row</h2>
+
+	<pre><code>data-wb-charts = '{
+	"referencevalue": 3,
+	"labelposition": 2,
+	"noencapsulation": true 
+}'</code></pre>
+
+	<table class="wb-charts wb-charts-line table" data-wb-charts='{ "referencevalue": 3, "labelposition": 2, "noencapsulation": true }'>
+		<thead>
+			<tr>
+				<td rowspan="3"></td>
+				<th colspan="6">Group A</th>
+				<th rowspan="3">Group B</th>
+				<th rowspan="3">Group C</th>
+			</tr>
+			<tr>
+				<th colspan="2">Subject</th>
+				<th colspan="4">Topic</th>
+			</tr>
+			<tr>
+				<th>Item 1</th>
+				<th>Item 2</th>
+				<th>Object 1</th>
+				<th>Object 2</th>
+				<th>Object 3</th>
+				<th>Object 4</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th>Series one</th>
+				<td>5</td>
+				<td>10</td>
+				<td>5</td>
+				<td>10</td>
+				<td>5</td>
+				<td>10</td>
+				<td>5</td>
+				<td>10</td>
+			</tr>
+			<tr>
+				<th>Series two</th>
+				<td>3</td>
+				<td>9</td>
+				<td>3</td>
+				<td>9</td>
+				<td>3</td>
+				<td>9</td>
+				<td>3</td>
+				<td>9</td>
+			</tr>
+			<tr>
+				<th>Series three</th>
+				<td>4</td>
+				<td>12</td>
+				<td>4</td>
+				<td>12</td>
+				<td>4</td>
+				<td>12</td>
+				<td>4</td>
+				<td>12</td>
+			</tr>
+		</tbody>
+	</table>
+</section>
+
+<section>
+	<h2>Labels and reference values from the third table row</h2>
+
+	<pre><code>data-wb-charts = '{
+	"referencevalue": 3,
+	"labelposition": 3,
+	"noencapsulation": true 
+}'</code></pre>
+
+	<table class="wb-charts wb-charts-line table" data-wb-charts='{ "referencevalue": 3, "labelposition": 3, "noencapsulation": true }'>
+		<thead>
+			<tr>
+				<td rowspan="3"></td>
+				<th colspan="6">Group A</th>
+				<th rowspan="3">Group B</th>
+				<th rowspan="3">Group C</th>
+			</tr>
+			<tr>
+				<th colspan="2">Subject</th>
+				<th colspan="4">Topic</th>
+			</tr>
+			<tr>
+				<th>Item 1</th>
+				<th>Item 2</th>
+				<th>Object 1</th>
+				<th>Object 2</th>
+				<th>Object 3</th>
+				<th>Object 4</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th>Series one</th>
+				<td>5</td>
+				<td>10</td>
+				<td>5</td>
+				<td>10</td>
+				<td>5</td>
+				<td>10</td>
+				<td>5</td>
+				<td>10</td>
+			</tr>
+			<tr>
+				<th>Series two</th>
+				<td>3</td>
+				<td>9</td>
+				<td>3</td>
+				<td>9</td>
+				<td>3</td>
+				<td>9</td>
+				<td>3</td>
+				<td>9</td>
+			</tr>
+			<tr>
+				<th>Series three</th>
+				<td>4</td>
+				<td>12</td>
+				<td>4</td>
+				<td>12</td>
+				<td>4</td>
+				<td>12</td>
+				<td>4</td>
+				<td>12</td>
+			</tr>
+		</tbody>
+	</table>
+</section>
+
+
+			<dl id="wb-dtmd" property="dateModified">
+	<dt>Date modified:&#32;</dt>
+	<dd><time>2014-02-19</time></dd>
+</dl>
+
+
+		</main>
+
+
+
+		<footer role="contentinfo" id="wb-info" class="visible-sm visible-md visible-lg wb-navcurr">
+			<div class="container">
+				<nav role="navigation">
+					<h2>Site information</h2>
+					<ul id="gc-tctr" class="list-inline">
+	<li><a rel="license" href="http://wet-boew.github.io/wet-boew/License-en.html">Terms and conditions</a></li>
+	<li><a href="http://www.tbs-sct.gc.ca/pd-dp/index-en.asp">Transparency</a></li>
+</ul>
+					<div class="row">
+						<section class="col-sm-3">
+	<h3>About</h3>
+	<ul class="list-unstyled">
+		<li><a href="http://wet-boew.github.io/v4.0-ci/index-en.html#about">About the Web Experience Toolkit</a></li>
+		<li><a href="http://www.tbs-sct.gc.ca/ws-nw/index-eng.asp">About the Web Standards</a></li>
+	</ul>
+</section>
+<section class="col-sm-3">
+	<h3>Contact us</h3>
+	<ul class="list-unstyled">
+		<li><a href="https://github.com/wet-boew/wet-boew/issues/new">Questions or comments?</a></li>
+	</ul>
+</section>
+<section class="col-sm-3">
+	<h3>News</h3>
+	<ul class="list-unstyled">
+		<li><a href="https://github.com/wet-boew/wet-boew/pulse">Recent project activity</a></li>
+		<li><a href="https://github.com/wet-boew/wet-boew/graphs">Project statistics</a></li>
+	</ul>
+</section>
+<section class="col-sm-3">
+	<h3>Stay connected</h3>
+	<ul class="list-unstyled">
+		<li><a href="https://twitter.com/WebExpToolkit">Twitter</a></li>
+	</ul>
+</section>
+
+					</div>
+				</nav>
+			</div>
+			<div id="gc-info">
+				<div class="container">
+					<nav role="navigation">
+						<h2>Government of Canada footer</h2>
+						
+<ul class="list-inline">
+
+	<li><a href="http://healthycanadians.gc.ca"><span>Health</span>healthycanadians.gc.ca</a></li>
+	<li><a href="http://travel.gc.ca"><span>Travel</span>travel.gc.ca</a></li>
+	<li><a href="http://www.servicecanada.gc.ca/eng/home.shtml"><span>Service Canada</span>servicecanada.gc.ca</a></li>
+	<li><a href="http://www.jobbank.gc.ca"><span>Jobs</span>jobbank.gc.ca</a></li>
+	<li><a href="http://actionplan.gc.ca/en"><span>Economy</span>actionplan.gc.ca</a></li>
+
+	<li id="canada-ca"><a href="http://www.canada.ca/en/index.html">Canada.ca</a></li>
+</ul>
+					</nav>
+				</div>
+			</div>
+		</footer>
+
+		<!--[if gte IE 9 | !IE ]><!-->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.js"></script>
+<script src="../../js/wet-boew.js"></script>
+<!--<![endif]-->
+<!--[if lt IE 9]>
+<script src="../../js/ie8-wet-boew2.js"></script>
+<![endif]-->
+
+
+	</body>
+</html>

@@ -12,44 +12,59 @@
  * variables that are common to all instances of the plugin on a page.
  */
 var $document = wb.doc,
-	smallViews = "xxsmallview.wb xsmallview.wb smallview.wb",
-	largeViews = "mediumview.wb largeview.wb xlargeview.wb",
-	$fipImg,
 
-onSmallView = function () {
-	$fipImg.attr( "src", $fipImg.attr( "src" ).replace( "wmms-intra", "wmms" ) );
-},
-
-onMediumLargeView = function () {
-	$fipImg.attr( "src", $fipImg.attr( "src" ).replace( /wmms\./, "wmms-intra." ) );
-};
-
-$document.on( smallViews, function() {
-
-	//Disable event if SVG polyfill is not used for FIP
-	if ( $fipImg.length === 0 ) {
-		$document.off( smallViews );
+	onXXSmallView = function() {
 		return;
-	}
+	},
 
-	onSmallView();
-});
-
-$document.on( largeViews, function() {
-
-	//Disable event if SVG polyfill is not used for FIP
-	if ( $fipImg.length === 0 ) {
-		$document.off( largeViews );
+	onXSmallView = function() {
 		return;
-	}
+	},
 
-	onMediumLargeView();
-});
+	onSmallView = function() {
+		return;
+	},
 
-$document.one( "timerpoke.wb", function() {
-	$fipImg = $( "img#wmms" );
-	if ( document.documentElement.className.indexOf( "smallview" ) !== -1 ) {
-	    onSmallView();
+	onMediumView = function() {
+		return;
+	},
+
+	onLargeView = function() {
+		return;
+	},
+
+	onXLargeView = function() {
+		return;
+	};
+
+$document.on( "xxsmallview.wb xsmallview.wb smallview.wb mediumview.wb largeview.wb xlargeview.wb", function( event ) {
+	var eventType = event.type;
+
+	switch ( eventType ) {
+
+	case "xxsmallview":
+		onXXSmallView();
+		break;
+
+	case "xsmallview":
+		onXSmallView();
+		break;
+
+	case "smallview":
+		onSmallView();
+		break;
+
+	case "mediumview":
+		onMediumView();
+		break;
+
+	case "largeview":
+		onLargeView();
+		break;
+
+	case "xlargeview":
+		onXLargeView();
+		break;
 	}
 });
 

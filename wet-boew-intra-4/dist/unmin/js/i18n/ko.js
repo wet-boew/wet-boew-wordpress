@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0-rc1 - 2014-03-18
+ * v4.0.0 - 2014-03-31
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -107,7 +107,6 @@ wb.i18nDict = {
 	"errs-fnd": " 오류가 발견되었습니다.",
 	"err-fnd": " 오류가 발견되었습니다.",
 	/* Date picker */
-	"date-hide": "캘린더 숨기기",
 	"date-show": "필드에 달력에서 날짜를 선택:",
 	"date-sel": "선택된",
 	/* Calendar */

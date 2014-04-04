@@ -11,14 +11,13 @@
 
 	
 		
-			 - Government of Canada Intranet theme
+			 - GCWU theme
 		
 		 - Working examples
 	
 
  - Web Experience Toolkit
 </title>
-		<link href="./assets/favicon.ico" rel="shortcut icon" />
 		<meta content="width=device-width, initial-scale=1" name="viewport" />
 		<!-- Meta data -->
 		<meta name="description" content="Web Experience Toolkit (WET) includes reusable components for building and maintaining innovative Web sites that are accessible, usable, and interoperable. These reusable components are open source software and free for use by departments and external Web communities" />
@@ -30,18 +29,20 @@
 <meta name="dcterms.language" title="ISO639-2" content="eng" />
 		<!-- Meta data-->
 		<!--[if gte IE 9 | !IE ]><!-->
+<link href="./assets/favicon.ico" rel="icon" type="image/x-icon" />
 <link rel="stylesheet" href="./css/wet-boew.css" />
 <!--<![endif]-->
 <link rel="stylesheet" href="./css/theme.css" />
 
 <!--[if lt IE 9]>
+<link href="./assets/favicon.ico" rel="shortcut icon" />
 <link rel="stylesheet" href="./css/ie8-wet-boew.css" />
+<link rel="stylesheet" href="./css/ie8-theme.css" />
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
 <script src="./js/ie8-wet-boew.js"></script>
 <![endif]-->
 
 <noscript><link rel="stylesheet" href="./css/noscript.css" /></noscript>
-
 	</head>
 	<body vocab="http://schema.org/" typeof="WebPage">
 		<ul id="wb-tphp">
@@ -61,23 +62,29 @@
 					<div class="container">
 						<div class="row">
 							
-<object id="gcwu-sig" type="image/svg+xml" tabindex="-1" role="img" data="./assets/sig-blk-en.svg" aria-label="Government of Canada"></object>
+<object id="gcwu-sig" type="image/svg+xml" tabindex="-1" role="img" data="./assets/sig-en.svg" aria-label="Government of Canada"></object>
+<ul id="gc-bar" class="list-inline">
 
-	<section id="wb-lng"><h2>Language selection</h2>
+	<li><a href="http://www.canada.ca/en/index.html" rel="external">Canada.ca</a></li>
+	<li><a href="http://www.canada.ca/en/services/index.html" rel="external">Services</a></li>
+	<li><a href="http://www.canada.ca/en/gov/dept/index.html" rel="external">Departments</a></li>
+
+
+	<li id="wb-lng"><h2>Language selection</h2>
 	<ul class="list-inline">
 
 		<li><a lang="fr" href="content-fr.html">Français</a></li>
 
 
 	</ul>
-</section>
+</li>
 
 </ul>
 
 							<section class="wb-mb-links col-xs-12 visible-sm visible-xs" id="wb-glb-mn">
 								<h2>Menu</h2>
 								<ul class="pnl-btn list-inline text-right">
-	<li><a href="#mb-pnl" title="Menu" aria-controls="mb-pnl" class="overlay-lnk" role="button"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Menu</span></span></a></li>
+	<li><a href="#mb-pnl" title="Menu" aria-controls="mb-pnl" class="overlay-lnk btn btn-xs btn-default" role="button"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Menu</span></span></a></li>
 </ul>
 <div id="mb-pnl"></div>
 
@@ -89,12 +96,14 @@
 
 				<div class="container">
 					<div class="row">
-						<div id="wb-sttl" class="col-md-12">
+						<div id="wb-sttl" class="col-md-5">
 							<a href="http://wet-boew.github.io/v4.0-ci/index-en.html">
 	<span>Web Experience Toolkit</span>
 </a>
-<object id="wmms" type="image/svg+xml" tabindex="-1" role="img" data="././assets/wmms-intra.svg" aria-label="Symbol of the Government of Canada"></object>
+
 						</div>
+						<object id="wmms" type="image/svg+xml" tabindex="-1" role="img" data="./assets/wmms.svg" aria-label="Symbol of the Government of Canada"></object>
+
 
 						<section id="wb-srch" class="visible-md visible-lg">
 							<h2>Search</h2>
@@ -116,16 +125,16 @@
 				</div>
 			</div>
 
-
-
 			<nav role="navigation" id="wb-sm" data-ajax-fetch="./ajax/sitemenu-en.html" data-trgt="mb-pnl" class="wb-menu visible-md visible-lg" typeof="SiteNavigationElement">
 				<div class="container nvbar">
 	<h2>Site menu</h2>
     <div class="row">
         <ul class="list-inline menu">
+
 			<li><a href="./index-en.html">WET project</a></li>
 			<li><a href="http://wet-boew.github.io/wet-boew/docs/gs-cd/impl-en.html">Implement WET</a></li>
 			<li><a href="http://wet-boew.github.io/wet-boew/docs/gs-cd/contrib-en.html">Contribute to WET</a></li>
+
         </ul>
     </div>
 </div>
@@ -146,7 +155,7 @@
 			</li>
 
 			<li>
-				<a href="./index-en.html">Government of Canada Intranet theme</a>
+				<a href="./index-en.html">GCWU theme</a>
 			</li>
 
 			<li>Content page</li>
@@ -287,10 +296,14 @@
 
 
 
-		<footer role="contentinfo" id="wb-info" class="visible-md visible-lg">
+		<footer role="contentinfo" id="wb-info" class="visible-sm visible-md visible-lg wb-navcurr">
 			<div class="container">
 				<nav role="navigation">
 					<h2>Site information</h2>
+					<ul id="gc-tctr" class="list-inline">
+	<li><a rel="license" href="http://wet-boew.github.io/wet-boew/License-en.html">Terms and conditions</a></li>
+	<li><a href="http://www.tbs-sct.gc.ca/pd-dp/index-en.asp">Transparency</a></li>
+</ul>
 					<div class="row">
 						<section class="col-sm-3">
 	<h3>About</h3>
@@ -320,11 +333,25 @@
 </section>
 
 					</div>
-					<ul id="gc-tctr" class="list-inline">
-	<li><a rel="license" href="http://wet-boew.github.io/wet-boew/License-en.html">Terms and conditions</a></li>
-	<li><a href="http://www.tbs-sct.gc.ca/pd-dp/index-en.asp">Transparency</a></li>
-</ul>
 				</nav>
+			</div>
+			<div id="gc-info">
+				<div class="container">
+					<nav role="navigation">
+						<h2>Government of Canada footer</h2>
+						
+<ul class="list-inline">
+
+	<li><a href="http://healthycanadians.gc.ca"><span>Health</span>healthycanadians.gc.ca</a></li>
+	<li><a href="http://travel.gc.ca"><span>Travel</span>travel.gc.ca</a></li>
+	<li><a href="http://www.servicecanada.gc.ca/eng/home.shtml"><span>Service Canada</span>servicecanada.gc.ca</a></li>
+	<li><a href="http://www.jobbank.gc.ca"><span>Jobs</span>jobbank.gc.ca</a></li>
+	<li><a href="http://actionplan.gc.ca/en"><span>Economy</span>actionplan.gc.ca</a></li>
+
+	<li id="canada-ca"><a href="http://www.canada.ca/en/index.html">Canada.ca</a></li>
+</ul>
+					</nav>
+				</div>
 			</div>
 		</footer>
 
@@ -335,7 +362,6 @@
 <!--[if lt IE 9]>
 <script src="./js/ie8-wet-boew2.js"></script>
 <![endif]-->
-<script src="./js/theme.js"></script>
 
 
 	</body>

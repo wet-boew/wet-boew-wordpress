@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0-rc1 - 2014-03-18
+ * v4.0.0 - 2014-03-31
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -107,7 +107,6 @@ wb.i18nDict = {
 	"errs-fnd": " τα σφάλματα βρέθηκαν.",
 	"err-fnd": " σφάλμα ήταν που βρέθηκαν.",
 	/* Date picker */
-	"date-hide": "Απόκρυψη ημερολόγιο",
 	"date-show": "Επιλέξτε μια ημερομηνία από το ημερολόγιο για τον τομέα:",
 	"date-sel": "Επιλεγμένα",
 	/* Calendar */
