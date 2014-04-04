@@ -113,13 +113,10 @@
                     </div>
                     <section id="wb-srch" class="visible-md visible-lg">
                         <h2><?php _e("<!--:en-->Search<!--:--><!--:fr-->Recherche<!--:-->"); ?></h2> 
-                        <form action="<?php bloginfo('url'); ?>" method="get" role="search" class="form-inline">
+                        <form action="<?php bloginfo('url'); ?>/" method="get" role="search" class="form-inline">
                             <div class="form-group">
                                 <label for="wb-srch-q"><?php _e("<!--:en-->Search website<!--:--><!--:fr-->Recherchez le site Web<!--:-->"); ?></label>
                                 <input id="wb-srch-q" class="form-control" name="s" type="search" value="<?php the_search_query(); ?>" size="27" maxlength="150" />
-                                <?php if(qtrans_getLanguage()=='fr'): ?>
-                                  <input id="lang" name="lang" type="hidden" value="fr" />
-                                <?php endif; ?>
                             </div>
                             <button type="submit" id="wb-srch-sub" class="btn btn-default"><?php _e("<!--:en-->Search<!--:--><!--:fr-->Recherche<!--:-->"); ?></button>
                         </form>
