@@ -12,59 +12,33 @@
  * variables that are common to all instances of the plugin on a page.
  */
 var $document = wb.doc,
+	$fipImg,
 
-	onXXSmallView = function() {
-		return;
-	},
+onSmallView = function () {
+	$fipImg.attr( "src", $fipImg.attr( "src" ).replace( "wmms-intra", "wmms" ) );
+},
 
-	onXSmallView = function() {
-		return;
-	},
+onMediumLargeView = function () {
+	$fipImg.attr( "src", $fipImg.attr( "src" ).replace( /wmms\./, "wmms-intra." ) );
+};
 
-	onSmallView = function() {
-		return;
-	},
+$document.one( "timerpoke.wb", function() {
+	$fipImg = $( "img#wmms" );
 
-	onMediumView = function() {
-		return;
-	},
+	if ( $fipImg.length !== 0 ) {
+		if ( document.documentElement.className.indexOf( "smallview" ) !== -1 ) {
+			onSmallView();
+		}
 
-	onLargeView = function() {
-		return;
-	},
-
-	onXLargeView = function() {
-		return;
-	};
-
-$document.on( "xxsmallview.wb xsmallview.wb smallview.wb mediumview.wb largeview.wb xlargeview.wb", function( event ) {
-	var eventType = event.type;
-
-	switch ( eventType ) {
-
-	case "xxsmallview":
-		onXXSmallView();
-		break;
-
-	case "xsmallview":
-		onXSmallView();
-		break;
-
-	case "smallview":
-		onSmallView();
-		break;
-
-	case "mediumview":
-		onMediumView();
-		break;
-
-	case "largeview":
-		onLargeView();
-		break;
-
-	case "xlargeview":
-		onXLargeView();
-		break;
+		$document.on( wb.resizeEvents, function( event ) {
+			if ( $fipImg.length !== 0 ) {
+				if ( event.type.indexOf( "smallview" ) !== -1 ) {
+					onSmallView();
+				} else {
+					onMediumLargeView();
+				}
+			}
+		});
 	}
 });
 
