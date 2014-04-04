@@ -27,7 +27,7 @@
 
 <meta name="dcterms.title" content="<?php bloginfo('name'); ?>" />
 
-<meta name="dcterms.issued" title="W3CDTF" content="<?php the_modified_time('Y-m-d') ?>" />
+<meta name="dcterms.issued" title="W3CDTF" content="<<?php the_time('Y-m-d') ?>" />
 
 <meta name="dcterms.modified" title="W3CDTF" content="<?php the_modified_time('Y-m-d') ?>" />
 
