@@ -12,7 +12,6 @@
 			<!-- Content Title ends / Fin du titre du contenu -->
 			
 <!-- clf2-nsi2 theme begins / Début du thème clf2-nsi2 -->
-			<pre><?php _e("<!--:en-->Date Issued: <!--:--><!--:fr-->Date de publication&nbsp;: <!--:-->"); ?><time datetime="<?php the_time('Y-m-d') ?>"><?php the_time('Y-m-d') ?></time></pre>
 			<div class="entry-content">
 				<?php the_content(__("<!--:en--><p>Read this article &raquo;</p><!--:--><!--:fr--><p>Lire cet article &raquo;</p><!--:-->")); ?>
 				<?php wp_link_pages(array('before' => __("<!--:en--><p><strong>Pages:</strong> <!--:--><!--:fr--><p><strong>Pages&#160;:</strong> <!--:-->"), 'after' => '</p>', 'next_or_number' => 'number')); ?>
