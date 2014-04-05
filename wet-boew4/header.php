@@ -134,6 +134,7 @@
                 </div>
             </div>
         </div>
+
         <nav role="navigation" id="wb-sm" data-ajax-fetch="<?php bloginfo('template_directory'); ?>/dist/ajax/sitemenu-<?php _e("<!--:en-->en<!--:--><!--:fr-->fr<!--:-->"); ?>.html" data-trgt="mb-pnl" class="wb-menu visible-md visible-lg" typeof="SiteNavigationElement">
             <div class="container nvbar">
                 <h2><?php _e("<!--:en-->Site menu<!--:--><!--:fr-->Menu du site<!--:-->"); ?></h2> 
