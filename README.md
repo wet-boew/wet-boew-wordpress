@@ -15,6 +15,13 @@ Based on Government of Canada Common Look and Feel (CLF) standard:
 
 Web Experience Toolkit (WET) - Boîte à outils de l'expérience Web (BOEW)
 
+## Download
+---------------------------------
+
+Latest Release: WET v4.0
+
+https://github.com/wet-boew/wet-boew-wordpress/releases/tag/v4.0
+
 ## Known Issues
 ---------------------------------
 
