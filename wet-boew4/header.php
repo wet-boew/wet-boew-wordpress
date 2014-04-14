@@ -6,6 +6,7 @@
  * @subpackage wet-boew4
  * @since wet-boew 4.0
  */
+ global $clf_col;
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 9]><html class="no-js lt-ie9" lang="<?php _e("<!--:en-->en<!--:--><!--:fr-->fr<!--:-->"); ?>"><![endif]-->
@@ -73,7 +74,7 @@
         </li>
         <li class="wb-slc visible-md visible-lg"> <a class="wb-sl" href="#wb-info"><?php _e("<!--:en-->Skip to site information<!--:--><!--:fr-->Passer aux informations sur le site<!--:-->"); ?></a> 
         </li>
-        <?php if ($clf_col_num=='1') {
+        <?php if ($clf_col==1) {
 		} else {
 	_e("<!--:en--><li class=\"wb-slc visible-md visible-lg\"> <a class=\"wb-sl\" href=\"#wb-sec\">Skip to secondary menu</a></li><!--:--><!--:fr--><li class=\"wb-slc visible-md visible-lg\"> <a class=\"wb-sl\" href=\"#wb-sec\">Passer au menu secondaire</a></li><!--:-->");
 
