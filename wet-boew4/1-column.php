@@ -2,7 +2,8 @@
 /*
 Template Name: Single Column
 */
-$clf_col_num=1;
+global $clf_col;
+$clf_col=1;
 ?>
 <?php get_header(); ?>
 
