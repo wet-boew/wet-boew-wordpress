@@ -59,6 +59,6 @@ http://codex.wordpress.org/Using_Themes
 ## Requirements
 
 - Requires the following WP plugins:
-qTranslate - http://www.qianqin.de/qtranslate/
+mqTranslate - https://wordpress.org/plugins/mqtranslate/
 
 This plugin should be installed with both English and French enabled before you activate the WET WP theme.
