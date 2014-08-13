@@ -44,10 +44,6 @@ WET-BEOW 4.0 Intranet theme
 
 Author URI: http://www.lostprototype.com/wet-boew-intra/
 
-WET-BEOW 3.0.3 gcwu-fegc theme
-
-Author URI: http://www.lostprototype.com/wet-boew3/
-
 
 ## Basic Setup
 ---------------------------------
