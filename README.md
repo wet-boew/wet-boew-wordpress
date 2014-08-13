@@ -3,7 +3,7 @@ wet-boew-wordpress
 
 WordPress variant for the Web Experience Toolkit (WET)
 
-Version: WET 4.0
+Version: WET 4.0.4
 
 Author: Government of Canada
 
@@ -18,14 +18,14 @@ Web Experience Toolkit (WET) - Boîte à outils de l'expérience Web (BOEW)
 ## Download
 ---------------------------------
 
-Latest Release: WET v4.0
+Latest Release: WET v4.0.4
 
 https://github.com/wet-boew/wet-boew-wordpress/releases/tag/v4.0
 
 ## Known Issues
 ---------------------------------
 
-Issue with version 4.0
+Issue with version 4.0.4
 
 Secondary Navigation does not display in mobile mode.
 
@@ -36,7 +36,7 @@ Footer items are hard coded in footer.php
 ## Versions
 ---------------------------------
 
-WET-BEOW 4.0 gcwu-fegc theme
+WET-BEOW 4.0.4 gcwu-fegc theme
 
 Author URI: http://www.lostprototype.com/wet-boew-4/
 
