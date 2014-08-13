@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0 - 2014-03-31
+ * v4.0.4 - 2014-07-23
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -16,7 +16,7 @@
 /* main index */
 wb.i18nDict = {
 	"lang-code": "de",
-	"lang-nat": "Deutsch",
+	"lang-native": "Deutsch",
 	all: "Alle",
 	tphp: "Zum Seitenanfang",
 	load: "Be ...",
@@ -26,7 +26,7 @@ wb.i18nDict = {
 	matches: {
 		mixin: "[MIXIN] Ergebnisse gefunden"
 	},
-	curr: "(Aktuell)",
+	current: "(Aktuell)",
 	hide: "Verbergen",
 	err: "Fehler",
 	colon: ":",
@@ -58,7 +58,7 @@ wb.i18nDict = {
 	"prv-l": "Früher (linke Pfeiltaste)",
 	first: "Erste",
 	last: "Letzte",
-	menu: "Menü",
+	"srch-menus": "Suche und Menüs",
 	email: "E-Mail",
 	"menu-close": "Schließen Sie das Menü",
 	"overlay-close": "Schließen Sie das Pop-up",
@@ -79,8 +79,7 @@ wb.i18nDict = {
 	pause: "Pausieren",
 	open: "Öffnen",
 	close: "Schließen",
-	rew: "Zurückspulen",
-	ffwd: "Schnellvorlauf",
+	volume: "Lautstärke",
 	mute: {
 		on: "Stumm",
 		off: "Stummschaltung"
@@ -192,6 +191,19 @@ wb.i18nDict = {
 	"geo-attrttl": "GeoGratis - Kanada Basiskarte (Englisch oder Französisch)",
 	"geo-sel": "Wählen",
 	"geo-lblsel": "Überprüfen Sie das Element auf der Karte auswählen",
+	"geo-locurl-geogratis": "http://geogratis.gc.ca/services/geolocation/en/locate",
+	"geo-loc-placeholder": "Geben Sie den Namen des Ortes&#44; Postleitzahl&#44; Adresse (Post)&#44; die Anzahl der NTS ...",
+	"geo-loc-label": "Position",
+	"geo-aoi-north": "Norden",
+	"geo-aoi-east": "Osten",
+	"geo-aoi-south": "Süden",
+	"geo-aoi-west": "Westen",
+	"geo-aoi-instructions": "Beschreiben eine Fläche auf der Karte oder geben Sie die Details klicken dann auf die Schaltfläche \"Ziehen\".",
+	"geo-aoi-btndraw": "Ziehen",
+	"geo-aoi-btnclear": "Entfernen",
+	"geo-geoloc-btn": "Zoom auf die aktuelle Lage",
+	"geo-geoloc-fail": "Lage fehlgeschlagen. Bitte stellen Sie sicher, dass die Ortungsdienste aktiviert sind.",
+	"geo-geoloc-uncapable": "Der Ort ist nicht von Ihrem Browser unterstützt.",
 	/* Disable/enable WET plugins and polyfills */
 	"wb-disable": "Grundlegende HTML-Version",
 	"wb-enable": "Standardausführung",

@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0 - 2014-03-31
+ * v4.0.4 - 2014-07-23
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -16,7 +16,7 @@
 /* main index */
 wb.i18nDict = {
 	"lang-code": "nl",
-	"lang-nat": "Nederlands",
+	"lang-native": "Nederlands",
 	all: "Allen",
 	tphp: "Bovenkant pagina",
 	load: "het laden van ...",
@@ -26,7 +26,7 @@ wb.i18nDict = {
 	matches: {
 		mixin: "[MIXIN] gevonden zoekresultaten"
 	},
-	curr: "(actueel)",
+	current: "(actueel)",
 	hide: "Verbergen",
 	err: "Fout",
 	colon: ":",
@@ -58,7 +58,7 @@ wb.i18nDict = {
 	"prv-l": "Vorige (linkse pijlen-toets)",
 	first: "Eerste",
 	last: "Laatste",
-	menu: "Menu",
+	"srch-menus": "Zoeken en menu's",
 	email: "E-mail",
 	"menu-close": "Sluit het menu",
 	"overlay-close": "Sluit het dialoogvenster",
@@ -79,8 +79,7 @@ wb.i18nDict = {
 	pause: "Pauze",
 	open: "Openen",
 	close: "Afsluiten",
-	rew: "Terugspoelen",
-	ffwd: "Snel vooruit spoelen",
+	volume: "Volume",
 	mute: {
 		on: "Geluid uitzetten",
 		off: "Geluid aanzetten"
@@ -192,6 +191,19 @@ wb.i18nDict = {
 	"geo-attrttl": "GeoGratis - Canada basiskaart (Engels of Frans)",
 	"geo-sel": "Selecteren",
 	"geo-lblsel": "Vink het element aan om het op de kaart te selecteren",
+	"geo-locurl-geogratis": "http://geogratis.gc.ca/services/geolocation/en/locate",
+	"geo-loc-placeholder": "Vermeld de naam van de locatie&#44; postcode&#44; adres (post)&#44; het aantal NTS ...",
+	"geo-loc-label": "Plaats",
+	"geo-aoi-north": "Noorden",
+	"geo-aoi-east": "Oosten",
+	"geo-aoi-south": "Zuiden",
+	"geo-aoi-west": "Westen",
+	"geo-aoi-instructions": "Bakenen een gebied op de kaart of voer de onderstaande informatie in en klik op de \"Trekken\" button.",
+	"geo-aoi-btndraw": "Trekken",
+	"geo-aoi-btnclear": "Verwijderen",
+	"geo-geoloc-btn": "Zoomen naar onderdeel",
+	"geo-geoloc-fail": "Locatie mislukt. Zorg ervoor dat locatiediensten zijn ingeschakeld.",
+	"geo-geoloc-uncapable": "Lokalisatie wordt niet ondersteund door uw browser.",
 	/* Disable/enable WET plugins and polyfills */
 	"wb-disable": "Versie in basis-HTML",
 	"wb-enable": "Standaardversie",

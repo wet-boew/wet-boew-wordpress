@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0 - 2014-03-31
+ * v4.0.4 - 2014-07-23
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -16,7 +16,7 @@
 /* main index */
 wb.i18nDict = {
 	"lang-code": "zh",
-	"lang-nat": "繁體字",
+	"lang-native": "繁體字",
 	all: "全部",
 	tphp: "頁首",
 	load: "下載中…",
@@ -26,7 +26,7 @@ wb.i18nDict = {
 	matches: {
 		mixin: "找到[MIXIN]項目"
 	},
-	curr: "目前",
+	current: "目前",
 	hide: "隱藏",
 	err: "錯誤",
 	colon: "：",
@@ -58,7 +58,7 @@ wb.i18nDict = {
 	"prv-l": "上一筆（左箭頭鍵）",
 	first: "第一筆",
 	last: "最後一筆",
-	menu: "選單",
+	"srch-menus": "搜索和菜單",
 	email: "電子郵件",
 	"menu-close": "關閉菜單",
 	"overlay-close": "關閉疊加",
@@ -79,8 +79,7 @@ wb.i18nDict = {
 	pause: "暫停",
 	open: "打開",
 	close: "停止",
-	rew: "倒轉",
-	ffwd: "快轉",
+	volume: "音量",
 	mute: {
 		on: "靜音",
 		off: "聲音"
@@ -192,6 +191,19 @@ wb.i18nDict = {
 	"geo-attrttl": "GeoGratis-加拿大底圖（英語或法語",
 	"geo-sel": "選擇",
 	"geo-lblsel": "在地圖上檢查選擇的元素",
+	"geo-locurl-geogratis": "http://geogratis.gc.ca/services/geolocation/en/locate",
+	"geo-loc-placeholder": "指示位置，郵編，地址（郵政），NTS數名...",
+	"geo-loc-label": "位置",
+	"geo-aoi-north": "北",
+	"geo-aoi-east": "東方",
+	"geo-aoi-south": "南",
+	"geo-aoi-west": "西方",
+	"geo-aoi-instructions": "在地圖上劃定一個區域或輸入下面的詳細信息，然後點擊“畫”按鈕。",
+	"geo-aoi-btndraw": "畫",
+	"geo-aoi-btnclear": "清除",
+	"geo-geoloc-btn": "放大到當前位置",
+	"geo-geoloc-fail": "位置失敗。請確保該位置的服務被啟用。",
+	"geo-geoloc-uncapable": "本地化不是由您的瀏覽器支持。",
 	/* Disable/enable WET plugins and polyfills */
 	"wb-disable": "基本HTML版本",
 	"wb-enable": "標準版本",

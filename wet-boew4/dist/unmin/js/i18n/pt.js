@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0 - 2014-03-31
+ * v4.0.4 - 2014-07-23
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -16,7 +16,7 @@
 /* main index */
 wb.i18nDict = {
 	"lang-code": "pt",
-	"lang-nat": "Português",
+	"lang-native": "Português",
 	all: "Todos",
 	tphp: "Início da Página",
 	load: "carregamento ...",
@@ -26,7 +26,7 @@ wb.i18nDict = {
 	matches: {
 		mixin: "[MIXIN] Encontrada(s) correspondência(s)"
 	},
-	curr: "(atual)",
+	current: "(atual)",
 	hide: "Ocultar",
 	err: "Erro",
 	colon: ":",
@@ -58,7 +58,7 @@ wb.i18nDict = {
 	"prv-l": "Anterior (tecla seta para a esquerda)",
 	first: "Primeiro",
 	last: "Último",
-	menu: "Menu",
+	"srch-menus": "Pesquisa e menus",
 	email: "Correio eletrônico",
 	"menu-close": "Fechar o menu",
 	"overlay-close": "Feche a sobreposição",
@@ -79,8 +79,7 @@ wb.i18nDict = {
 	pause: "Pausar",
 	open: "Abrir",
 	close: "Fechar",
-	rew: "Voltar",
-	ffwd: "Avançar",
+	volume: "Volume",
 	mute: {
 		on: "Ativar o modo silencioso",
 		off: "Desativar o modo silencioso"
@@ -192,6 +191,19 @@ wb.i18nDict = {
 	"geo-attrttl": "GeoGratis - Canadá mapa base (Inglês ou francês)",
 	"geo-sel": "Selecionar",
 	"geo-lblsel": "Verifique para selecionar o elemento no mapa",
+	"geo-locurl-geogratis": "http://geogratis.gc.ca/services/geolocation/en/locate",
+	"geo-loc-placeholder": "Indicar o nome do local&#44; CEP&#44; endereço (postal)&#44; o número de NTS ...",
+	"geo-loc-label": "Localização",
+	"geo-aoi-north": "Norte",
+	"geo-aoi-east": "Leste",
+	"geo-aoi-south": "Sul",
+	"geo-aoi-west": "Ocidente",
+	"geo-aoi-instructions": "Delinear uma área no mapa ou digite os detalhes abaixo&#44; em seguida&#44; clique no botão \"Desenhar\".",
+	"geo-aoi-btndraw": "Desenhar",
+	"geo-aoi-btnclear": "Remover",
+	"geo-geoloc-btn": "Zoom para o local atual",
+	"geo-geoloc-fail": "Localização falhou. Certifique-se que os serviços de localização estão habilitados.",
+	"geo-geoloc-uncapable": "A localização não é suportado pelo seu navegador.",
 	/* Disable/enable WET plugins and polyfills */
 	"wb-disable": "Versão HTML simplificada",
 	"wb-enable": "Versão padrão",

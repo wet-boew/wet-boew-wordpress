@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0 - 2014-03-31
+ * v4.0.4 - 2014-07-23
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -16,7 +16,7 @@
 /* main index */
 wb.i18nDict = {
 	"lang-code": "bg",
-	"lang-nat": "Български език",
+	"lang-native": "Български език",
 	all: "Всички",
 	tphp: "Начало на страницата",
 	load: "зарежда се ...",
@@ -26,7 +26,7 @@ wb.i18nDict = {
 	matches: {
 		mixin: "[MIXIN] открити съвпадения"
 	},
-	curr: "(Текущи)",
+	current: "(Текущи)",
 	hide: "Крия",
 	err: "Грешка",
 	colon: ":",
@@ -58,7 +58,7 @@ wb.i18nDict = {
 	"prv-l": "Предишен (лява стрелка ключ)",
 	first: "Първи",
 	last: "Последно",
-	menu: "Меню",
+	"srch-menus": "Търсене и менюта",
 	email: "Мейл",
 	"menu-close": "Затворете менюто",
 	"overlay-close": "Затворете наслагването",
@@ -79,8 +79,7 @@ wb.i18nDict = {
 	pause: "Пауза",
 	open: "Отворен",
 	close: "Близо",
-	rew: "Превъртане назад",
-	ffwd: "Бързо напред",
+	volume: "Звука",
 	mute: {
 		on: "Изключване",
 		off: "Вкл.звук"
@@ -192,6 +191,19 @@ wb.i18nDict = {
 	"geo-attrttl": "GeoGratis - Канада основната карта (на английски или френски език)",
 	"geo-sel": "Изберете",
 	"geo-lblsel": "Проверете, за да изберете елемента на картата",
+	"geo-locurl-geogratis": "http://geogratis.gc.ca/services/geolocation/en/locate",
+	"geo-loc-placeholder": "Посочете името на мястото&#44; пощенски код&#44; адрес (пощенски)&#44; броят на НТС ...",
+	"geo-loc-label": "Място",
+	"geo-aoi-north": "На север",
+	"geo-aoi-east": "Изток",
+	"geo-aoi-south": "Юг",
+	"geo-aoi-west": "Запад",
+	"geo-aoi-instructions": "Xəritədə sahəsi tasvir və ya aşağıda detalları daxil sonra \"Равенство\" düyməsinə basın.",
+	"geo-aoi-btndraw": "Равенство",
+	"geo-aoi-btnclear": "Премахнете",
+	"geo-geoloc-btn": "Увеличите към текущото местоположение",
+	"geo-geoloc-fail": "Местоположение провали. Моля, уверете се, че местоположението услуги са разрешени.",
+	"geo-geoloc-uncapable": "Локализация не се поддържа от вашия браузър.",
 	/* Disable/enable WET plugins and polyfills */
 	"wb-disable": "Базов HTML версия",
 	"wb-enable": "Стандартната версия",

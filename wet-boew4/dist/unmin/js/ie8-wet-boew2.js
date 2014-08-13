@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0 - 2014-03-31
+ * v4.0.4 - 2014-07-23
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -36,6 +36,33 @@
 	// Based on http://totaldev.com/content/escaping-characters-get-valid-jquery-id
 	wb.jqEscape = function( selector ) {
 		return selector.replace( /([;&,\.\+\*\~':"\!\^#$%@\[\]\(\)=>\|])/g, "\\$1" );
+	};
+
+	// RegEx used by formattedNumCompare
+	wb.formattedNumCompareRegEx = /(<[^>]*>|[^\d\.])/g;
+
+	// Compares two formatted numbers (e.g., 1.2.12 or 1,000,345)
+	wb.formattedNumCompare = function( a, b ) {
+		var regEx = wb.formattedNumCompareRegEx,
+			aMultiple = a.indexOf( "-" ) === -1 ? 1 : -1,
+			aNumbers = ( ( a === "-" || a === "" ) ? "0" : a.replace( regEx, "" ) ).split( "." ),
+			bMultiple = b.indexOf( "-" ) === -1 ? 1 : -1,
+			bNumbers = ( ( b === "-" || b === "" ) ? "0" : b.replace( regEx, "" ) ).split( "." ),
+			len = aNumbers.length,
+			i, result;
+
+		for ( i = 0; i !== len; i += 1 ) {
+			result = parseInt( aNumbers[ i ], 10 ) * aMultiple - parseInt( bNumbers[ i ], 10 ) * bMultiple;
+			if ( result !== 0 ) {
+				break;
+			}
+		}
+		return result;
+	};
+
+	// Compare two strings with special characters (e.g., Cyrillic or Chinese characters)
+	wb.i18nTextCompare = function( a, b ) {
+		return wb.normalizeDiacritics( a ).localeCompare( wb.normalizeDiacritics( b ) );
 	};
 
 	// Based upon https://gist.github.com/instanceofme/1731620
@@ -1061,11 +1088,22 @@
 			var date = null;
 
 			if ( dateISO && dateISO.match( /\d{4}-\d{2}-\d{2}/ ) ) {
-				date = new Date();
-				date.setFullYear( dateISO.substr( 0, 4 ), dateISO.substr( 5, 2 ) - 1, dateISO.substr( 8, 2 ) );
+				date = new Date( dateISO.substr( 0, 4 ), dateISO.substr( 5, 2 ) - 1, dateISO.substr( 8, 2 ), 0, 0, 0, 0 );
 			}
 			return date;
 		}
+	};
+
+	/*
+	 * Returns a RFC4122 compliant Global Unique ID (GUID).
+	 * Originally from http://stackoverflow.com/a/2117523/455535
+	 */
+	wb.guid = function() {
+		return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function( replacementChar ) {
+			var rand = Math.random() * 16 | 0,
+				newChar = replacementChar === "x" ? rand : ( rand & 0x3 | 0x8 );
+			return newChar.toString(16);
+		});
 	};
 
 })( wb );
@@ -1209,50 +1247,43 @@
  * not once per instance of plugin on the page. So, this is a good place to define
  * variables that are common to all instances of the plugin on a page.
  */
-var $document = wb.doc,
-
-	/**
-	 * @method generateSerial
-	 * @param {integer} len Length of the random string to be generated
-	 */
-	generateSerial = function( len ) {
-		var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz",
-			stringLength = len,
-			randomstring = "",
-			counter = 0,
-			letterOrNumber, newNum, rnum;
-
-		for ( counter; counter !== stringLength; counter += 1 ) {
-			letterOrNumber = Math.floor( Math.random( ) * 2 );
-			if ( letterOrNumber === 0 ) {
-				newNum = Math.floor( Math.random( ) * 9 );
-				randomstring += newNum;
-			} else {
-				rnum = Math.floor( Math.random( ) * chars.length );
-				randomstring += chars.substring( rnum, rnum + 1 );
-			}
-		}
-		return randomstring;
-	};
+var $document = wb.doc;
 
 // Event binding
 $document.on( "ajax-fetch.wb", function( event ) {
 	var caller = event.element,
-		url = event.fetch,
-		id;
+		fetchOpts = event.fetch,
+		fetchData;
 
 	// Filter out any events triggered by descendants
 	if ( event.currentTarget === event.target ) {
-		id = "wb" + ( generateSerial( 8 ) );
+		$.ajax( fetchOpts )
+			.done( function( response, status, xhr ) {
+				fetchData = {
+					response: response,
+					status: status,
+					xhr: xhr
+				};
 
-		$( "<div id='" + id + "' />" )
-			.load( url, function() {
-				$( caller )
-					.trigger( {
-						type: "ajax-fetched.wb",
-						pointer: $( this )
-					});
-			});
+				if ( typeof response === "string" ) {
+					fetchData.pointer = $( "<div id='" + wb.guid() + "' />" ).append( response );
+				}
+
+				$( caller ).trigger({
+					type: "ajax-fetched.wb",
+					fetch: fetchData
+				}, this);
+			})
+			.fail(function( xhr, status, error ) {
+				$( caller ).trigger({
+					type: "ajax-failed.wb",
+					fetch: {
+						xhr: xhr,
+						status: status,
+						error: error
+					}
+				});
+			}, this);
 	}
 });
 
@@ -1275,10 +1306,8 @@ $document.on( "ajax-fetch.wb", function( event ) {
  */
 var pluginName = "wb-calevt",
 	selector = "." + pluginName,
-	calendarSelector = selector + "-cal",
 	initedClass = pluginName + "-inited",
 	initEvent = "wb-init" + selector,
-	setFocusEvent = "setfocus.wb",
 	evDetails = "ev-details",
 	$document = wb.doc,
 	i18n, i18nText,
@@ -1304,7 +1333,7 @@ var pluginName = "wb-calevt",
 			}
 
 			// Load ajax content
-			$.when.apply($, $.map( $elm.find( "[data-calevt]" ), getAjax))
+			$.when.apply( $, $.map( $elm.find( "[data-calevt]" ), getAjax ) )
 				.always( function() {
 					processEvents( $elm );
 				});
@@ -1340,7 +1369,7 @@ var pluginName = "wb-calevt",
 			month = date.getMonth(),
 			elmYear = $elm.find( ".year" ),
 			elmMonth = $elm.find( ".month" ),
-			events, containerId, $containerId;
+			events, containerId, $container;
 
 		if ( elmYear.length > 0 && elmMonth.length > 0 ) {
 
@@ -1352,12 +1381,10 @@ var pluginName = "wb-calevt",
 
 		events = getEvents( $elm );
 		containerId = $elm.data( "calevtSrc" );
-		$containerId = $( "#" + containerId ).addClass( calendarSelector );
+		$container = $( "#" + containerId )
+			.addClass( pluginName + "-cal" )
+			.data( "calEvents", events );
 
-		$document.on( "displayed.wb-cal", "#" + containerId, function( event, year, month, days ) {
-			addEvents( year, month, days, containerId, events.list );
-			showOnlyEventsFor( year, month, containerId );
-		});
 		$document.trigger( "create.wb-cal", [
 				containerId,
 				year,
@@ -1367,7 +1394,7 @@ var pluginName = "wb-calevt",
 				events.maxDate
 			]
 		);
-		$containerId.attr( "aria-label", i18nText.calendar );
+		$container.attr( "aria-label", i18nText.calendar );
 	},
 
 	daysBetween = function( dateLow, dateHigh ) {
@@ -1435,7 +1462,7 @@ var pluginName = "wb-calevt",
 				 *	- 'evt-anchor' class dynamically generates page anchors on the links it maps to the event
 				 */
 				if ( !directLinking ) {
-					linkId = event.attr( "id" ) || randomId( 6 );
+					linkId = event.attr( "id" ) || wb.guid();
 					event.attr( "id", linkId );
 
 					/*
@@ -1448,12 +1475,9 @@ var pluginName = "wb-calevt",
 					link = "#" + linkId;
 				}
 
-				/*
-				 * Modification XHTML 1.0 strict compatible
-				 *   - XHTML 1.0 Strict does not contain the time element
-				 */
 				date = new Date();
-				tCollection = event.find( "time, span.datetime" );
+				date.setHours( 0, 0, 0, 0 );
+				tCollection = event.find( "time" );
 
 				/*
 				 * Date spanning capability
@@ -1540,146 +1564,13 @@ var pluginName = "wb-calevt",
 		return events;
 	},
 
-	randomId = function( sInt ) {
-		var s = "",
-			randomChar, n;
-
-		randomChar = function() {
-			n = Math.floor( Math.random() * 62 );
-			if ( n < 10 ) {
-
-				// 1-10
-				return n;
-			}
-			if ( n < 36 ) {
-
-				// A-Z
-				return String.fromCharCode( n + 55 );
-			}
-
-			// a-z
-			return String.fromCharCode( n + 61 );
-		};
-		while ( s.length < sInt ) {
-			s += randomChar();
-		}
-		return "id" + s;
-	},
-
-	keyboardNavEvents = function( event ) {
-		var $this = $( this ),
-			length, $children;
-
-		switch ( event.keyCode ) {
-
-		// Up arrow
-		case 38:
-			$children = $this.closest( "ul" ).children( "li" );
-			length = $children.length;
-			$children.eq( ( $this.closest( "li" ).index() - 1 ) % length )
-				.children( "a" ).trigger( setFocusEvent );
-			return false;
-
-		// Down arrow
-		case 40:
-			$children = $this.closest( "ul" ).children( "li" );
-			length = $children.length;
-			$children.eq( ( $this.closest( "li" ).index() + 1 ) % length )
-				.children( "a" ).trigger( setFocusEvent );
-			return false;
-
-		// Left arrow
-		case 37:
-			$this.closest( "ol" )
-				.children( "li:lt(" + $this.closest( "li[id^=cal-]" ).index() + ")" )
-				.children( "a" ).last().trigger( setFocusEvent );
-			return false;
-
-		// Right arrow
-		case 39:
-			$this.closest( "ol" )
-				.children( "li:gt(" + $this.closest( "li[id^=cal-]" ).index() + ")" )
-				.children( "a" ).first().trigger( setFocusEvent );
-			return false;
-
-		// Escape
-		case 27:
-			$this.closest( "li[id^=cal-]" ).children( ".cal-evt" ).trigger( setFocusEvent );
-			return false;
-		}
-	},
-
-	mouseOnDay = function( dayEvents ) {
-		dayEvents.dequeue()
-			.removeClass( "wb-inv" )
-			.addClass( evDetails );
-	},
-
-	mouseOutDay = function( dayEvents ) {
-		dayEvents.delay( 100 ).queue(function() {
-			$( this ).removeClass( evDetails )
-				.addClass( "wb-inv" )
-				.dequeue();
-		});
-	},
-
-	focus = function( dayEvents ) {
-		dayEvents.removeClass( "wb-inv" )
-			.addClass( evDetails );
-	},
-
-	blur = function( dayEvents ) {
-		setTimeout(function() {
-			var $elm = dayEvents;
-
-			if ( $elm.find( "a:focus" ).length === 0 ) {
-				$elm.removeClass( evDetails )
-					.addClass( "wb-inv" );
-			}
-		}, 5);
-	},
-
-	keyboardEvents = function( event ) {
-		var eventType = event.type,
-			dayEvents = event.data.details;
-
-		switch ( eventType ) {
-		case "keydown":
-			keyboardNavEvents( event );
-			break;
-
-		case "blur":
-			blur( dayEvents );
-			break;
-
-		case "focus":
-			focus( dayEvents );
-			break;
-		}
-	},
-
-	mouseEvents = function( event ) {
-		var eventType = event.type,
-			dayEvents = event.data.details;
-
-		switch ( eventType ) {
-		case "mouseover":
-			mouseOnDay( dayEvents );
-			break;
-
-		case "mouseout":
-			mouseOutDay( dayEvents );
-			break;
-		}
-	},
-
 	addEvents = function( year, month, days, containerId, eventsList ) {
-		var i, eLen, date, day, content, dayEvents, link, eventDetails, itemLink;
+		var i, eLen, date, day, dayEvents, content;
 
-		// Fix required to make up with the IE z-index behavior mismatch
-		days.each(function( index, day ) {
-			$( day ).css( "z-index", 31 - index );
-		});
+		// Fix required to make up with the IE z-index behaviour mismatch
+		for ( i = 0, eLen = days.length; i !== eLen; i += 1 ) {
+			days.eq( i ).css( "z-index", 31 - i );
+		}
 
 		/*
 		 * Determines for each event, if it occurs in the display month
@@ -1694,22 +1585,20 @@ var pluginName = "wb-calevt",
 			if ( date.getMonth() === month && date.getFullYear() === year ) {
 				day = $( days[ date.getDate() - 1 ] );
 
-				// Gets the day cell to display an event
-				content = day.children( "div" ).html();
-
-				// Lets see if the cell is empty is so lets create the cell
-				if ( day.children( "a" ).length < 1 ) {
-					day.empty();
-					link = $( "<a href='#ev-" + day.attr( "id" ) + "' class='cal-evt'>" + content + "</a>" );
-					day.append( link );
+				// Lets see if the cell is empty. If so lets create the cell
+				if ( day.children( "a" ).length === 0 ) {
 					dayEvents = $( "<ul class='wb-inv'></ul>" );
-
-					link.on( "keydown blur focus", { details: dayEvents }, keyboardEvents );
-
-					day.on( "mouseover mouseout", { details: dayEvents }, mouseEvents )
-						.append( dayEvents );
-
+					content = day.children( "div" ).html();
+					day
+						.empty()
+						.append(
+							"<a href='#ev-" + day.attr( "id" ) +
+								"' class='cal-evt' tabindex='-1'>" +
+								content + "</a>",
+							dayEvents
+						);
 				} else {
+
 					/*
 					 * Modification - added an else to the date find due to
 					 * event collisions not being handled. So the pointer was
@@ -1718,15 +1607,13 @@ var pluginName = "wb-calevt",
 					dayEvents = day.find( "ul.wb-inv" );
 				}
 
-				eventDetails = $( "<li><a tabindex='-1' href='" + eventsList[ i ].href + "'>" + eventsList[ i ].title + "</a></li>" );
-
-				dayEvents.append( eventDetails );
-
-				itemLink = eventDetails.children( "a" );
-
-				itemLink.on( "keydown blur focus", { details: dayEvents }, keyboardEvents );
+				dayEvents.append( "<li><a tabindex='-1' class='cal-evt-lnk' href='" +
+					eventsList[ i ].href + "'>" + eventsList[ i ].title + "</a></li>" );
+				day.data( "dayEvents", dayEvents );
 			}
 		}
+
+		days.find( ".cal-evt" ).first().attr( "tabindex", "0" );
 	},
 
 	showOnlyEventsFor = function( year, month, calendarId ) {
@@ -1738,14 +1625,91 @@ var pluginName = "wb-calevt",
 	};
 
 // Bind the init event of the plugin
-$document.on( "timerpoke.wb " + initEvent, selector, function() {
-	init( $( this ) );
+$document.on( "timerpoke.wb " + initEvent, selector, function( event ) {
+
+	// Filter out any events triggered by descendants
+	if ( event.currentTarget === event.target ) {
+		init( $( this ) );
+	}
 
 	/*
 	 * Since we are working with events we want to ensure that we are being passive about our control,
 	 * so returning true allows for events to always continue
 	 */
 	return true;
+});
+
+$document.on( "displayed.wb-cal", selector + "-cal", function( event, year, month, days, day ) {
+
+	// Filter out any events triggered by descendants
+	if ( event.currentTarget === event.target ) {
+		var target = event.target,
+			$target = $( target ),
+			containerId = target.id,
+			events = $target.data( "calEvents" );
+
+		addEvents( year, month, days, containerId, events.list );
+		showOnlyEventsFor( year, month, containerId );
+		$target.find( ".cal-index-" + day + " .cal-evt" ).trigger( "setfocus.wb" );
+	}
+});
+
+$document.on( "focusin focusout", ".wb-calevt-cal .cal-days a", function( event ) {
+	var eventType = event.type,
+		dayEvents = $( event.target ).closest( "td" ).data( "dayEvents" );
+
+	switch ( eventType ) {
+	case "focusin":
+		dayEvents
+			.closest( ".cal-days" )
+				.find( "a[tabindex=0]" )
+					.attr( "tabindex", "-1" );
+		dayEvents
+			.removeClass( "wb-inv" )
+			.addClass( evDetails )
+			.find( "a" )
+				.attr( "tabindex", "0" );
+		dayEvents.prev( "a" ).attr( "tabindex", "0" );
+		break;
+
+	case "focusout":
+		setTimeout(function() {
+			if ( dayEvents.find( "a:focus" ).length === 0 ) {
+				dayEvents.removeClass( evDetails )
+					.addClass( "wb-inv" )
+					.find( "a" )
+						.attr( "tabindex", "-1" );
+			}
+		}, 5 );
+		break;
+	}
+});
+
+$document.on( "mouseover mouseout", ".wb-calevt-cal .cal-days td", function( event ) {
+	var target = event.currentTarget,
+		eventType = event.type,
+		dayEvents;
+
+	// Only handle calendar cells with events
+	if ( target.getElementsByTagName( "a" ).length !== 0 ) {
+		dayEvents = $( target ).data( "dayEvents" );
+
+		switch ( eventType ) {
+		case "mouseover":
+			dayEvents.dequeue()
+				.removeClass( "wb-inv" )
+				.addClass( evDetails );
+			break;
+
+		case "mouseout":
+			dayEvents.delay( 100 ).queue(function() {
+				$( this ).removeClass( evDetails )
+					.addClass( "wb-inv" )
+					.dequeue();
+			});
+			break;
+		}
+	}
 });
 
 // Add the timer poke to initialize the plugin
@@ -1769,7 +1733,13 @@ wb.add( selector );
  * place to define variables that are common to all instances of the plugin on a
  * page.
  */
-var $document = wb.doc,
+var namespace = "wb-cal",
+	setFocusEvent = "setfocus.wb",
+	createEvent = "create." + namespace,
+	displayedEvent = "displayed." + namespace,
+	hideGoToFrmEvent = "hideGoToFrm." + namespace,
+	setFocusCalEvent = "setFocus." + namespace,
+	$document = wb.doc,
 	i18n, i18nText,
 
 	/**
@@ -1779,112 +1749,114 @@ var $document = wb.doc,
 	create = function( event, calendarId, year, month, shownav, mindate,
 		maxdate, day, ariaControls, ariaLabelledBy ) {
 
-		var calendar = document.getElementById( calendarId ),
-			$calendar = $( calendar ),
-			objCalendarId = "#cal-" + calendarId + "-cnt",
-			fromDateISO = wb.date.fromDateISO,
-			$objCalendar, $calendarHeader, $oldCalendarHeader, $days, $daysList,
-			maxDateYear, maxDateMonth, minDateYear, minDateMonth;
+		if ( event.namespace === namespace ) {
+			var calendar = document.getElementById( calendarId ),
+				$calendar = $( calendar ),
+				objCalendarId = "#cal-" + calendarId + "-cnt",
+				fromDateISO = wb.date.fromDateISO,
+				$objCalendar, $calendarHeader, $oldCalendarHeader, $days, $daysList,
+				maxDateYear, maxDateMonth, minDateYear, minDateMonth;
 
-		// Only initialize the i18nText once
-		if ( !i18nText ) {
-			i18n = wb.i18n;
-			i18nText = {
-				monthNames: i18n( "mnths" ),
-				prevMonth: i18n( "prvMnth" ),
-				nextMonth: i18n( "nxtMnth" ),
-				goToTitle: i18n( "cal-goToTtl" ),
-				goToYear: i18n( "cal-goToYr" ),
-				goToMonth: i18n( "cal-goToMnth" ),
-				goToLink: i18n( "cal-goToLnk" ),
-				goToBtn: i18n( "cal-goToBtn" ),
-				cancelBtn: i18n( "cancel" ),
-				dayNames: i18n( "days" ),
-				currDay: i18n( "currDay" )
-			};
+			// Only initialize the i18nText once
+			if ( !i18nText ) {
+				i18n = wb.i18n;
+				i18nText = {
+					monthNames: i18n( "mnths" ),
+					prevMonth: i18n( "prvMnth" ),
+					nextMonth: i18n( "nxtMnth" ),
+					goToTitle: i18n( "cal-goToTtl" ),
+					goToYear: i18n( "cal-goToYr" ),
+					goToMonth: i18n( "cal-goToMnth" ),
+					goToLink: i18n( "cal-goToLnk" ),
+					goToBtn: i18n( "cal-goToBtn" ),
+					cancelBtn: i18n( "cancel" ),
+					dayNames: i18n( "days" ),
+					currDay: i18n( "currDay" )
+				};
+			}
+
+			$calendar
+				.addClass( "cal-cnt" )
+				.attr( "id", calendarId );
+
+			if ( ariaLabelledBy ) {
+				$calendar.attr({
+					"aria-controls": ariaControls,
+					"aria-labelledby": ariaLabelledBy
+				});
+			}
+
+			// Converts min and max date from string to date objects
+			if ( typeof mindate === "string" ) {
+				mindate = fromDateISO( mindate );
+			} else if ( !( typeof mindate === "object" && mindate.getFullYear() ) ) {
+				mindate = null;
+			}
+			if ( mindate === null ) {
+				mindate = new Date();
+				mindate.setFullYear( year - 1, month, 1 );
+			}
+
+			if ( typeof maxdate === "string" ) {
+				maxdate = fromDateISO( maxdate );
+			} else if ( typeof maxdate !== "object" || maxdate.constructor !== Date ) {
+				maxdate = new Date();
+				maxdate.setFullYear( year + 1, month, 1 );
+			}
+
+			// Validates that the year and month are in the min and max date range
+			maxDateYear = maxdate.getFullYear();
+			maxDateMonth = maxdate.getMonth();
+			minDateYear = mindate.getFullYear();
+			minDateMonth = mindate.getMonth();
+			if ( year > maxDateYear || ( year === maxDateYear && month > maxDateMonth ) ) {
+				year = maxDateYear;
+				month = maxDateMonth;
+			} else if ( year < minDateYear || ( year === minDateYear && month < minDateMonth ) ) {
+				year = minDateYear;
+				month = minDateMonth;
+			}
+
+			// Reset calendar if the calendar previously existed
+			$objCalendar = $( objCalendarId );
+			if ( $objCalendar.length !== 0 ) {
+				$objCalendar.find( "#cal-" + calendarId + "-wd, .cal-mnth, #cal-" + calendarId + "-days").remove();
+				$objCalendar = $calendar.children("#cal-" + calendarId + "-cnt");
+			} else {
+				$objCalendar = $( "<table id='cal-" + calendarId + "-cnt' class='cal-cnt'></table>" );
+				$calendar.append( $objCalendar );
+			}
+
+			// Creates the calendar header
+			$calendarHeader = $( "<div class='cal-hd'></div>" );
+
+			// Create the month navigation
+			$calendarHeader.append( shownav ?
+				createMonthNav( calendarId, year, month, mindate, maxdate, minDateYear, maxDateYear ) :
+				"<div class='cal-mnth'>" + i18nText.monthNames[ month ] + " " + year + "</div>"
+			);
+
+			$oldCalendarHeader = $objCalendar.prev( ".cal-hd" );
+			if ( $oldCalendarHeader.length === 0 ) {
+				$objCalendar.before( $calendarHeader );
+			} else {
+				$oldCalendarHeader.replaceWith( $calendarHeader );
+			}
+
+			// Create the calendar body
+
+			// Creates weekdays
+			$objCalendar.append( createWeekdays( calendarId ) );
+
+			// Creates the rest of the calendar
+			$days = createDays( calendarId, year, month );
+			$daysList = $days.find( "td:not(.cal-empty)" );
+
+			$objCalendar.append( $days );
+
+			// Trigger the displayed.wb-cal event
+			$calendar.trigger( displayedEvent, [ year, month, $daysList, day ] );
 		}
-
-		$calendar
-			.addClass( "cal-cnt" )
-			.attr( "id", calendarId );
-
-		if ( ariaLabelledBy ) {
-			$calendar.attr({
-				"aria-controls": ariaControls,
-				"aria-labelledby": ariaLabelledBy
-			});
-		}
-
-		// Converts min and max date from string to date objects
-		if ( typeof mindate === "string" ) {
-			mindate = fromDateISO( mindate );
-		} else if ( !( typeof mindate === "object" && mindate.getFullYear() ) ) {
-			mindate = null;
-		}
-		if ( mindate === null ) {
-			mindate = new Date();
-			mindate.setFullYear( year - 1, month, 1 );
-		}
-
-		if ( typeof maxdate === "string" ) {
-			maxdate = fromDateISO( maxdate );
-		} else if ( typeof maxdate !== "object" || maxdate.constructor !== Date ) {
-			maxdate = new Date();
-			maxdate.setFullYear( year + 1, month, 1 );
-		}
-
-		// Validates that the year and month are in the min and max date range
-		maxDateYear = maxdate.getFullYear();
-		maxDateMonth = maxdate.getMonth();
-		minDateYear = mindate.getFullYear();
-		minDateMonth = mindate.getMonth();
-		if ( year > maxDateYear || ( year === maxDateYear && month > maxDateMonth ) ) {
-			year = maxDateYear;
-			month = maxDateMonth;
-		} else if ( year < minDateYear || ( year === minDateYear && month < minDateMonth ) ) {
-			year = minDateYear;
-			month = minDateMonth;
-		}
-
-		// Reset calendar if the calendar previously existed
-		$objCalendar = $( objCalendarId );
-		if ( $objCalendar.length !== 0 ) {
-			$objCalendar.find( "#cal-" + calendarId + "-wd, .cal-mnth, #cal-" + calendarId + "-days").remove();
-			$objCalendar = $calendar.children("#cal-" + calendarId + "-cnt");
-		} else {
-			$objCalendar = $( "<table id='cal-" + calendarId + "-cnt' class='cal-cnt'></table>" );
-			$calendar.append( $objCalendar );
-		}
-
-		// Creates the calendar header
-		$calendarHeader = $( "<div class='cal-hd'></div>" );
-
-		// Create the month navigation
-		$calendarHeader.append( shownav ?
-			createMonthNav( calendarId, year, month, mindate, maxdate, minDateYear, maxDateYear ) :
-			"<div class='cal-mnth'>" + i18nText.monthNames[ month ] + " " + year + "</div>"
-		);
-
-		$oldCalendarHeader = $objCalendar.prev( ".cal-hd" );
-		if ( $oldCalendarHeader.length === 0 ) {
-			$objCalendar.before( $calendarHeader );
-		} else {
-			$oldCalendarHeader.replaceWith( $calendarHeader );
-		}
-
-		// Create the calendar body
-
-		// Creates weekdays
-		$objCalendar.append( createWeekdays( calendarId ) );
-
-		// Creates the rest of the calendar
-		$days = createDays( calendarId, year, month );
-		$daysList = $days.find( "td:not(.cal-empty)" );
-
-		$objCalendar.append( $days );
-
-		// Trigger the displayed.wb-cal event
-		$calendar.trigger( "displayed.wb-cal", [ year, month, $daysList, day ] );
 	},
 
 	createMonthNav = function( calendarId, year, month, minDate, maxDate, minDateYear, maxDateYear ) {
@@ -1973,7 +1945,7 @@ var $document = wb.doc,
 		if ( !which || which === 1 ) {
 
 			if ( typeof eventData !== "undefined" ) {
-				$document.trigger( "create.wb-cal", [
+				$document.trigger( createEvent, [
 					eventData.calID,
 					eventData.year,
 					eventData.month,
@@ -1986,7 +1958,7 @@ var $document = wb.doc,
 			$container.find( classes.indexOf( "wb-inv" ) !== -1 ?
 				".cal-goto-lnk a" :
 				"." + classes.match( /cal-[a-z]*mnth/i )
-			).trigger( "setfocus.wb" );
+			).trigger( setFocusEvent );
 
 			return false;
 		}
@@ -1998,10 +1970,14 @@ var $document = wb.doc,
 			minDate = eventData.minDate,
 			maxDate = eventData.maxDate,
 			$monthField = eventData.$monthField,
+			value = $monthField.val(),
+			month = value ? value : eventData.month,
 			minMonth = 0,
-			maxMonth = 11,
+			maxMonth = 12,
 			monthNames = i18nText.monthNames,
-			month, i;
+			newMonthField = "<select id='" + $monthField.attr( "id" ) +
+				"' title='" + $monthField.attr( "title" ) + "'>",
+			i;
 
 		if ( year === minDate.getFullYear() ) {
 			minMonth = minDate.getMonth();
@@ -2011,25 +1987,17 @@ var $document = wb.doc,
 			maxMonth = maxDate.getMonth() + 1;
 		}
 
-		month = $monthField.val();
-
-		// Can't use $monthField.empty() or .html("") on <select> in IE
-		// http://stackoverflow.com/questions/3252382/why-does-dynamically-populating-a-select-drop-down-list-element-using-javascript
-		for ( i = $monthField.length - 1 ; i !== -1; i -= 1 ) {
-			$monthField[ i ].remove( i );
-		}
-
 		for ( i = minMonth; i !== maxMonth; i += 1 ) {
-			$monthField.append( "<option value='" + i + "'" + ( (i === month ) ? " selected='selected'" : "" ) +
-				">" + monthNames[ i ] + "</option>" );
+			newMonthField += "<option value='" + i + "'" + ( ( i === month ) ? " selected='selected'" : "" ) +
+				">" + monthNames[ i ] + "</option>";
 		}
+		$monthField.replaceWith( newMonthField + "</select>" );
 	},
 
 	createGoToForm = function( calendarId, year, month, minDate, maxDate ) {
 		var $goToForm = $( "<div class='cal-goto'></div>" ),
 			$form = $( "<form id='cal-" + calendarId + "-goto' role='form' style='display:none;' action=''></form>" ),
-			$yearContainer, $yearField, y, ylen, $monthContainer, $monthField, $buttonSubmit,
-			$buttonCancel, $goToLink;
+			$yearContainer, yearField, $yearField, y, ylen, $monthContainer, $monthField;
 
 		$form.on( "submit", function( event ) {
 			event.preventDefault();
@@ -2039,10 +2007,11 @@ var $document = wb.doc,
 
 		// Create the year field
 		$yearContainer = $( "<div class='cal-goto-yr'></div>" );
-		$yearField = $( "<select title='" + i18nText.goToYear + "' id='cal-" + calendarId + "-goto-year'></select>" );
-		for ( y = minDate.getFullYear(), ylen = maxDate.getFullYear(); y <= ylen; y += 1 ) {
-			$yearField.append( $( "<option value='" + y + "'" + (y === year ? " selected='selected'" : "" ) + ">" + y + "</option>" ) );
+		yearField = "<select title='" + i18nText.goToYear + "' id='cal-" + calendarId + "-goto-year'>";
+		for ( y = minDate.getFullYear(), ylen = maxDate.getFullYear() + 1; y !== ylen; y += 1 ) {
+			yearField += "<option value='" + y + "'" + ( y === year ? " selected='selected'" : "" ) + ">" + y + "</option>";
 		}
+		$yearField = $( yearField + "</select>" );
 
 		// Create the month field
 		$monthContainer = $( "<div class='cal-goto-mnth'></div>" );
@@ -2054,49 +2023,25 @@ var $document = wb.doc,
 		$yearContainer.append( $yearField );
 
 		// Update the list of available months when changing the year
-		$yearField.on( "change", { minDate: minDate, maxDate: maxDate, $monthField: $monthField }, yearChanged );
+		$yearField.on( "change", { minDate: minDate, maxDate: maxDate, month: month, $monthField: $monthField }, yearChanged );
 
 		// Populate initial month list
 		$yearField.trigger( "change" );
 
-		$buttonSubmit = $( "<div class='cal-goto-btn'><input type='submit' class='btn btn-primary' value='" +
-			i18nText.goToBtn + "' /></div>" );
-
-		$buttonCancel = $( "<div class='cal-goto-btn'><input type='button' class='btn btn-default' value='" +
-			i18nText.cancelBtn + "' /></div>" );
-		$buttonCancel.on( "click", "input", function( event ) {
-			var which = event.which;
-
-			// Ignore middle/right mouse buttons
-			if ( !which || which === 1 ) {
-				$( "#" + calendarId ).trigger( "hideGoToFrm.wb-cal" );
-			}
-		});
-
 		$form
 			.append( $monthContainer )
 			.append( $yearContainer )
-			.append( "<div class='clearfix'></div>" )
-			.append( $buttonSubmit )
-			.append( $buttonCancel );
-
-		$goToLink = $( "<div id='cal-" +
-			calendarId + "-goto-lnk'><a href='javascript:;' role='button' aria-controls='cal-" +
-			calendarId + "-goto' class='cal-goto-lnk' aria-expanded='false'>" +
-			i18nText.monthNames[ month ] + " " + year + "</a></div>" );
-		$goToLink.on( "click", "a", function( event ) {
-			event.preventDefault();
-
-			var which = event.which;
-
-			// Ignore middle/right mouse buttons
-			if ( !which || which === 1 ) {
-				showGoToForm( calendarId );
-			}
-		} );
+			.append( "<div class='clearfix'></div>" +
+				"<div class='cal-goto-btn'><input type='submit' class='btn btn-primary' value='" +
+				i18nText.goToBtn + "' /></div>" +
+				"<div class='cal-goto-btn'><input type='button' class='btn btn-default cal-goto-cancel' value='" +
+				i18nText.cancelBtn + "' /></div>" );
 
 		$goToForm
-			.append( $goToLink )
+			.append( "<div id='cal-" +
+				calendarId + "-goto-lnk'><a href='javascript:;' role='button' aria-controls='cal-" +
+				calendarId + "-goto' class='cal-goto-lnk' aria-expanded='false'>" +
+				i18nText.monthNames[ month ] + " " + year + "</a></div>" )
 			.append( $form );
 
 		return $goToForm;
@@ -2161,10 +2106,14 @@ var $document = wb.doc,
 					className += " cal-index-" + dayCount;
 					isCurrentDate = ( dayCount === currDay && month === currMonth && year === currYear );
 
-					cells += "<td id='" + id + "' class='" + ( isCurrentDate ? "cal-currday " : "" ) + className + "'><div><time datetime='" + year + "-" +
-						( month < 9 ? "0" : "" ) + ( month + 1 ) + "-" + ( dayCount < 10 ? "0" : "" ) + dayCount + "'><span class='wb-inv'>" + textWeekDayNames[ day ] +
-						( frenchLang ? ( " </span>" + dayCount + "<span class='wb-inv'> " + textMonthNames[ month ].toLowerCase() + " " ) :
-						( " " + textMonthNames[ month ] + " </span>" + dayCount + "<span class='wb-inv'>&nbsp;" ) ) + year +
+					cells += "<td id='" + id + "' class='" + ( isCurrentDate ? "cal-currday " : "" ) +
+						className + "'><div><time datetime='" + year + "-" +
+						( month < 9 ? "0" : "" ) + ( month + 1 ) + "-" + ( dayCount < 10 ? "0" : "" ) +
+						dayCount + "'><span class='wb-inv'>" + textWeekDayNames[ day ] +
+						( frenchLang ? ( " </span>" + dayCount + "<span class='wb-inv'> " +
+						textMonthNames[ month ].toLowerCase() + " " ) :
+						( " " + textMonthNames[ month ] + " </span>" + dayCount +
+						"<span class='wb-inv'>&#160;" ) ) + year +
 						( isCurrentDate ? textCurrentDay : "" ) + "</span></time></div></td>";
 
 					if ( dayCount > lastDay ) {
@@ -2183,36 +2132,36 @@ var $document = wb.doc,
 	},
 
 	showGoToForm = function( calendarId ) {
-		var gotoId = "#cal-" + calendarId + "-goto",
-			$form = $( gotoId ),
-			$buttons = $( "#" + calendarId ).find( gotoId + "-lnk, .cal-prvmnth, .cal-nxtmnth" );
+		var gotoId = "#cal-" + calendarId + "-goto";
 
-		$buttons
-			.addClass( "hide" )
-			.attr( "aria-hidden", "true" )
-			.filter( "a" )
-				.attr( "aria-expanded", "true" );
+		$( "#" + calendarId )
+			.find( gotoId + "-lnk, .cal-prvmnth, .cal-nxtmnth" )
+				.addClass( "hide" )
+				.attr( "aria-hidden", "true" )
+				.filter( "a" )
+					.attr( "aria-expanded", "true" );
 
 		// TODO: Replace with CSS animation
-		$form.stop().slideDown( 0 ).queue(function() {
-			$( this ).find( ":input:eq(0)" ).trigger( "setfocus.wb" );
+		$( gotoId ).stop().slideDown( 0 ).queue(function() {
+			$( this ).find( ":input:eq(0)" ).trigger( setFocusEvent );
 		});
 	},
 
 	hideGoToFrm = function( event ) {
-		var calendarId = event.target.id,
-			gotoId = "#cal-" + calendarId + "-goto",
-			$form = $( gotoId ),
-			$buttons = $( "#" + calendarId ).find( gotoId + "-lnk, .cal-prvmnth, .cal-nxtmnth" );
+		if ( event.namespace === namespace ) {
+			var calendarId = event.target.id,
+				gotoId = "#cal-" + calendarId + "-goto";
 
-		$buttons
-			.removeClass( "hide" )
-			.attr( "aria-hidden", "false" )
-			.filter( "a" )
-				.attr( "aria-expanded", "false" );
+			$( "#" + calendarId )
+				.find( gotoId + "-lnk, .cal-prvmnth, .cal-nxtmnth" )
+					.removeClass( "hide" )
+					.attr( "aria-hidden", "false" )
+					.filter( "a" )
+						.attr( "aria-expanded", "false" );
 
-		// TODO: Replace with CSS animation
-		$form.stop().slideUp( 0 );
+			// TODO: Replace with CSS animation
+			$( gotoId ).stop().slideUp( 0 );
+		}
 	},
 
 	onGoTo = function( calendarId, minDate, maxDate ) {
@@ -2221,8 +2170,8 @@ var $document = wb.doc,
 			month = parseInt( $form.find( ".cal-goto-mnth select option:selected" ).val(), 10 ),
 			year = parseInt( $form.find( ".cal-goto-yr select" ).val(), 10 );
 
-		if (!(month < minDate.getMonth() && year <= minDate.getFullYear()) && !(month > maxDate.getMonth() && year >= maxDate.getFullYear())) {
-			$document.trigger( "create.wb-cal", [
+		if ( !( month < minDate.getMonth() && year <= minDate.getFullYear() ) && !( month > maxDate.getMonth() && year >= maxDate.getFullYear() ) ) {
+			$document.trigger( createEvent, [
 				calendarId,
 				year,
 				month,
@@ -2230,40 +2179,44 @@ var $document = wb.doc,
 				minDate,
 				maxDate
 			]);
-			$container.trigger( "hideGoToFrm.wb-cal" );
+			$container.trigger( hideGoToFrmEvent );
 
 			// Go to the first day to avoid having to tab over the navigation again.
 			$( "#cal-" + calendarId + "-days a" )
 				.eq( 0 )
-				.trigger( "setfocus.wb" );
+				.trigger( setFocusEvent );
 		}
 	},
 
 	setFocus = function( event, calendarId, year, month, minDate, maxDate, targetDate ) {
-		var time = targetDate.getTime();
+		var time;
 
-		if ( time < minDate.getTime() ) {
-			targetDate = minDate;
-		} else if ( time > maxDate.getTime() ) {
-			targetDate = maxDate;
-		}
+		if ( event.namespace === namespace ) {
+			time = targetDate.getTime();
 
-		if ( targetDate.getMonth() !== month || targetDate.getFullYear() !== year ) {
-			$document.trigger( "create.wb-cal", [
-					calendarId,
-					targetDate.getFullYear(),
-					targetDate.getMonth(),
-					true,
-					minDate,
-					maxDate,
-					targetDate.getDate()
-				]
-			);
+			if ( time < minDate.getTime() ) {
+				targetDate = minDate;
+			} else if ( time > maxDate.getTime() ) {
+				targetDate = maxDate;
+			}
+
+			if ( targetDate.getMonth() !== month || targetDate.getFullYear() !== year ) {
+				$document.trigger( createEvent, [
+						calendarId,
+						targetDate.getFullYear(),
+						targetDate.getMonth(),
+						true,
+						minDate,
+						maxDate,
+						targetDate.getDate()
+					]
+				);
+			}
 		}
 	};
 
 // Event binding
-$document.on( "create.wb-cal", create );
+$document.on( createEvent, create );
 
 // Keyboard nav
 $document.on( "keydown", ".cal-days a", function( event ) {
@@ -2275,13 +2228,20 @@ $document.on( "keydown", ".cal-days a", function( event ) {
 		fieldId = $container.attr( "aria-controls" ),
 		which = event.which,
 		fromDateISO = wb.date.fromDateISO,
-		date = fromDateISO( elm.getElementsByTagName( "time" )[ 0 ].getAttribute( "datetime" ) ),
-		currYear = date.getFullYear(),
-		currMonth = date.getMonth(),
-		currDay = date.getDate(),
-		days = $monthContainer.find( "td > a" ).get(),
-		maxDay = days.length,
-		field, minDate, maxDate, modifier;
+		date = fromDateISO(
+			(
+				elm.className.indexOf( "cal-evt-lnk" ) === -1 ?
+					elm : elm.parentNode.parentNode.previousSibling
+			).getElementsByTagName( "time" )[ 0 ].getAttribute( "datetime" )
+		),
+
+		// Clone the date to keep a copy of the current date
+		currDate = new Date( date.getTime() ),
+		currYear = currDate.getFullYear(),
+		currMonth = currDate.getMonth(),
+		currDay = currDate.getDate(),
+		field, minDate, maxDate, modifier, $links, $link,
+		events, i, len, eventDate;
 
 	if ( fieldId ) {
 		field = document.getElementById( fieldId );
@@ -2315,14 +2275,12 @@ $document.on( "keydown", ".cal-days a", function( event ) {
 			}
 			break;
 
-		// end key
+		// end / home
 		case 35:
-			date.setDate( maxDay );
-			break;
-
-		// home key
 		case 36:
-			date.setDate( 1 );
+			$links = $monthContainer.find( "td > a" );
+			$link = which === 35 ? $links.last() : $links.first();
+			date.setDate( fromDateISO( $link.find( "time" ).attr( "datetime" ) ).getDate() );
 			break;
 
 		// left arrow key
@@ -2346,9 +2304,51 @@ $document.on( "keydown", ".cal-days a", function( event ) {
 			break;
 		}
 
+		// If in a calendar of events then correct the date to the
+		// appropriate event date if the new date is in a different year
+		// or month or the date in the current month doesn't have a link
+		if ( $container.hasClass( "wb-calevt-cal" ) &&
+			( currYear !== date.getFullYear() || currMonth !== date.getMonth() ||
+			$monthContainer.find( ".cal-index-" + date.getDate() + " > a" ).length === 0 ) ) {
+
+			events = $container.data( "calEvents" ).list;
+			len = events.length;
+
+			// New date is later than the current date so find
+			// the first event date after the new date
+			if ( currDate < date ) {
+				for ( i = 0; i !== len; i += 1 ) {
+					eventDate = events[ i ].date;
+					if ( eventDate.getTime() >= date.getTime() ) {
+						break;
+					}
+				}
+
+			// New date is earlier than the current date so find
+			// the first event date before the new date
+			} else {
+				for ( i = len - 1; i !== -1; i -= 1 ) {
+					eventDate = events[ i ].date;
+					if ( eventDate.getTime() <= date.getTime() ) {
+						break;
+					}
+				}
+			}
+
+			// Update new date if appropriate event date was found
+			if ( ( i !== len && i !== -1 ) ||
+				( i === len && currDate < eventDate ) ||
+				( i === -1 && currDate > eventDate ) ) {
+
+				date = eventDate;
+			} else {
+				date = currDate;
+			}
+		}
+
 		// Move focus to the new date
 		if ( currYear !== date.getFullYear() || currMonth !== date.getMonth() ) {
-			$document.trigger( "setFocus.wb-cal", [
+			$document.trigger( setFocusCalEvent, [
 					calendarId,
 					currYear,
 					currMonth,
@@ -2358,16 +2358,36 @@ $document.on( "keydown", ".cal-days a", function( event ) {
 				]
 			);
 		} else if ( currDay !== date.getDate() ) {
-			$( days[ date.getDate() - 1 ] ).trigger( "setfocus.wb" );
+			$monthContainer.find( ".cal-index-" + date.getDate() + " > a" ).trigger( setFocusEvent );
 		}
 
 		return false;
 	}
 });
 
-$document.on( "hideGoToFrm.wb-cal", ".cal-cnt", hideGoToFrm );
+$document.on( hideGoToFrmEvent, ".cal-cnt", hideGoToFrm );
 
-$document.on( "setFocus.wb-cal", setFocus );
+$document.on( setFocusCalEvent, setFocus );
+
+$document.on( "click", ".cal-goto-lnk", function( event ) {
+	event.preventDefault();
+
+	var which = event.which;
+
+	// Ignore middle/right mouse buttons
+	if ( !which || which === 1 ) {
+		showGoToForm( $( event.currentTarget ).closest( ".cal-cnt" ).attr( "id" ) );
+	}
+});
+
+$document.on( "click", ".cal-goto-cancel", function( event ) {
+	var which = event.which;
+
+	// Ignore middle/right mouse buttons
+	if ( !which || which === 1 ) {
+		$( event.currentTarget ).closest( ".cal-cnt" ).trigger( hideGoToFrmEvent );
+	}
+});
 
 })( jQuery, window, document, wb );
 
@@ -2392,8 +2412,8 @@ $document.on( "setFocus.wb-cal", setFocus );
 	selector = "." + pluginName,
 	initedClass = pluginName + "-inited",
 	initEvent = "wb-init" + selector,
-	tableParsingEvent = "pasiveparse.wb-tableparser.wb",
-	tableParsingCompleteEvent = "parsecomplete.wb-tableparser.wb",
+	tableParsingEvent = "passiveparse.wb-tableparser",
+	tableParsingCompleteEvent = "parsecomplete.wb-tableparser",
 	$document = wb.doc,
 	idCount = 0,
 	i18n, i18nText,
@@ -2409,7 +2429,8 @@ $document.on( "setFocus.wb-cal", setFocus );
 			dataSeries = [],
 			nbBarChart = 0,
 			$caption = $( "caption", $elm ),
-			captionHtml = $caption.html(),
+			captionHtml = $caption.html() || "",
+			captionText = $caption.text() || "",
 			valuePoint = 0,
 			lowestFlotDelta, $imgContainer, $placeHolder,
 			$wetChartContainer, htmlPlaceHolder, figurehtml,
@@ -2425,7 +2446,10 @@ $document.on( "setFocus.wb-cal", setFocus );
 					prefix: "wb-charts-",
 					defaults: {
 						colors: wb.drawColours,
-						canvas: true
+						canvas: true,
+						xaxis: {
+							ticks: { }
+						}
 					},
 					line: { },
 					area: {
@@ -2717,9 +2741,9 @@ $document.on( "setFocus.wb-cal", setFocus );
 		// Apply any preset
 		optionsCharts = applyPreset( defaultsOptions.charts, $elm, pluginName );
 
-		// Fix default width and height in case the table is hidden.
-		optionsCharts.width = optionsCharts.width | 250;
-		optionsCharts.height = optionsCharts.height | 250;
+		// Fix default width and height in case the table is hidden or too small.
+		optionsCharts.width = ( optionsCharts.width && optionsCharts.width > 250 ? optionsCharts.width : 250 );
+		optionsCharts.height = ( optionsCharts.height && optionsCharts.height > 250 ? optionsCharts.height : 250 );
 
 		/**
 		 * @method getColumnGroupHeaderCalculateSteps
@@ -2933,13 +2957,13 @@ $document.on( "setFocus.wb-cal", setFocus );
 
 			// Calculate upper-step for cells that are
 			// less precise than the reference value vector
-			for ( i = referenceValue - 1; i !== -1; i -= 1 ){
+			for ( i = referenceValue - 1; i !== -1; i -= 1 ) {
 
 				for ( k = 0, kLen = vectorHead[ i ].cell.length; k !== kLen; k += 1 ) {
 					currentCell = vectorHead[ i ].cell[ k ];
 
 					if ( currentCell.flotDelta || k > 0 &&
-						currentCell.uid === vectorHead[ i ].cell[ k - 1 ].uid ){
+						currentCell.uid === vectorHead[ i ].cell[ k - 1 ].uid ) {
 
 						continue;
 					}
@@ -3096,7 +3120,13 @@ $document.on( "setFocus.wb-cal", setFocus );
 		 * @method wrapTableIntoDetails
 		 */
 		function wrapTableIntoDetails() {
-			var $details = $( "<details><summary>" +
+			var $details;
+
+			if ( !captionHtml.length ) {
+				return;
+			}
+
+			$details = $( "<details><summary>" +
 				captionHtml + i18nText.tableMention +
 				"</summary></details>" );
 
@@ -3106,14 +3136,19 @@ $document.on( "setFocus.wb-cal", setFocus );
 
 		function createContainer(withDimension) {
 
-			var $container = $( "<figure class='" + optionsCharts.graphclass +
+			var $container = $( "<figure class='" + optionsCharts.graphclass + "'>" +
 
 				// Copy to the inner table caption
-				"'><figcaption>" + captionHtml +
-				"</figcaption><div role='img' aria-label='" +
-				$caption.text() + i18nText.tableFollowing + "'" +
-				(withDimension ? "style='height:" + optionsCharts.height +
-				"px; width:" + optionsCharts.width + "px'": "") +
+				( captionHtml.length ? "<figcaption>" + captionHtml + "</figcaption>" : "" ) +
+
+				// Image Container
+				"<div role='img' aria-label='" +
+				captionText + i18nText.tableFollowing + "'" +
+
+				// Add Dimension
+				( withDimension ? "style='height:" + optionsCharts.height +
+				"px; width:" + optionsCharts.width + "px'" : "" ) +
+
 				"></div></figure>");
 
 			$container.insertBefore( $elm ).append( $elm );
@@ -3310,9 +3345,7 @@ $document.on( "setFocus.wb-cal", setFocus );
 		}
 
 		// Add the labels at the Flot options
-		optionFlot.xaxis = {
-			ticks: chartslabels
-		};
+		optionFlot.xaxis.ticks = chartslabels;
 
 		dataGroupVector = !reverseTblParsing ? dataGroup.row : dataGroup.col;
 
@@ -3491,25 +3524,23 @@ $document.on( "timerpoke.wb " + initEvent + " " + tableParsingCompleteEvent, sel
 	var eventType = event.type,
 		elm = event.target;
 
-	if ( event.currentTarget !== elm ) {
-		return true;
-	}
+	if ( event.currentTarget === elm ) {
+		switch ( eventType ) {
 
-	switch ( eventType ) {
+		/*
+		 * Init
+		 */
+		case "timerpoke":
+			init( elm );
+			break;
 
-	/*
-	 * Init
-	 */
-	case "timerpoke":
-		init( elm );
-		break;
-
-	/*
-	 * Data table parsed
-	 */
-	case "parsecomplete":
-		createCharts( $( elm ) );
-		break;
+		/*
+		 * Data table parsed
+		 */
+		case "parsecomplete":
+			createCharts( $( elm ) );
+			break;
+		}
 	}
 
 	/*
@@ -3656,7 +3687,7 @@ wb.add( selector );
  * place to define variables that are common to all instances of the plugin on a
  * page.
  */
-var pluginName = "wb-ajax",
+var pluginName = "wb-data-ajax",
 	selector = "[data-ajax-after], [data-ajax-append], [data-ajax-before], " +
 		"[data-ajax-prepend], [data-ajax-replace]",
 	inited = "-inited",
@@ -3673,7 +3704,7 @@ var pluginName = "wb-ajax",
 	 */
 	init = function( $elm, ajaxType ) {
 		var url = $elm.data( "ajax-" + ajaxType ),
-			initedClass = pluginName + ajaxType + inited;
+			initedClass = pluginName + "-" + ajaxType + inited;
 
 		// Only initialize the element once for the ajaxType
 		if ( !$elm.hasClass( initedClass ) ) {
@@ -3683,7 +3714,9 @@ var pluginName = "wb-ajax",
 			$document.trigger({
 				type: "ajax-fetch.wb",
 				element: $elm,
-				fetch: url
+				fetch: {
+					url: url
+				}
 			});
 		}
 	};
@@ -3722,7 +3755,7 @@ $document.on( "timerpoke.wb " + initEvent + " ajax-fetched.wb", selector, functi
 		default:
 
 			// ajax-fetched event
-			content = event.pointer.html();
+			content = event.fetch.pointer.html();
 			$elm.removeAttr( "data-ajax-" + ajaxType );
 
 			// "replace" is the only event that doesn't map to a jQuery function
@@ -3732,7 +3765,7 @@ $document.on( "timerpoke.wb " + initEvent + " ajax-fetched.wb", selector, functi
 				$elm[ ajaxType ]( content );
 			}
 
-			$elm.trigger( "ajax-" + ajaxType + "-loaded.wb" );
+			$elm.trigger( pluginName + "-" + ajaxType + "-loaded.wb" );
 		}
 	}
 
@@ -3827,24 +3860,31 @@ var pluginName = "wb-inview",
 			$elm.attr( "data-inviewstate", viewState );
 			$dataInView = $( "#" + $elm.attr( "data-inview" ) );
 
-			// Keep closed if the user closed the inView result
-			if ( !$dataInView.hasClass( "user-closed" ) ) {
-				if ( $dataInView.hasClass( "wb-overlay" ) ) {
-					if ( !oldViewState ) {
-						$dataInView.addClass( "outside-off" );
+			if ( $dataInView.length !== 0 ) {
+
+				// Keep closed if the user closed the inView result
+				if ( !$dataInView.hasClass( "user-closed" ) ) {
+					if ( $dataInView.hasClass( "wb-overlay" ) ) {
+						if ( !oldViewState ) {
+							$dataInView.addClass( "outside-off" );
+						}
+						$dataInView.trigger({
+							type: ( show ? "open" : "close" ),
+							namespace: "wb-overlay",
+							noFocus: true
+						});
+					} else {
+						$dataInView
+							.attr( "aria-hidden", !show )
+							.toggleClass( "in", !show )
+							.toggleClass( "out", show );
 					}
-					$dataInView.trigger({
-						type: ( show ? "open" : "close" ),
-						namespace: "wb-overlay",
-						noFocus: true
-					});
-				} else {
-					$dataInView
-						.attr( "aria-hidden", !show )
-						.toggleClass( "in", !show )
-						.toggleClass( "out", show );
 				}
 			}
+
+			// Trigger an event on the element identifying that the view state has changed
+			// (e.g., "all.wb-inview", "partial.wb-inview", "none.wb-inview")
+			$elm.trigger( viewState + selector );
 		}
 	};
 
@@ -3904,7 +3944,8 @@ wb.add( selector );
  * not once per instance of plugin on the page. So, this is a good place to define
  * variables that are common to all instances of the plugin on a page.
  */
-var pluginName = "wb-pic",
+var imgClass,
+	pluginName = "wb-pic",
 	selector = "[data-pic]",
 	initedClass = pluginName + "-inited",
 	initEvent = "wb-init." + pluginName,
@@ -3923,6 +3964,10 @@ var pluginName = "wb-pic",
 		if ( !$elm.hasClass( initedClass ) ) {
 			wb.remove( selector );
 			$elm.addClass( initedClass );
+
+			// Store the class attribute of the plugin element.  It
+			// will be added to the image created by the plugin.
+			imgClass = $elm.data( "class" ) || "";
 
 			$elm.trigger( picturefillEvent );
 		}
@@ -3954,9 +3999,15 @@ var pluginName = "wb-pic",
 			if ( !img ) {
 				img = $document[ 0 ].createElement( "img" );
 				img.alt = elm.getAttribute( "data-alt" );
+				img.className = imgClass;
 			}
 			img.src = matchedElm.getAttribute( "data-src" );
 			matchedElm.appendChild( img );
+
+			// Fixes bug with IE8 constraining the height of the image
+			// when the .img-responsive class is used.
+			img.removeAttribute( "width" );
+			img.removeAttribute( "height" );
 
 		// No match and an image exists: delete it
 		} else if ( img ) {
@@ -4191,9 +4242,9 @@ wb.add( selector );
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  * @author @patheard
  *
- * This plugin provides the ability to add and update the favicon's on a web page. Its default behaviour is to add a mobile favicon to web pages that have a favicon defined by a `<link rel="shortcut icon">` element.
+ * This plugin provides the ability to add and update the favicon's on a web page. Its default behaviour is to add a mobile favicon to web pages that have a favicon defined by a `<link rel='icon'>` element.
  *
- * The mobile favicon's file name, rel, path and sizes can be set with data attributes on the `<link rel="shortcut icon">`:
+ * The mobile favicon's file name, rel, path and sizes can be set with data attributes on the `<link rel='icon'>`:
  *
  * -**data-filename:** filename of the mobile favicon (defaults to "favicon-mobile.png"). This will be appended to the favicon's path.
  * -**data-path:** path to the mobile favicon (defaults to using the same path as the shortcut icon).
@@ -4202,7 +4253,7 @@ wb.add( selector );
  *
  * For example, the following overides the rel and file name attributes of the mobile favicon:
  *
- *     <link href="favion.ico" rel="shortcut icon" data-rel="apple-touch-icon-precomposed" data-filename="my-mobile-favicon.ico">
+ *     <link href="favion.ico" rel='icon' data-rel="apple-touch-icon-precomposed" data-filename="my-mobile-favicon.ico">
  */
 (function( $, window, wb ) {
 "use strict";
@@ -4214,7 +4265,7 @@ wb.add( selector );
  * variables that are common to all instances of the plugin on a page.
  */
 var pluginName = "wb-favicon",
-	selector = "link[rel='shortcut icon']",
+	selector = "link[rel='icon']",
 	initEvent = "wb-init." + pluginName,
 	mobileEvent = "mobile." + pluginName,
 	iconEvent = "icon." + pluginName,
@@ -4339,7 +4390,7 @@ wb.add( selector );
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  * @author @pjackson28
  */
-(function( $, window, wb ) {
+(function( $, window, wb, undef ) {
 "use strict";
 
 /*
@@ -4350,9 +4401,167 @@ wb.add( selector );
  */
 var pluginName = "wb-feeds",
 	selector = "." + pluginName,
+	feedLinkSelector = "li > a",
 	initedClass = pluginName + "-inited",
 	initEvent = "wb-init" + selector,
 	$document = wb.doc,
+	patt = /\\u([\d\w]{4})/g,
+
+    /**
+     * Helper function that returns the string representaion of a unicode character
+     * @method decode
+     * @param  {regex} match  unicode pattern
+     * @param  {string} code  string where unicode is needed to be converted
+     * @return {string}	unicode string character
+     */
+    decode = function( match, code ) {
+        return String.fromCharCode( parseInt( code, 16 ) );
+    },
+
+    /**
+     * Helper wrapper function that performs unicode decodes on a string
+     * @method fromCharCode
+     * @param  {string} s string to sanitize with escaped unicode characters
+     * @return {string}	sanitized string
+     */
+    fromCharCode = function(s) {
+        return s.replace( patt, decode );
+    },
+
+    /**
+     * Process Feed/JSON Entries
+     * @method processEntries
+     * @param  {data} JSON formatted data to process
+     * @return {string}	of HTML output
+     */
+     processEntries = function( data ) {
+		var items = data,
+			entries = [],
+			icon = this.fIcon,
+			$content = this._content,
+			toProcess = $content.data( "toProcess" ),
+			i, len;
+
+		len = items.length;
+		for ( i = 0; i !== len; i += 1 ) {
+			items[ i ].fIcon =  icon ;
+
+			if ( items[ i ].publishedDate === undef && items[ i ].published !== undef ) {
+				items[ i ].publishedDate = items[ i ].published;
+			}
+
+			entries.push( items[ i ] );
+		}
+		// lets merge with latest entries
+		entries = $.merge( entries, $content.data( "entries" ) );
+
+		if ( toProcess === 1 ) {
+			parseEntries( entries, $content.data( "feedLimit" ), $content, this.feedType );
+			return 0;
+		}
+
+		toProcess -= 1 ;
+		$content.data({
+			"toProcess": toProcess,
+			"entries": entries
+		});
+
+		return toProcess;
+	},
+
+	/**
+	 * @object Templates
+	 * @properties {function}
+	 * @param {object} requires a entry object of various ATOM based properties
+	 * @returns {string} modified string with appropiate markup/format for a entry object
+	 */
+	Templates = {
+
+		/**
+		 * [facebook template]
+		 * @param  {entry object} data
+		 * @return {string}	HTML string of formatted using Media Object (twitter bootstrap)
+		 */
+		facebook: function( data ) {
+
+			// Facebook feeds does not really do titles in ATOM RSS. It simply truncates content at 150 characters. We are using a JS based sentence
+			// detection algorithm to better split content and titles
+			var content = fromCharCode( data.content ),
+				title = content.replace( /(<([^>]+)>)/ig, "" ).match( /\(?[^\.\?\!]+[\.!\?]\)?/g );
+
+			// Sanitize the HTML from Facebook - extra 'br' tags
+			content = content.replace( /(<br>\n?)+/gi, "<br />" );
+
+			return "<li class='media'><a class='pull-left' href=''><img src='" +
+				data.fIcon + "' alt='" + data.author +
+				"' height='64px' width='64px' class='media-object'/></a><div class='media-body'>" +
+				"<h4 class='media-heading'><a href='" + data.link + "'><span class='wb-inv'>" +
+				title[ 0 ] + " - </span>" + data.author + "</a>  " +
+				( data.publishedDate !== "" ? " <small class='feeds-date text-right'>[" +
+				wb.date.toDateISO( data.publishedDate, true ) + "]</small>" : "" ) +
+				"</h4><p>" + content + "</p></div></li>";
+		},
+
+		/**
+		 * [fickr template]
+		 * @param  {entry object} data
+		 * @return {string}	HTML string for creating a photowall effect
+		 */
+		flickr: function( data ) {
+
+			var seed = "id" + wb.guid(),
+				title = data.title,
+				media = data.media.m,
+				thumbnail = media.replace( "_m.", "_s." ),
+				image = media.replace("_m", ""),
+				description = data.description.replace( /^\s*<p>(.*?)<\/p>\s*<p>(.*?)<\/p>/i, "");
+
+			// due to CORS we cannot default to simple ajax pulls of the image. We have to inline the content box
+			return "<li class='col-md-4 col-sm-6'><a class='wb-lbx' href='#" + seed + "'><img src='" + thumbnail + "' alt='" + title + "' title='" + title + "' class='img-responsive'/></a>" +
+					"<section id='" + seed + "' class='mfp-hide modal-dialog modal-content overlay-def'>" +
+					"<header class='modal-header'><h2 class='modal-title'>" + title + "</h2></header>" +
+					"<div class='modal-body'><img src='" + image + "' class='thumbnail center-block' alt='" + title + "' />" +
+					description + "</div></section>" +
+					"</li>";
+		},
+
+		/**
+		 * [Youtube template]
+		 * @param  {entry object} data
+		 * @return {string}	HTML string for creating a photowall effect
+		 */
+		youtube: function( data ) {
+			var seed = "id" + wb.guid(),
+				mediaGroup = data.media$group,
+				title = mediaGroup.media$title.$t,
+				thumbnail = mediaGroup.media$thumbnail[ 1 ].url,
+				description = mediaGroup.media$description.$t,
+				videoid = mediaGroup.yt$videoid.$t;
+
+			// Due to CORS we cannot default to simple ajax pulls of the image. We have to inline the content box
+			return "<li class='col-md-4 col-sm-6' ><a class='wb-lbx' href='#" + seed + "'><img src='" + thumbnail + "' alt='" + title + "' title='" + title + "' class='img-responsive' /></a>" +
+					"<section id='" + seed + "' class='mfp-hide modal-dialog modal-content overlay-def'>" +
+					"<header class='modal-header'><h2 class='modal-title'>" + title + "</h2></header>" +
+					"<div class='modal-body'>" +
+					"<figure class='wb-mltmd'><video title='" + title + "'>" +
+					"<source type='video/youtube' src='http://www.youtube.com/watch?v=" + videoid + "' />" +
+					"</video><figcaption><p>" +  description + "</p>" +
+					"</figcaption></figure>" +
+					"</div></section>" +
+					"</li>";
+		},
+		/**
+		 * [generic template]
+		 * @param  {entry object}	data
+		 * @return {string}	HTML string of formatted using a simple list / anchor view
+		 */
+		generic: function( data ) {
+
+			return "<li><a href='" + data.link + "'>" + data.title + "</a>" +
+				( data.publishedDate !== "" ? " <span class='feeds-date'>[" +
+				wb.date.toDateISO( data.publishedDate, true ) + "]</span>" : "" ) + "</li>";
+		}
+	},
 
 	/**
 	 * Init runs once per plugin element on the page. There may be multiple elements.
@@ -4362,24 +4571,7 @@ var pluginName = "wb-feeds",
 	 */
 	init = function( event ) {
 		var elm = event.target,
-			entries = [],
-			results = [],
-			processEntries = function( data ) {
-				var k, len;
-
-				data = data.responseData.feed.entries;
-				len = data.length;
-				for ( k = 0; k !== len; k += 1 ) {
-					entries.push( data[ k ] );
-				}
-				if ( !last ) {
-					parseEntries( entries, limit, $content );
-				}
-
-				last -= 1;
-				return last;
-			},
-			$content, limit, feeds, last, i;
+			fetch, url, $content, limit, feeds, fType, last, i, callback, fElem, fIcon;
 
 		// Filter out any events triggered by descendants
 		// and only initialize the element once
@@ -4391,19 +4583,65 @@ var pluginName = "wb-feeds",
 
 			$content = $( elm ).find( ".feeds-cont" );
 			limit = getLimit( elm );
-			feeds = elm.getElementsByTagName( "a" );
+			feeds = $content.find( feedLinkSelector );
 			last = feeds.length - 1;
-			i = last;
 
-			while ( i >= 0 ) {
-				$.ajax({
-					url: jsonRequest( feeds[ i ].href, limit ),
-					dataType: "json",
-					timeout: 1000
-				}).done( processEntries );
-				results.push( i -= 1 );
+			// Lets bind some varialbes to the node to ensure safe ajax thread counting
+
+			$content.data( "toProcess", feeds.length )
+					.data( "feedLimit", limit )
+					.data( "entries", [] );
+
+			for ( i = last; i !== -1; i -= 1 ) {
+				fElem = feeds.eq( i );
+				fIcon = fElem.find( "> img" );
+
+				fetch = {
+					dataType: "jsonp",
+					timeout: 3000
+				};
+
+				if ( fElem.attr( "data-ajax" ) ) {
+
+					if ( fElem.attr( "href" ).indexOf( "flickr" ) !== -1 ) {
+						fType =  "flickr";
+						callback = "jsoncallback";
+						$content.data( "postProcess", [ ".wb-lbx" ] );
+					} else {
+						fType = "youtube";
+						$content.data( "postProcess", [ ".wb-lbx", ".wb-mltmd" ] );
+					}
+
+					// We need a Gallery so lets add another plugin
+					// #TODO: Lightbox review for more abstraction we should not have to add a wb.add() for overlaying
+					fetch.url = fElem.attr( "data-ajax");
+					fetch.jsonp = callback;
+				} else {
+					url = jsonRequest( fElem.attr( "href" ), limit );
+					fetch.url = url;
+
+					// Let's bind the template to the Entries
+					if ( url.indexOf( "facebook.com" ) !== -1 ) {
+						fType = "facebook";
+					} else {
+						fType = "generic";
+					}
+				}
+
+				fetch.jsonp = callback;
+
+				fetch.context = {
+					fIcon: ( fIcon.length !== 0 ) ? fIcon.attr( "src" ) : "",
+					feedType: fType,
+					_content: $content
+				};
+
+				$document.trigger({
+					type: "ajax-fetch.wb",
+					element: fElem,
+					fetch: fetch
+				});
 			}
-			$.extend( {}, results );
 		}
 	},
 
@@ -4422,13 +4660,50 @@ var pluginName = "wb-feeds",
 	},
 
 	/**
+	 * Activates results view
+	 * @method checkIfVisible
+	 * @param = {jQuery EventObject}
+	 */
+	activateIfVisible = function() {
+		var $elm = $( this ),
+			$details = $elm.closest( "details" ),
+			needTimer = $details.length !== 0,
+			isTabPanel = $details.attr( "role" ) === "tabpanel",
+			isHidden = ( isTabPanel && $details.attr( "aria-hidden" ) === "true" ) ||
+						( !isTabPanel && !$details.attr( "open" ) ),
+			result, postProcess, i;
+
+		if ( !needTimer || ( needTimer && !isHidden ) ) {
+			postProcess = $elm.data( "postProcess" );
+			result = $elm.data( "result" );
+
+			$elm.empty()
+				.removeClass( "waiting" )
+				.append( result )
+				.off( "timerpoke.wb", activateIfVisible );
+
+			if ( postProcess ) {
+				for ( i = postProcess.length - 1; i !== -1; i -= 1 ) {
+					wb.add( postProcess[ i ] );
+				}
+			}
+		} else if ( this.className.indexOf( "waiting" ) === -1 ) {
+			$elm.empty().addClass( "waiting" );
+		}
+
+		return false;
+	},
+
+	/**
 	 * Builds the URL for the JSON request
 	 * @method jsonRequest
+	 * http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?&q=https%3A%2F%2Fwww.facebook.com%2Ffeeds%2Fpage.php%3Fid%3D318424514044%26format%3Drss20&num=20
 	 * @param {url} url URL of the feed.
 	 * @param {integer} limit Limit on the number of results for the JSON request to return.
 	 * @return {url} The URL for the JSON request
 	 */
 	jsonRequest = function( url, limit ) {
+
 		var requestURL = wb.pageUrlParts.protocol + "//ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?&q=" + encodeURIComponent( decodeURIComponent( url ) );
 
 		// API returns a maximum of 4 entries by default so only override if more entries should be returned
@@ -4446,10 +4721,9 @@ var pluginName = "wb-feeds",
 	 * @param {jQuery DOM element} $elm Element to which the elements will be appended.
 	 * @return {url} The URL for the JSON request
 	 */
-	parseEntries = function( entries, limit, $elm ) {
+	parseEntries = function( entries, limit, $elm, feedtype ) {
 		var cap = ( limit > 0 && limit < entries.length ? limit : entries.length ),
 			result = "",
-			toDateISO = wb.date.toDateISO,
 			compare = wb.date.compare,
 			i, sorted, sortedEntry;
 
@@ -4459,12 +4733,28 @@ var pluginName = "wb-feeds",
 
 		for ( i = 0; i !== cap; i += 1 ) {
 			sortedEntry = sorted[ i ];
-			result += "<li><a href='" + sortedEntry.link + "'>" + sortedEntry.title + "</a>" +
-				( sortedEntry.publishedDate !== "" ? " <span class='feeds-date'>[" +
-				toDateISO( sortedEntry.publishedDate, true ) + "]</span>" : "" ) + "</li>";
+			result += Templates[ feedtype ]( sortedEntry );
 		}
-		return $elm.empty().append( result );
+
+		wb.selectors.push( $elm );
+
+		$elm.data( "result", result );
+
+		$elm.on( "timerpoke.wb", activateIfVisible );
+
+		return true;
 	};
+
+$document.on( "ajax-fetched.wb", selector + " " + feedLinkSelector, function( event, context ) {
+	var response = event.fetch.response,
+		data;
+
+	// Filter out any events triggered by descendants
+	if ( event.currentTarget === event.target ) {
+		data = ( response.responseData ) ? response.responseData.feed.entries : response.items || response.feed.entry,
+		processEntries.apply( context, [ data ] );
+	}
+});
 
 $document.on( "timerpoke.wb " + initEvent, selector, init );
 
@@ -4604,7 +4894,8 @@ var pluginName = "wb-frmvld",
 	i18n, i18nText,
 
 	defaults = {
-		hdLvl: "h2"
+		hdLvl: "h2",
+		ignore: ":hidden"
 	},
 
 	/**
@@ -4714,6 +5005,7 @@ var pluginName = "wb-frmvld",
 					validator = $form.validate({
 						meta: "validate",
 						focusInvalid: false,
+						ignore: settings.ignore,
 
 						// Set the element which will wrap the inline error messages
 						errorElement: "strong",
@@ -4992,7 +5284,7 @@ var pluginName = "wb-lbx",
 	extendedGlobal = false,
 	$document = wb.doc,
 	idCount = 0,
-	i18n, i18nText,
+	callbacks, i18n, i18nText,
 
 	/**
 	 * Init runs once per plugin element on the page. There may be multiple elements.
@@ -5023,7 +5315,7 @@ var pluginName = "wb-lbx",
 			// read the selector node for parameters
 			modeJS = wb.getMode() + ".js";
 
-			// Only initialize the i18nText once
+			// Only initialize the i18nText and callbacks once
 			if ( !i18nText ) {
 				i18n = wb.i18n;
 				i18nText = {
@@ -5041,60 +5333,45 @@ var pluginName = "wb-lbx",
 						tError: i18n( "lb-xhr-err" ) + " (<a href=\"url%\">)"
 					}
 				};
-			}
 
-			// Load Magnific Popup dependency and bind the init event handler
-			Modernizr.load({
-				load: "site!deps/jquery.magnific-popup" + modeJS,
-				complete: function() {
-					var elm = document.getElementById( elmId ),
-						$elm = $( elm ),
-						settings = {},
-						firstLink;
+				callbacks = {
+					open: function() {
 
-					// Set the dependency i18nText only once
-					if ( !extendedGlobal ) {
-						$.extend( true, $.magnificPopup.defaults, i18nText );
-						extendedGlobal = true;
-					}
+						// TODO: Better if dealt with upstream by Magnific popup
+						var $item = this.currItem,
+							$content = this.contentContainer,
+							$wrap = this.wrap,
+							$buttons = $wrap.find( ".mfp-close, .mfp-arrow" ),
+							len = $buttons.length,
+							i, button, $bottomBar;
 
-					// TODO: Add swipe support
+						for ( i = 0; i !== len; i += 1 ) {
+							button = $buttons[ i ];
+							button.innerHTML += "<span class='wb-inv'> " + button.title + "</span>";
+						}
 
-					settings.callbacks = {
-						open: function() {
+						if ( $item.type === "image" ) {
+							$bottomBar = $content.find( ".mfp-bottom-bar" ).attr( "id", "lbx-title" );
+						} else {
+							$content.attr( "role", "document" );
+						}
 
-							// TODO: Better if dealt with upstream by Magnific popup
-							var $item = this.currItem,
-								$content = this.contentContainer,
-								$wrap = this.wrap,
-								$buttons = $wrap.find( ".mfp-close, .mfp-arrow" ),
-								len = $buttons.length,
-								i, button, $bottomBar;
+						$wrap.append( "<span tabindex='0' class='lbx-end wb-inv'></span>" );
+					},
+					change: function() {
+						var $item = this.currItem,
+							$content = this.contentContainer,
+							$el, $bottomBar, $source, $target,
+							description, altTitleId, altTitle;
 
-							for ( i = 0; i !== len; i += 1 ) {
-								button = $buttons[ i ];
-								button.innerHTML += "<span class='wb-inv'> " + button.title + "</span>";
-							}
+						if ( $item.type === "image" ) {
+							$el = $item.el;
+							$target = $item.img;
+							$bottomBar = $content.find( ".mfp-bottom-bar" );
 
-							if ( $item.type === "image" ) {
-								$bottomBar = $content.find( ".mfp-bottom-bar" ).attr( "id", "lbx-title" );
-							} else {
-								$content.attr( "role", "document" );
-							}
-
-							$wrap.append( "<span tabindex='0' class='lbx-end wb-inv'></span>" );
-						},
-						change: function() {
-							var $item = this.currItem,
-								$content = this.contentContainer,
-								$el, $bottomBar, $source, $target,
-								description, altTitleId, altTitle;
-
-							if ( $item.type === "image" ) {
-								$el = $item.el;
+							if ( $el ) {
 								$source = $el.find( "img" );
-								$target = $item.img.attr( "alt", $source.attr( "alt" ) );
-								$bottomBar = $content.find( ".mfp-bottom-bar" );
+								$target.attr( "alt", $source.attr( "alt" ) );
 
 								// Replicate aria-describedby if it exists
 								description = $source.attr( "aria-describedby" );
@@ -5117,17 +5394,40 @@ var pluginName = "wb-lbx",
 									}
 								}
 							} else {
-								$content
-									.find( ".modal-title, h1" )
-									.first()
-									.attr( "id", "lbx-title" );
+								$target.attr( "alt", $bottomBar.find( ".mfp-title" ).html() );
 							}
+						} else {
+							$content
+								.find( ".modal-title, h1" )
+								.first()
+								.attr( "id", "lbx-title" );
 						}
-					};
+					}
+				};
+			}
+
+			// Load Magnific Popup dependency and bind the init event handler
+			Modernizr.load({
+				load: "site!deps/jquery.magnific-popup" + modeJS,
+				complete: function() {
+					var elm = document.getElementById( elmId ),
+						$elm = $( elm ),
+						settings = {},
+						firstLink;
+
+					// Set the dependency i18nText only once
+					if ( !extendedGlobal ) {
+						$.extend( true, $.magnificPopup.defaults, i18nText );
+						extendedGlobal = true;
+					}
+
+					// TODO: Add swipe support
+
+					settings.callbacks = callbacks;
 
 					if ( elm.nodeName.toLowerCase() !== "a" ) {
 						settings.delegate = "a";
-						firstLink = elm.getElementsByTagName( "a" )[0];
+						firstLink = elm.getElementsByTagName( "a" )[ 0 ];
 
 						// Is the element a gallery?
 						if ( elm.className.indexOf( "-gal" ) !== -1 ) {
@@ -5213,10 +5513,46 @@ $document.on( "focus", ".lbx-end", function( event ) {
 	return true;
 });
 
+// Outside focus detection (for screen readers that exit the lightbox
+// outside the normal means)
+$document.on( "focusin", "body", function( event ) {
+
+	if ( extendedGlobal && $.magnificPopup.instance.currItem &&
+		$( event.target ).closest( ".mfp-wrap" ).length === 0 ) {
+
+		// Close the popup
+		$.magnificPopup.close();
+	}
+});
+
 // Event handler for closing a modal popup
-$(document).on( "click", ".popup-modal-dismiss", function( event ) {
+$( document ).on( "click", ".popup-modal-dismiss", function( event ) {
 	event.preventDefault();
 	$.magnificPopup.close();
+});
+
+// Event handler for opening a popup without a link
+$( document ).on( "open" + selector, function( event, items, modal, title ) {
+	if ( event.namespace === pluginName ) {
+		var isGallery = items.length > 1,
+			isModal = modal && !isGallery ? modal : false,
+			titleSrc = title ? function() {
+					return title[ $.magnificPopup.instance.index ];
+				} : "title";
+
+		event.preventDefault();
+		$.magnificPopup.open({
+			items: items,
+			modal: isModal,
+			gallery: {
+				enabled: isGallery
+			},
+			image: {
+				titleSrc: titleSrc
+			},
+			callbacks: callbacks
+		});
+	}
 });
 
 // Add the timer poke to initialize the plugin
@@ -5261,6 +5597,7 @@ var pluginName = "wb-menu",
 	 * @param {jQuery DOM element} $elm The plugin element
 	 */
 	init = function( $elm ) {
+		var ajaxFetch;
 
 		// Only initialize the element once
 		if ( !$elm.hasClass( initedClass ) ) {
@@ -5277,16 +5614,19 @@ var pluginName = "wb-menu",
 			if ( !i18nText ) {
 				i18n = wb.i18n;
 				i18nText = {
-					menu: i18n( "menu" )
+					searchMenus: i18n( "srch-menus" )
 				};
 			}
 
 			// Lets test to see if we have any menus to fetch
-			if ( $elm.data( "ajax-fetch" ) ) {
+			ajaxFetch = $elm.data( "ajax-fetch" );
+			if ( ajaxFetch ) {
 				$document.trigger({
 					type: "ajax-fetch.wb",
 					element: $elm,
-					fetch: $elm.data( "ajax-fetch" )
+					fetch: {
+						url: ajaxFetch
+					}
 				});
 			} else {
 				onAjaxLoaded( $elm, $elm );
@@ -5427,16 +5767,17 @@ var pluginName = "wb-menu",
 				sectionHtml + "</ul></nav>";
 		}
 
-		return panel.replace( /list-group-item/gi, "" ) + "</div>";
+		return panel.replace( /['"]?list-group-item['"]?/gi, "\"\"" ) + "</div>";
 	},
 
 	/**
 	 * @method onAjaxLoaded
 	 * @param {jQuery DOM element} $elm The plugin element
-	 * @param {jQuery DOM element} $ajaxed The AJAX'd in menu content to import
+	 * @param {jQuery DOM element} $ajaxResult The AJAXed in menu content to import
 	 */
-	onAjaxLoaded = function( $elm, $ajaxed ) {
-		var $menubar = $ajaxed.find( ".menu" ),
+	onAjaxLoaded = function( $elm, $ajaxResult ) {
+		var $ajaxed = !$ajaxResult ? $elm : $ajaxResult,
+			$menubar = $ajaxed.find( ".menu" ),
 			$menu = $menubar.find( "> li > a" ),
 			target = $elm.data( "trgt" ),
 			$secnav = $( "#wb-sec" ),
@@ -5447,7 +5788,7 @@ var pluginName = "wb-menu",
 			panelDOM = document.getElementById( target ),
 			$panel = $( panelDOM ),
 			allProperties = [],
-			$navCurr, $menuItem, len, i;
+			$navCurr, $menuItem, $langItems, len, i;
 
 		/*
 		 * Build the mobile panel
@@ -5464,12 +5805,16 @@ var pluginName = "wb-menu",
 
 		// Add active language offer
 		if ( $language.length !== 0 ) {
+			$langItems = $language.find( "li:not(.curr)" );
+			len = $langItems.length;
 			panel += "<section class='lng-ofr'>" +
 				"<h3>" + $language.children( "h2" ).html() + "</h3>" +
-				"<ul class='list-inline'>" +
-				$language.find( "li:not(.curr)" ).html()
-					.replace( /(<a\s.*<\/a>?)/, "<li>$1</li>" ) +
-				"</ul></section>";
+				"<ul class='list-inline'>";
+			for ( i = 0; i !== len; i += 1 ) {
+				panel += $langItems[ i ].innerHTML
+					.replace( /(<a\s.*<\/a>?)/, "<li>$1</li>" );
+			}
+			panel += "</ul></section>";
 		}
 
 		// Create menu system
@@ -5492,6 +5837,12 @@ var pluginName = "wb-menu",
 
 			// Add the site menu
 			if ( $menubar.length !== 0 ) {
+
+				// Add the menubar role if it is missing
+				if ( !$menubar.attr( "role" ) ) {
+					$menubar.attr( "role", "menubar" );
+				}
+
 				allProperties.push([
 					$menu.get(),
 					"sm-pnl",
@@ -5502,7 +5853,7 @@ var pluginName = "wb-menu",
 			// Add the site information
 			if ( $info.length !== 0 ) {
 				allProperties.push([
-					$info.find( "h3" ),
+					$info.find( "h3, a" ).not( "section a" ),
 					"info-pnl",
 					$info.find( "h2" ).html()
 				]);
@@ -5519,7 +5870,7 @@ var pluginName = "wb-menu",
 
 		// Let's now populate the DOM since we have done all the work in a documentFragment
 		panelDOM.innerHTML = "<header class='modal-header'><div class='modal-title'>" +
-				i18nText.menu  + "</div></header><div class='modal-body'>" +
+				i18nText.searchMenus + "</div></header><div class='modal-body'>" +
 				panel + "</div>";
 		panelDOM.className += " wb-overlay modal-content overlay-def wb-panel-r";
 		$panel
@@ -5541,11 +5892,10 @@ var pluginName = "wb-menu",
 
 		if ( $menu.length !== 0 ) {
 			$menu[ 0 ].setAttribute( "tabindex", "0" );
-			$menu
-				.filter( "[href^=#]" )
-					.append( "<span class='expicon'></span>" );
-
 			drizzleAria( $menu );
+			$menu
+				.filter( "[aria-haspopup=true]" )
+					.append( "<span class='expicon glyphicon glyphicon-chevron-down'></span>" );
 		}
 
 		// Replace elements
@@ -5667,7 +6017,7 @@ var pluginName = "wb-menu",
 	};
 
 // Bind the events of the plugin
-$document.on( "timerpoke.wb " + initEvent + " ajax-fetched.wb", selector, function( event ) {
+$document.on( "timerpoke.wb " + initEvent + " ajax-fetched.wb ajax-failed.wb", selector, function( event ) {
 
 	var elm = event.target,
 		eventType = event.type,
@@ -5675,10 +6025,16 @@ $document.on( "timerpoke.wb " + initEvent + " ajax-fetched.wb", selector, functi
 
 	switch ( eventType ) {
 	case "ajax-fetched":
+	case "ajax-failed":
 
 		// Filter out any events triggered by descendants
 		if ( event.currentTarget === elm ) {
-			onAjaxLoaded( $elm, event.pointer );
+
+			// Only replace the menu if there isn't an error
+			onAjaxLoaded(
+				$elm,
+				eventType === "ajax-fetched" ? event.fetch.pointer : $elm
+			);
 		}
 		return false;
 
@@ -6057,10 +6413,9 @@ var pluginName = "wb-mltmd",
 			if ( !i18nText ) {
 				i18n = wb.i18n;
 				i18nText = {
-					rewind: i18n( "rew" ),
-					ff: i18n( "ffwd" ),
 					play: i18n( "play" ),
 					pause: i18n( "pause" ),
+					volume: i18n( "volume" ),
 					cc_on: i18n( "cc", "on" ),
 					cc_off: i18n( "cc", "off" ),
 					cc_error: i18n ( "cc-err" ),
@@ -6079,12 +6434,15 @@ var pluginName = "wb-mltmd",
 			}
 
 			if ( template === undef ) {
+				template = "";
 				$document.trigger({
 					type: "ajax-fetch.wb",
 					element: selector,
-					fetch: wb.getPath( "/assets" ) + "/mediacontrols.html"
+					fetch: {
+						url: wb.getPath( "/assets" ) + "/mediacontrols.html"
+					}
 				});
-			} else {
+			} else if ( template !== "" ) {
 				$( eventTarget ).trigger({
 					type: "templateloaded.wb"
 				});
@@ -6338,10 +6696,10 @@ var pluginName = "wb-mltmd",
 		var caption, i,
 			captionsLength = captions.length;
 
-		// added &nbsp; to prevent caption space from collapsing
+		// added &#160; (non-breaking space) to prevent caption space from collapsing
 		// Used .html() instead of .append for performance purposes
 		// http://jsperf.com/jquery-append-vs-html-list-performance/2
-		area.html( "&nbsp;" );
+		area.html( "&#160;" );
 
 		for ( i = 0; i < captionsLength; i += 1 ) {
 			caption = captions[ i ];
@@ -6478,7 +6836,7 @@ var pluginName = "wb-mltmd",
 	},
 
 	/**
-	 * @method youTubeEvennts
+	 * @method youTubeEvents
 	 * @description Youtube API event manager
 	 * @param {object} event The event object fior the triggered event
 	 */
@@ -6503,6 +6861,7 @@ var pluginName = "wb-mltmd",
 			break;
 		case 1:
 			$target.trigger( "canplay" );
+			$target.trigger( "durationchange" );
 			$target.trigger( "play" );
 			target.timeline = setInterval( timeline, 250 );
 			break;
@@ -6516,17 +6875,27 @@ var pluginName = "wb-mltmd",
 		}
 	},
 
+	youTubeAPIReady = function() {
+		var youTube = window.youTube;
+		youTube.ready = true;
+		youTube.waitingPlayers.trigger( youtubeEvent );
+	},
+
 	onResize = function() {
-		$( selector + " object, " + selector + " iframe" ).trigger( resizeEvent );
+		$( selector + " object, " + selector + " iframe, " +  selector + " video" ).trigger( resizeEvent );
 	};
 
 $document.on( "timerpoke.wb " + initEvent, selector, init );
+
+$window.on( "resize", onResize );
+
+$document.on( "ready", onResize );
 
 $document.on( "ajax-fetched.wb templateloaded.wb", selector, function( event ) {
 	var $this = $( this );
 
 	if ( event.type === "ajax-fetched" ) {
-		template = event.pointer.html();
+		template = event.fetch.pointer.html();
 	}
 
 	$this.data( "template", template );
@@ -6535,227 +6904,259 @@ $document.on( "ajax-fetched.wb templateloaded.wb", selector, function( event ) {
 	});
 });
 
-$document.on( initializedEvent, selector, function() {
-	var $this = $( this ),
-		$media = $this.children( "audio, video" ).eq( 0 ),
-		captions = $media.children( "track[kind='captions']" ).attr( "src" ) || undef,
-		id = $this.attr( "id" ),
-		mId = $media.attr( "id" ) || id + "-md",
-		type = $media.is( "video" ) ? "video" : "audio",
-		width = type === "video" ? $media.attr( "width" ) || $media.width() : 0,
-		height = type === "video" ? $media.attr( "height" ) || $media.height() : 0,
-		data = $.extend({
-			media: $media,
-			captions: captions,
-			id: id,
-			mId: mId,
-			type: type,
-			height: height,
-			width: width
-		}, i18nText),
-		media = $media.get( 0 ),
-		url;
+$document.on( initializedEvent, selector, function( event ) {
+	if ( event.namespace === pluginName ) {
+		var $this = $( this ),
+			$media = $this.children( "audio, video" ).eq( 0 ),
+			captions = $media.children( "track[kind='captions']" ).attr( "src" ) || undef,
+			id = $this.attr( "id" ),
+			mId = $media.attr( "id" ) || id + "-md",
+			type = $media.is( "audio" ) ? "audio" : "video",
+			title = $media.attr( "title" ) || "",
+			width = type === "video" ? $media.attr( "width" ) || $media.width() : 0,
+			height = type === "video" ? $media.attr( "height" ) || $media.height() : 0,
+			settings = wb.getData( $this, pluginName ),
+			data = $.extend({
+				media: $media,
+				captions: captions,
+				id: id,
+				mId: mId,
+				type: type,
+				title: title,
+				height: height,
+				width: width
+			}, i18nText),
+			media = $media.get( 0 ),
+			youTube = window.youTube,
+			url;
 
-	if ( $media.attr( "id" ) === undef ) {
-		$media.attr( "id", mId );
-	}
-
-	$this.data( "properties", data );
-
-	if ( $media.find( "[type='video/youtube']" ).length > 0 ) {
-		// lets tweak some variables and start the load sequence
-		url = wb.getUrlParts( $this.find( "[type='video/youtube']").attr( "src") );
-
-		// lets set the flag for the call back
-		$this.data( "youtube", url.params.v );
-
-		// Method called the the YouTUbe API when ready
-		if ( window.onYouTubeIframeAPIReady === undefined ) {
-
-			// lets bind youtubes global function
-			window.onYouTubeIframeAPIReady = function() {
-				$this.trigger( youtubeEvent );
-			};
+		if ( $media.attr( "id" ) === undef ) {
+			$media.attr( "id", mId );
 		}
 
-		// finally lets load safely
-		return Modernizr.load( {
-			load: "https://www.youtube.com/iframe_api"
-		} );
+		if ( settings !== undef ) {
+			data.shareUrl = settings.shareUrl;
+		}
 
-	} else if ( media.error === null && media.currentSrc !== "" && media.currentSrc !== undef ) {
-		$this.trigger( type + selector );
-	} else {
-		$this.trigger( fallbackEvent );
+		$this.addClass( type );
+
+		$this.data( "properties", data );
+
+		if ( $media.find( "[type='video/youtube']" ).length > 0 ) {
+			// lets tweak some variables and start the load sequence
+			url = wb.getUrlParts( $this.find( "[type='video/youtube']").attr( "src") );
+
+			// lets set the flag for the call back
+			$this.data( "youtube", url.params.v );
+
+			// Method called the the YouTUbe API when ready
+
+			if ( youTube.ready === false ) {
+				if ( youTube.waitingPlayers === undef ) {
+					youTube.waitingPlayers = $this;
+				} else {
+					youTube.waitingPlayers = youTube.waitingPlayers.add( $this );
+				}
+			} else {
+				$this.trigger( youtubeEvent );
+			}
+
+			// finally lets load safely
+			return Modernizr.load( {
+				load: "https://www.youtube.com/iframe_api"
+			} );
+
+		} else if ( media.error === null && media.currentSrc !== "" && media.currentSrc !== undef ) {
+			$this.trigger( type + selector );
+		} else {
+			$this.trigger( fallbackEvent );
+		}
 	}
 });
 
-$document.on( fallbackEvent, selector, function() {
-	var ref = expand( this ),
-		$this = ref[ 0 ],
-		data = ref[ 1 ],
-		$media = data.media,
-		type = data.type,
-		source = $media.find( ( type === "video" ? "[type='video/mp4']" : "[type='audio/mp3']" ) ).attr( "src" ),
-		poster = $media.attr( "poster" ),
-		flashvars = "id=" + data.mId,
-		width = data.width,
-		height = data.height > 0 ? data.height : Math.round( data.width / 1.777 ),
-		playerresource = wb.getPath( "/assets" ) + "/multimedia.swf?" + new Date().getTime();
+$document.on( fallbackEvent, selector, function( event ) {
+	if ( event.namespace === pluginName ) {
+		var ref = expand( this ),
+			$this = ref[ 0 ],
+			data = ref[ 1 ],
+			$media = data.media,
+			type = data.type,
+			source = $media.find( ( type === "video" ? "[type='video/mp4']" : "[type='audio/mp3']" ) ).attr( "src" ),
+			poster = $media.attr( "poster" ),
+			flashvars = "id=" + data.mId,
+			width = data.width,
+			height = data.height > 0 ? data.height : Math.round( data.width / 1.777 ),
+			playerresource = wb.getPath( "/assets" ) + "/multimedia.swf?" + new Date().getTime();
 
-	flashvars += "&amp;media=" + encodeURI( wb.getUrlParts( source ).absolute );
-	if ( type === "video" ) {
-		data.poster = "<img src='" + poster + "' class='img-responsive' height='" +
-			height + "' width='" + width + "' alt='" + $media.attr( "title" ) + "'/>";
+		flashvars += "&amp;media=" + encodeURI( wb.getUrlParts( source ).absolute );
+		if ( type === "video" ) {
+			data.poster = "<img src='" + poster + "' class='img-responsive' height='" +
+				height + "' width='" + width + "' alt='" + $media.attr( "title" ) + "'/>";
 
-		flashvars += "&amp;height=" + height + "&amp;width=" +
-			width + "&amp;posterimg=" + encodeURI( wb.getUrlParts( poster ).absolute );
+			flashvars += "&amp;height=" + height + "&amp;width=" +
+				width + "&amp;posterimg=" + encodeURI( wb.getUrlParts( poster ).absolute );
+		}
+
+		$this.find( "video, audio" ).replaceWith( "<object id='" + data.mId + "' width='" + width +
+			"' height='" + height + "' class='" + type +
+			"' type='application/x-shockwave-flash' data='" +
+			playerresource + "' tabindex='-1' play='' pause=''>" +
+			"<param name='movie' value='" + playerresource + "'/>" +
+			"<param name='flashvars' value='" + flashvars + "'/>" +
+			"<param name='allowScriptAccess' value='always'/>" +
+			"<param name='bgcolor' value='#000000'/>" +
+			"<param name='wmode' value='opaque'/>" +
+			data.poster + "</object>" );
+		$this.data( "properties", data );
+		$this.trigger( renderUIEvent, type );
 	}
-
-	$this.find( "video, audio" ).replaceWith( "<object id='" + data.mId + "' width='" + width +
-		"' height='" + height + "' class='" + type +
-		"' type='application/x-shockwave-flash' data='" +
-		playerresource + "' tabindex='-1' play='' pause=''>" +
-		"<param name='movie' value='" + playerresource + "'/>" +
-		"<param name='flashvars' value='" + flashvars + "'/>" +
-		"<param name='allowScriptAccess' value='always'/>" +
-		"<param name='bgcolor' value='#000000'/>" +
-		"<param name='wmode' value='opaque'/>" +
-		data.poster + "</object>" );
-	$this.data( "properties", data );
-	$window.on( "resize", onResize );
-	$this.trigger( renderUIEvent, type );
 });
 
 /*
  *  Youtube Video mode Event
  */
-$document.on( youtubeEvent, selector, function() {
-	var ref = expand( this ),
-		ytPlayer,
-		$this = ref[ 0 ],
-		data = ref[ 1 ],
-		$media = data.media,
-		id = $media.get( 0 ).id;
+$document.on( youtubeEvent, selector, function( event ) {
+	if ( event.namespace === pluginName ) {
+		var ref = expand( this ),
+			ytPlayer,
+			$this = ref[ 0 ],
+			data = ref[ 1 ],
+			$media = data.media,
+			id = $media.get( 0 ).id;
 
-	$media.replaceWith( "<div id=" + id + "/>" );
-	ytPlayer = new YT.Player( id, {
-		videoId: $this.data( "youtube" ),
-		playerVars: {
-			autoplay: 0,
-			controls: 1,
-			origin: wb.pageUrlParts.host,
-			modestbranding: 1,
-			rel: 0,
-			showinfo: 0,
-			html5: 1,
-			cc_load_policy: 1
-		},
-		events: {
-			onReady: function( event ) {
-				onResize();
-				youTubeEvents( event );
+		$media.replaceWith( "<div id=" + id + "/>" );
+		ytPlayer = new YT.Player( id, {
+			videoId: $this.data( "youtube" ),
+			playerVars: {
+				autoplay: 0,
+				controls: 1,
+				origin: wb.pageUrlParts.host,
+				modestbranding: 1,
+				rel: 0,
+				showinfo: 0,
+				html5: 1,
+				cc_load_policy: 1
 			},
-			onStateChange: youTubeEvents,
-			onApiChange: function() {
-				//If captions were enabled before the module was ready, re-enable them
-				var t = $this.get( 0 );
-				t.player( "setCaptionsVisible", t.player( "getCaptionsVisible" ) );
+			events: {
+				onReady: function( event ) {
+					onResize();
+					youTubeEvents( event );
+				},
+				onStateChange: youTubeEvents,
+				onApiChange: function() {
+					//If captions were enabled before the module was ready, re-enable them
+					var t = $this.get( 0 );
+					t.player( "setCaptionsVisible", t.player( "getCaptionsVisible" ) );
+				}
 			}
-		}
-	});
+		});
 
-	$this.addClass( "youtube" );
+		$this.addClass( "youtube" );
 
-	$this.find( "iframe" ).attr( "tabindex", -1 );
+		$this.find( "iframe" ).attr( "tabindex", -1 );
 
-	data.poster = "<img src='" + $media.attr( "poster" ) +
-		"' class='img-responsive' height='" + data.height +
-		"' width='" + data.width + "' alt='" + data.media.attr( "title" ) + "'/>";
-	data.ytPlayer = ytPlayer;
+		data.poster = "<img src='" + $media.attr( "poster" ) +
+			"' class='img-responsive' height='" + data.height +
+			"' width='" + data.width + "' alt='" + data.media.attr( "title" ) + "'/>";
+		data.ytPlayer = ytPlayer;
 
-	$this.data( "properties", data );
-	$window.on( "resize", onResize );
-	$this.trigger( renderUIEvent, "youtube" );
+		$this.data( "properties", data );
+		$this.trigger( renderUIEvent, "youtube" );
+	}
 });
 
 /*
  *  Native Video mode Event
  */
-$document.on( "video.wb-mltmd", selector, function() {
-	var ref = expand( this ),
-		$this = ref[ 0 ],
-		data = ref[ 1 ];
+$document.on( "video" + selector, selector, function( event ) {
+	if ( event.namespace === pluginName ) {
+		var ref = expand( this ),
+			$this = ref[ 0 ],
+			data = ref[ 1 ];
 
-	data.poster = "<img src='" + data.media.attr( "poster" ) +
-		"' class='img-responsive' height='" + data.height +
-		"' width='" + data.width + "' alt='" + data.media.attr( "title" ) + "'/>";
+		data.poster = "<img src='" + data.media.attr( "poster" ) +
+			"' class='img-responsive' height='" + data.height +
+			"' width='" + data.width + "' alt='" + data.media.attr( "title" ) + "'/>";
 
-	$this.data( "properties", data );
+		$this.data( "properties", data );
 
-	$this.trigger( renderUIEvent, "video" );
+		$this.trigger( renderUIEvent, "video" );
+	}
 });
 
 /*
  *  Native Audio mode Event
  */
-$document.on( "audio.wb-mltmd", selector, function() {
-	var ref = expand (this ),
-		$this = ref[ 0 ],
-		data = ref[ 1 ];
+$document.on( "audio" + selector, selector, function( event ) {
+	if ( event.namespace === pluginName ) {
+		var ref = expand (this ),
+			$this = ref[ 0 ],
+			data = ref[ 1 ];
 
-	data.poster = "";
+		data.poster = "";
 
-	$this.data( "properties", data );
+		$this.data( "properties", data );
 
-	$this.trigger( renderUIEvent, "audio" );
+		$this.trigger( renderUIEvent, "audio" );
+	}
 });
 
 $document.on( renderUIEvent, selector, function( event, type ) {
-	var ref = expand( this ),
-		$this = ref[ 0 ],
-		data = ref[ 1 ],
-		captionsUrl = wb.getUrlParts( data.captions ),
-		currentUrl = wb.getUrlParts( window.location.href ),
-		$media = $this.find( "video, audio, iframe, object" ),
-		$player, $overlay;
+	if ( event.namespace === pluginName ) {
+		var ref = expand( this ),
+			$this = ref[ 0 ],
+			data = ref[ 1 ],
+			captionsUrl = wb.getUrlParts( data.captions ),
+			currentUrl = wb.getUrlParts( window.location.href ),
+			$media = $this.find( "video, audio, iframe, object" ),
+			$player, $overlay, $share;
 
-	$media.after( tmpl( $this.data( "template" ), data ) );
-	$overlay = $media.next().find( ".wb-mm-ovrly" ).after( $media );
-	if ( type !== "video" ) {
-		$overlay.remove();
-	}
+		$media.after( tmpl( $this.data( "template" ), data ) );
+		$overlay = $media.next().find( ".wb-mm-ovrly" ).after( $media );
 
-	$player = $( "#" + data.mId );
-	data.player = $player.is( "object" ) ? $player.children( ":first-child" ) : $player;
+		$player = $( "#" + data.mId );
+		data.player = $player.is( "object" ) ? $player.children( ":first-child" ) : $player;
 
-	// Create an adapter for the event management
-	data.player.on( "durationchange play pause ended volumechange timeupdate " +
-		captionsLoadedEvent + " " + captionsLoadFailedEvent + " " +
-		captionsVisibleChangeEvent + " waiting canplay progress", function( event ) {
-		$this.trigger( event );
-	});
+		// Create an adapter for the event management
+		data.player.on( "durationchange play pause ended volumechange timeupdate " +
+			captionsLoadedEvent + " " + captionsLoadFailedEvent + " " +
+			captionsVisibleChangeEvent + " waiting canplay progress", function( event ) {
+			$this.trigger( event );
+		});
 
-	this.object = data.ytPlayer || $player.get( 0 );
-	this.player = ( data.ytPlayer ) ? youTubeApi : playerApi;
-	$this.data( "properties", data );
+		this.object = data.ytPlayer || $player.get( 0 );
+		this.player = ( data.ytPlayer ) ? youTubeApi : playerApi;
+		$this.data( "properties", data );
 
-	// Trigger the duration change for cases where the event was called before the event binding
-	if ( !isNaN( this.player( "getDuration" ) ) && type !== "youtube" ) {
-		data.player.trigger( "durationchange" );
-	}
+		// Trigger the duration change for cases where the event was called before the event binding
+		if ( type !== "youtube" && !isNaN( this.player( "getDuration" ) ) ) {
+			data.player.trigger( "durationchange" );
+		}
 
-	// Load the progress polyfill if needed
-	$this.find( "progress" ).trigger( "wb-init.wb-progress" );
+		// Load the progress polyfill if needed
+		$this.find( "progress" ).trigger( "wb-init.wb-progress" );
 
-	if ( data.captions === undef ) {
-		return 1;
-	}
+		// Load the slider polyfill if needed
+		$this.find( "input[type='range']" ).trigger( "wb-init.wb-slider" );
 
-	if ( currentUrl.absolute.replace( currentUrl.hash, "" ) !== captionsUrl.absolute.replace( captionsUrl.hash, "" ) ) {
-		loadCaptionsExternal( $player, captionsUrl.absolute );
-	} else {
-		loadCaptionsInternal( $player, $( captionsUrl.hash ) );
+		if ( data.captions === undef ) {
+			return 1;
+		}
+
+		// Load the captions
+		if ( currentUrl.absolute.replace( currentUrl.hash, "" ) !== captionsUrl.absolute.replace( captionsUrl.hash, "" ) ) {
+			loadCaptionsExternal( $player, captionsUrl.absolute );
+		} else {
+			loadCaptionsInternal( $player, $( captionsUrl.hash ) );
+		}
+
+		// Create the share widgets if needed
+		// TODO: Remove .parent() when getting rid of the overlay
+		if ( data.shareUrl !== undef ) {
+			$share = $( "<div class='wb-share' data-wb-share=\'{\"type\": \"video\", \"title\": \"" + data.title + "\", \"url\": \"" + data.shareUrl + "\", \"pnlId\": \"" + data.id + "-shr\"}\'></div>" );
+			$media.parent().before( $share );
+			wb.add( $share );
+		}
 	}
 });
 
@@ -6772,7 +7173,7 @@ $document.on( "click", selector, function( event ) {
 		return true;
 	}
 
-	// Opitmized multiple class tests to include child glyphicon because Safari was reporting the click event
+	// Optimized multiple class tests to include child glyphicon because Safari was reporting the click event
 	// from the child span not the parent button, forcing us to have to check for both elements
 	// JSPerf for multiple class matching http://jsperf.com/hasclass-vs-is-stackoverflow/7
 	if ( className.match( /playpause|-play|-pause|wb-mm-ovrly/ ) || $target.is( "object" ) ) {
@@ -6790,13 +7191,23 @@ $document.on( "click", selector, function( event ) {
 	}
 });
 
+$document.on( "input change", selector, function(event) {
+	var target = event.target;
+
+	if ( $( target ).hasClass( "volume" ) ) {
+		event.currentTarget.player( "setMuted", false );
+		event.currentTarget.player( "setVolume", target.value / 100 );
+	}
+});
+
 $document.on( "keydown", selector, function( event ) {
 	var playerTarget = event.currentTarget,
 		which = event.which,
 		ctrls = ".wb-mm-ctrls",
 		ref = expand( playerTarget ),
 		$this = ref[ 0 ],
-		volume = 0;
+		volume = 0,
+		step = 0.05;
 
 	if ( !( event.ctrlKey || event.altKey || event.metaKey ) ) {
 		switch ( which ) {
@@ -6805,20 +7216,20 @@ $document.on( "keydown", selector, function( event ) {
 			break;
 
 		case 37:
-			$this.find( ctrls + " .rewind" ).trigger( "click" );
+			playerTarget.player( "setCurrentTime", this.player( "getCurrentTime" ) - this.player( "getDuration" ) * 0.05);
 			break;
 
 		case 39:
-			$this.find( ctrls + " .fastforward" ).trigger( "click" );
+			playerTarget.player( "setCurrentTime", this.player( "getCurrentTime" ) + this.player( "getDuration" ) * 0.05);
 			break;
 
 		case 38:
-			volume = Math.round( playerTarget.player( "getVolume" ) * 10 ) / 10 + 0.1;
+			volume = Math.round( playerTarget.player( "getVolume" ) * 100 ) / 100 + step;
 			playerTarget.player( "setVolume", volume < 1 ? volume : 1 );
 			break;
 
 		case 40:
-			volume = Math.round( playerTarget.player( "getVolume" ) * 10 ) / 10 - 0.1;
+			volume = Math.round( playerTarget.player( "getVolume" ) * 100 ) / 100 - step;
 			playerTarget.player( "setVolume", volume > 0 ? volume : 0 );
 			break;
 
@@ -6844,10 +7255,11 @@ $document.on( "durationchange play pause ended volumechange timeupdate " +
 
 	var eventTarget = event.currentTarget,
 		eventType = event.type,
+		eventNamespace = event.namespace,
 		$this = $( eventTarget ),
 		invStart = "<span class='wb-inv'>",
 		invEnd = "</span>",
-		currentTime, $button, buttonData, isPlay, getMuted, ref, skipTo;
+		currentTime, $button, $slider, buttonData, isPlay, isMuted, isCCVisible, ref, skipTo, volume;
 	switch ( eventType ) {
 	case "play":
 	case "pause":
@@ -6871,15 +7283,22 @@ $document.on( "durationchange play pause ended volumechange timeupdate " +
 		break;
 
 	case "volumechange":
-		getMuted = eventTarget.player( "getMuted" );
+		isMuted = eventTarget.player( "getMuted" );
 		$button = $this.find( ".mute" );
-		buttonData = $button.data( "state-" + ( getMuted ? "off" : "on" ) );
+		buttonData = $button.data( "state-" + ( isMuted ? "off" : "on" ) );
+		volume = eventTarget.player( "getVolume" ) * 100;
 		$button
-			.attr( "title", buttonData )
+			.attr( {
+				title: buttonData,
+				"aria-pressed": isMuted
+			} )
 			.children( "span" )
-				.toggleClass( "glyphicon-volume-up", !getMuted )
-				.toggleClass( "glyphicon-volume-off", getMuted )
+				.toggleClass( "glyphicon-volume-up", !isMuted )
+				.toggleClass( "glyphicon-volume-off", isMuted )
 				.html( invStart + buttonData + invEnd );
+		$slider = $this.find( "input[type='range']" );
+		$slider[0].value = isMuted ? 0 : volume;
+		$slider.trigger( "wb-update.wb-slider" );
 		break;
 
 	case "timeupdate":
@@ -6916,21 +7335,31 @@ $document.on( "durationchange play pause ended volumechange timeupdate " +
 		break;
 
 	case "ccloaded":
-		$.data( eventTarget, "captions", event.captions );
+		if ( eventNamespace === pluginName ) {
+			$.data( eventTarget, "captions", event.captions );
+		}
 		break;
 
 	case "ccloadfail":
-		$this.find( ".wb-mm-cc" )
-			.append( "<p class='errmsg'><span>" + i18nText.cc_error + "</span></p>" )
-			.end()
-			.find( ".cc" )
-			.attr( "disabled", "" );
+		if ( eventNamespace === pluginName ) {
+			$this.find( ".wb-mm-cc" )
+				.append( "<p class='errmsg'><span>" + i18nText.cc_error + "</span></p>" )
+				.end()
+				.find( ".cc" )
+				.attr( "disabled", "" );
+		}
 		break;
 
 	case "ccvischange":
-		$button = $this.find( ".cc" );
-		buttonData = $button.data( "state-" + ( eventTarget.player( "getCaptionsVisible" ) ? "off" : "on" ) );
-		$button.attr( "title", buttonData ).children( "span" ).html( invStart + buttonData + invEnd );
+		if ( eventNamespace === pluginName ) {
+			isCCVisible = eventTarget.player( "getCaptionsVisible" );
+			$button = $this.find( ".cc" );
+			buttonData = $button.data( "state-" + ( isCCVisible ? "off" : "on" ) );
+			$button.attr( {
+				title: buttonData,
+				"aria-pressed": isCCVisible
+			} ).children( "span" ).html( invStart + buttonData + invEnd );
+		}
 		break;
 
 	case "waiting":
@@ -6970,17 +7399,35 @@ $document.on( "progress", selector, function( event ) {
 });
 
 $document.on( resizeEvent, selector, function( event ) {
-	var $player = $( event.target ),
-		height = $player.attr( "height" ),
-		width = $player.attr( "width" ),
-		newHeight = Math.round( $player.width() * height / width );
+	if ( event.namespace === pluginName ) {
+		var player = event.target,
+			$player = $( player ),
+			ratio, newHeight;
 
-	//TODO: Remove this when captions works in chromeless api with controls
-	if ( $player.is( "iframe") ) {
-		newHeight += 30;
+		if ( $player.hasClass( "video" ) ) {
+			if ( player.videoWidth === 0 || player.videoWidth === undef ) {
+				ratio = $player.attr( "height" ) / $player.attr( "width" );
+
+				// Calculate the new height based on the specified ratio or assume a default 16:9 ratio
+				newHeight = Math.round( $player.width() * ( !isNaN( ratio ) ? ratio : 0.5625 ) );
+
+				//TODO: Remove this when captions works in chromeless api with controls
+				if ( $player.is( "iframe") ) {
+					newHeight += 30;
+				}
+				$player.css( "height", newHeight + "px" );
+			} else {
+				$player.css( "height", "" );
+			}
+		}
 	}
-	$player.attr( "style", "height:" + newHeight + "px" );
 });
+
+window.onYouTubeIframeAPIReady = youTubeAPIReady;
+
+window.youTube = {
+	ready: false
+};
 
 wb.add( selector );
 
@@ -7013,95 +7460,97 @@ var $document = wb.doc,
 	 * @param {jQuery DOM element | DOM element} breadcrumb Optional breadcrumb element
 	 */
 	navCurrent = function( event, breadcrumb ) {
-		var menu = event.target,
-			menuLinks = menu.getElementsByTagName( "a" ),
-			menuLinksArray = [],
-			menuLinksUrlArray = [],
-			windowLocation = window.location,
-			pageUrl = windowLocation.hostname + windowLocation.pathname.replace( /^([^\/])/, "/$1" ),
-			pageUrlQuery = windowLocation.search,
-			match = false,
-			len = menuLinks.length,
-			i, j, link, linkHref, linkUrl, linkQuery, linkQueryLen,
-			localBreadcrumbLinks, localBreadcrumbLinksArray, localBreadcrumbLinksUrlArray,
-			localBreadcrumbQuery, localBreadcrumbLinkUrl;
+		if ( event.namespace === "wb" ) {
+			var menu = event.target,
+				menuLinks = menu.getElementsByTagName( "a" ),
+				menuLinksArray = [],
+				menuLinksUrlArray = [],
+				windowLocation = window.location,
+				pageUrl = windowLocation.hostname + windowLocation.pathname.replace( /^([^\/])/, "/$1" ),
+				pageUrlQuery = windowLocation.search,
+				match = false,
+				len, i, j, link, linkHref, linkUrl, linkQuery, linkQueryLen,
+				localBreadcrumbLinks, localBreadcrumbLinksArray, localBreadcrumbLinksUrlArray,
+				localBreadcrumbQuery, localBreadcrumbLinkUrl;
 
-		// Try to find a match with the page Url and cache link + Url for later if no match found
-		for ( i = 0; i !== len; i += 1 ) {
-			link = menuLinks[ i ];
-			linkHref = link.getAttribute( "href" );
-			if ( linkHref !== null ) {
-				if ( linkHref.length !== 0 && linkHref.charAt( 0 ) !== "#" ) {
-					linkUrl = link.hostname + link.pathname.replace( /^([^\/])/, "/$1" );
-					linkQuery = link.search;
-					linkQueryLen = linkQuery.length;
-					if ( pageUrl.slice( -linkUrl.length ) === linkUrl && ( linkQueryLen === 0 || pageUrlQuery.slice( -linkQueryLen ) === linkQuery ) ) {
-						match = true;
-						break;
-					}
-					menuLinksArray.push( link );
-					menuLinksUrlArray.push( linkUrl );
-				}
-			}
-		}
-
-		// No page Url match found, try a breadcrumb link match instead
-		if ( !match && breadcrumb ) {
-
-			// Check to see if the data has been cached already
-			if ( !localBreadcrumbLinksArray ) {
-
-				// Pre-process the breadcrumb links
-				localBreadcrumbLinksArray = [];
-				localBreadcrumbLinksUrlArray = [];
-				localBreadcrumbLinks = ( breadcrumb.jquery ? breadcrumb[ 0 ] : breadcrumb ).getElementsByTagName( "a" );
-				len = localBreadcrumbLinks.length;
-				for ( i = 0; i !== len; i += 1) {
-					link = localBreadcrumbLinks[ i ];
-					linkHref = link.getAttribute( "href" );
+			// Try to find a match with the page Url and cache link + Url for later if no match found
+			// Perform the check and caching in reverse to go from more specific links to more general links
+			for ( i = menuLinks.length - 1; i !== -1; i -= 1 ) {
+				link = menuLinks[ i ];
+				linkHref = link.getAttribute( "href" );
+				if ( linkHref !== null ) {
 					if ( linkHref.length !== 0 && linkHref.charAt( 0 ) !== "#" ) {
-						localBreadcrumbLinksArray.push( link );
-						localBreadcrumbLinksUrlArray.push( link.hostname + link.pathname.replace( /^([^\/])/, "/$1" ) );
+						linkUrl = link.hostname + link.pathname.replace( /^([^\/])/, "/$1" );
+						linkQuery = link.search;
+						linkQueryLen = linkQuery.length;
+						if ( pageUrl.slice( -linkUrl.length ) === linkUrl && ( linkQueryLen === 0 || pageUrlQuery.slice( -linkQueryLen ) === linkQuery ) ) {
+							match = true;
+							break;
+						}
+						menuLinksArray.push( link );
+						menuLinksUrlArray.push( linkUrl );
 					}
 				}
-
-				// Cache the data in case of more than one execution (e.g., site menu + secondary navigation)
-				breadcrumbLinksArray = localBreadcrumbLinksArray;
-				breadcrumbLinksUrlArray = localBreadcrumbLinksUrlArray;
-			} else {
-
-				// Retrieve the cached data
-				localBreadcrumbLinksArray = breadcrumbLinksArray;
-				localBreadcrumbLinksUrlArray = breadcrumbLinksUrlArray;
 			}
 
-			// Try to match each breadcrumb link
-			len = menuLinksArray.length;
-			for ( j = localBreadcrumbLinksArray.length - 1; j !== -1; j -= 1 ) {
-				localBreadcrumbLinkUrl = localBreadcrumbLinksUrlArray[ j ];
-				localBreadcrumbQuery = localBreadcrumbLinksArray[ j ].search;
+			// No page Url match found, try a breadcrumb link match instead
+			if ( !match && breadcrumb ) {
 
-				for ( i = 0; i !== len; i += 1 ) {
-					link = menuLinksArray[ i ];
-					linkUrl = menuLinksUrlArray[ i ];
-					linkQuery = link.search;
-					linkQueryLen = linkQuery.length;
+				// Check to see if the data has been cached already
+				if ( !breadcrumbLinksArray ) {
 
-					if ( localBreadcrumbLinkUrl.slice( -linkUrl.length ) === linkUrl && ( linkQueryLen === 0 || localBreadcrumbQuery.slice( -linkQueryLen ) === linkQuery ) ) {
-						match = true;
+					// Pre-process the breadcrumb links
+					localBreadcrumbLinksArray = [];
+					localBreadcrumbLinksUrlArray = [];
+					localBreadcrumbLinks = ( breadcrumb.jquery ? breadcrumb[ 0 ] : breadcrumb ).getElementsByTagName( "a" );
+					len = localBreadcrumbLinks.length;
+					for ( i = 0; i !== len; i += 1 ) {
+						link = localBreadcrumbLinks[ i ];
+						linkHref = link.getAttribute( "href" );
+						if ( linkHref.length !== 0 && linkHref.charAt( 0 ) !== "#" ) {
+							localBreadcrumbLinksArray.push( link );
+							localBreadcrumbLinksUrlArray.push( link.hostname + link.pathname.replace( /^([^\/])/, "/$1" ) );
+						}
+					}
+
+					// Cache the data in case of more than one execution (e.g., site menu + secondary navigation)
+					breadcrumbLinksArray = localBreadcrumbLinksArray;
+					breadcrumbLinksUrlArray = localBreadcrumbLinksUrlArray;
+				} else {
+
+					// Retrieve the cached data
+					localBreadcrumbLinksArray = breadcrumbLinksArray;
+					localBreadcrumbLinksUrlArray = breadcrumbLinksUrlArray;
+				}
+
+				// Try to match each breadcrumb link
+				len = menuLinksArray.length;
+				for ( j = localBreadcrumbLinksArray.length - 1; j !== -1; j -= 1 ) {
+					localBreadcrumbLinkUrl = localBreadcrumbLinksUrlArray[ j ];
+					localBreadcrumbQuery = localBreadcrumbLinksArray[ j ].search;
+
+					for ( i = 0; i !== len; i += 1 ) {
+						link = menuLinksArray[ i ];
+						linkUrl = menuLinksUrlArray[ i ];
+						linkQuery = link.search;
+						linkQueryLen = linkQuery.length;
+
+						if ( localBreadcrumbLinkUrl.slice( -linkUrl.length ) === linkUrl && ( linkQueryLen === 0 || localBreadcrumbQuery.slice( -linkQueryLen ) === linkQuery ) ) {
+							match = true;
+							break;
+						}
+					}
+					if ( match ) {
 						break;
 					}
 				}
-				if ( match ) {
-					break;
-				}
 			}
-		}
 
-		if ( match ) {
-			link.className += " " + navClass;
-			if ( menu.className.indexOf( "wb-menu" ) !== -1 && link.className.indexOf( "item" ) === -1 ) {
-				$( link ).closest( ".sm" ).parent().children( "a" ).addClass( navClass );
+			if ( match ) {
+				link.className += " " + navClass;
+				if ( menu.className.indexOf( "wb-menu" ) !== -1 && link.className.indexOf( "item" ) === -1 ) {
+					$( link ).closest( ".sm" ).parent().children( "a" ).addClass( navClass );
+				}
 			}
 		}
 	};
@@ -7199,6 +7648,14 @@ var pluginName = "wb-overlay",
 				.scrollTop( 0 )
 				.trigger( setFocusEvent );
 		}
+
+		// Register the overlay if it wasn't previously registered
+		// (only required when opening through an event)
+		if ( !sourceLinks[ overlayId ] ) {
+			setTimeout(function() {
+				sourceLinks[ overlayId ] = null;
+			}, 1 );
+		}
 	},
 
 	closeOverlay = function( overlayId, noFocus, userClosed ) {
@@ -7228,7 +7685,9 @@ $document.on( "timerpoke.wb " + initEvent + " keydown open" + selector +
 
 	var eventType = event.type,
 		which = event.which,
-		overlayId = event.currentTarget.id,
+		eventTarget = event.target,
+		eventTurrentTarget = event.currentTarget,
+		overlayId = eventTurrentTarget.id,
 		overlay, $focusable, index, length;
 
 	switch ( eventType ) {
@@ -7238,11 +7697,15 @@ $document.on( "timerpoke.wb " + initEvent + " keydown open" + selector +
 		break;
 
 	case "open":
-		openOverlay( overlayId, event.noFocus );
+		if ( eventTurrentTarget === eventTarget ) {
+			openOverlay( overlayId, event.noFocus );
+		}
 		break;
 
 	case "close":
-		closeOverlay( overlayId, event.noFocus );
+		if ( eventTurrentTarget === eventTarget ) {
+			closeOverlay( overlayId, event.noFocus );
+		}
 		break;
 
 	default:
@@ -7461,8 +7924,10 @@ var pluginName = "wb-prettify",
 	 * Invoke the Google pretty print library if it has been initialized
 	 * @method prettyprint
 	 */
-	prettyprint = function() {
-		if ( typeof window.prettyPrint === "function" ) {
+	prettyprint = function( event ) {
+		if ( event.namespace === pluginName &&
+			typeof window.prettyPrint === "function" ) {
+
 			window.prettyPrint();
 		}
 	};
@@ -7562,7 +8027,7 @@ var id = "wb-rsz",
 
 			// Change the breakpoint class on the html element
 			wb.html
-				.removeClass( currentView )
+				.removeClass( currentView || "" )
 				.addClass( viewName );
 
 			// Update the current view
@@ -7761,15 +8226,23 @@ var $modal, $modalLink, countdownInterval, i18n, i18nText,
 	 */
 	initRefreshOnClick = function( $elm, settings ) {
 		if ( settings.refreshOnClick ) {
-			$document.on( "click", function() {
-				var lastActivity = $elm.data( "lastActivity" ),
+			$document.on( "click", function( event ) {
+				var className = event.target.className,
+					lastActivity, currentTime;
+
+				// Ignore clicks when the modal dialog is open
+				if ( ( !className || className.indexOf( confirmClass ) === -1 ) &&
+					$( ".mfp-ready ." + confirmClass ).length === 0 ) {
+
+					lastActivity = $elm.data( "lastActivity" );
 					currentTime = getCurrentTime();
-				if ( !lastActivity || ( currentTime - lastActivity ) > settings.refreshLimit ) {
-					$elm
-						.trigger( resetEvent, settings )
-						.trigger( keepaliveEvent, settings );
+					if ( !lastActivity || ( currentTime - lastActivity ) > settings.refreshLimit ) {
+						$elm
+							.trigger( resetEvent, settings )
+							.trigger( keepaliveEvent, settings );
+					}
+					$elm.data( "lastActivity", currentTime );
 				}
-				$elm.data( "lastActivity", currentTime );
 			});
 		}
 	},
@@ -7820,6 +8293,9 @@ var $modal, $modalLink, countdownInterval, i18n, i18nText,
 				.replace( "#sec#", "<span class='sec'>" + time.seconds + "</span>" ),
 			buttonStart = "<button type='button' class='",
 			buttonEnd = "</button>";
+
+		// Clear the keepalive timeout to avoid double firing of requests
+		clearTimeout( $( event.target ).data( keepaliveEvent ) );
 
 		$buttonContinue = $( buttonStart + confirmClass +
 			" btn btn-primary'>" + i18nText.buttonContinue + buttonEnd )
@@ -8103,10 +8579,6 @@ var pluginName = "wb-share",
 				name: "Diigo",
 				url: "http://www.diigo.com/post?url={u}&amp;title={t}"
 			},
-			dzone: {
-				name: "DZone",
-				url: "http://www.dzone.com/links/add.html?url={u}&amp;title={t}"
-			},
 			facebook: {
 				name: "Facebook",
 				url: "http://www.facebook.com/sharer.php?u={u}&amp;t={t}"
@@ -8138,10 +8610,6 @@ var pluginName = "wb-share",
 			stumbleupon: {
 				name: "StumbleUpon",
 				url: "http://www.stumbleupon.com/submit?url={u}&amp;title={t}"
-			},
-			technorati: {
-				name: "Technorati",
-				url: "http://www.technorati.com/faves?add={u}"
 			},
 			tumblr: {
 				name: "tumblr",
@@ -8224,9 +8692,10 @@ var pluginName = "wb-share",
 
 			// Don't create the panel for the second link (class="link-only")
 			if ( elm.className.indexOf( "link-only" ) === -1 ) {
-				panel = "<section id='" + id  + "' class='shr-pg wb-overlay modal-content overlay-def wb-panel-r" +
+				panel = "<section id='" + id  + "' class='shr-pg mfp-hide modal-dialog modal-content overlay-def" +
 					"'><header class='modal-header'><" + heading + " class='modal-title'>" +
-					shareText + "</" + heading + "></header><ul class='list-unstyled colcount-xs-2'>";
+					shareText + "</" + heading + "></header><div class='modal-body'>" +
+					"<ul class='list-unstyled colcount-xs-2'>";
 
 				// If there is no filter array of site keys, then generate an array of site keys
 				if ( !filter || filter.length === 0 ) {
@@ -8261,10 +8730,13 @@ var pluginName = "wb-share",
 						siteProperties.name + "</a></li>";
 				}
 
-				panel += "</ul><div class='clearfix'></div><p class='col-sm-12'>" + i18nText.disclaimer + "</p></section>";
+				panel += "</ul><p class='col-sm-12 shr-dscl'>" + i18nText.disclaimer +
+					"</p><div class='clearfix'></div></div></section>";
 				panelCount += 1;
 			}
-			link = "<a href='#" + id + "' aria-controls='" + id + "' class='shr-opn overlay-lnk " + settings.lnkClass + "'><span class='glyphicon glyphicon-share'></span> " +
+			link = "<a href='#" + id + "' aria-controls='" + id +
+				"' class='shr-opn wb-lbx " + settings.lnkClass +
+				"'><span class='glyphicon glyphicon-share'></span>" +
 				shareText + "</a>";
 
 			$share = $( ( panel ? panel : "" ) + link );
@@ -8273,7 +8745,7 @@ var pluginName = "wb-share",
 
 			$share
 				.trigger( initEvent )
-				.trigger( "wb-init.wb-overlay" );
+				.trigger( "wb-init.wb-lbx" );
 		}
 	};
 
@@ -8348,33 +8820,45 @@ var pluginName = "wb-tables",
 			if ( !i18nText ) {
 				i18n = wb.i18n;
 				i18nText = {
-					oAria: {
-						sSortAscending: i18n( "sortAsc" ),
-						sSortDescending: i18n( "sortDesc" )
+					aria: {
+						sortAscending: i18n( "sortAsc" ),
+						sortDescending: i18n( "sortDesc" )
 					},
-					oPaginate: {
-						sFirst: i18n( "first" ),
-						sLast: i18n( "last" ),
-						sNext: i18n( "nxt" ),
-						sPrevious: i18n( "prv" )
+					emptyTable: i18n( "emptyTbl" ),
+					info: i18n( "infoEntr" ),
+					infoEmpty: i18n( "infoEmpty" ),
+					infoFiltered: i18n( "infoFilt" ),
+					lengthMenu: i18n( "lenMenu" ),
+					loadingRecords: i18n( "load" ),
+					paginate: {
+						first: i18n( "first" ),
+						last: i18n( "last" ),
+						next: i18n( "nxt" ),
+						previous: i18n( "prv" )
 					},
-					sEmptyTable: i18n( "emptyTbl" ),
-					sInfo: i18n( "infoEntr" ),
-					sInfoEmpty: i18n( "infoEmpty" ),
-					sInfoFiltered: i18n( "infoFilt" ),
-					sInfoThousands: i18n( "info1000" ),
-					sLengthMenu: i18n( "lenMenu" ),
-					sLoadingRecords: i18n( "load" ),
-					sProcessing: i18n( "process" ),
-					sSearch: i18n( "filter" ),
-					sZeroRecords: i18n( "infoEmpty" )
+					processing: i18n( "process" ),
+					search: i18n( "filter" ),
+					thousands: i18n( "info1000" ),
+					zeroRecords: i18n( "infoEmpty" )
 				};
 			}
 
 			defaults = {
 				asStripeClasses: [],
-				oLanguage: i18nText,
-				fnDrawCallback: function() {
+				language: i18nText,
+				dom: "<'top'ilf>rt<'bottom'p><'clear'>",
+				drawCallback: function() {
+
+					// Update the aria-pressed properties on the pagination buttons
+					// Should be pushed upstream to DataTables
+					$( ".dataTables_paginate a" )
+						.attr( "role", "button" )
+						.not( ".previous, .next" )
+							.attr( "aria-pressed", "false" )
+							.filter( ".current" )
+								.attr( "aria-pressed", "true" );
+
+					// Trigger the tables-draw.wb callback event
 					$( "#" + elmId ).trigger( "tables-draw.wb" );
 				}
 			};
@@ -8383,19 +8867,62 @@ var pluginName = "wb-tables",
 				load: [ "site!deps/jquery.dataTables" + wb.getMode() + ".js" ],
 				complete: function() {
 					var $elm = $( "#" + elmId ),
-						i18nSortAscend = function( x, y ) {
-							return wb.normalizeDiacritics( x ).localeCompare( wb.normalizeDiacritics( y ) );
+						dataTableExt = $.fn.dataTableExt;
+
+					/*
+					 * Extend sorting support
+					 */
+					$.extend( dataTableExt.type.order, {
+
+						// Enable internationalization support in the sorting
+						"html-pre": function( a ) {
+							return wb.normalizeDiacritics(
+								!a ? "" : a.replace ?
+									a.replace( /<.*?>/g, "" ).toLowerCase() : a + ""
+							);
 						},
-						i18nSortDescend = function( x, y ) {
-							return wb.normalizeDiacritics( y ).localeCompare( wb.normalizeDiacritics( x ) );
-						};
+						"string-case-pre": function( a ) {
+							return wb.normalizeDiacritics( a );
+						},
+						"string-pre": function( a ) {
+							return wb.normalizeDiacritics( a );
+						},
 
-					// Enable internationalization support in the sorting
-					$.fn.dataTableExt.oSort[ "html-asc" ] = i18nSortAscend;
-					$.fn.dataTableExt.oSort[ "html-desc" ] = i18nSortDescend;
-					$.fn.dataTableExt.oSort[ "string-case-asc" ] = i18nSortAscend;
-					$.fn.dataTableExt.oSort[ "string-case-desc" ] = i18nSortDescend;
+						// Formatted number sorting
+						"formatted-num-asc": function( a, b ) {
+							return wb.formattedNumCompare( b, a );
+						},
+						"formatted-num-desc": function( a, b ) {
+							return wb.formattedNumCompare( a, b );
+						}
+					} );
 
+					/*
+					 * Extend type detection
+					 */
+					// Formatted numbers detection
+					// Based on: http://datatables.net/plug-ins/type-detection#formatted_numbers
+					dataTableExt.aTypes.unshift(
+						function( sData ) {
+
+							// Strip off HTML tags and all non-alpha-numeric characters (except minus sign)
+							var deformatted = sData.replace( /<[^>]*>/g, "" ).replace( /[^\d\-\/a-zA-Z]/g, "" );
+							if ( $.isNumeric( deformatted ) || deformatted === "-" ) {
+								return "formatted-num";
+							}
+							return null;
+						}
+					);
+
+					// Remove HTML tags before doing any filtering for formatted numbers
+					dataTableExt.type.search[ "formatted-num" ] = function( data ) {
+						return data.replace( /<[^>]*>/g, "" );
+					};
+
+					// Add the container or the sorting icons
+					$elm.find( "th" ).append( "<span class='sorting-cnt'><span class='sorting-icons'></span></span>" );
+
+					// Create the DataTable object
 					$elm.dataTable( $.extend( true, {}, defaults, window[ pluginName ], wb.getData( $elm, pluginName ) ) );
 				}
 			});
@@ -8448,7 +8975,8 @@ var pluginName = "wb-tabs",
 
 	defaults = {
 		addControls: true,
-		excludePlay: false
+		excludePlay: false,
+		interval: 6
 	},
 
 	/*
@@ -8461,16 +8989,31 @@ var pluginName = "wb-tabs",
 		if ( !$elm.hasClass( initedClass ) ) {
 			$elm.addClass( initedClass );
 
-			var interval = $elm.hasClass( "slow" ) ? 9 : $elm.hasClass( "fast" ) ? 3 : 6,
-				$panels = $elm.children( "[role=tabpanel], details" ),
+			// For backwards compatibility. Should be removed in WET v4.1
+			if ( $elm.children( ".tabpanels" ).length === 0 ) {
+				$elm.children( "[role=tabpanel], details" ).wrapAll( "<div class='tabpanels'/>" );
+			}
+
+			var $panels = $elm.find( "> .tabpanels > [role=tabpanel], > .tabpanels > details" ),
 				$tablist = $elm.children( "[role=tablist]" ),
-				addControls = defaults.addControls,
-				excludePlay = defaults.excludePlay,
 				activeId = wb.pageUrlParts.hash.substring( 1 ),
 				$openPanel = activeId.length !== 0 ? $panels.filter( "#" + activeId ) : undefined,
 				elmId = $elm.attr( "id" ),
 				hashFocus = false,
 				open = "open",
+				settings = $.extend(
+					true,
+					{},
+					defaults,
+					{ interval: $elm.hasClass( "slow" ) ?
+									9 : $elm.hasClass( "fast" ) ?
+										3 : defaults.interval },
+					window[ pluginName ],
+					wb.getData( $elm, pluginName )
+				),
+				interval = settings.interval,
+				addControls = settings.addControls,
+				excludePlay = settings.excludePlay,
 				$panel, i, len, tablist, isOpen, newId, positionY, groupClass;
 
 			// Ensure there is an id on the element
@@ -8525,7 +9068,7 @@ var pluginName = "wb-tabs",
 				$elm.addClass( "tabs-acc" );
 				groupClass = elmId + "-grp";
 				addControls = false;
-				$panels = $elm.children();
+				$panels = $elm.find( "> .tabpanels > details" );
 				len = $panels.length;
 
 				// Ensure there is only one panel open
@@ -8540,7 +9083,7 @@ var pluginName = "wb-tabs",
 				$openPanel.attr( open, open );
 
 				// Hide the tablist in small view and the summary elements in large view
-				tablist = "<ul role='tablist' aria-live='off'>";
+				tablist = "<ul role='tablist' aria-live='off' class='generated'>";
 
 				for ( i = 0; i !== len; i += 1 ) {
 					$panel = $panels.eq( i );
@@ -8562,7 +9105,7 @@ var pluginName = "wb-tabs",
 
 					if ( isSmallView ) {
 						if ( !Modernizr.details ) {
-							$panel.toggleClass( "open", !isOpen );
+							$panel.toggleClass( "open", isOpen );
 						}
 					} else {
 						$panel.attr({
@@ -8754,16 +9297,39 @@ var pluginName = "wb-tabs",
 
 	updateNodes = function( $panels, $controls, $next, $control ) {
 		var $tabs = $controls.find( "[role=tab]" ),
-			newIndex = $tabs.index( $control ) + 1;
+			newIndex = $tabs.index( $control ) + 1,
+			$currPanel = $panels.filter( ".in" ),
+			mPlayers = $currPanel.find( ".wb-mltmd-inited" ).get(),
+			mPlayersLen = mPlayers.length,
+			mPlayer, i, j, last;
 
-		$panels
-			.filter( ".in" )
-				.removeClass( "in" )
-				.addClass( "out" )
-				.attr({
-					"aria-hidden": "true",
-					"aria-expanded": "false"
-				});
+		// Handle the direction of the slide transitions
+		if ( $currPanel[ 0 ].className.indexOf( "slide" ) !== -1 ) {
+			i = $panels.index( $currPanel );
+			j = $panels.index( $next );
+			last = $panels.length - 1;
+
+			$panels.toggleClass(
+				"reverse",
+				( i > j && ( i !== last || j !== 0 ) ) || ( i === 0 && j === last )
+			);
+		}
+
+		$currPanel
+			.removeClass( "in" )
+			.addClass( "out" )
+			.attr({
+				"aria-hidden": "true",
+				"aria-expanded": "false"
+			});
+
+		// Pause all multimedia players in the current panel
+		for ( i = 0; i !== mPlayersLen; i += 1 ) {
+			mPlayer = mPlayers[ i ];
+			if ( mPlayer.player ) {
+				mPlayer.player( "pause" );
+			}
+		}
 
 		$next
 			.removeClass( "out" )
@@ -8878,7 +9444,7 @@ var pluginName = "wb-tabs",
 		if ( initialized ) {
 			isSmallView = document.documentElement.className.indexOf( smallViewPattern ) !== -1;
 			$elm = $( selector );
-			$details = $elm.children( "details" );
+			$details = $elm.find( "> .tabpanels > details" );
 			if ( $details.length !== 0 ) {
 				if ( isSmallView !== oldIsSmallView ) {
 					$summary = $details.children( "summary" );
@@ -8893,30 +9459,22 @@ var pluginName = "wb-tabs",
 
 						// Switch to small view
 						$active = $tablist.find( ".active a" );
-						$openDetails = $details.filter( "#" + $active.attr( "href" ).substring( 1 ) );
-						$nonOpenDetails = $details
+						$details
+							.removeAttr( "role aria-expanded aria-hidden" )
 							.removeAttr( "role" )
-							.removeClass( "fade out in" )
-							.not( $openDetails )
-								.removeAttr( "open" );
-						if ( !Modernizr.details ) {
-							$nonOpenDetails
-								.attr({
-									"aria-expanded": "false",
-									"aria-hidden": "true"
-								});
-							$openDetails.attr({
-								"aria-expanded": "true",
-								"aria-hidden": "false"
-							});
-						}
+							.removeClass( "fade out in" );
+						$openDetails = $details
+											.filter( "#" + $active.attr( "href" ).substring( 1 ) )
+												.attr( "open", "open" )
+												.addClass( "open" );
+						$nonOpenDetails = $details.not( $openDetails )
+													.removeAttr( "open" )
+													.removeClass( "open" );
 					} else if ( oldIsSmallView ) {
 
 						// Switch to large view
 						$openDetails = $details.filter( "[open]" );
-						if ( $openDetails.length === 0 ) {
-							$openDetails = $details.eq( 0 );
-						}
+						$openDetails = ( $openDetails.length === 0 ? $details : $openDetails ).eq( 0 );
 
 						$details
 							.attr({
@@ -8924,10 +9482,18 @@ var pluginName = "wb-tabs",
 								open: "open"
 							})
 							.not( $openDetails )
-								.addClass( "fade out" );
+								.addClass( "fade out" )
+								.attr({
+									"aria-hidden": "true",
+									"aria-expanded": "false"
+								});
 
 						$openDetails
 							.addClass( "fade in" )
+							.attr({
+									"aria-hidden": "false",
+									"aria-expanded": "true"
+								})
 							.parent()
 								.find( "> ul [href$='" + $openDetails.attr( "id" ) + "']" )
 									.trigger( "click" );
@@ -9024,7 +9590,7 @@ var pluginName = "wb-tabs",
 					.toggleClass( "glyphicon-play glyphicon-pause" );
 			$sldr.toggleClass( "playing" );
 
-			text = $plypause[ 0 ].getElementsByTagName( "span" )[ 0 ];
+			text = $plypause[ 0 ].getElementsByTagName( "span" )[ 1 ];
 			text.innerHTML = text.innerHTML === playText ?
 				i18nText.pause :
 				playText;
@@ -9050,7 +9616,6 @@ var pluginName = "wb-tabs",
 				onCycle( $elm, className.indexOf( "prv" ) !== -1 ? -1 : 1 );
 			}
 		}
-		return false;
 	}
 
 	/*
@@ -9066,10 +9631,12 @@ $document.on( "keydown", selector, function( event ) {
 	// Escape key
 	if ( event.which === 27 ) {
 		var $sldr = $( event.target ).closest( selector );
+
+		event.preventDefault();
+
 		if ( $sldr.hasClass( "playing" ) ) {
 			$sldr.find( ".plypause" ).trigger( "click" );
 		}
-		return false;
 	}
 });
 
@@ -9086,6 +9653,23 @@ $document.on( "keydown", selector + " [role=tabpanel]", function( event ) {
 					.trigger( "setfocus.wb" );
 	}
 });
+
+// Stop the carousel if there is a click within the panel
+$document.on( "click", selector + " [role=tabpanel]", function( event ) {
+	var which = event.which,
+		$container;
+
+	// Ignore middle and right mouse buttons
+	if ( !which || which === 1 ) {
+		$container = $( event.currentTarget ).closest( selector );
+
+		// Stop the carousel if there is a click within a panel
+		if ( $container.hasClass( "playing" ) ) {
+			$container.find( ".plypause" ).trigger( "click" );
+		}
+	}
+});
+
 // Handling for links to tabs from within a panel
 $document.on( "click", selector + " [role=tabpanel] a", function( event ) {
 	var currentTarget = event.currentTarget,
@@ -9098,13 +9682,13 @@ $document.on( "click", selector + " [role=tabpanel] a", function( event ) {
 		$container = $( currentTarget ).closest( selector );
 		$panel = $container.find( href );
 		if ( $panel.length !== 0 ) {
+			event.preventDefault();
 			$summary = $panel.children( "summary" );
 			if ( $summary.length !== 0 && $summary.attr( "aria-hidden" ) !== "true" ) {
 				$summary.trigger( "click" );
 			} else {
 				$container.find( href + "-lnk" ).trigger( "click" );
 			}
-			return false;
 		}
 	}
 });
@@ -9226,6 +9810,7 @@ var pluginName = "wb-toggle",
 	initEvent = "wb-init" + selector,
 	toggleEvent = "toggle" + selector,
 	toggledEvent = "toggled" + selector,
+	setFocusEvent = "setfocus.wb",
 	elmIdx = 0,
 	states = {},
 	$document = wb.doc,
@@ -9412,7 +9997,7 @@ var pluginName = "wb-toggle",
 		event.preventDefault();
 
 		// Assign focus to eventTarget
-		$link.trigger( "setfocus.wb" );
+		$link.trigger( setFocusEvent );
 	},
 
 	/**
@@ -9421,65 +10006,67 @@ var pluginName = "wb-toggle",
 	 * @param {Object} data Simple key/value data object passed when the event was triggered
 	 */
 	toggle = function( event, data ) {
-		var dataGroup, key, $elmsGroup,
-			isGroup = !!data.group,
-			isPersist = !!data.persist,
-			isTablist = isGroup && !!data.parent,
-			link = event.currentTarget,
-			$link = $( link ),
-			stateFrom = getState( $link, data ),
-			isToggleOn = stateFrom === data.stateOff,
-			stateTo = isToggleOn ? data.stateOn : data.stateOff,
-			$elms = isTablist ?	$link.parent( data.group ) : getElements( link, data );
+		if ( event.namespace === pluginName ) {
+			var dataGroup, key, $elmsGroup,
+				isGroup = !!data.group,
+				isPersist = !!data.persist,
+				isTablist = isGroup && !!data.parent,
+				link = event.currentTarget,
+				$link = $( link ),
+				stateFrom = getState( $link, data ),
+				isToggleOn = stateFrom === data.stateOff,
+				stateTo = isToggleOn ? data.stateOn : data.stateOff,
+				$elms = isTablist ?	$link.parent( data.group ) : getElements( link, data );
 
-		// Group toggle behaviour: only one element in the group open at a time.
-		if ( isGroup ) {
+			// Group toggle behaviour: only one element in the group open at a time.
+			if ( isGroup ) {
 
-			// Get the grouped elements using data.group as the CSS selector
-			// and filter to only retrieve currently open grouped elements
-			dataGroup = $.extend( {}, data, { selector: data.group } );
-			$elmsGroup = getElements( link, dataGroup ).filter( "." + data.stateOn + ", [open]" );
+				// Get the grouped elements using data.group as the CSS selector
+				// and filter to only retrieve currently open grouped elements
+				dataGroup = $.extend( {}, data, { selector: data.group } );
+				$elmsGroup = getElements( link, dataGroup ).filter( "." + data.stateOn + ", [open]" );
 
-			// Set the toggle state to "off".  For tab lists, this is stored on the tab element
-			setState( isTablist ? $( data.parent ).find( selectorTab ) : $elmsGroup,
-				dataGroup, data.stateOff );
+				// Set the toggle state to "off".  For tab lists, this is stored on the tab element
+				setState( isTablist ? $( data.parent ).find( selectorTab ) : $elmsGroup,
+					dataGroup, data.stateOff );
 
-			// Toggle all grouped elements to "off"
-			$elmsGroup.wb( "toggle", data.stateOff, data.stateOn );
-			$elmsGroup.trigger( toggledEvent, {
-				isOn: false,
-				isTablist: isTablist,
-				elms: $elmsGroup
-			});
+				// Toggle all grouped elements to "off"
+				$elmsGroup.wb( "toggle", data.stateOff, data.stateOn );
+				$elmsGroup.trigger( toggledEvent, {
+					isOn: false,
+					isTablist: isTablist,
+					elms: $elmsGroup
+				});
 
-			// Remove all grouped persistence keys
-			if ( isPersist ) {
-				for ( key in data.persist ) {
-					if ( key.indexOf( pluginName + data.group ) === 0 ) {
-						data.persist.removeItem( key );
+				// Remove all grouped persistence keys
+				if ( isPersist ) {
+					for ( key in data.persist ) {
+						if ( key.indexOf( pluginName + data.group ) === 0 ) {
+							data.persist.removeItem( key );
+						}
 					}
 				}
 			}
-		}
 
-		// Set the toggle state. For tab lists, this is set on the tab element
-		setState( isTablist ? $link : $elms, data, stateTo );
+			// Set the toggle state. For tab lists, this is set on the tab element
+			setState( isTablist ? $link : $elms, data, stateTo );
 
-		// Toggle all elements to the requested state
-		$elms.wb( "toggle", stateTo, stateFrom );
-		$elms.trigger( toggledEvent, {
-			isOn: isToggleOn,
-			isTablist: isTablist,
-			elms: $elms
-		});
+			// Toggle all elements to the requested state
+			$elms.wb( "toggle", stateTo, stateFrom );
+			$elms.trigger( toggledEvent, {
+				isOn: isToggleOn,
+				isTablist: isTablist,
+				elms: $elms
+			});
 
-		// Store the toggle link's current state if persistence is turned on.
-		// Try/catch is required to address exceptions thrown when using BB10 or
-		// private browsing in iOS.
-		if ( isPersist ) {
-			try {
-				data.persist.setItem( data.persistKey, stateTo );
-			} catch ( error ) {
+			// Store the toggle link's current state if persistence is turned on.
+			// Try/catch is required to address exceptions thrown when using BB10 or
+			// private browsing in iOS.
+			if ( isPersist ) {
+				try {
+					data.persist.setItem( data.persistKey, stateTo );
+				} catch ( error ) {
+				}
 			}
 		}
 	},
@@ -9490,38 +10077,40 @@ var pluginName = "wb-toggle",
 	 * @param {Object} data Simple key/value data object passed when the event was triggered
 	 */
 	toggleDetails = function( event, data ) {
-		var top,
-			isOn = data.isOn,
-			$elms = data.elms,
-			$detail = $( this );
+		if ( event.namespace === pluginName ) {
+			var top,
+				isOn = data.isOn,
+				$elms = data.elms,
+				$detail = $( this );
 
-		// Native details support
-		$detail.prop( "open", isOn );
+			// Native details support
+			$detail.prop( "open", isOn );
 
-		// Polyfill details support
-		if ( !Modernizr.details ) {
-			$detail
-				.attr( "open", isOn ? null : "open" )
-				.find( "summary" ).trigger( "toggle.wb-details" );
-		}
+			// Polyfill details support
+			if ( !Modernizr.details ) {
+				$detail
+					.attr( "open", isOn ? null : "open" )
+					.find( "summary" ).trigger( "toggle.wb-details" );
+			}
 
-		if ( data.isTablist ) {
+			if ( data.isTablist ) {
 
-			// Set the required aria attributes
-			$elms.find( selectorTab ).attr({
-				"aria-selected": isOn,
-				tabindex: isOn ? "0" : "-1"
-			});
-			$elms.find( selectorPanel ).attr({
-				"aria-hidden": !isOn,
-				"aria-expanded": isOn
-			});
+				// Set the required aria attributes
+				$elms.find( selectorTab ).attr({
+					"aria-selected": isOn,
+					tabindex: isOn ? "0" : "-1"
+				});
+				$elms.find( selectorPanel ).attr({
+					"aria-hidden": !isOn,
+					"aria-expanded": isOn
+				});
 
-			// Check that the top of the open element is in view.
-			if ( isOn && $elms.length === 1 ) {
-				top = $elms.offset().top;
-				if ( top < $window.scrollTop() ) {
-					$window.scrollTop( top );
+				// Check that the top of the open element is in view.
+				if ( isOn && $elms.length === 1 ) {
+					top = $elms.offset().top;
+					if ( top < $window.scrollTop() ) {
+						$window.scrollTop( top );
+					}
 				}
 			}
 		}
@@ -9682,7 +10271,7 @@ $document.on( "keydown", selectorTab, function( event ) {
 
 		$newPanel
 			.children( "summary" )
-				.trigger( "click" );
+				.trigger( setFocusEvent );
 	}
 });
 
@@ -9694,7 +10283,7 @@ $document.on( "keydown", selectorPanel, function( event ) {
 		// Move focus to the summary element
 		$( event.currentTarget )
 			.prev()
-				.trigger( "setfocus.wb" );
+				.trigger( setFocusEvent );
 	}
 });
 
@@ -9856,26 +10445,28 @@ var $document = wb.doc,
 
 // Bind the setfocus event
 $document.on( setFocusEvent, function( event ) {
-	var $elm = $( event.target );
+	if ( event.namespace === "wb" ) {
+		var $elm = $( event.target );
 
-	// Set the tabindex to -1 (as needed) to ensure the element is focusable
-	$elm
-		.filter( ":not([tabindex], a[href], button, input, textarea, select)" )
-			.attr( "tabindex", "-1" );
+		// Set the tabindex to -1 (as needed) to ensure the element is focusable
+		$elm
+			.filter( ":not([tabindex], a[href], button, input, textarea, select)" )
+				.attr( "tabindex", "-1" );
 
-	// Assigns focus to an element (delay allows for revealing of hidden content)
-	setTimeout(function() {
-		$elm.trigger( "focus" );
+		// Assigns focus to an element (delay allows for revealing of hidden content)
+		setTimeout(function() {
+			$elm.trigger( "focus" );
 
-		var $topBar = $( ".wb-bar-t[aria-hidden=false]" );
+			var $topBar = $( ".wb-bar-t[aria-hidden=false]" );
 
-		// Ensure the top bar overlay does not conceal the focus target
-		if ( $topBar.length !== 0 ) {
-			document.documentElement.scrollTop -= $topBar.outerHeight();
-		}
+			// Ensure the top bar overlay does not conceal the focus target
+			if ( $topBar.length !== 0 ) {
+				document.documentElement.scrollTop -= $topBar.outerHeight();
+			}
 
-		return $elm;
-	}, 100 );
+			return $elm;
+		}, 100 );
+	}
 });
 
 // Set focus to the target of a deep link from a different page
@@ -9921,8 +10512,8 @@ $document.on( clickEvents, linkSelector, function( event ) {
 	selectorHoverCol = "." + hoverColClass + " td, " + hoverColClass + " th",
 	initedClass = pluginName + "-inited",
 	initEvent = "wb-init" + selector,
-	tableParsingEvent = "pasiveparse.wb-tableparser.wb",
-	tableParsingCompleteEvent = "parsecomplete.wb-tableparser.wb",
+	tableParsingEvent = "passiveparse.wb-tableparser",
+	tableParsingCompleteEvent = "parsecomplete.wb-tableparser",
 	$document = wb.doc,
 	idCount = 0,
 	i18n, i18nText,

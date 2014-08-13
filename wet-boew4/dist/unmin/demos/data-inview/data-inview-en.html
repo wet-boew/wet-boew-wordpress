@@ -36,7 +36,7 @@
 <link href="../../assets/favicon.ico" rel="shortcut icon" />
 <link rel="stylesheet" href="../../css/ie8-wet-boew.css" />
 <link rel="stylesheet" href="../../css/ie8-theme.css" />
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js"></script>
 <script src="../../js/ie8-wet-boew.js"></script>
 <![endif]-->
 
@@ -48,8 +48,8 @@
 				<a class="wb-sl" href="#wb-cont">Skip to main content</a>
 			</li>
 
-			<li class="wb-slc visible-md visible-lg">
-				<a class="wb-sl" href="#wb-info">Skip to site information</a>
+			<li class="wb-slc visible-sm visible-md visible-lg">
+				<a class="wb-sl" href="#wb-info">Skip to "About this site"</a>
 			</li>
 
 
@@ -80,9 +80,9 @@
 </ul>
 
 							<section class="wb-mb-links col-xs-12 visible-sm visible-xs" id="wb-glb-mn">
-								<h2>Menu</h2>
+								<h2>Search and menus</h2>
 								<ul class="pnl-btn list-inline text-right">
-	<li><a href="#mb-pnl" title="Menu" aria-controls="mb-pnl" class="overlay-lnk btn btn-xs btn-default" role="button"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Menu</span></span></a></li>
+	<li><a href="#mb-pnl" title="Search and menus" aria-controls="mb-pnl" class="overlay-lnk btn btn-sm btn-default" role="button"><span class="glyphicon glyphicon-search"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Search and menus</span></span></span></a></li>
 </ul>
 <div id="mb-pnl"></div>
 
@@ -125,13 +125,13 @@
 
 			<nav role="navigation" id="wb-sm" data-ajax-fetch="../../ajax/sitemenu-en.html" data-trgt="mb-pnl" class="wb-menu visible-md visible-lg" typeof="SiteNavigationElement">
 				<div class="container nvbar">
-	<h2>Site menu</h2>
+	<h2>Topics menu</h2>
     <div class="row">
         <ul class="list-inline menu">
 
 			<li><a href="../../index-en.html">WET project</a></li>
-			<li><a href="http://wet-boew.github.io/wet-boew/docs/gs-cd/impl-en.html">Implement WET</a></li>
-			<li><a href="http://wet-boew.github.io/wet-boew/docs/gs-cd/contrib-en.html">Contribute to WET</a></li>
+			<li><a href="http://wet-boew.github.io/wet-boew/docs/start-en.html#implement">Implement WET</a></li>
+			<li><a href="http://wet-boew.github.io/wet-boew/docs/start-en.html">Contribute to WET</a></li>
 
         </ul>
     </div>
@@ -169,6 +169,8 @@
 
 
 			
+<span class="wb-prettify all-pre"></span>
+
 <section>
 	<h2>Purpose</h2>
 	<p>Create fixed position content panels that are conditionally displayed as the web page is scrolled and resized.</p>
@@ -180,6 +182,21 @@
 	<section class="wb-inview bar-demo" data-inview="bottom-bar">
 		<h3 class="no-gutter">Section with a conditional bottom bar</h3>
 		<p>A bar will be displayed at the bottom when this section is <strong>partially out</strong> of the viewport.</p>
+		<p><strong>View state:</strong> <code class="view-state-status"></code></p>
+		<details>
+			<summary>View code</summary>
+			<pre><code>&lt;section class=&quot;wb-inview bar-demo&quot; data-inview=&quot;bottom-bar&quot;&gt;
+	&lt;h3 class=&quot;no-gutter&quot;&gt;Section with a conditional bottom bar&lt;/h3&gt;
+	...
+&lt;/section&gt;
+
+&lt;section id=&quot;bottom-bar&quot; class=&quot;wb-overlay modal-content overlay-def wb-bar-b&quot;&gt;
+	&lt;header&gt;
+		&lt;h2 class=&quot;modal-title&quot;&gt;Bottom bar&lt;/h2&gt;
+	&lt;/header&gt;
+	...
+&lt;/section&gt;</code></pre>
+		</details>
 	</section>
 
 	<p>Different example text. Different example text. Different example text. Different example text. Different example text. Different example text. Different example text. Different example text.</p>
@@ -187,8 +204,76 @@
 	<section class="wb-inview show-none bar-demo" data-inview="top-bar">
 		<h3 class="no-gutter">Section with a conditional top bar</h3>
 		<p>A bar will be displayed at the top when this section is <strong>fully out</strong> of the viewport (<code>class="show-none"</code>).</p>
+		<p><strong>View state:</strong> <code class="view-state-status"></code></p>
+		<details>
+			<summary>View code</summary>
+			<pre><code>&lt;section class=&quot;wb-inview show-none bar-demo&quot; data-inview=&quot;top-bar&quot;&gt;
+	&lt;h3 class=&quot;no-gutter&quot;&gt;Section with a conditional top bar&lt;/h3&gt;
+	...
+&lt;/section&gt;
+
+&lt;section id=&quot;top-bar&quot; class=&quot;wb-overlay modal-content overlay-def wb-bar-t&quot;&gt;
+	&lt;header&gt;
+		&lt;h2 class=&quot;modal-title&quot;&gt;Top bar&lt;/h2&gt;
+	&lt;/header&gt;
+	...
+&lt;/section&gt;</code></pre>
+		</details>
 	</section>
 
+	<section class="wb-inview bar-demo" data-inview="fade-effect">
+		<h3 class="no-gutter">Section that triggers a fade in or out effect for the next section</h3>
+		<p>The next section will fade in when this section is <strong>partially out</strong> of the viewport.</p>
+		<p><strong>View state:</strong> <code class="view-state-status"></code></p>
+		<details>
+			<summary>View code</summary>
+			<pre><code>&lt;section class=&quot;wb-inview bar-demo&quot; data-inview=&quot;fade-effect&quot;&gt;
+	&lt;h3 class=&quot;no-gutter&quot;&gt;Section that triggers a fade in or out effect for the next section&lt;/h3&gt;
+	...
+&lt;/section&gt;
+
+&lt;section id=&quot;fade-effect&quot; class=&quot;fade bar-demo&quot;&gt;
+	&lt;h3 class=&quot;no-gutter&quot;&gt;Section that fades in/out&lt;/h3&gt;
+	...
+&lt;/section&gt;</code></pre>
+		</details>
+	</section>
+
+	<section id="fade-effect" class="fade bar-demo">
+		<h3 class="no-gutter">Section that fades in/out</h3>
+		<p>This section fades in or out based upon the view state of the previous section.</p>
+	</section>
+
+	<section class="wb-inview bar-demo">
+		<h3 class="no-gutter">View state change events</h3>
+		<p>The view state of this section is being identified below through JavaScript.</p>
+		<p><strong>View state:</strong> <code class="view-state-status"></code></p>
+		<details>
+			<summary>View code</summary>
+			<section>
+				<h4>HTML</h4>
+				<pre><code>&lt;section class=&quot;wb-inview bar-demo&quot;&gt;
+	&lt;h3 class=&quot;no-gutter&quot;&gt;View state change events&lt;/h3&gt;
+	...
+&lt;/section&gt;</code></pre>
+			</section>
+
+			<section>
+				<h4>JavaScript</h4>
+				<pre><code>(function( $, wb ) {
+&quot;use strict&quot;;
+
+wb.doc.on( &quot;all.wb-inview partial.wb-inview none.wb-inview&quot;, function( event) {
+	if ( event.namespace === &quot;wb-inview&quot; ) {
+		$( event.target ).find( &quot;.view-state-status&quot; ).html( event.type );
+	}
+});
+
+})( jQuery, wb );</code></pre>
+			</section>
+		</details>
+	</section>
+	
 	<p>Different example text. Different example text. Different example text. Different example text. Different example text. Different example text. Different example text. Different example text.</p>
 	<p>Other example text. Other example text. Other example text. Other example text. Other example text. Other example text. Other example text. Other example text. Other example text. Other example text. Other example text. Other example text.</p>
 	<p>Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text.</p>
@@ -246,9 +331,9 @@
 </section>
 
 
-			<dl id="wb-dtmd" property="dateModified">
+			<dl id="wb-dtmd">
 	<dt>Date modified:&#32;</dt>
-	<dd><time>2014-02-19</time></dd>
+	<dd><time property="dateModified">2014-07-21</time></dd>
 </dl>
 
 
@@ -259,23 +344,24 @@
 		<footer role="contentinfo" id="wb-info" class="visible-sm visible-md visible-lg wb-navcurr">
 			<div class="container">
 				<nav role="navigation">
-					<h2>Site information</h2>
+					<h2>About this site</h2>
 					<ul id="gc-tctr" class="list-inline">
 	<li><a rel="license" href="http://wet-boew.github.io/wet-boew/License-en.html">Terms and conditions</a></li>
-	<li><a href="http://www.tbs-sct.gc.ca/pd-dp/index-en.asp">Transparency</a></li>
+	<li><a href="http://www.tbs-sct.gc.ca/tbs-sct/common/trans-eng.asp">Transparency</a></li>
 </ul>
+
 					<div class="row">
 						<section class="col-sm-3">
+	<h3>Contact us</h3>
+	<ul class="list-unstyled">
+		<li><a href="https://github.com/wet-boew/wet-boew/issues/new">Questions or comments?</a></li>
+	</ul>
+</section>
+<section class="col-sm-3">
 	<h3>About</h3>
 	<ul class="list-unstyled">
 		<li><a href="http://wet-boew.github.io/v4.0-ci/index-en.html#about">About the Web Experience Toolkit</a></li>
 		<li><a href="http://www.tbs-sct.gc.ca/ws-nw/index-eng.asp">About the Web Standards</a></li>
-	</ul>
-</section>
-<section class="col-sm-3">
-	<h3>Contact us</h3>
-	<ul class="list-unstyled">
-		<li><a href="https://github.com/wet-boew/wet-boew/issues/new">Questions or comments?</a></li>
 	</ul>
 </section>
 <section class="col-sm-3">
@@ -302,11 +388,11 @@
 						
 <ul class="list-inline">
 
-	<li><a href="http://healthycanadians.gc.ca"><span>Health</span>healthycanadians.gc.ca</a></li>
-	<li><a href="http://travel.gc.ca"><span>Travel</span>travel.gc.ca</a></li>
-	<li><a href="http://www.servicecanada.gc.ca/eng/home.shtml"><span>Service Canada</span>servicecanada.gc.ca</a></li>
-	<li><a href="http://www.jobbank.gc.ca"><span>Jobs</span>jobbank.gc.ca</a></li>
-	<li><a href="http://actionplan.gc.ca/en"><span>Economy</span>actionplan.gc.ca</a></li>
+	<li><a href="http://healthycanadians.gc.ca"><span>Health</span></a></li>
+	<li><a href="http://travel.gc.ca"><span>Travel</span></a></li>
+	<li><a href="http://www.servicecanada.gc.ca/eng/home.shtml"><span>Service Canada</span></a></li>
+	<li><a href="http://www.jobbank.gc.ca"><span>Jobs</span></a></li>
+	<li><a href="http://actionplan.gc.ca/en"><span>Economy</span></a></li>
 
 	<li id="canada-ca"><a href="http://www.canada.ca/en/index.html">Canada.ca</a></li>
 </ul>
@@ -316,13 +402,13 @@
 		</footer>
 
 		<!--[if gte IE 9 | !IE ]><!-->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
 <script src="../../js/wet-boew.js"></script>
 <!--<![endif]-->
 <!--[if lt IE 9]>
 <script src="../../js/ie8-wet-boew2.js"></script>
 <![endif]-->
-
+<script src="demo/data-inview.js"></script>
 
 	</body>
 </html>

@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0 - 2014-03-31
+ * v4.0.4 - 2014-07-23
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -16,7 +16,7 @@
 /* main index */
 wb.i18nDict = {
 	"lang-code": "is",
-	"lang-nat": "Íslenska",
+	"lang-native": "Íslenska",
 	all: "Allt",
 	tphp: "Efst á síðu",
 	load: "hleðsla ...",
@@ -26,7 +26,7 @@ wb.i18nDict = {
 	matches: {
 		mixin: "[MIXIN] niðurstöður fundust"
 	},
-	curr: "(núverandi)",
+	current: "(núverandi)",
 	hide: "Fela",
 	err: "Villa",
 	colon: ":",
@@ -58,7 +58,7 @@ wb.i18nDict = {
 	"prv-l": "Fyrri (vinstri ör lykill)",
 	first: "First",
 	last: "Síðasta",
-	menu: "Valmynd",
+	"srch-menus": "Leit og valmyndir",
 	email: "Email",
 	"menu-close": "Loka valmynd",
 	"overlay-close": "Loka yfirlagið",
@@ -79,8 +79,7 @@ wb.i18nDict = {
 	pause: "Brot",
 	open: "Opinn",
 	close: "Loka",
-	rew: "Baka",
-	ffwd: "Fljótur áfram",
+	volume: "Hljóðstyrk",
 	mute: {
 		on: "Hljóðnemi",
 		off: "Slökkva"
@@ -192,6 +191,19 @@ wb.i18nDict = {
 	"geo-attrttl": "GeoGratis - Kanada stöð kort (enska eða franska aðeins)",
 	"geo-sel": "Veldu",
 	"geo-lblsel": "Athugaðu að velja atriði á kortinu",
+	"geo-locurl-geogratis": "http://geogratis.gc.ca/services/geolocation/en/locate",
+	"geo-loc-placeholder": "Tilgreina nafn staðsetningu&#44; póstnúmer&#44; heimilisfang (Postal)&#44; fjölda NTS ...",
+	"geo-loc-label": "Staðsetning",
+	"geo-aoi-north": "Norður",
+	"geo-aoi-east": "Austur",
+	"geo-aoi-south": "Suður",
+	"geo-aoi-west": "Vestur",
+	"geo-aoi-instructions": "Afmarka svæði á kortinu eða slá inn upplýsingar hér að neðan og smelltu á \"Draga\" hnappinn.",
+	"geo-aoi-btndraw": "Draga",
+	"geo-aoi-btnclear": "Fjarlægja",
+	"geo-geoloc-btn": "Aðdráttur til núverandi staðsetningu",
+	"geo-geoloc-fail": "Staðsetning mistókst. Skaltu tryggja að staðsetningu þjónustu eru virk.",
+	"geo-geoloc-uncapable": "Staðsetning er ekki stutt af vafranum þínum.",
 	/* Disable/enable WET plugins and polyfills */
 	"wb-disable": "Undirstöðu HTML útgáfa",
 	"wb-enable": "Standard útgáfa",

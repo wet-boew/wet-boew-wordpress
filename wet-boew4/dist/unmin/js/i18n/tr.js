@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0 - 2014-03-31
+ * v4.0.4 - 2014-07-23
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -16,7 +16,7 @@
 /* main index */
 wb.i18nDict = {
 	"lang-code": "tr",
-	"lang-nat": "Türkçe",
+	"lang-native": "Türkçe",
 	all: "Tüm",
 	tphp: "Sayfa Başı",
 	load: "yükleniyor ...",
@@ -26,7 +26,7 @@ wb.i18nDict = {
 	matches: {
 		mixin: "[MIXIN] eşleşme bulundu"
 	},
-	curr: "(güncel)",
+	current: "(güncel)",
 	hide: "Sakla",
 	err: "Hata",
 	colon: ":",
@@ -58,7 +58,7 @@ wb.i18nDict = {
 	"prv-l": "Bir önceki (sol ok tuşu)",
 	first: "İlk",
 	last: "Son",
-	menu: "Menü",
+	"srch-menus": "Arama ve menüler",
 	email: "E-posta",
 	"menu-close": "Menüyü kapatmak",
 	"overlay-close": "Bindirme kapatmak",
@@ -79,8 +79,7 @@ wb.i18nDict = {
 	pause: "Duraklat",
 	open: "Açık",
 	close: "Kapat",
-	rew: "Geri sar",
-	ffwd: "Hızlı sar",
+	volume: "Hacim",
 	mute: {
 		on: "Sessiz",
 		off: "Sesi aç"
@@ -192,6 +191,19 @@ wb.i18nDict = {
 	"geo-attrttl": "GeoGratis - Kanada temel harita (İngilizce veya Fransızca sadece)",
 	"geo-sel": "Seçmek",
 	"geo-lblsel": "Harita üzerinde öğe seçmek için kontrol edin",
+	"geo-locurl-geogratis": "http://geogratis.gc.ca/services/geolocation/en/locate",
+	"geo-loc-placeholder": "Konumu&#44; posta kodu&#44; adres (posta)&#44; NTS sayısının adını belirtin ...",
+	"geo-loc-label": "Konum",
+	"geo-aoi-north": "Kuzey",
+	"geo-aoi-east": "Doğu",
+	"geo-aoi-south": "Güney",
+	"geo-aoi-west": "Batı",
+	"geo-aoi-instructions": "Harita üzerinde bir alanı tanımlamak ya da aşağıdaki bilgilerinizi girin sonra \"Çizmek\" butonuna tıklayın.",
+	"geo-aoi-btndraw": "Çizmek",
+	"geo-aoi-btnclear": "Kaldırmak",
+	"geo-geoloc-btn": "Geçerli konuma yakınlaştırma",
+	"geo-geoloc-fail": "Yer başarısız oldu. Yer hizmetleri etkin olduğundan emin olun.",
+	"geo-geoloc-uncapable": "Yerelleştirme tarayıcınız tarafından desteklenmiyor.",
 	/* Disable/enable WET plugins and polyfills */
 	"wb-disable": "Basit HTML sürümü",
 	"wb-enable": "Standart sürüm",

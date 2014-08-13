@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0 - 2014-03-31
+ * v4.0.4 - 2014-07-23
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -16,7 +16,7 @@
 /* main index */
 wb.i18nDict = {
 	"lang-code": "ja",
-	"lang-nat": "日本語",
+	"lang-native": "日本語",
 	all: "すべて",
 	tphp: "ページの先頭",
 	load: "ロード中･･･",
@@ -26,7 +26,7 @@ wb.i18nDict = {
 	matches: {
 		mixin: "検索結果： [MIXIN] 件"
 	},
-	curr: "（現在）",
+	current: "（現在）",
 	hide: "非表示",
 	err: "エラー",
 	colon: "：",
@@ -58,7 +58,7 @@ wb.i18nDict = {
 	"prv-l": "前へ（左矢印キー）",
 	first: "最初",
 	last: "最後",
-	menu: "メニュー",
+	"srch-menus": "検索とメニュー",
 	email: "メール",
 	"menu-close": "メニューを閉じる",
 	"overlay-close": "オーバーレイを閉じる",
@@ -79,8 +79,7 @@ wb.i18nDict = {
 	pause: "一時停止",
 	open: "開く",
 	close: "閉じる",
-	rew: "巻き戻し",
-	ffwd: "早送り",
+	volume: "音量",
 	mute: {
 		on: "ミュート",
 		off: "ミュート解除"
@@ -192,6 +191,19 @@ wb.i18nDict = {
 	"geo-attrttl": "GeoGratis-カナダベースマップ（英語またはフランス語のみ",
 	"geo-sel": "選択",
 	"geo-lblsel": "マップエレメントを選択",
+	"geo-locurl-geogratis": "http://geogratis.gc.ca/services/geolocation/en/locate",
+	"geo-loc-placeholder": "場所、郵便番号、住所（郵便）、エヌ·ティー·エスの数の名前を入力して...",
+	"geo-loc-label": "場所",
+	"geo-aoi-north": "北",
+	"geo-aoi-east": "東",
+	"geo-aoi-south": "南",
+	"geo-aoi-west": "西",
+	"geo-aoi-instructions": "地図上の領域の輪郭を描くか、詳細を下記に入力し、「描く」ボタンをクリックしてください。",
+	"geo-aoi-btndraw": "描く",
+	"geo-aoi-btnclear": "削除する",
+	"geo-geoloc-btn": "現在の場所にズーム",
+	"geo-geoloc-fail": "場所は、失敗しました。位置情報サービスが有効になっていることを確認してください。",
+	"geo-geoloc-uncapable": "ローカリゼーションは、お使いのブラウザでサポートされていません。",
 	/* Disable/enable WET plugins and polyfills */
 	"wb-disable": "HTMLベーシック版",
 	"wb-enable": "スタンダード版",

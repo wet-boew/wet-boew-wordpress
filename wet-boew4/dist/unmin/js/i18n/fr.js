@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0 - 2014-03-31
+ * v4.0.4 - 2014-07-23
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -16,7 +16,7 @@
 /* main index */
 wb.i18nDict = {
 	"lang-code": "fr",
-	"lang-nat": "Français",
+	"lang-native": "Français",
 	all: "Tous",
 	tphp: "Haut de la page",
 	load: "chargement...",
@@ -26,7 +26,7 @@ wb.i18nDict = {
 	matches: {
 		mixin: "[MIXIN] correspondance(s) trouvées"
 	},
-	curr: "(actuel)",
+	current: "(actuel)",
 	hide: "Masquer",
 	err: "Erreur",
 	colon: "&#160;:",
@@ -58,7 +58,7 @@ wb.i18nDict = {
 	"prv-l": "Précedent (touche gauche)",
 	first: "Premier",
 	last: "Dernier",
-	menu: "Menu",
+	"srch-menus": "Recherche et menus",
 	email: "Courriel",
 	"menu-close": "Fermer le menu",
 	"overlay-close": "Fermer la fenêtre superposée",
@@ -79,8 +79,7 @@ wb.i18nDict = {
 	pause: "Pause",
 	open: "Ouvrir",
 	close: "Fermer",
-	rew: "Reculer",
-	ffwd: "Avancer",
+	volume: "Volume",
 	mute: {
 		on: "Activer le mode muet",
 		off: "Désactiver le mode muet"
@@ -192,6 +191,19 @@ wb.i18nDict = {
 	"geo-attrttl": "GéoGratis - Carte de Base du Canada",
 	"geo-sel": "Sélectionnez",
 	"geo-lblsel": "Cochez pour sélectionner cet élément sur la carte",
+	"geo-locurl-geogratis": "http://geogratis.gc.ca/services/geolocation/fr/locate",
+	"geo-loc-placeholder": "Indiquer le nom de l'endroit&#44; le code postal&#44; l'adresse (postale)&#44; le numéro du SNRC...",
+	"geo-loc-label": "Location",
+	"geo-aoi-north": "Nord",
+	"geo-aoi-east": "Est",
+	"geo-aoi-south": "Sud",
+	"geo-aoi-west": "Ouest",
+	"geo-aoi-instructions": "Délimiter un territoire sur la carte ou entrer les coordonnées ci-dessous, puis cliquer sur le bouton &#171;&#160;Tracer&#160;&#187;.",
+	"geo-aoi-btndraw": "Tracer",
+	"geo-aoi-btnclear": "Enlever",
+	"geo-geoloc-btn": "Zoom sur votre position actuelle",
+	"geo-geoloc-fail": "Localisation a échoué. S'il vous plaît s'assurer que les services de localisation sont activés.",
+	"geo-geoloc-uncapable": "Localisation n'est pas supporté par votre navigateur.",
 	/* Disable/enable WET plugins and polyfills */
 	"wb-disable": "Version HTML simplifiée",
 	"wb-enable": "Version standard",

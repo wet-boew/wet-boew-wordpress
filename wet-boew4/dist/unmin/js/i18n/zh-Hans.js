@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0 - 2014-03-31
+ * v4.0.4 - 2014-07-23
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -16,7 +16,7 @@
 /* main index */
 wb.i18nDict = {
 	"lang-code": "zh-Hans",
-	"lang-nat": "繁体字",
+	"lang-native": "繁体字",
 	all: "全部",
 	tphp: "页首",
 	load: "装载...",
@@ -26,7 +26,7 @@ wb.i18nDict = {
 	matches: {
 		mixin: "找到[MIXIN]项目"
 	},
-	curr: "（电流）",
+	current: "（电流）",
 	hide: "隐藏",
 	err: "错误",
 	colon: "：",
@@ -58,7 +58,7 @@ wb.i18nDict = {
 	"prv-l": "上一个（左箭头键）",
 	first: "开始",
 	last: "末",
-	menu: "菜单",
+	"srch-menus": "搜索和菜单",
 	email: "电釉",
 	"menu-close": "关闭菜单",
 	"overlay-close": "关闭叠加",
@@ -79,8 +79,7 @@ wb.i18nDict = {
 	pause: "暂停",
 	open: "打开",
 	close: "关闭",
-	rew: "回放",
-	ffwd: "快进",
+	volume: "音量",
 	mute: {
 		on: "静音",
 		off: "打开声音"
@@ -192,6 +191,19 @@ wb.i18nDict = {
 	"geo-attrttl": "GeoGratis-加拿大底图（英语或法语",
 	"geo-sel": "选择",
 	"geo-lblsel": "检查选择的元素在地图上",
+	"geo-locurl-geogratis": "http://geogratis.gc.ca/services/geolocation/en/locate",
+	"geo-loc-placeholder": "指示位置，邮编，地址（邮政），NTS数名...",
+	"geo-loc-label": "位置",
+	"geo-aoi-north": "北",
+	"geo-aoi-east": "东方",
+	"geo-aoi-south": "南",
+	"geo-aoi-west": "西方",
+	"geo-aoi-instructions": "在地图上划定一个区域或输入下面的详细信息，然后点击“画”按钮。",
+	"geo-aoi-btndraw": "画",
+	"geo-aoi-btnclear": "清除",
+	"geo-geoloc-btn": "放大到当前位置",
+	"geo-geoloc-fail": "位置失败。请确保该位置的服务被启用。",
+	"geo-geoloc-uncapable": "本地化不是由您的浏览器支持。",
 	/* Disable/enable WET plugins and polyfills */
 	"wb-disable": "基本网页格式",
 	"wb-enable": "标准格式",

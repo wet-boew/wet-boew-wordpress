@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<!--[if lt IE 9]><html class="no-js lt-ie9" lang="en" dir="ltr"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" dir="ltr"> <!--<![endif]-->
+<head>
+<meta charset="utf-8"/>
+<title>Overlay
+- Documentation
+- Web Experience Toolkit
+</title>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta name="description" content="A flexible, responsive overlay plugin."/>
+<!--[if gte IE 9 | !IE ]><!--> <link href="../../../assets/favicon.ico" rel="icon" type="image/x-icon"/> <link rel="stylesheet" href="../../../css/wet-boew.min.css"/> <!--<![endif]-->
+<link rel="stylesheet" href="../../../css/theme.min.css"/>
+<!--[if lt IE 9]><link href="../../../assets/favicon.ico" rel="shortcut icon"/> <link rel="stylesheet" href="../../../css/ie8-wet-boew.min.css"/> <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> <script src="../../../js/ie8-wet-boew.min.js"></script><![endif]-->
+<noscript><link rel="stylesheet" href="../../../css/noscript.min.css"/></noscript>
+</head>
+<body vocab="http://schema.org/" typeof="WebPage">
+<ul id="wb-tphp">
+<li class="wb-slc">
+<a class="wb-sl" href="#wb-cont">Skip to main content</a>
+</li>
+<li class="wb-slc visible-sm visible-md visible-lg">
+<a class="wb-sl" href="#wb-info">Skip to "About this site"</a>
+</li>
+</ul>
+<header role="banner">
+<div id="wb-bnr">
+<div id="wb-bar">
+<div class="container">
+<div class="row">
+<section id="wb-lng" class="visible-md visible-lg">
+<h2>Language selection</h2>
+<ul class="text-right">
+<li><a lang="fr" hreflang="fr" href="overlay-fr.html">Français</a></li>
+<li class="curr">English&#32;<span>(current)</span></li>
+</ul>
+</section>
+<section class="wb-mb-links col-xs-12 visible-sm visible-xs" id="wb-glb-mn">
+<h2>Search and menus</h2>
+<ul class="pnl-btn list-inline text-right">
+<li><a href="#mb-pnl" title="Search and menus" aria-controls="mb-pnl" class="overlay-lnk btn btn-sm btn-default" role="button"><span class="glyphicon glyphicon-search"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Search and menus</span></span></span></a></li>
+</ul>
+<div id="mb-pnl"></div>
+</section>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="row">
+<div id="wb-sttl" class="col-md-8">
+<a href="../../../index-en.html">
+<object type="image/svg+xml" tabindex="-1" role="img" data="../../../assets/logo.svg" aria-label="Web Experience Toolkit"></object>
+<span>Web Experience Toolkit<span class="wb-inv">, </span><small>Collaborative open source project led by the Government of Canada</small></span>
+</a>
+</div>
+<section id="wb-srch" class="col-md-4 visible-md visible-lg">
+<h2>Search</h2>
+<form action="https://google.ca/search" method="get" role="search" class="form-inline">
+<div class="form-group">
+<label for="wb-srch-q">Search website</label>
+<input id="wb-srch-q" class="form-control" name="q" type="search" value="" size="27" maxlength="150"/>
+<input type="hidden" name="q" value="site:wet-boew.github.io OR site:github.com/wet-boew/"/>
+</div>
+<button type="submit" id="wb-srch-sub" class="btn btn-default">Search</button>
+</form>
+</section>
+</div>
+</div>
+</div>
+<nav role="navigation" id="wb-sm" data-ajax-fetch="../../../ajax/sitemenu-en.html" data-trgt="mb-pnl" class="wb-menu visible-md visible-lg" typeof="SiteNavigationElement">
+<div class="container nvbar">
+<h2>Topics menu</h2>
+<div class="row">
+<ul class="list-inline menu">
+<li><a href="../../../index-en.html">WET project</a></li>
+<li><a href="http://wet-boew.github.io/wet-boew/docs/start-en.html#implement">Implement WET</a></li>
+<li><a href="http://wet-boew.github.io/wet-boew/docs/start-en.html">Contribute to WET</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<nav role="navigation" id="wb-bc" property="breadcrumb">
+<h2>You are here:</h2>
+<div class="container">
+<div class="row">
+<ol class="breadcrumb">
+<li>
+<a href="../../../index-en.html">Home</a>
+</li>
+<li>
+<a href="../../../docs/index-en.html">Documentation</a>
+</li>
+<li>Overlay</li>
+</ol>
+</div>
+</div>
+</nav>
+</header>
+<main role="main" property="mainContentOfPage" class="container">
+<h1 id="wb-cont" property="name">Overlay</h1>
+<section class="alert alert-info">
+<h2 class="h3">WET v4.0 or later</h2>
+<p>This feature is exclusive to WET v4.0 or later.</p>
+</section>
+<p>
+<a class="btn btn-primary" href="https://github.com/wet-boew/wet-boew/issues/new?title=Overlay:%20">Questions or comments?</a>
+</p>
+<span class="wb-prettify all-pre hide"></span>
+<section>
+<h2>Purpose</h2>
+<p>A flexible, responsive overlay plugin.</p>
+</section>
+<section>
+<h2>Working example</h2>
+<ul>
+<li><a href="../../../demos/overlay/overlay-en.html">English example</a></li>
+<li><a href="../../../demos/overlay/overlay-fr.html">French example</a></li>
+</ul>
+</section>
+<section>
+<h2>How to implement</h2>
+<p>For centred popups, please see the <a href="../lightbox/ligthbox-en.html">Lightbox documentation</a>.</p>
+<ol>
+<li>
+<p>Create a <code>section</code> element with a unique id and the following classes <code>wb-overlay modal-content overlay-def</code>.</p>
+<pre><code>&lt;section id="unique-id" class="wb-overlay modal-content overlay-def wb-bar-t"&gt;&lt;/section&gt;</code></pre>
+</li>
+<li>
+<p>Add one of the following classes to the section element to configure the type of overlay:</p>
+<ul>
+<li><code>wb-panel-l</code>: Left panel</li>
+<li><code>wb-panel-r</code>: Right panel</li>
+<li><code>wb-bar-t</code>: Top bar</li>
+<li><code>wb-bar-b</code>: Bottom bar</li>
+<li><code>wb-popup-full</code>: Full-screen overlay</li>
+<li><code>wb-popup-full hidden-hd</code>: Full-screen overlay - Hidden header</li>
+</ul>
+</li>
+<li>
+<p>Add the header of the overlay by adding the following code at the start of the section element:</p>
+<pre><code>&lt;header class=&quot;modal-header&quot;&gt;
+	&lt;h2 class=&quot;modal-title&quot;&gt;Overlay title&lt;/h2&gt;
+&lt;/header&gt;</code></pre>
+<p>For the full-screen overlay with a hidden header, use the following instead:</p>
+<pre><code>&lt;header&gt;
+	&lt;h2 class=&quot;wb-inv&quot;&gt;Overlay title&lt;/h2&gt;
+&lt;/header&gt;</code></pre>
+</li>
+<li>
+<p>Add the body of the overlay by adding the following code after the header code:</p>
+<pre><code>&lt;div class=&quot;modal-body&quot;&gt;
+	... Overlay content ...
+&lt;/idv&gt;</code></pre>
+</li>
+<li>
+<p>Add a way of opening the overlay. The overlay can be opened either by clicking a link or by triggering an event.</p>
+<ul>
+<li>
+<p><strong>Link approach:</strong> Add the following link to the page where the <code>href</code> and the <code>aria-controls</code> attribute match the <code>id</code> attribute on the <code>section</code> element of the overlay:</p>
+<pre><code>&lt;li&gt;
+	&lt;a href=&quot;#unique-id&quot; aria-controls=&quot;unique-id&quot; class=&quot;overlay-lnk&quot; role=&quot;button&quot;&gt;Open overlay&lt;/a&gt;
+&lt;/li&gt;</code></pre>
+</li>
+<li>
+<p><strong>Event approach:</strong> Trigger the overlay with the following JavaScript code:</p>
+<pre><code>$( "#unique-id" ).trigger( "open.wb-overlay" );</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+</section>
+<section>
+<h2>Configuration options</h2>
+<p>Coming soon</p>
+<table class="table">
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+<th>How to configure</th>
+<th>Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Overlay type</td>
+<td>Configure the type of overlay to display.</td>
+<td>Add the configuration class to the <code>section</code> element of the overlay.</td>
+<td>
+<dl>
+<dt><code>wb-panel-l</code>:</dt>
+<dd>Left panel</dd>
+<dt><code>wb-panel-r</code>:</dt>
+<dd>Right panel</dd>
+<dt><code>wb-bar-t</code>:</dt>
+<dd>Top bar</dd>
+<dt><code>wb-bar-b</code>:</dt>
+<dd>Bottom bar</dd>
+<dt><code>wb-popup-full</code>:</dt>
+<dd>Full-screen overlay</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section>
+<h2>Events</h2>
+<table class="table">
+<thead>
+<tr>
+<th>Event</th>
+<th>Trigger</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>wb-init.wb-overlay</code></td>
+<td>Triggered manually (e.g., <code>$elm.trigger( "wb-init.wb-overlay" );</code>).</td>
+<td>Used to manually initialize the Overlay plugin. <strong>Note:</strong> The Overlay plugin will be initialized automatically unless the required markup is added after the page has already loaded.</td>
+</tr>
+<tr>
+<td><code>open.wb-overlay</code></td>
+<td>Triggered manually (e.g., <code>$elm.trigger( "open.wb-overlay" );</code>).</td>
+<td>Used to manually open an overlay (event must be triggered on the <code>section</code> element of the overlay).</td>
+</tr>
+<tr>
+<td><code>close.wb-overlay</code></td>
+<td>Triggered manually (e.g., <code>$elm.trigger( "close.wb-overlay" );</code>).</td>
+<td>Used to manually close an overlay (event must be triggered on the <code>section</code> element of the overlay).</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section>
+<h2>Source code</h2>
+<p><a href="https://github.com/wet-boew/wet-boew/tree/master/src/plugins/overlay">Overlay plugin source code on GitHub</a></p>
+</section>
+<dl id="wb-dtmd">
+<dt>Date modified:&#32;</dt>
+<dd><time property="dateModified">2014-07-18</time></dd>
+</dl>
+</main>
+<footer role="contentinfo" id="wb-info" class="visible-sm visible-md visible-lg wb-navcurr">
+<div class="container">
+<nav role="navigation" class="row">
+<h2>About this site</h2>
+<section class="col-sm-3">
+<h3>Contact us</h3>
+<ul class="list-unstyled">
+<li><a href="https://github.com/wet-boew/wet-boew/issues/new">Questions or comments?</a></li>
+</ul>
+</section>
+<section class="col-sm-3">
+<h3>About</h3>
+<ul class="list-unstyled">
+<li><a href="../../../index-en.html#about">About the Web Experience Toolkit</a></li>
+<li><a href="http://www.tbs-sct.gc.ca/ws-nw/index-eng.asp">About the Web Standards</a></li>
+</ul>
+</section>
+<section class="col-sm-3">
+<h3>News</h3>
+<ul class="list-unstyled">
+<li><a href="https://github.com/wet-boew/wet-boew/pulse">Recent project activity</a></li>
+<li><a href="https://github.com/wet-boew/wet-boew/graphs">Project statistics</a></li>
+</ul>
+</section>
+<section class="col-sm-3">
+<h3>Stay connected</h3>
+<ul class="list-unstyled">
+<li><a href="https://twitter.com/WebExpToolkit">Twitter</a></li>
+</ul>
+</section>
+</nav>
+</div>
+</footer>
+<!--[if gte IE 9 | !IE ]><!--> <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> <script src="../../../js/wet-boew.min.js"></script> <!--<![endif]-->
+<!--[if lt IE 9]><script src="../../../js/ie8-wet-boew2.min.js"></script><![endif]-->
+</body>
+</html>

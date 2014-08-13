@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0 - 2014-03-31
+ * v4.0.4 - 2014-07-23
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -16,7 +16,7 @@
 /* main index */
 wb.i18nDict = {
 	"lang-code": "cs",
-	"lang-nat": "Čeština",
+	"lang-native": "Čeština",
 	all: "Vše",
 	tphp: "Na začátek stránky",
 	load: "nakládání ...",
@@ -26,7 +26,7 @@ wb.i18nDict = {
 	matches: {
 		mixin: "[MIXIN] zápasů nenalezen"
 	},
-	curr: "(aktuální)",
+	current: "(aktuální)",
 	hide: "Schovat",
 	err: "Chyba",
 	colon: ":",
@@ -58,7 +58,7 @@ wb.i18nDict = {
 	"prv-l": "Předchozí (klávesy šipka vpravo)",
 	first: "První",
 	last: "Poslední",
-	menu: "Menu",
+	"srch-menus": "Vyhledávání a nabídky",
 	email: "Emailová",
 	"menu-close": "Zavřete menu",
 	"overlay-close": "Zavřete se šablonou",
@@ -79,8 +79,7 @@ wb.i18nDict = {
 	pause: "Pauza",
 	open: "Otevřít",
 	close: "Zavřít",
-	rew: "Převinout zpět",
-	ffwd: "Rychlý posun vpřed",
+	volume: "Hlasitost",
 	mute: {
 		on: "Vypnutí",
 		off: "Nahlas"
@@ -177,7 +176,7 @@ wb.i18nDict = {
 	"geo-zmin": "Přiblížit",
 	"geo-zmout": "Oddálit",
 	"geo-zmwrld": "Přiblížit zmapovat rozsah",
-	"geo-zmfeat": "Přiblížit prvku",
+	"geo-zmfeat": "Přibližte prvku",
 	"geo-sclln": "měřítko mapy",
 	"geo-msepos": "Zeměpisná šířka a zeměpisná délka kurzoru myši",
 	"geo-ariamap": "Mapa objekt. Popisy v mapě funkcí jsou uvedeny v tabulce níže.",
@@ -192,6 +191,19 @@ wb.i18nDict = {
 	"geo-attrttl": "GeoGratis - Kanada základní mapa (pouze anglicky nebo francouzsky)",
 	"geo-sel": "Vybrat",
 	"geo-lblsel": "Zkontrolujte, vyberte prvek na mapě",
+	"geo-locurl-geogratis": "http://geogratis.gc.ca/services/geolocation/en/locate",
+	"geo-loc-placeholder": "Uveďte název místa&#44; poštovní směrovací číslo&#44; adresu (poštovní)&#44; počet NTS ...",
+	"geo-loc-label": "Umístění",
+	"geo-aoi-north": "Sever",
+	"geo-aoi-east": "Východ",
+	"geo-aoi-south": "Na jih",
+	"geo-aoi-west": "Západ",
+	"geo-aoi-instructions": "Vymezit oblast na mapě nebo zadejte údaje níže a poté klikněte na tlačítko \"Kreslit\".",
+	"geo-aoi-btndraw": "Kreslit",
+	"geo-aoi-btnclear": "Odstranit",
+	"geo-geoloc-btn": "Přiblížit se k aktuální poloze",
+	"geo-geoloc-fail": "Lokalita se nezdařilo. Ujistěte se, že umístění služby jsou povoleny.",
+	"geo-geoloc-uncapable": "Lokalizace není podporována ve vašem prohlížeči.",
 	/* Disable/enable WET plugins and polyfills */
 	"wb-disable": "Základní HTML verze",
 	"wb-enable": "Standardní verze",

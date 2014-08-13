@@ -36,7 +36,7 @@
 <link href="../../assets/favicon.ico" rel="shortcut icon" />
 <link rel="stylesheet" href="../../css/ie8-wet-boew.css" />
 <link rel="stylesheet" href="../../css/ie8-theme.css" />
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js"></script>
 <script src="../../js/ie8-wet-boew.js"></script>
 <![endif]-->
 
@@ -48,8 +48,8 @@
 				<a class="wb-sl" href="#wb-cont">Passer au contenu principal</a>
 			</li>
 
-			<li class="wb-slc visible-md visible-lg">
-				<a class="wb-sl" href="#wb-info">Passer aux informations sur le site</a>
+			<li class="wb-slc visible-sm visible-md visible-lg">
+				<a class="wb-sl" href="#wb-info">Passer à «&#160;À propos de ce site&#160;»</a>
 			</li>
 
 
@@ -80,9 +80,9 @@
 </ul>
 
 							<section class="wb-mb-links col-xs-12 visible-sm visible-xs" id="wb-glb-mn">
-								<h2>Menu</h2>
+								<h2>Recherche et menus</h2>
 								<ul class="pnl-btn list-inline text-right">
-	<li><a href="#mb-pnl" title="Menu" aria-controls="mb-pnl" class="overlay-lnk btn btn-xs btn-default" role="button"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Menu</span></span></a></li>
+	<li><a href="#mb-pnl" title="Recherche et menus" aria-controls="mb-pnl" class="overlay-lnk btn btn-sm btn-default" role="button"><span class="glyphicon glyphicon-search"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Recherche et menus</span></span></span></a></li>
 </ul>
 <div id="mb-pnl"></div>
 
@@ -125,13 +125,13 @@
 
 			<nav role="navigation" id="wb-sm" data-ajax-fetch="../../ajax/sitemenu-fr.html" data-trgt="mb-pnl" class="wb-menu visible-md visible-lg" typeof="SiteNavigationElement">
 				<div class="container nvbar">
-	<h2>Menu du site</h2>
+	<h2>Menu des sujets</h2>
     <div class="row">
         <ul class="list-inline menu">
 
 			<li><a href="../../index-fr.html">Projet de la BOEW</a></li>
-			<li><a href="http://wet-boew.github.io/wet-boew/docs/gs-cd/impl-fr.html">Mise en œuvre de la BOEW</a></li>
-			<li><a href="http://wet-boew.github.io/wet-boew/docs/gs-cd/contrib-fr.html">Contribuer à la BOEW</a></li>
+			<li><a href="http://wet-boew.github.io/wet-boew/docs/start-fr.html#implement">Mise en œuvre de la BOEW</a></li>
+			<li><a href="http://wet-boew.github.io/wet-boew/docs/start-fr.html">Contribuer à la BOEW</a></li>
 
         </ul>
     </div>
@@ -170,24 +170,24 @@
 
 			
 
-<p>Offre la possibilité d'ajouter et de mettre à jour les favoricônes d'une page. Son comportement par défaut consiste à ajouter une favoricône d'appareil mobile à des pages Web définie par l'élément <code>&lt;link rel="shortcut icon"&gt;</code>.</p>
-<p>Le nom de fichier de la favoricône, attribut <code>rel</code>, le chemin et les tailles peuvent être définies avec des attributs <code>data</code> sur l'élément <code>&lt;link rel="shortcut icon"&gt;</code>&#160;:</p>
+<p>Offre la possibilité d'ajouter et de mettre à jour les favoricônes d'une page. Son comportement par défaut consiste à ajouter une favoricône d'appareil mobile à des pages Web définie par l'élément <code>&lt;link rel="icon" type="image/x-icon"&gt;</code>.</p>
+<p>Le nom de fichier de la favoricône, attribut <code>rel</code>, le chemin et les tailles peuvent être définies avec des attributs <code>data</code> sur l'élément <code>&lt;link rel="icon" type="image/x-icon"&gt;</code>&#160;:</p>
 
 <ul>
 	<li><strong>data-filename :</strong> Le nom de fichier de la favoricône de l'appareil mobile (&#171;&#160;favicon-mobile.png&#160;&#187;" par défaut). Ce sera ajoutée au chemin de la favoricône.</li>
-	<li><strong>data-path :</strong> Le chemin au favoricône de l'appareil mobile (utilise le même chemin que l'élément <code>&lt;link rel="shortcut icon"&gt;</code> par défaut).</li>
+	<li><strong>data-path :</strong> Le chemin au favoricône de l'appareil mobile (utilise le même chemin que l'élément <code>&lt;link rel="icon" type="image/x-icon"&gt;</code> par défaut).</li>
 	<li><strong>data-rel :</strong> L'attribut <code>rel</code> de la favoricône de l'appareil mobile (&#171;&#160;apple-touch-icon&#160;&#187; par défaut).</li>
 	<li><strong>data-sizes :</strong> L'attribut <code>sizes</code> de la favoricône de l'appareil mobile (&#171;&#160;57x57 72x72 114x114 144x144 150x150&#160;&#187; par défaut).</li>
 </ul>
 
 <p>Par exemple, code suivant substitue les attributs <code>rel</code> et <code>filename</code> de la favoricône de l'appareil mobile&#160;:</p>
 
-<code class="prettyprint">&lt;link href="favion.ico" rel="shortcut icon" data-filename="my-mobile-favicon.ico" data-rel="apple-touch-icon-precomposed"&gt;</code>
+<code class="prettyprint">&lt;link href="favion.ico" rel="icon" type="image/x-icon" data-filename="my-mobile-favicon.ico" data-rel="apple-touch-icon-precomposed"&gt;</code>
 
 
-			<dl id="wb-dtmd" property="dateModified">
+			<dl id="wb-dtmd">
 	<dt>Date de modification&#160;:&#32;</dt>
-	<dd><time>2014-02-19</time></dd>
+	<dd><time property="dateModified">2014-02-19</time></dd>
 </dl>
 
 
@@ -198,23 +198,24 @@
 		<footer role="contentinfo" id="wb-info" class="visible-sm visible-md visible-lg wb-navcurr">
 			<div class="container">
 				<nav role="navigation">
-					<h2>Informations sur le site</h2>
+					<h2>À propos de ce site</h2>
 					<ul id="gc-tctr" class="list-inline">
 	<li><a rel="license" href="http://wet-boew.github.io/wet-boew/License-fr.html">Avis</a></li>
-	<li><a href="http://www.tbs-sct.gc.ca/pd-dp/index-fr.asp">Transparence</a></li>
+	<li><a href="http://www.tbs-sct.gc.ca/tbs-sct/common/trans-fra.asp">Transparence</a></li>
 </ul>
+
 					<div class="row">
 						<section class="col-sm-3">
+	<h3>Contactez-nous</h3>
+	<ul class="list-unstyled">
+		<li><a href="https://github.com/wet-boew/wet-boew/issues/new">Questions ou commentaires?</a></li>
+	</ul>
+</section>
+<section class="col-sm-3">
 	<h3>À propos</h3>
 	<ul class="list-unstyled">
 		<li><a href="http://wet-boew.github.io/v4.0-ci/index-fr.html#apropos">À propos de la Boîte à outils de l’expérience Web</a></li>
 		<li><a href="http://www.tbs-sct.gc.ca/ws-nw/index-fra.asp">À propos des normes Web</a></li>
-	</ul>
-</section>
-<section class="col-sm-3">
-	<h3>Contactez-nous</h3>
-	<ul class="list-unstyled">
-		<li><a href="https://github.com/wet-boew/wet-boew/issues/new">Questions ou commentaires?</a></li>
 	</ul>
 </section>
 <section class="col-sm-3">
@@ -241,11 +242,11 @@
 						
 <ul class="list-inline">
 
-	<li><a href="http://canadiensensante.gc.ca"><span>Santé</span>canadiensensante.gc.ca</a></li>
-	<li><a href="http://voyage.gc.ca"><span>Voyage</span>voyage.gc.ca</a></li>
-	<li><a href="http://www.servicecanada.gc.ca/fra/accueil.shtml"><span>Service Canada</span>servicecanada.gc.ca</a></li>
-	<li><a href="http://www.guichetemplois.gc.ca"><span>Emplois</span>guichetemplois.gc.ca</a></li>
-	<li><a href="http://plandaction.gc.ca/fr"><span>Économie</span>plandaction.gc.ca</a></li>
+	<li><a href="http://canadiensensante.gc.ca"><span>Santé</span></a></li>
+	<li><a href="http://voyage.gc.ca"><span>Voyage</span></a></li>
+	<li><a href="http://www.servicecanada.gc.ca/fra/accueil.shtml"><span>Service Canada</span></a></li>
+	<li><a href="http://www.guichetemplois.gc.ca"><span>Emplois</span></a></li>
+	<li><a href="http://plandaction.gc.ca/fr"><span>Économie</span></a></li>
 
 	<li id="canada-ca"><a href="http://www.canada.ca/fr/index.html">Canada.ca</a></li>
 </ul>
@@ -255,7 +256,7 @@
 		</footer>
 
 		<!--[if gte IE 9 | !IE ]><!-->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
 <script src="../../js/wet-boew.js"></script>
 <!--<![endif]-->
 <!--[if lt IE 9]>

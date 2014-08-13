@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0 - 2014-03-31
+ * v4.0.4 - 2014-07-23
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -16,7 +16,7 @@
 /* main index */
 wb.i18nDict = {
 	"lang-code": "hy",
-	"lang-nat": "Հայերեն",
+	"lang-native": "Հայերեն",
 	all: "Բոլորը",
 	tphp: "Էջի սկիզբ",
 	load: "բեռնման ...",
@@ -26,7 +26,7 @@ wb.i18nDict = {
 	matches: {
 		mixin: "[MIXIN] հանդիպումները գտել"
 	},
-	curr: "(Ընթացիկ)",
+	current: "(Ընթացիկ)",
 	hide: "Թաքցնել",
 	err: "Սխալ",
 	colon: ":",
@@ -58,7 +58,7 @@ wb.i18nDict = {
 	"prv-l": "Նախորդ (ձախ սլաքների բանալին)",
 	first: "Առաջին",
 	last: "Անցյալ",
-	menu: "Մենյու",
+	"srch-menus": "Որոնել եւ Ընտրացանկերը",
 	email: "Էլեկտրոնային փոստ",
 	"menu-close": "Փակել մենյուն",
 	"overlay-close": "Փակեք կափարիչ",
@@ -79,8 +79,7 @@ wb.i18nDict = {
 	pause: "Դադար",
 	open: "Բաց է",
 	close: "Մոտիկ",
-	rew: "Վերափաթաթում",
-	ffwd: "Արագ Որոնում",
+	volume: "Ծավալը",
 	mute: {
 		on: "Համր",
 		off: "Կասեցնել խլացնելու"
@@ -192,6 +191,19 @@ wb.i18nDict = {
 	"geo-attrttl": "GeoGratis - Կանադա բազա քարտեզ (անգլերեն կամ ֆրանսերեն միայն)",
 	"geo-sel": "Ընտրել",
 	"geo-lblsel": "Ստուգեք ընտրել տարրը քարտեզի վրա",
+	"geo-locurl-geogratis": "http://geogratis.gc.ca/services/geolocation/en/locate",
+	"geo-loc-placeholder": "Նշեք անունը&#44; գտնվելու վայրը&#44; փոստային կոդը&#44; հասցեն&#44; (փոստային) համարը NTS ...",
+	"geo-loc-label": "Որտեղից",
+	"geo-aoi-north": "Հյուսիս",
+	"geo-aoi-east": "Արեւելք",
+	"geo-aoi-south": "Հարավ",
+	"geo-aoi-west": "Արեւմուտք",
+	"geo-aoi-instructions": "Ուրվագծել տարածք քարտեզի վրա&#44; կամ մուտքագրել մանրամասները ստորեւ&#44; ապա սեղմեք «Նկարել» կոճակը.",
+	"geo-aoi-btndraw": "Նկարել",
+	"geo-aoi-btnclear": "Հեռացնել",
+	"geo-geoloc-btn": "Մեծացնել ձեր զբաղեցրած պաշտոնը",
+	"geo-geoloc-fail": "Որտեղից ձախողվեց. Խնդրում ենք համոզվել, որ այդ վայրում ծառայություններ հնարավորություն.",
+	"geo-geoloc-uncapable": "Տեղայնացման չի ապահովվում է ձեր բրոուզերում.",
 	/* Disable/enable WET plugins and polyfills */
 	"wb-disable": "հիմնական HTML տարբերակ",
 	"wb-enable": "Դնել",

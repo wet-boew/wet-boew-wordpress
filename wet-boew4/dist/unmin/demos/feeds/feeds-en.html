@@ -36,7 +36,7 @@
 <link href="../../assets/favicon.ico" rel="shortcut icon" />
 <link rel="stylesheet" href="../../css/ie8-wet-boew.css" />
 <link rel="stylesheet" href="../../css/ie8-theme.css" />
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js"></script>
 <script src="../../js/ie8-wet-boew.js"></script>
 <![endif]-->
 
@@ -48,8 +48,8 @@
 				<a class="wb-sl" href="#wb-cont">Skip to main content</a>
 			</li>
 
-			<li class="wb-slc visible-md visible-lg">
-				<a class="wb-sl" href="#wb-info">Skip to site information</a>
+			<li class="wb-slc visible-sm visible-md visible-lg">
+				<a class="wb-sl" href="#wb-info">Skip to "About this site"</a>
 			</li>
 
 
@@ -80,9 +80,9 @@
 </ul>
 
 							<section class="wb-mb-links col-xs-12 visible-sm visible-xs" id="wb-glb-mn">
-								<h2>Menu</h2>
+								<h2>Search and menus</h2>
 								<ul class="pnl-btn list-inline text-right">
-	<li><a href="#mb-pnl" title="Menu" aria-controls="mb-pnl" class="overlay-lnk btn btn-xs btn-default" role="button"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Menu</span></span></a></li>
+	<li><a href="#mb-pnl" title="Search and menus" aria-controls="mb-pnl" class="overlay-lnk btn btn-sm btn-default" role="button"><span class="glyphicon glyphicon-search"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Search and menus</span></span></span></a></li>
 </ul>
 <div id="mb-pnl"></div>
 
@@ -125,13 +125,13 @@
 
 			<nav role="navigation" id="wb-sm" data-ajax-fetch="../../ajax/sitemenu-en.html" data-trgt="mb-pnl" class="wb-menu visible-md visible-lg" typeof="SiteNavigationElement">
 				<div class="container nvbar">
-	<h2>Site menu</h2>
+	<h2>Topics menu</h2>
     <div class="row">
         <ul class="list-inline menu">
 
 			<li><a href="../../index-en.html">WET project</a></li>
-			<li><a href="http://wet-boew.github.io/wet-boew/docs/gs-cd/impl-en.html">Implement WET</a></li>
-			<li><a href="http://wet-boew.github.io/wet-boew/docs/gs-cd/contrib-en.html">Contribute to WET</a></li>
+			<li><a href="http://wet-boew.github.io/wet-boew/docs/start-en.html#implement">Implement WET</a></li>
+			<li><a href="http://wet-boew.github.io/wet-boew/docs/start-en.html">Contribute to WET</a></li>
 
         </ul>
     </div>
@@ -180,7 +180,7 @@
 				<a href="http://www.tc.gc.ca/mediaroom/rss/road.xml" rel="external">Road News Releases (All)</a>
 			</li>
 			<li>
-				<a href="http://wwwapps.tc.gc.ca/Saf-Sec-Sur/7/VRDB-BDRV/Search/Rss-Search.aspx" rel="external">Road Safety Recalls</a>
+				<a href="http://wwwapps.tc.gc.ca/Saf-Sec-Sur/7/VRDB-BDRV/search-recherche/rss.aspx?lang=eng" rel="external">Road Safety Recalls</a>
 			</li>
 		</ul>
 	</section>
@@ -193,6 +193,70 @@
 			</li>
 		</ul>
 	</section>
+
+	<section>
+		<h3>Tabbed Social Feeds</h3>
+		<div class="wb-tabs col-md-5 wb-eqht">
+		<div class="tabpanels">
+			<details id="details-facebook" open="open">
+			<summary>Facebook</summary>
+				<section class="wb-feeds limit-5">
+					<ul class="feeds-cont media-list">
+						<li class="media">
+							 <a class="pull-left" href="https://www.facebook.com/feeds/page.php?id=318424514044&amp;format=atom10">
+								 <img class="media-object" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-frc3/t1.0-1/c17.17.207.207/430015_10151952323214045_194318965_n.png" alt="Enviroment Canada Logo" width="64" />
+							</a>
+							<div class="media-body">
+								<h4 class="media-heading"><a href="https://www.facebook.com/feeds/page.php?id=318424514044&amp;format=atom10" rel="external">Enviroment Canada - Facebook</a></h4>
+								<p>At Environment Canada our business is protecting the environment, conserving the country's natural heritage and providing weather and environmental predictions to keep Canadians informed and safe.</p>
+							</div>
+						</li>
+						<li class="media">
+							 <a class="pull-left" href="https://www.facebook.com/feeds/page.php?id=137563459593611&amp;format=atom10">
+								 <img class="media-object" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash3/t1.0-1/p320x320/10245484_872682866081663_8340097330550277155_n.png" alt="Parks Canada Logo" width="64" />
+							</a>
+							<div class="media-body">
+								<h4 class="media-heading"><a href="https://www.facebook.com/feeds/page.php?id=137563459593611&amp;format=atom10" rel="external">Parks Canada - Facebook</a></h4>
+								<p>On behalf of the people of Canada, we protect and present nationally significant examples of Canada's natural and cultural heritage, and foster public understanding, appreciation and enjoyment in ways that ensure the ecological and commemorative integrity of these places for present and future generations.</p>
+							</div>
+						</li>
+					</ul>
+					<div class="clearfix"></div>
+				</section>
+			</details>
+
+			<details id="details-flickr">
+			<summary>Flickr</summary>
+				<section class="wb-feeds limit-15">
+					<ul class="feeds-cont list-inline">
+						<li>
+							<a href="https://www.flickr.com/photos/environmentcan" rel="external" data-ajax="https://api.flickr.com/services/feeds/photos_public.gne?id=47711201@N05&amp;format=json" >Environment Canada Flickr</a>
+						</li>
+					</ul>
+					<div class="clearfix"></div>
+				</section>
+			</details>
+
+			<details id="details-youtube">
+			<summary>Youtube</summary>
+					<section class="wb-feeds limit-15">
+						<ul class="feeds-cont list-inline">
+							<li>
+								<a href="https://www.youtube.com/user/ParksCanadaAgency" rel="external" data-ajax="https://gdata.youtube.com/feeds/api/users/UCzJRhTw3KVtDlcdNz33eDMQ/uploads?v=2&amp;alt=json" >Parks Canada Youtube</a>
+							</li>
+							<li>
+								<a href="https://www.youtube.com/user/fisheriescanada?feature=results_main" rel="external" data-ajax="https://gdata.youtube.com/feeds/api/users/UC5D1a5R8bbrTXEJrjmRX7gA/uploads?v=2&amp;alt=json" >Department of Fisheries and Oceans’ YouTube</a>
+							</li>
+						</ul>
+						<div class="clearfix"></div>
+					</section>
+			</details>
+		</div>
+		</div>
+		<div class="clearfix"></div>
+	</section>
+
+
 </section>
 
 <section>
@@ -221,9 +285,9 @@
 </section>
 
 
-			<dl id="wb-dtmd" property="dateModified">
+			<dl id="wb-dtmd">
 	<dt>Date modified:&#32;</dt>
-	<dd><time>2014-02-19</time></dd>
+	<dd><time property="dateModified">2014-07-22</time></dd>
 </dl>
 
 
@@ -234,23 +298,24 @@
 		<footer role="contentinfo" id="wb-info" class="visible-sm visible-md visible-lg wb-navcurr">
 			<div class="container">
 				<nav role="navigation">
-					<h2>Site information</h2>
+					<h2>About this site</h2>
 					<ul id="gc-tctr" class="list-inline">
 	<li><a rel="license" href="http://wet-boew.github.io/wet-boew/License-en.html">Terms and conditions</a></li>
-	<li><a href="http://www.tbs-sct.gc.ca/pd-dp/index-en.asp">Transparency</a></li>
+	<li><a href="http://www.tbs-sct.gc.ca/tbs-sct/common/trans-eng.asp">Transparency</a></li>
 </ul>
+
 					<div class="row">
 						<section class="col-sm-3">
+	<h3>Contact us</h3>
+	<ul class="list-unstyled">
+		<li><a href="https://github.com/wet-boew/wet-boew/issues/new">Questions or comments?</a></li>
+	</ul>
+</section>
+<section class="col-sm-3">
 	<h3>About</h3>
 	<ul class="list-unstyled">
 		<li><a href="http://wet-boew.github.io/v4.0-ci/index-en.html#about">About the Web Experience Toolkit</a></li>
 		<li><a href="http://www.tbs-sct.gc.ca/ws-nw/index-eng.asp">About the Web Standards</a></li>
-	</ul>
-</section>
-<section class="col-sm-3">
-	<h3>Contact us</h3>
-	<ul class="list-unstyled">
-		<li><a href="https://github.com/wet-boew/wet-boew/issues/new">Questions or comments?</a></li>
 	</ul>
 </section>
 <section class="col-sm-3">
@@ -277,11 +342,11 @@
 						
 <ul class="list-inline">
 
-	<li><a href="http://healthycanadians.gc.ca"><span>Health</span>healthycanadians.gc.ca</a></li>
-	<li><a href="http://travel.gc.ca"><span>Travel</span>travel.gc.ca</a></li>
-	<li><a href="http://www.servicecanada.gc.ca/eng/home.shtml"><span>Service Canada</span>servicecanada.gc.ca</a></li>
-	<li><a href="http://www.jobbank.gc.ca"><span>Jobs</span>jobbank.gc.ca</a></li>
-	<li><a href="http://actionplan.gc.ca/en"><span>Economy</span>actionplan.gc.ca</a></li>
+	<li><a href="http://healthycanadians.gc.ca"><span>Health</span></a></li>
+	<li><a href="http://travel.gc.ca"><span>Travel</span></a></li>
+	<li><a href="http://www.servicecanada.gc.ca/eng/home.shtml"><span>Service Canada</span></a></li>
+	<li><a href="http://www.jobbank.gc.ca"><span>Jobs</span></a></li>
+	<li><a href="http://actionplan.gc.ca/en"><span>Economy</span></a></li>
 
 	<li id="canada-ca"><a href="http://www.canada.ca/en/index.html">Canada.ca</a></li>
 </ul>
@@ -291,7 +356,7 @@
 		</footer>
 
 		<!--[if gte IE 9 | !IE ]><!-->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
 <script src="../../js/wet-boew.js"></script>
 <!--<![endif]-->
 <!--[if lt IE 9]>

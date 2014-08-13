@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0 - 2014-03-31
+ * v4.0.4 - 2014-07-23
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -16,7 +16,7 @@
 /* main index */
 wb.i18nDict = {
 	"lang-code": "id",
-	"lang-nat": "Bahasa Indonesia",
+	"lang-native": "Bahasa Indonesia",
 	all: "Semua",
 	tphp: "Halaman Atas",
 	load: "memuat ...",
@@ -26,7 +26,7 @@ wb.i18nDict = {
 	matches: {
 		mixin: "Ditemukan [MIXIN] kecocokan"
 	},
-	curr: "(saat ini)",
+	current: "(saat ini)",
 	hide: "Sembunyikan",
 	err: "Error",
 	colon: ":",
@@ -58,7 +58,7 @@ wb.i18nDict = {
 	"prv-l": "Sebelumnya (tombol panah kiri)",
 	first: "Pertama",
 	last: "Terakhir",
-	menu: "Menu",
+	"srch-menus": "Cari dan menu",
 	email: "Email",
 	"menu-close": "Tutup menu",
 	"overlay-close": "Tutup hamparan",
@@ -79,8 +79,7 @@ wb.i18nDict = {
 	pause: "Jeda",
 	open: "Buka",
 	close: "Tutup",
-	rew: "Putar mundur",
-	ffwd: "Putar maju",
+	volume: "Volume",
 	mute: {
 		on: "Redam suara",
 		off: "Aktifkan kembali suara"
@@ -192,6 +191,19 @@ wb.i18nDict = {
 	"geo-attrttl": "GeoGratis - Canada peta dasar (bahasa Inggris atau Perancis hanya)",
 	"geo-sel": "Memilih",
 	"geo-lblsel": "Periksa untuk memilih elemen pada peta",
+	"geo-locurl-geogratis": "http://geogratis.gc.ca/services/geolocation/en/locate",
+	"geo-loc-placeholder": "Menunjukkan nama lokasi&#44; kode pos&#44; alamat (pos)&#44; jumlah NTS ...",
+	"geo-loc-label": "Tempat",
+	"geo-aoi-north": "Utara",
+	"geo-aoi-east": "Timur",
+	"geo-aoi-south": "Selatan",
+	"geo-aoi-west": "Barat",
+	"geo-aoi-instructions": "Menggambarkan sebuah area pada peta atau masukkan rincian di bawah ini kemudian klik pada \"Menarik\" tombol.",
+	"geo-aoi-btndraw": "Menarik",
+	"geo-aoi-btnclear": "Menghapus",
+	"geo-geoloc-btn": "Zoom ke lokasi saat ini",
+	"geo-geoloc-fail": "Lokasi gagal. Pastikan bahwa layanan lokasi diaktifkan.",
+	"geo-geoloc-uncapable": "Lokalisasi tidak didukung oleh browser Anda.",
 	/* Disable/enable WET plugins and polyfills */
 	"wb-disable": "Versi HTML dasar",
 	"wb-enable": "Versi standar",

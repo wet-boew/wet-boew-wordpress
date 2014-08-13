@@ -4,35 +4,20 @@
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  *
  */
-
-/*
- * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
- * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- */
-
-/*
- *	Font scales
- */
-
-/*
- *	Overrides for Bootstrap variables
- */
-
 /*
  *
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  *
  */
-
-/* Shorthand can't be used because it doesn't work with IE 8 & 9 gradients */
-
+/*
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ */
 /*
  Views
  */
-
 /* All screen views */
-
 @media screen {
   /*
  *
@@ -40,44 +25,29 @@
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  *
  */
-
   /*
   @title: All screen views - Splash page
  */
-
   #gcwu-sig {
-    height: 1.5em;
-  }
-
+    height: 1.5em; }
   #wmms {
-    height: 2.1em;
     float: right;
-    margin-top: 10px;
-  }
-
+    height: 2.1em;
+    margin-top: 10px; }
   header {
-    margin-top: 1.2em;
-  }
-
+    margin-top: 1.2em; }
   main > div {
-    background: url(../assets/sp-pe-bg.jpg) repeat-x center top;
+    background: url("../assets/sp-pe-bg.jpg") repeat-x center top;
     margin-top: 10px;
-    padding-top: 20px;
-  }
-
+    padding-top: 20px; }
   main h1 {
+    margin: 0 0 30px;
     position: relative;
-    text-align: center;
-    margin: 0 0 30px 0;
-  }
-
+    text-align: center; }
   main h2 {
-    font-size: 180%;
-  }
-}
+    font-size: 180%; } }
 
 /* Small view and under */
-
 @media screen and (max-width: 991px) {
   /*
  *
@@ -85,18 +55,13 @@
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  *
  */
-
   /*
   @title: Small view and under (screen only) - Splash page
  */
-
   main h2 {
-    text-align: center;
-  }
-}
+    text-align: center; } }
 
 /* Medium view and over */
-
 @media screen and (min-width: 992px) {
   /*
  *
@@ -104,31 +69,21 @@
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  *
  */
-
   /*
   @title: Medium view and over (screen only) - Splash page
  */
-
   main {
-    position: relative;
-  }
-
-  main > div:before {
-    content: " ";
-    position: absolute;
-    display: block;
-    background: url(../assets/sp-pe-leaf.jpg) no-repeat 50%;
-    height: 147px;
-    width: 100%;
-    top: 93px;
-    left: 0;
-  }
-
-  main h2 {
-    min-height: 4em;
-  }
-
-  main section + section h2 {
-    text-align: right;
-  }
-}
+    position: relative; }
+    main > div:before {
+      background: url("../assets/sp-pe-leaf.jpg") no-repeat 50%;
+      content: " ";
+      display: block;
+      height: 147px;
+      left: 0;
+      position: absolute;
+      top: 93px;
+      width: 100%; }
+    main h2 {
+      min-height: 4em; }
+    main section + section h2 {
+      text-align: right; } }

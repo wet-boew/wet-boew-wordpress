@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0 - 2014-03-31
+ * v4.0.4 - 2014-07-23
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -16,7 +16,7 @@
 /* main index */
 wb.i18nDict = {
 	"lang-code": "vi",
-	"lang-nat": "Tiếng Việt",
+	"lang-native": "Tiếng Việt",
 	all: "Tất cả",
 	tphp: "Trở về đầu trang",
 	load: "tải ...",
@@ -26,7 +26,7 @@ wb.i18nDict = {
 	matches: {
 		mixin: "[MIXIN] trận được tìm thấy"
 	},
-	curr: "(hiện tại)",
+	current: "(hiện tại)",
 	hide: "Che",
 	err: "Lôi",
 	colon: ":",
@@ -58,7 +58,7 @@ wb.i18nDict = {
 	"prv-l": "Trang trước (phím mũi tên trái)",
 	first: "Đầu tiên",
 	last: "Cuối cùng",
-	menu: "Thực đơn",
+	"srch-menus": "Tìm kiếm và thực đơn",
 	email: "Email",
 	"menu-close": "Đóng menu",
 	"overlay-close": "Đóng lớp phủ",
@@ -79,8 +79,7 @@ wb.i18nDict = {
 	pause: "Tạm dừng",
 	open: "Mở",
 	close: "Đóng",
-	rew: "Tua lại",
-	ffwd: "Nhanh chóng chuyển tiếp",
+	volume: "Khối lượng",
 	mute: {
 		on: "Tắt",
 		off: "Bật tiếng"
@@ -192,6 +191,19 @@ wb.i18nDict = {
 	"geo-attrttl": "GeoGratis - Canada bản đồ cơ bản (tiếng Anh hoặc tiếng Pháp chỉ)",
 	"geo-sel": "Chọn",
 	"geo-lblsel": "Kiểm tra để chọn phần tử trên bản đồ",
+	"geo-locurl-geogratis": "http://geogratis.gc.ca/services/geolocation/en/locate",
+	"geo-loc-placeholder": "Cho biết tên của địa điểm&#44; mã vùng&#44; địa chỉ (bưu điện)&#44; số lượng NTS ...",
+	"geo-loc-label": "Nơi",
+	"geo-aoi-north": "Bắc",
+	"geo-aoi-east": "Đông",
+	"geo-aoi-south": "Nam",
+	"geo-aoi-west": "Tây",
+	"geo-aoi-instructions": "Phân định một khu vực trên bản đồ hoặc nhập các chi tiết bên dưới sau đó nhấn vào \"Vẽ\" nút.",
+	"geo-aoi-btndraw": "Vẽ",
+	"geo-aoi-btnclear": "Hủy bỏ",
+	"geo-geoloc-btn": "Phóng to đến vị trí hiện tại",
+	"geo-geoloc-fail": "Vị trí thất bại. Hãy đảm bảo rằng dịch vụ định vị được kích hoạt.",
+	"geo-geoloc-uncapable": "Nội địa hóa không được hỗ trợ bởi trình duyệt của bạn.",
 	/* Disable/enable WET plugins and polyfills */
 	"wb-disable": "Phiên bản HTML cơ bản",
 	"wb-enable": "Phiên bản tiêu chuẩn",

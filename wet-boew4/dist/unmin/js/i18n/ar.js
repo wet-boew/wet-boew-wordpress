@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0 - 2014-03-31
+ * v4.0.4 - 2014-07-23
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -16,7 +16,7 @@
 /* main index */
 wb.i18nDict = {
 	"lang-code": "ar",
-	"lang-nat": "العربية",
+	"lang-native": "العربية",
 	all: "جميع",
 	tphp: "أعلى الصفحة",
 	load: "   تحميل ...",
@@ -26,7 +26,7 @@ wb.i18nDict = {
 	matches: {
 		mixin: "العثور على [MIXIN] مباريات"
 	},
-	curr: "(الحالي)",
+	current: "(الحالي)",
 	hide: "إخفاء",
 	err: "خطأ",
 	colon: ":",
@@ -58,7 +58,7 @@ wb.i18nDict = {
 	"prv-l": "مفتاح السهم الأيسر - سابق",
 	first: "الأول",
 	last: "آخر",
-	menu: "قائمة الطعام",
+	"srch-menus": "البحث والقوائم",
 	email: "البريد الإلكتروني",
 	"menu-close": "إغلاق القائمة",
 	"overlay-close": "إغلاق تراكب",
@@ -79,8 +79,7 @@ wb.i18nDict = {
 	pause: "وقفة",
 	open: "فتح",
 	close: "أغلق",
-	rew: "الترجيع",
-	ffwd: "سريع إلى الأمام",
+	volume: "جهارة الصوت",
 	mute: {
 		on: "كتم",
 		off: "إلغاء كتمه"
@@ -192,6 +191,19 @@ wb.i18nDict = {
 	"geo-attrttl": "GeoGratis - كندا قاعدة الخريطة (الإنجليزية أو الفرنسية فقط)",
 	"geo-sel": "حدد",
 	"geo-lblsel": "تحقق لتحديد عنصر على الخريطة",
+	"geo-locurl-geogratis": "http://geogratis.gc.ca/services/geolocation/en/locate",
+	"geo-loc-placeholder": "تشير إلى اسم الموقع، والرمز البريدي والعنوان (البريدي)، وعدد من NTS ...",
+	"geo-loc-label": "موقع",
+	"geo-aoi-north": "شمال",
+	"geo-aoi-east": "شرق",
+	"geo-aoi-south": "جنوب",
+	"geo-aoi-west": "غرب",
+	"geo-aoi-instructions": "تحدد مساحة على الخريطة أو أدخل التفاصيل أدناه ثم انقر على زر \"رسم\".",
+	"geo-aoi-btndraw": "رسم",
+	"geo-aoi-btnclear": "نزع",
+	"geo-geoloc-btn": "التكبير لموقعك الحالي",
+	"geo-geoloc-fail": "فشل الموقع. يرجى التأكد من أن يتم تمكين خدمات الموقع.",
+	"geo-geoloc-uncapable": "غير معتمد التعريب بواسطة المتصفح الخاص بك.",
 	/* Disable/enable WET plugins and polyfills */
 	"wb-disable": "إصدار HTML الأساسي",
 	"wb-enable": "الإصدار القياسي",

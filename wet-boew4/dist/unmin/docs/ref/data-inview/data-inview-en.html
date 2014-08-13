@@ -11,9 +11,13 @@
 
 	
 		
+					
+				
+						
+					
+					 - Documentation
 				
 			
-			 - Documentation
 		
 	
 
@@ -32,7 +36,7 @@
 <!--[if lt IE 9]>
 <link href="../../../assets/favicon.ico" rel="shortcut icon" />
 <link rel="stylesheet" href="../../../css/ie8-wet-boew.css" />
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js"></script>
 <script src="../../../js/ie8-wet-boew.js"></script>
 <![endif]-->
 
@@ -45,8 +49,8 @@
 				<a class="wb-sl" href="#wb-cont">Skip to main content</a>
 			</li>
 
-			<li class="wb-slc visible-md visible-lg">
-				<a class="wb-sl" href="#wb-info">Skip to site information</a>
+			<li class="wb-slc visible-sm visible-md visible-lg">
+				<a class="wb-sl" href="#wb-info">Skip to "About this site"</a>
 			</li>
 
 
@@ -73,9 +77,9 @@
 
 
 							<section class="wb-mb-links col-xs-12 visible-sm visible-xs" id="wb-glb-mn">
-								<h2>Menu</h2>
+								<h2>Search and menus</h2>
 								<ul class="pnl-btn list-inline text-right">
-	<li><a href="#mb-pnl" title="Menu" aria-controls="mb-pnl" class="overlay-lnk btn btn-xs btn-default" role="button"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Menu</span></span></a></li>
+	<li><a href="#mb-pnl" title="Search and menus" aria-controls="mb-pnl" class="overlay-lnk btn btn-sm btn-default" role="button"><span class="glyphicon glyphicon-search"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Search and menus</span></span></span></a></li>
 </ul>
 <div id="mb-pnl"></div>
 
@@ -118,13 +122,13 @@
 
 			<nav role="navigation" id="wb-sm" data-ajax-fetch="../../../ajax/sitemenu-en.html" data-trgt="mb-pnl" class="wb-menu visible-md visible-lg" typeof="SiteNavigationElement">
 				<div class="container nvbar">
-	<h2>Site menu</h2>
+	<h2>Topics menu</h2>
     <div class="row">
         <ul class="list-inline menu">
 
 			<li><a href="../../../index-en.html">WET project</a></li>
-			<li><a href="http://wet-boew.github.io/wet-boew/docs/gs-cd/impl-en.html">Implement WET</a></li>
-			<li><a href="http://wet-boew.github.io/wet-boew/docs/gs-cd/contrib-en.html">Contribute to WET</a></li>
+			<li><a href="http://wet-boew.github.io/wet-boew/docs/start-en.html#implement">Implement WET</a></li>
+			<li><a href="http://wet-boew.github.io/wet-boew/docs/start-en.html">Contribute to WET</a></li>
 
         </ul>
     </div>
@@ -145,10 +149,14 @@
 
 	
 		
-				<li>
-					<a href="../../../docs/index-en.html">Documentation</a>
-				</li>
 			
+				
+						<li>
+							<a href="../../../docs/index-en.html">Documentation</a>
+						</li>
+					
+					
+				
 			
 		
 	
@@ -165,7 +173,35 @@
 
 
 		<main role="main" property="mainContentOfPage" class="container">
+
 			<h1 id="wb-cont" property="name">Data Inview</h1>
+
+			
+<section class="alert alert-info">
+	<h2 class="h3">WET v4.0 or later</h2>
+	<p>This feature is exclusive to WET v4.0 or later.</p>
+</section>
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
 			
 
 
@@ -174,6 +210,7 @@
 	<a class="btn btn-primary" href="https://github.com/wet-boew/wet-boew/issues/new?title=Data%20Inview:%20">Questions or comments?</a>
 </p>
 	
+
 
 			
 <span class="wb-prettify all-pre hide"></span>
@@ -192,29 +229,67 @@
 </section>
 
 <section>
-	<p>Coming soon</p>
-	<!--
 	<h2>How to implement</h2>
 	<ol>
-		<li>Step 1</li>
-		<li>Step 2
-			<pre><code>Example code</code></pre>
+		<li>
+			<p>Add the <code>wb-inview</code> class to an element.</p>
+			<pre><code>&lt;section class=&quot;wb-inview&quot;&gt;
+	...
+&lt;/section&gt;</code></pre>
 		</li>
-		<li>Step 3
-			<pre><code>Example of multi-line code
-Example of multi-line code
-Example of multi-line code</code></pre>
+		<li>
+			<p>Handle the view state changes using one of the following approaches:</p>
+			<ol>
+				<li>
+					<p><strong>Overlays:</strong> You can open and close overlays based upon an element's view state.</p>
+					<ol>
+						<li>Add an overlay with a unique id. See the <a href="../overlay/overlay-en.html">overlay documentation</a> for further details.</li>
+						<li>Add the <code>data-inview</code> attribute to the element with the value being the unique id of the overlay added in the previous step.</li>
+						<li><strong>Optional:</strong> Add the <code>show-none</code> class to the element to make the overlay only open when the element is fully out of view (default is partially out of view).</li>
+					</ol>
+				</li>
+				<li>
+					<p><strong>Show/hide content:</strong> You can show/hide content with CSS transitions, based upon an element's view state.</p>
+					<ol>
+						<li>Add an element with a unique id.</li>
+						<li>Add a CSS transition class to the element added in the previous step (e.g., <code>fade</code>, <code>slide</code>, <code>slidevert</code>, etc.)</li>
+						<li><strong>Optional:</strong> Reverse the transition by adding the <code>reverse</code> class with the CSS transition.</li>
+						<li>Add the <code>data-inview</code> attribute to the element with the <code>wb-inview</code> class with the value being the unique id of the element with the CSS transition class.</li>
+						<li><strong>Optional:</strong> Add the <code>show-none</code> class to the <code>wb-inview</code> element to make the CSS transition only occur when the <code>wb-inview</code> element is fully out of view (default is partially out of view).</li>
+					</ol>
+				</li>
+				<li>
+					<p><strong>Events:</strong> You can handle the view state change events through JavaScript.</p>
+					<ol>
+						<li>
+							<p>Add an event handler to listen for each of the view state changes:</p>
+							<pre><code>$( document ).trigger( "all.wb-inview partial.wb-inview none.wb-inview", function( event ) {
+	if ( event.namespace === "wb-inview" ) {
+		switch ( eventType ) {
+	
+		case "all":
+			// event.target is a wb-inview element that has become completely visible
+			break;
+
+		case "partial": {
+			// event.target is a wb-inview element that has become partially hidden
+			break;
+
+		case "none": 
+			// event.target is a wb-inview element that has become completely hidden
+		}
+	}
+});</code></pre>
+						</li>
+					</ol>
+				</li>
+			</ol>
 		</li>
-		<li>Step 4</li>
 	</ol>
-	-->
 </section>
 
 <section>
 	<h2>Configuration options</h2>
-	<p>Coming soon</p>
-	<!--
-	<p>Document the public configuration options that can be used by implementers or developers.</p>
 	<table class="table">
 		<thead>
 			<tr>
@@ -226,38 +301,19 @@ Example of multi-line code</code></pre>
 		</thead>
 		<tbody>
 			<tr>
-				<td>Option 1</td>
-				<td>Brief description of the option</td>
-				<td>How to configure the option</td>
-				<td>
-					<dl>
-						<dt>Value 1 (default):</dt>
-						<dd>Brief description</dd>
-						<dt>Value 2:</dt>
-						<dd>Brief description</dd>
-						<dt>Value 3:</dt>
-						<dd>Brief description</dd>
-					</dl>
-				</td>
+				<td><code>data-inview</code></td>
+				<td>Identifies the element to trigger a change on (uses the unique id of the element).</td>
+				<td>Add the <code>data-inview</code> attribute with the value being the unique id of the element to trigger a change on.</td>
+				<td>Unique id of the target element</td>
 			</tr>
 			<tr>
-				<td>Option 2</td>
-				<td>Brief description of the option</td>
-				<td>How to configure the option</td>
-				<td>
-					<dl>
-						<dt>Value 1 (default):</dt>
-						<dd>Brief description</dd>
-						<dt>Value 2:</dt>
-						<dd>Brief description</dd>
-						<dt>Value 3:</dt>
-						<dd>Brief description</dd>
-					</dl>
-				</td>
+				<td><code>show-none</code></td>
+				<td>Overrides the overlay/CSS transition trigger to only occur when the element is completely hidden.</td>
+				<td>Add the <code>show-none</code> class to the element.</td>
+				<td>n/a</td>
 			</tr>
 		</tbody>
 	</table>
-	-->
 </section>
 
 <section>
@@ -276,19 +332,34 @@ Example of multi-line code</code></pre>
 				<td>Triggered manually (e.g., <code>$elm.trigger( "wb-init.wb-inview" );</code>).</td>
 				<td>Used to manually initialize the Data Inview plugin. <strong>Note:</strong> The Data Inview plugin will be initialized automatically unless the required markup is added after the page has already loaded.</td>
 			</tr>
+			<tr>
+				<td>all.wb-inview</td>
+				<td>Triggered automatically when a <code>wb-inview</code> element becomes completely visible.</td>
+				<td>Used to identify that the view state of a <code>wb-inview</code> element has changed to <code>all</code>.</td>
+			</tr>
+			<tr>
+				<td>partial.wb-inview</td>
+				<td>Triggered automatically when a <code>wb-inview</code> element becomes partially hidden.</td>
+				<td>Used to identify that the view state of a <code>wb-inview</code> element has changed to <code>partial</code>.</td>
+			</tr>
+			<tr>
+				<td>none.wb-inview</td>
+				<td>Triggered automatically when a <code>wb-inview</code> element becomes completely hidden.</td>
+				<td>Used to identify that the view state of a <code>wb-inview</code> element has changed to <code>none</code>.</td>
+			</tr>
 		</tbody>
 	</table>
 </section>
 
 <section>
 	<h2>Source code</h2>
-	<p><a href="https://github.com/wet-boew/wet-boew/tree/v4.0/src/plugins/data-inview">Data Inview plugin source code on GitHub</a></p>
+	<p><a href="https://github.com/wet-boew/wet-boew/tree/master/src/plugins/data-inview">Data Inview plugin source code on GitHub</a></p>
 </section>
 
 
-			<dl id="wb-dtmd" property="dateModified">
+			<dl id="wb-dtmd">
 	<dt>Date modified:&#32;</dt>
-	<dd><time>2014-03-31</time></dd>
+	<dd><time property="dateModified">2014-07-18</time></dd>
 </dl>
 
 
@@ -296,20 +367,21 @@ Example of multi-line code</code></pre>
 
 
 
-		<footer role="contentinfo" id="wb-info" class="container visible-sm visible-md visible-lg wb-navcurr">
-			<nav role="navigation" class="row">
-				<h2>Site information</h2>
-				<section class="col-sm-3">
-	<h3>About</h3>
-	<ul class="list-unstyled">
-		<li><a href="/v4.0-ci/unmin/index-en.html#about">About the Web Experience Toolkit</a></li>
-		<li><a href="http://www.tbs-sct.gc.ca/ws-nw/index-eng.asp">About the Web Standards</a></li>
-	</ul>
-</section>
-<section class="col-sm-3">
+		<footer role="contentinfo" id="wb-info" class="visible-sm visible-md visible-lg wb-navcurr">
+			<div class="container">
+				<nav role="navigation" class="row">
+					<h2>About this site</h2>
+					<section class="col-sm-3">
 	<h3>Contact us</h3>
 	<ul class="list-unstyled">
 		<li><a href="https://github.com/wet-boew/wet-boew/issues/new">Questions or comments?</a></li>
+	</ul>
+</section>
+<section class="col-sm-3">
+	<h3>About</h3>
+	<ul class="list-unstyled">
+		<li><a href="../../../index-en.html#about">About the Web Experience Toolkit</a></li>
+		<li><a href="http://www.tbs-sct.gc.ca/ws-nw/index-eng.asp">About the Web Standards</a></li>
 	</ul>
 </section>
 <section class="col-sm-3">
@@ -326,11 +398,12 @@ Example of multi-line code</code></pre>
 	</ul>
 </section>
 
-			</nav>
+				</nav>
+			</div>
 		</footer>
 
 		<!--[if gte IE 9 | !IE ]><!-->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
 <script src="../../../js/wet-boew.js"></script>
 <!--<![endif]-->
 <!--[if lt IE 9]>

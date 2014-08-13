@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0 - 2014-03-31
+ * v4.0.4 - 2014-07-23
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -16,7 +16,7 @@
 /* main index */
 wb.i18nDict = {
 	"lang-code": "lt",
-	"lang-nat": "Lietuvių kalba",
+	"lang-native": "Lietuvių kalba",
 	all: "Visi",
 	tphp: "Puslapio viršus",
 	load: "pakrovimo ...",
@@ -26,7 +26,7 @@ wb.i18nDict = {
 	matches: {
 		mixin: "[MIXIN] atitikmuo (-enys) rasti"
 	},
-	curr: "(dabartinė)",
+	current: "(dabartinė)",
 	hide: "Slėpti",
 	err: "Klaida",
 	colon: ":",
@@ -58,7 +58,7 @@ wb.i18nDict = {
 	"prv-l": "Ankstenis (rodyklės dešinėn klavišu)",
 	first: "Pirmasis",
 	last: "Paskutinis",
-	menu: "Meniu",
+	"srch-menus": "Ieškoti ir meniu",
 	email: "El. paštas",
 	"menu-close": "Uždaryti meniu",
 	"overlay-close": "Uždaryti perdangos",
@@ -79,8 +79,7 @@ wb.i18nDict = {
 	pause: "Pauzė",
 	open: "Atidaryti",
 	close: "Uždaryti",
-	rew: "Atsukti",
-	ffwd: "Sukti į priekį",
+	volume: "Apimtis",
 	mute: {
 		on: "Užtylinti",
 		off: "Įjungti garsą"
@@ -192,6 +191,19 @@ wb.i18nDict = {
 	"geo-attrttl": "GeoGratis - Kanada bazė žemėlapis (anglų arba prancūzų kalba)",
 	"geo-sel": "Pasirinkti",
 	"geo-lblsel": "Patikrinkite, pasirinkite elementą žemėlapyje",
+	"geo-locurl-geogratis": "http://geogratis.gc.ca/services/geolocation/en/locate",
+	"geo-loc-placeholder": "Nurodykite vietą&#44; pašto kodą&#44; adresą (pašto)&#44; į NBA numeris Pavadinimas ...",
+	"geo-loc-label": "Vieta",
+	"geo-aoi-north": "Į šiaurę",
+	"geo-aoi-east": "Rytų",
+	"geo-aoi-south": "Į pietus",
+	"geo-aoi-west": "Vakarai",
+	"geo-aoi-instructions": "Apibrėžti sritį žemėlapyje arba įveskite žemiau pateiktus duomenis&#44; tada spustelėkite \"Atkreipti\" mygtuką.",
+	"geo-aoi-btndraw": "Atkreipti",
+	"geo-aoi-btnclear": "Pašalinti",
+	"geo-geoloc-btn": "Padidinti dabartinę vietą",
+	"geo-geoloc-fail": "Vieta nepavyko. Prašome užtikrinti, kad vietos nustatymo paslaugos yra įjungtas.",
+	"geo-geoloc-uncapable": "Lokalizacijos nepalaikomas jūsų naršyklėje.",
 	/* Disable/enable WET plugins and polyfills */
 	"wb-disable": "Pagrindinė HTML versija",
 	"wb-enable": "Standartinė versija",

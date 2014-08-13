@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0 - 2014-03-31
+ * v4.0.4 - 2014-07-23
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -16,7 +16,7 @@
 /* main index */
 wb.i18nDict = {
 	"lang-code": "en",
-	"lang-nat": "English",
+	"lang-native": "English",
 	all: "All",
 	tphp: "Top of page",
 	load: "loading...",
@@ -26,7 +26,7 @@ wb.i18nDict = {
 	matches: {
 		mixin: "[MIXIN] match(es) found"
 	},
-	curr: "(current)",
+	current: "(current)",
 	hide: "Hide",
 	err: "Error",
 	colon: ":",
@@ -58,7 +58,7 @@ wb.i18nDict = {
 	"prv-l": "Previous (left arrow key)",
 	first: "First",
 	last: "Last",
-	menu: "Menu",
+	"srch-menus": "Search and menus",
 	email: "Email",
 	"menu-close": "Close menu",
 	"overlay-close": "Close overlay",
@@ -79,8 +79,7 @@ wb.i18nDict = {
 	pause: "Pause",
 	open: "Open",
 	close: "Close",
-	rew: "Rewind",
-	ffwd: "Fast forward",
+	volume: "Volume",
 	mute: {
 		on: "Mute",
 		off: "Unmute"
@@ -192,6 +191,19 @@ wb.i18nDict = {
 	"geo-attrttl": "GeoGratis - Canada Base Map",
 	"geo-sel": "Select",
 	"geo-lblsel": "Check to select the element on the map",
+	"geo-locurl-geogratis": "http://geogratis.gc.ca/services/geolocation/en/locate",
+	"geo-loc-placeholder": "Enter placename&#44; postal code&#44; street address&#44; NTS number...",
+	"geo-loc-label": "Location",
+	"geo-aoi-north": "North",
+	"geo-aoi-east": "East",
+	"geo-aoi-south": "South",
+	"geo-aoi-west": "West",
+	"geo-aoi-instructions": "Draw box on map or enter coordinates below and click the \"Draw\" button.",
+	"geo-aoi-btndraw": "Draw",
+	"geo-aoi-btnclear": "Clear",
+	"geo-geoloc-btn": "Zoom to current location",
+	"geo-geoloc-fail": "Geolocation failed. Please ensure that location services are enabled.",
+	"geo-geoloc-uncapable": "Geolocation is not supported by your browser.",
 	/* Disable/enable WET plugins and polyfills */
 	"wb-disable": "Basic HTML version",
 	"wb-enable": "Standard version",

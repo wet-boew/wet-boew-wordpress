@@ -11,8 +11,12 @@
 
 	
 		
-			
-				 - Version history
+					
+				
+					
+						 - Version history
+					
+				
 			
 		
 	
@@ -32,7 +36,7 @@
 <!--[if lt IE 9]>
 <link href="../../../assets/favicon.ico" rel="shortcut icon" />
 <link rel="stylesheet" href="../../../css/ie8-wet-boew.css" />
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js"></script>
 <script src="../../../js/ie8-wet-boew.js"></script>
 <![endif]-->
 
@@ -45,8 +49,8 @@
 				<a class="wb-sl" href="#wb-cont">Skip to main content</a>
 			</li>
 
-			<li class="wb-slc visible-md visible-lg">
-				<a class="wb-sl" href="#wb-info">Skip to site information</a>
+			<li class="wb-slc visible-sm visible-md visible-lg">
+				<a class="wb-sl" href="#wb-info">Skip to "About this site"</a>
 			</li>
 
 
@@ -73,9 +77,9 @@
 
 
 							<section class="wb-mb-links col-xs-12 visible-sm visible-xs" id="wb-glb-mn">
-								<h2>Menu</h2>
+								<h2>Search and menus</h2>
 								<ul class="pnl-btn list-inline text-right">
-	<li><a href="#mb-pnl" title="Menu" aria-controls="mb-pnl" class="overlay-lnk btn btn-xs btn-default" role="button"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Menu</span></span></a></li>
+	<li><a href="#mb-pnl" title="Search and menus" aria-controls="mb-pnl" class="overlay-lnk btn btn-sm btn-default" role="button"><span class="glyphicon glyphicon-search"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Search and menus</span></span></span></a></li>
 </ul>
 <div id="mb-pnl"></div>
 
@@ -118,13 +122,13 @@
 
 			<nav role="navigation" id="wb-sm" data-ajax-fetch="../../../ajax/sitemenu-en.html" data-trgt="mb-pnl" class="wb-menu visible-md visible-lg" typeof="SiteNavigationElement">
 				<div class="container nvbar">
-	<h2>Site menu</h2>
+	<h2>Topics menu</h2>
     <div class="row">
         <ul class="list-inline menu">
 
 			<li><a href="../../../index-en.html">WET project</a></li>
-			<li><a href="http://wet-boew.github.io/wet-boew/docs/gs-cd/impl-en.html">Implement WET</a></li>
-			<li><a href="http://wet-boew.github.io/wet-boew/docs/gs-cd/contrib-en.html">Contribute to WET</a></li>
+			<li><a href="http://wet-boew.github.io/wet-boew/docs/start-en.html#implement">Implement WET</a></li>
+			<li><a href="http://wet-boew.github.io/wet-boew/docs/start-en.html">Contribute to WET</a></li>
 
         </ul>
     </div>
@@ -165,17 +169,351 @@
 
 
 		<main role="main" property="mainContentOfPage" class="container">
+
 			<h1 id="wb-cont" property="name">v4.0 changelog</h1>
+
 			
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+			
+
 
 
 			
 <p>See <a href="../version-info-en.html">Versioning</a> for the meaning of each version number.</p>
+<span class="wb-prettify all-pre"></span>
+
+<section>
+	<h2>v4.0.4</h2>
+	<ul>
+		<li><strong>Release date:</strong> <time>2014-07-22</time></li>
+		<li><a href="v4.0.4-en.html">Release notes<span class="wb-inv"> - v4.0.4</span></a></li>
+		<li><a href="../dwnld-en.html#v404">Downloads<span class="wb-inv"> - v4.0.4</span></a></li>
+	</ul>
+
+	<section>
+		<h3>Template changes (non-breaking)</h3>
+		<p><strong>Note:</strong> Only the changes to the English templates are shown. The same changes were made to the templates in the other supported languages.</p>
+		<ol>
+			<li>
+				Added a search icon to the mobile panel button
+				<ul>
+					<li>Before:
+						<pre><code>&lt;li&gt;&lt;a href="#mb-pnl" title="Menu" aria-controls="mb-pnl" class="overlay-lnk" role="button"&gt;<strong>&lt;span class="glyphicon glyphicon-th-list"&gt;&lt;span class="wb-inv"&gt;Menu&lt;/span&gt;&lt;/span&gt;</strong>&lt;/a&gt;&lt;/li&gt;</code></pre>
+					</li>
+					<li>After:
+						<pre><code>&lt;li&gt;&lt;a href="#mb-pnl" title="Menu" aria-controls="mb-pnl" class="overlay-lnk" role="button"&gt;<strong>&lt;span class="glyphicon glyphicon-search"&gt;&lt;span class="glyphicon glyphicon-th-list"&gt;&lt;span class="wb-inv"&gt;Search and menus&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;</strong>&lt;/a&gt;&lt;/li&gt;</code></pre>
+					</li>
+				</ul>
+			</li>
+			<li>
+				Changed menu panel button and title to 'Search and menus'
+				<ul>
+					<li>Before:
+						<pre><code>&lt;section class="wb-mb-links col-xs-3 visible-sm visible-xs" id="wb-glb-mn" &gt;
+	&lt;h2&gt;<strong>Menu</strong>&lt;/h2&gt;
+	&lt;ul class="list-inline text-right chvrn"&gt;
+		&lt;li&gt;&lt;a href="#mb-pnl" title="<strong>Menu</strong>" aria-controls="mb-pnl" class="overlay-lnk" role="button"&gt;&lt;span class="glyphicon glyphicon-th-list"&gt;&lt;span class="wb-inv"&gt;<strong>Menu</strong>&lt;/span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;</code></pre>
+					</li>
+					<li>After:
+						<pre><code>&lt;section class="wb-mb-links col-xs-3 visible-sm visible-xs" id="wb-glb-mn" &gt;
+	&lt;h2&gt;<strong>Search and menus</strong>&lt;/h2&gt;
+	&lt;ul class="list-inline text-right chvrn"&gt;
+		&lt;li&gt;&lt;a href="#mb-pnl" title="<strong>Search and menus</strong>" aria-controls="mb-pnl" class="overlay-lnk" role="button"&gt;&lt;span class="glyphicon glyphicon-search"&gt;&lt;span class="glyphicon glyphicon-th-list"&gt;&lt;span class="wb-inv"&gt;<strong>Search and menus</strong>&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;</code></pre>
+					</li>
+				</ul>
+			</li>
+			<li>
+				Changed heading text and skip link text for "Site menu", "Secondary menu" and "Site information" to "Topics menu", "Section menu" and "About this site"
+				<ul>
+					<li>Before:
+						<pre><code>&lt;li class="wb-slc visible-md visible-lg"&gt;&lt;a class="wb-sl" href="#wb-info"&gt;Skip to <strong>site information</strong>&lt;/a&gt;&lt;/li&gt;
+&lt;li class="wb-slc visible-md visible-lg"&gt;&lt;a class="wb-sl" href="#wb-sec"&gt;Skip to <strong>secondary</strong> menu&lt;/a&gt;&lt;/li&gt;
+...
+&lt;h2 class="wb-inv"&gt;<strong>Site</strong> menu&lt;/h2&gt;
+...
+&lt;h2&gt;<strong>Secondary</strong> menu&lt;/h2&gt;
+...
+&lt;h2 class="wb-inv"&gt;<strong>Site information</strong>&lt;/h2&gt;</code></pre>
+					</li>
+					<li>After:
+						<pre><code>&lt;li class="wb-slc visible-md visible-lg"&gt;&lt;a class="wb-sl" href="#wb-info"&gt;Skip to <strong>"About this site"</strong>&lt;/a&gt;&lt;/li&gt;
+&lt;li class="wb-slc visible-md visible-lg"&gt;&lt;a class="wb-sl" href="#wb-sec"&gt;Skip to <strong>section</strong> menu&lt;/a&gt;&lt;/li&gt;
+...
+&lt;h2 class="wb-inv"&gt;<strong>Topics</strong> menu&lt;/h2&gt;
+...
+&lt;h2&gt;<strong>Section</strong> menu&lt;/h2&gt;
+...
+&lt;h2 class="wb-inv"&gt;<strong>About this site</strong>&lt;/h2&gt;</code></pre>
+					</li>
+				</ul>
+			</li>
+			<li>
+				Changed "Site menu" heading in the full menu AJAX file to "Topics menu"
+				<ul>
+					<li>Before:
+						<pre><code>&lt;h2&gt;<strong>Site</strong> menu&lt;/h2&gt;</code></pre>
+					</li>
+					<li>After:
+						<pre><code>&lt;h2&gt;<strong>Topics</strong> menu&lt;/h2&gt;</code></pre>
+					</li>
+				</ul>
+			</li>
+			<li>
+				Moved contact information section to the start of the footer
+				<ul>
+					<li>Before:
+						<pre><code>&lt;h2 class="wb-inv"&gt;Site Information&lt;/h2&gt;
+	&lt;div class="row"&gt;
+		&lt;section class="col-sm-3 col-lg-3"&gt;
+			...
+		&lt;/section&gt;
+		...
+		<strong>&lt;section class="col-sm-3 col-lg-3"&gt;
+			&lt;h3&gt;Contact information&lt;/h3&gt;
+			...
+		&lt;/section&gt;</strong></code></pre>
+					</li>
+					<li>After:
+						<pre><code>&lt;h2 class="wb-inv"&gt;Site Information&lt;/h2&gt;
+	&lt;div class="row"&gt;
+		<strong>&lt;section class="col-sm-3 col-lg-3"&gt;
+			&lt;h3&gt;Contact information&lt;/h3&gt;
+			...
+		&lt;/section&gt;</strong>
+		...
+		&lt;section class="col-sm-3 col-lg-3"&gt;
+			...
+		&lt;/section&gt;</code></pre>
+					</li>
+				</ul>
+			</li>
+			<li>
+				Moved the Date modified RDFa property into the time element
+				<ul>
+					<li>Before:
+						<pre><code>&lt;dl id="wb-dtmd" <strong>property="dateModified"</strong>&gt;
+	&lt;dt&gt;Date modified: &lt;/dt&gt;
+	&lt;dd&gt;
+		&lt;time&gt;2014-07-22&lt;/time&gt;
+	&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+					</li>
+					<li>After:
+						<pre><code>&lt;dl id="wb-dtmd"&gt;
+	&lt;dt&gt;Date modified: &lt;/dt&gt;
+	&lt;dd&gt;
+		&lt;time <strong>property="dateModified"</strong>&gt;2014-07-22&lt;/time&gt;
+	&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+					</li>
+				</ul>
+			</li>
+		</ol>
+	</section>
+
+	<section>
+		<h3>What's New</h3>
+		<ul>
+			<li><strong>AJAX fetch:</strong> Modified the Ajax Fetch plugin to provide more control via jQuery AJAX settings and to send the context with the event</li>
+			<li><strong>Calendar of events:</strong> Added fluid width display option</li>
+			<li><strong>Calendar of events / Date picker:</strong> Fixed goto month field issues.</li>
+			<li><strong>Calendar of events / Date picker:</strong> Fixed numerous keyboard handling issues.</li>
+			<li><strong>CSS:</strong> Fixed pagination wrapping in IE8</li>
+			<li><strong>CSS:</strong> Fixed wrapping issues with the <code>btn</code> class</li>
+			<li><strong>Data AJAX:</strong> Added documentation</li>
+			<li><strong>Data InView:</strong> Added documentation and examples for CSS transitions and view state change events</li>
+			<li><strong>Datalist polyfill:</strong> Added an example of a dynamic datalist</li>
+			<li><strong>Datalist polyfill:</strong> Added the update event to allow updating of a dynamically modified datalist</li>
+			<li><strong>Date picker:</strong> Fixed spacing for picker toggle button in RTL display</li>
+			<li><strong>Feeds:</strong> Added Flickr and YouTube support</li>
+			<li><strong>Feeds:</strong> Delayed postProcessing of feeds when not visible</li>
+			<li><strong>Feeds:</strong> Now uses the AJAX Fetch plugin</li>
+			<li><strong>Footnotes:</strong> Increased width and spacing of links</li>
+			<li><strong>Geomap:</strong> Added margins to the map object to make scrolling on mobile devices easier</li>
+			<li><strong>Geomap:</strong> Fixed accessibility issues with new AOI feature</li>
+			<li><strong>HTML minification:</strong> Preserved line breaks to make it easier to implement the templates.</li>
+			<li><strong>i18n</strong> Fixed i18n strings where ' was not properly encoded</li>
+			<li><strong>Lightbox:</strong> Added open.wb-lbx event for opening a Lightbox popup through JavaScript</li>
+			<li><strong>Menu:</strong> Added search icon to mobile panel button and increased mobile panel button height by 20%</li>
+			<li><strong>Menu:</strong> Changed menu panel heading, button and title to 'Search and menus'</li>
+			<li><strong>Menu:</strong> Fixed a display issue with the <code>slflnk</code> class</li>
+			<li><strong>Menu:</strong> Fixed menu handling for undefined AJAX response</li>
+			<li><strong>Menu:</strong> Fixed outlining of non-section wb-navcurr links in the menu panel</li>
+			<li><strong>Multimedia player:</strong> Fixed not being able to have more than one YouTube player per page</li>
+			<li><strong>Overlay:</strong> Added documentation</li>
+			<li><strong>Overlay:</strong> Added example of opening overlays with JavaScript</li>
+			<li><strong>Session timeout:</strong> Prevented double firing of requests.</li>
+			<li><strong>Tables:</strong> Added documentation</li>
+			<li><strong>Tables:</strong> Added role='button' and aria-pressed to the pagination buttons to indicate which button is pressed</li>
+			<li><strong>Tables:</strong> Removed HTML tags before doing any filtering for formatted number</li>
+			<li><strong>Tabs:</strong> Fixed handling of attributes when transitioning between views</li>
+			<li><strong>Tabs:</strong> Only pause initialized video players when changing tabs</li>
+			<li><strong>Tabs - Carousel:</strong> Added support for fade and slide transitions</li>
+			<li><strong>Template:</strong> Added support for a full-width main</li>
+			<li><strong>Template:</strong> Changed site menu heading in fullmenu AJAX file</li>
+			<li><strong>Template:</strong> Changed heading text and skip link text for site menu, secondary menu and site information</li>
+			<li><strong>Template:</strong> Made skip to footer link discoverable in small view</li>
+			<li><strong>Template:</strong> Moved contact information section to the start of the footer</li>
+			<li><strong>Template:</strong> Moved the Date modified RDFa property into the time element</li>
+			<li><strong>Toggle:</strong> Fixed arrow key handling</li>
+			<li><strong>Variants:</strong> Added Jekyll and WordPress working examples</li>
+			<li><strong>WET theme:</strong> Increased the minimum height of the top bar in mobile view</li>
+		</ul>
+	</section>
+</section>
+
+<section>
+	<h2>v4.0.3</h2>
+	<ul>
+		<li><strong>Release date:</strong> <time>2014-06-17</time></li>
+		<li><a href="v4.0.3-en.html">Release notes<span class="wb-inv"> - v4.0.3</span></a></li>
+		<li><a href="../dwnld-en.html#v403">Downloads<span class="wb-inv"> - v4.0.3</span></a></li>
+	</ul>
+
+	<section>
+		<h3>What's New</h3>
+		<ul>
+			<li><strong>Ajax fetch / Data Ajax / Menu:</strong> Now passing along AJAX status and messaging in Ajax fetch and only completing Data Ajax and Menu updates when there are no load errors</li>
+			<li><strong>Archived:</strong> Removed duplicate icon</li>
+			<li><strong>Calendar of events:</strong> Fixed arrowing to previous/next month</li>
+			<li><strong>Calendar of events:</strong> Switched to only one link being in the tab order at a time</li>
+			<li><strong>Calender of events / Date picker:</strong> Fixed application of colours to other themes</li>
+			<li><strong>Core:</strong> Fixed gray-light so meets colour contrast against white backgrounds</li>
+			<li><strong>Core:</strong> Fixed selector for wet-boew script element</li>
+			<li><strong>Core:</strong> Preventing viewChange from removing all classes if executed too early. This is a failsafe for cases where viewChange is manually triggered too early.</li>
+			<li><strong>CSS:</strong> Fixed colcount support for ordered lists</li>
+			<li><strong>Date picker:</strong> Fixed listing of maximum month</li>
+			<li><strong>Feeds:</strong> Added Facebook template for Facebook-driven feeds</li>		
+			<li><strong>Form validation:</strong> Added ability to configure which fields for validation to ignore</li>		
+			<li><strong>Form validation:</strong> Made labels for number and digit/numeric validation more accurate</li>
+			<li><strong>Geomap:</strong> Added area of interest (AOI), geolcoation, and geocoding widgets</li>
+			<li><strong>jQuery:</strong> Update to 1.11.1 and 2.1.1 patch releases</li>
+			<li><strong>Lightbox:</strong> Fixed incorrect closing of AJAX popups.</li>
+			<li><strong>Menu:</strong> Fixed order of navcurrent checking to go from more specific links to less specific links</li>
+			<li><strong>Multimedia player:</strong> Added a volume control</li>
+			<li><strong>Multimedia player:</strong> Added the ability to share a video</li>
+			<li><strong>Multimedia player:</strong> Added WAI-ARIA properties to the toggle buttons (mute and cc)</li>
+			<li><strong>Multimedia player:</strong> Dropped the fast forward and rewind buttons</li>
+			<li><strong>Multimedia player:</strong> Fixed the audio player displaying as a video</li>
+			<li><strong>Multimedia player:</strong> Fixed the display and positioning of the progress bar and the closed caption button</li>
+			<li><strong>Multimedia player:</strong> Fixed the multimedia player in xxsmall view</li>
+			<li><strong>Multimedia player:</strong> Increased the captions area to minimize shifting in mobile devices. Also centred captions vertically.</li>
+			<li><strong>Multimedia player:</strong> Made the text always visible and the background for the controls lighter</li>		
+			<li><strong>Multimedia player:</strong> Removed the overlay for the YouTube player. The overlay was overlapping all buttons rendering them non-functional.</li>
+			<li><strong>Multimedia player:</strong> Unified the multimedia controls focus display</li>
+			<li><strong>Share:</strong> Changed share widget from a right panel to a centred popup</li>
+			<li><strong>Share:</strong> Removed Technorati option due to 404 error for faves option</li>
+			<li><strong>Share:</strong> Removed underlining for space between link text and the share icon</li>
+			<li><strong>Tabbed interface:</strong> Added ability to control rotation interval through data-wb-tabs</li>
+			<li><strong>Tabbed interface:</strong> Carousels are now scalable so can fit in columns of varying sizes</li>
+			<li><strong>Tabbed interface:</strong> Enabled tab count to be visible in extra-small view</li>
+			<li><strong>Tabbed interface:</strong> Fixed fading effect</li>
+			<li><strong>Tabbed interface:</strong> Stops carousel for any clicks within a tab panel</li>
+			<li><strong>Tabbed interface / Multimedia player:</strong> Added example of the multimedia player embedded in a Tabbed interface carousel</li>
+			<li><strong>Tabbed interface / Multimedia player:</strong> Automatically stops all multimedia players within the current tab panel when the tab panel changes</li>
+			<li><strong>Tabbed interface / Multimedia player:</strong> Changed examples to use figure/figcaption</li>
+			<li><strong>Tabbed interface / Multimedia player:</strong> Fixed z-index issue with multimedia players embedded in a tabs carousel</li>
+		</ul>
+	</section>
+</section>
+
+<section>
+	<h2>v4.0.2</h2>
+	<ul>
+		<li><strong>Release date:</strong> <time>2014-05-21</time></li>
+		<li><a href="v4.0.2-en.html">Release notes<span class="wb-inv"> - v4.0.2</span></a></li>
+		<li><a href="../dwnld-en.html#v402">Downloads<span class="wb-inv"> - v4.0.2</span></a></li>
+	</ul>
+
+	<section>
+		<h3>What's New</h3>
+		<ul>
+			<li>Archived: Added underline to top overlay link</li>
+			<li>Archived: Moved explanatory archived message to within archived section and corrected heading</li>
+			<li>Archived: Updated archived notice heading</li>
+			<li>Charts - Upgraded to Flot 0.8.3 and fixed the missing table caption issue</li>
+			<li>Date picker: Fixed toggle button when secondary menu is present</li>
+			<li>Definition lists: Allowed wrapping in dt elements of .dl-horizontal</li>
+			<li>HTML Table Validator: Migrated to v4.0</li>
+			<li>Lightbox: Fixed cursor hover over close button</li>
+			<li>Lightbox: Fixed printing issues</li>
+			<li>Menu: Fixed loading of extra language links in the mobile panel</li>
+			<li>Slider polyfill: Replaced fd-slider with a custom version that allows dynamic creation of the polyfill</li>
+			<li>Slider polyfill: Standardized event handling to address Android issues</li>
+			<li>Tables: Added indication of current and future state to sorting icons</li>
+			<li>Tables: Aligned pagination with Bootstrap pagination</li>
+			<li>Tables: Fixed sorting of formatted numbers</li>
+			<li>Tables: Moved showing x to x of x entries to the top of the table</li>
+			<li>Tables: Now hiding deactivated pagination buttons</li>
+			<li>Tables: Removed bolding from show and filter fields and updated example source code</li>
+			<li>Tables: Updated to DataTables 1.10.0</li>
+		</ul>
+	</section>
+</section>
+
+<section>
+	<h2>v4.0.1</h2>
+	<ul>
+		<li><strong>Release date:</strong> <time>2014-04-23</time></li>
+		<li><a href="v4.0.1-en.html">Release notes<span class="wb-inv"> - v4.0.1</span></a></li>
+		<li><a href="../dwnld-en.html#v401">Downloads<span class="wb-inv"> - v4.0.1</span></a></li>
+	</ul>
+
+	<section>
+		<h3>What's New</h3>
+		<ul>
+			<li>Build: Added SCSS-Lint to the Travis build</li>
+			<li>Data-picture: Added support for data-class attribute</li>
+			<li>Details/summary: Added indenting and margin bottom when details is open</li>
+			<li>Documentation: Added a getting started guide</li>
+			<li>Favicon: Updated plugin element selector</li>
+			<li>Feedback form: Fixed triggering of the form validation plugin</li>
+			<li>Lightbox: Fixed inner padding of AJAX modal dialog</li>
+			<li>Lightbox: Popup now closes when navigating outside the popup</li>
+			<li>Menu: Added support for additional footer links in the mobile panel</li>
+			<li>Menu: Added support for more than just English and French</li>
+			<li>Menu: Changed down triangle to chevron</li>
+			<li>Menu: Fixed secondary menu links in mobile panel in IE8</li>
+			<li>Menu: Removed underlining on menu hover</li>
+			<li>Multimedia player: Fixed issues with the iPad player not preserving ratio</li>
+			<li>Multimedia player: Fixed the display of the progress bar in Webkit</li>
+			<li>Multimedia player: Fixed the YouTube player duration not updating properly</li>
+			<li>Multimedia player: Hiding the close captions button on the audio player</li>
+			<li>Multimedia player: Restored responsiveness for the YouTube player</li>
+			<li>Overlay: Fixed incorrect overlay border in IE8</li>
+			<li>Share widget: Removed DZone due to their broken login page redirect</li>
+			<li>Tabbed interface: Fixed duplication of carousel play/pause button text when button is activated</li>
+			<li>Tables: Added sorting for currency and formatted numbers</li>
+			<li>Tables: Changed sort icons</li>
+			<li>Web Accessibility Assessment Methodology: Fixed issue with AA total</li>
+			<li>WET theme: Enabled secondary menu to work without the a element on the top header</li>
+		</ul>
+	</section>
+</section>
 
 <section>
 	<h2>v4.0.0</h2>
 	<ul>
-		<li><strong>Release date:</strong> 2014-03-31</li>
+		<li><strong>Release date:</strong> <time>2014-03-31</time></li>
 		<li><a href="v4.0.0-en.html">Release notes<span class="wb-inv"> - v4.0.0</span></a></li>
 		<li><a href="../dwnld-en.html#v400">Downloads<span class="wb-inv"> - v4.0.0</span></a></li>
 	</ul>
@@ -215,7 +553,7 @@
 <section>
 	<h2>v4.0.0 Release Candidate 1</h2>
 	<ul>
-		<li><strong>Release date:</strong> 2014-03-18</li>
+		<li><strong>Release date:</strong> <time>2014-03-18</time></li>
 		<li><a href="v4.0.0-rc1-en.html">Release notes<span class="wb-inv"> - v4.0.0 Release Candidate 1</span></a></li>
 		<li><a href="../dwnld-en.html#v400rc1">Downloads<span class="wb-inv"> - v4.0.0 Release Candidate 1</span></a></li>
 	</ul>
@@ -247,7 +585,7 @@
 <section>
 	<h2>v4.0.0 Beta 2</h2>
 	<ul>
-		<li><strong>Release date:</strong> 2014-03-01</li>
+		<li><strong>Release date:</strong> <time>2014-03-01</time></li>
 		<li><a href="v4.0.0-b2-en.html">Release notes<span class="wb-inv"> - v4.0.0 Beta 2</span></a></li>
 		<li><a href="../dwnld-en.html#v400b2">Downloads<span class="wb-inv"> - v4.0.0 Beta 2</span></a></li>
 	</ul>
@@ -274,7 +612,7 @@
 <section>
 	<h2>v4.0.0 Beta 1</h2>
 	<ul>
-		<li><strong>Release date:</strong> 2013-12-16</li>
+		<li><strong>Release date:</strong> <time>2013-12-16</time></li>
 		<li><a href="v4.0.0-b1-en.html">Release notes<span class="wb-inv"> - v4.0.0 Beta 1</span></a></li>
 		<li><a href="../dwnld-en.html#v400b1">Downloads<span class="wb-inv"> - v4.0.0 Beta 1</span></a></li>
 	</ul>
@@ -297,9 +635,9 @@
 </section>
 
 
-			<dl id="wb-dtmd" property="dateModified">
+			<dl id="wb-dtmd">
 	<dt>Date modified:&#32;</dt>
-	<dd><time>2014-03-31</time></dd>
+	<dd><time property="dateModified">2014-07-22</time></dd>
 </dl>
 
 
@@ -307,20 +645,21 @@
 
 
 
-		<footer role="contentinfo" id="wb-info" class="container visible-sm visible-md visible-lg wb-navcurr">
-			<nav role="navigation" class="row">
-				<h2>Site information</h2>
-				<section class="col-sm-3">
-	<h3>About</h3>
-	<ul class="list-unstyled">
-		<li><a href="/v4.0-ci/unmin/index-en.html#about">About the Web Experience Toolkit</a></li>
-		<li><a href="http://www.tbs-sct.gc.ca/ws-nw/index-eng.asp">About the Web Standards</a></li>
-	</ul>
-</section>
-<section class="col-sm-3">
+		<footer role="contentinfo" id="wb-info" class="visible-sm visible-md visible-lg wb-navcurr">
+			<div class="container">
+				<nav role="navigation" class="row">
+					<h2>About this site</h2>
+					<section class="col-sm-3">
 	<h3>Contact us</h3>
 	<ul class="list-unstyled">
 		<li><a href="https://github.com/wet-boew/wet-boew/issues/new">Questions or comments?</a></li>
+	</ul>
+</section>
+<section class="col-sm-3">
+	<h3>About</h3>
+	<ul class="list-unstyled">
+		<li><a href="../../../index-en.html#about">About the Web Experience Toolkit</a></li>
+		<li><a href="http://www.tbs-sct.gc.ca/ws-nw/index-eng.asp">About the Web Standards</a></li>
 	</ul>
 </section>
 <section class="col-sm-3">
@@ -337,11 +676,12 @@
 	</ul>
 </section>
 
-			</nav>
+				</nav>
+			</div>
 		</footer>
 
 		<!--[if gte IE 9 | !IE ]><!-->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
 <script src="../../../js/wet-boew.js"></script>
 <!--<![endif]-->
 <!--[if lt IE 9]>

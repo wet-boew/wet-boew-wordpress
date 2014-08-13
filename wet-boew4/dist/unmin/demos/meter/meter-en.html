@@ -18,7 +18,7 @@
 </title>
 		<meta content="width=device-width, initial-scale=1" name="viewport" />
 		<!-- Meta data -->
-		<meta name="description" content="The &lt;meter&gt; element displays a scalar measurement in a known range." />
+		<meta name="description" content="Emulates meter element support for browsers that do not have support. The meter element displays a scalar measurement in a known range." />
 		<meta name="dcterms.title" content="Meter polyfill - Web Experience Toolkit" />
 <meta name="dcterms.creator" content="French name of the content author / Nom en français de l'auteur du contenu" />
 <meta name="dcterms.issued" title="W3CDTF" content="Date published (YYYY-MM-DD) / Date de publication (AAAA-MM-JJ)" />
@@ -36,7 +36,7 @@
 <link href="../../assets/favicon.ico" rel="shortcut icon" />
 <link rel="stylesheet" href="../../css/ie8-wet-boew.css" />
 <link rel="stylesheet" href="../../css/ie8-theme.css" />
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js"></script>
 <script src="../../js/ie8-wet-boew.js"></script>
 <![endif]-->
 
@@ -48,8 +48,8 @@
 				<a class="wb-sl" href="#wb-cont">Skip to main content</a>
 			</li>
 
-			<li class="wb-slc visible-md visible-lg">
-				<a class="wb-sl" href="#wb-info">Skip to site information</a>
+			<li class="wb-slc visible-sm visible-md visible-lg">
+				<a class="wb-sl" href="#wb-info">Skip to "About this site"</a>
 			</li>
 
 
@@ -80,9 +80,9 @@
 </ul>
 
 							<section class="wb-mb-links col-xs-12 visible-sm visible-xs" id="wb-glb-mn">
-								<h2>Menu</h2>
+								<h2>Search and menus</h2>
 								<ul class="pnl-btn list-inline text-right">
-	<li><a href="#mb-pnl" title="Menu" aria-controls="mb-pnl" class="overlay-lnk btn btn-xs btn-default" role="button"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Menu</span></span></a></li>
+	<li><a href="#mb-pnl" title="Search and menus" aria-controls="mb-pnl" class="overlay-lnk btn btn-sm btn-default" role="button"><span class="glyphicon glyphicon-search"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Search and menus</span></span></span></a></li>
 </ul>
 <div id="mb-pnl"></div>
 
@@ -125,13 +125,13 @@
 
 			<nav role="navigation" id="wb-sm" data-ajax-fetch="../../ajax/sitemenu-en.html" data-trgt="mb-pnl" class="wb-menu visible-md visible-lg" typeof="SiteNavigationElement">
 				<div class="container nvbar">
-	<h2>Site menu</h2>
+	<h2>Topics menu</h2>
     <div class="row">
         <ul class="list-inline menu">
 
 			<li><a href="../../index-en.html">WET project</a></li>
-			<li><a href="http://wet-boew.github.io/wet-boew/docs/gs-cd/impl-en.html">Implement WET</a></li>
-			<li><a href="http://wet-boew.github.io/wet-boew/docs/gs-cd/contrib-en.html">Contribute to WET</a></li>
+			<li><a href="http://wet-boew.github.io/wet-boew/docs/start-en.html#implement">Implement WET</a></li>
+			<li><a href="http://wet-boew.github.io/wet-boew/docs/start-en.html">Contribute to WET</a></li>
 
         </ul>
     </div>
@@ -169,13 +169,20 @@
 
 
 			
-<p>Description that is included in HTML5:</p>
-<blockquote cite="http://www.w3.org/TR/html5/forms.html#the-meter-element">
-The meter element represents a scalar measurement within a known range, or a fractional value; for example disk usage, the relevance of a query result, or the fraction of a voting population to have selected a particular candidate.<br /><br />
-This is also known as a gauge.<br /><br />
-The meter element should not be used to indicate progress (as in a progress bar). For that role, HTML provides a separate progress element.<br /><br />
-The meter element also does not represent a scalar value of arbitrary range — for example, it would be wrong to use this to report a weight, or height, unless there is a known maximum value.<br /><br />
-</blockquote>
+<section>
+	<h2>Purpose</h2>
+	<p>The HTML5 <code>meter</code> element displays a scalar measurement within a known range. Because some browsers do not support this functionality natively, this polyfill emulates the same functionality using generic HTML and WAI-ARIA.</p>
+
+	<section>
+		<h3>Description that is included in HTML5</h3>
+		<blockquote cite="http://www.w3.org/TR/html5/forms.html#the-meter-element">
+			<p>The <code>meter</code> element represents a scalar measurement within a known range, or a fractional value; for example disk usage, the relevance of a query result, or the fraction of a voting population to have selected a particular candidate.</p>
+			<p>This is also known as a gauge.</p>
+			<p>The <code>meter</code> element should not be used to indicate progress (as in a progress bar). For that role, HTML provides a separate <code>progress</code> element.</p>
+			<p>The <code>meter</code> element also does not represent a scalar value of arbitrary range — for example, it would be wrong to use this to report a weight, or height, unless there is a known maximum value.</p>
+		</blockquote>
+	</section>
+</section>
 
 <section>
 	<h2>Examples</h2>
@@ -227,12 +234,91 @@ The meter element also does not represent a scalar value of arbitrary range — 
 			</tr>
 		</tbody>
 	</table>
+
+	<details class="mrgn-bttm-md">
+		<summary>View code</summary>
+		<section>
+			<h3>HTML</h3>
+			<pre><code>&lt;table class=&quot;table table-striped&quot;&gt;
+	&lt;thead&gt;
+		&lt;tr&gt;
+			&lt;th scope=&quot;col&quot;&gt;Description&lt;/th&gt;
+			&lt;th scope=&quot;col&quot;&gt;Min&lt;/th&gt;
+			&lt;th scope=&quot;col&quot;&gt;Low&lt;/th&gt;
+			&lt;th scope=&quot;col&quot;&gt;Value&lt;/th&gt;
+			&lt;th scope=&quot;col&quot;&gt;Max&lt;/th&gt;
+			&lt;th scope=&quot;col&quot;&gt;High&lt;/th&gt;
+			&lt;th scope=&quot;col&quot;&gt;Result&lt;/th&gt;
+		&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+		&lt;tr&gt;
+			&lt;td&gt;Normal (75%)&lt;/td&gt;
+			&lt;td&gt;20&lt;/td&gt;
+			&lt;td&gt;n/a&lt;/td&gt;
+			&lt;td&gt;65&lt;/td&gt;
+			&lt;td&gt;80&lt;/td&gt;
+			&lt;td&gt;n/a&lt;/td&gt;
+			&lt;td&gt;&lt;meter min=&quot;20&quot; value=&quot;65&quot; max=&quot;80&quot;&gt;75% (normal)&lt;/meter&gt;&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td&gt;Too high (90%)&lt;/td&gt;
+			&lt;td&gt;0&lt;/td&gt;
+			&lt;td&gt;n/a&lt;/td&gt;
+			&lt;td&gt;90&lt;/td&gt;
+			&lt;td&gt;100&lt;/td&gt;
+			&lt;td&gt;80&lt;/td&gt;
+			&lt;td&gt;&lt;meter min=&quot;0&quot; value=&quot;90&quot; max=&quot;100&quot; high=&quot;80&quot;&gt;90% (too high)&lt;/meter&gt;&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td&gt;Too low (15%)&lt;/td&gt;
+			&lt;td&gt;100&lt;/td&gt;
+			&lt;td&gt;120&lt;/td&gt;
+			&lt;td&gt;115&lt;/td&gt;
+			&lt;td&gt;200&lt;/td&gt;
+			&lt;td&gt;180&lt;/td&gt;
+			&lt;td&gt;&lt;meter min=&quot;100&quot; low=&quot;120&quot; value=&quot;115&quot; max=&quot;200&quot; high=&quot;180&quot;&gt;15% (too low)&lt;/meter&gt;&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td colspan=&quot;3&quot;&gt;&lt;button class=&quot;btn btn-default&quot; id=&quot;decreaseMeter&quot;&gt;Decrease&lt;/button&gt;&lt;/td&gt;
+			&lt;td colspan=&quot;3&quot;&gt;&lt;button class=&quot;btn btn-default&quot; id=&quot;increaseMeter&quot;&gt;Increase&lt;/button&gt;&lt;/td&gt;
+			&lt;td&gt;&lt;meter id=&quot;updateTest&quot; min=&quot;100&quot; low=&quot;120&quot; value=&quot;150&quot; max=&quot;200&quot; high=&quot;180&quot;&gt;&lt;span class=&quot;wb-inv&quot;&gt;150&lt;/span&gt;&lt;/meter&gt;
+		&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+		</section>
+
+		<section>
+			<h3>JavaScript (demo only)</h3>
+			<pre><code>(function( $, wb ) {
+&quot;use strict&quot;;
+
+$( document ).on( &quot;click vclick&quot;, &quot;#increaseMeter, #decreaseMeter&quot;, function( event ) {
+	var $elm = $( &quot;#updateTest&quot; ),
+		increase = event.currentTarget.id === &quot;increaseMeter&quot;,
+		valuenow = parseInt( $elm.attr( &quot;value&quot; ), 10 ),
+		limit = parseInt( $elm.attr( increase ? &quot;max&quot; : &quot;min&quot; ), 10 ),
+		change = increase ? 1 : -1,
+		newValue = valuenow === limit ? 0 : valuenow + change;
+
+	$elm
+		.attr( &quot;value&quot;, newValue )
+		.find( &quot;span&quot; )
+			.text( newValue );
+
+	// Update the visuals
+	$elm.trigger( &quot;wb-update.wb-meter&quot; );
+});
+
+})( jQuery, wb );</code></pre>
+		</section>
+	</details>
 </section>
 
 
-			<dl id="wb-dtmd" property="dateModified">
+			<dl id="wb-dtmd">
 	<dt>Date modified:&#32;</dt>
-	<dd><time>2014-02-19</time></dd>
+	<dd><time property="dateModified">2014-02-19</time></dd>
 </dl>
 
 
@@ -243,23 +329,24 @@ The meter element also does not represent a scalar value of arbitrary range — 
 		<footer role="contentinfo" id="wb-info" class="visible-sm visible-md visible-lg wb-navcurr">
 			<div class="container">
 				<nav role="navigation">
-					<h2>Site information</h2>
+					<h2>About this site</h2>
 					<ul id="gc-tctr" class="list-inline">
 	<li><a rel="license" href="http://wet-boew.github.io/wet-boew/License-en.html">Terms and conditions</a></li>
-	<li><a href="http://www.tbs-sct.gc.ca/pd-dp/index-en.asp">Transparency</a></li>
+	<li><a href="http://www.tbs-sct.gc.ca/tbs-sct/common/trans-eng.asp">Transparency</a></li>
 </ul>
+
 					<div class="row">
 						<section class="col-sm-3">
+	<h3>Contact us</h3>
+	<ul class="list-unstyled">
+		<li><a href="https://github.com/wet-boew/wet-boew/issues/new">Questions or comments?</a></li>
+	</ul>
+</section>
+<section class="col-sm-3">
 	<h3>About</h3>
 	<ul class="list-unstyled">
 		<li><a href="http://wet-boew.github.io/v4.0-ci/index-en.html#about">About the Web Experience Toolkit</a></li>
 		<li><a href="http://www.tbs-sct.gc.ca/ws-nw/index-eng.asp">About the Web Standards</a></li>
-	</ul>
-</section>
-<section class="col-sm-3">
-	<h3>Contact us</h3>
-	<ul class="list-unstyled">
-		<li><a href="https://github.com/wet-boew/wet-boew/issues/new">Questions or comments?</a></li>
 	</ul>
 </section>
 <section class="col-sm-3">
@@ -286,11 +373,11 @@ The meter element also does not represent a scalar value of arbitrary range — 
 						
 <ul class="list-inline">
 
-	<li><a href="http://healthycanadians.gc.ca"><span>Health</span>healthycanadians.gc.ca</a></li>
-	<li><a href="http://travel.gc.ca"><span>Travel</span>travel.gc.ca</a></li>
-	<li><a href="http://www.servicecanada.gc.ca/eng/home.shtml"><span>Service Canada</span>servicecanada.gc.ca</a></li>
-	<li><a href="http://www.jobbank.gc.ca"><span>Jobs</span>jobbank.gc.ca</a></li>
-	<li><a href="http://actionplan.gc.ca/en"><span>Economy</span>actionplan.gc.ca</a></li>
+	<li><a href="http://healthycanadians.gc.ca"><span>Health</span></a></li>
+	<li><a href="http://travel.gc.ca"><span>Travel</span></a></li>
+	<li><a href="http://www.servicecanada.gc.ca/eng/home.shtml"><span>Service Canada</span></a></li>
+	<li><a href="http://www.jobbank.gc.ca"><span>Jobs</span></a></li>
+	<li><a href="http://actionplan.gc.ca/en"><span>Economy</span></a></li>
 
 	<li id="canada-ca"><a href="http://www.canada.ca/en/index.html">Canada.ca</a></li>
 </ul>
@@ -300,7 +387,7 @@ The meter element also does not represent a scalar value of arbitrary range — 
 		</footer>
 
 		<!--[if gte IE 9 | !IE ]><!-->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
 <script src="../../js/wet-boew.js"></script>
 <!--<![endif]-->
 <!--[if lt IE 9]>

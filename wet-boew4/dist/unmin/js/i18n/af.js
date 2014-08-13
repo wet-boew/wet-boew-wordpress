@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0 - 2014-03-31
+ * v4.0.4 - 2014-07-23
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -16,7 +16,7 @@
 /* main index */
 wb.i18nDict = {
 	"lang-code": "af",
-	"lang-nat": "Afrikaans",
+	"lang-native": "Afrikaans",
 	all: "Alle",
 	tphp: "Top van die bladsy",
 	load: "loading ...",
@@ -26,7 +26,7 @@ wb.i18nDict = {
 	matches: {
 		mixin: "[MIXIN] wedstryde"
 	},
-	curr: "(Huidige)",
+	current: "(Huidige)",
 	hide: "Steek",
 	err: "Fout",
 	colon: ":",
@@ -58,7 +58,7 @@ wb.i18nDict = {
 	"prv-l": "Vorige (links pyltjie sleutel)",
 	first: "Eerste",
 	last: "Laaste",
-	menu: "Menu",
+	"srch-menus": "Soek en spyskaarte",
 	email: "Stuur 'n e-pos aan",
 	"menu-close": "Maak die menu",
 	"overlay-close": "Maak die oortrek",
@@ -79,8 +79,7 @@ wb.i18nDict = {
 	pause: "Pause",
 	open: "Oop",
 	close: "Close",
-	rew: "Rewind",
-	ffwd: "Vinnig vorentoe",
+	volume: "Volume",
 	mute: {
 		on: "Stom",
 		off: "Ontdemp"
@@ -107,7 +106,7 @@ wb.i18nDict = {
 	"errs-fnd": " foute is gevind nie.",
 	"err-fnd": " fout gevind word.",
 	/* Date picker */
-	"date-show": "Kies 'n datum van 'n kalender vir die veld:",
+	"date-show": "Kies 'n datum van \\'n kalender vir die veld:",
 	"date-sel": "Gekies",
 	/* Calendar */
 	days: [
@@ -192,6 +191,19 @@ wb.i18nDict = {
 	"geo-attrttl": "GeoGratis - Kanada basis kaart (Engels of Frans)",
 	"geo-sel": "Kies",
 	"geo-lblsel": "Gaan die element te kies op die kaart",
+	"geo-locurl-geogratis": "http://geogratis.gc.ca/services/geolocation/en/locate",
+	"geo-loc-placeholder": "Dui die naam van die plek&#44; poskode&#44; adres (pos)&#44; die aantal NTS ...",
+	"geo-loc-label": "Ligging",
+	"geo-aoi-north": "Noord",
+	"geo-aoi-east": "Oos",
+	"geo-aoi-south": "Suid",
+	"geo-aoi-west": "Weste",
+	"geo-aoi-instructions": "Baken 'n gebied op die kaart of die onderstaande inligting in en kliek dan op die \"Teken\"-knoppie.",
+	"geo-aoi-btndraw": "Teken",
+	"geo-aoi-btnclear": "Verwyder",
+	"geo-geoloc-btn": "Zoom in jou huidige posisie",
+	"geo-geoloc-fail": "Plek gefaal het. Maak asseblief seker dat plek dienste word aangeskakel.",
+	"geo-geoloc-uncapable": "Lokalisering word nie ondersteun deur die leser.",
 	/* Disable/enable WET plugins and polyfills */
 	"wb-disable": "Basiese HTML-weergawe",
 	"wb-enable": "Standaard weergawe",

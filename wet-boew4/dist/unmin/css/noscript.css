@@ -2,85 +2,67 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0 - 2014-03-31
+ * v4.0.4 - 2014-07-23
  *
  *//*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  */
-
 /*
  Plugins
  */
-
 /*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  */
-
 /**
  * Mobile-friendly styles
  */
+.wb-tabs > details, .wb-tabs > .tabpanels > details {
+  display: block; }
+  .wb-tabs > details[open] > summary, .wb-tabs > .tabpanels > details[open] > summary {
+    display: block !important; }
 
-.wb-tabs [role="tablist"] {
-  display: none;
-}
-
-.wb-tabs [role="tabpanel"] {
-  display: block;
-  opacity: 1;
-}
-
-.wb-tabs > details > summary {
-  display: block !important;
-}
+.wb-tabs {
+  /* Only for backwards compatibility. Should be removed in v4.1. */ }
+  .wb-tabs [role="tablist"] {
+    display: none; }
+  .wb-tabs [role="tabpanel"] {
+    display: block;
+    opacity: 1; }
 
 /*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  */
-
 /*
  * Menu Sass (noscript)
  */
-
-#wb-srch,
-#wb-sm,
-#wb-sec,
-#wb-info {
-  display: block !important;
-}
+#wb-srch, #wb-sm, #wb-sec, #wb-info {
+  display: block !important; }
 
 #wb-glb-mn {
-  display: none !important;
-}
+  display: none !important; }
 
 /*
  Polyfills
  */
-
 /*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  */
-
 details > * {
-  display: block !important;
-}
+  display: block !important; }
 
 /*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  */
-
 .datepicker-format {
-  display: inline;
-}
+  display: inline; }
 
 .nojs-show {
-  display: block !important;
-}
+  display: block !important; }
 
 .nojs-hide {
-  display: none !important;
-}
+  display: none !important; }

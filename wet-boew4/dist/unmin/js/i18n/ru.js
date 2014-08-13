@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0 - 2014-03-31
+ * v4.0.4 - 2014-07-23
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -16,7 +16,7 @@
 /* main index */
 wb.i18nDict = {
 	"lang-code": "ru",
-	"lang-nat": "Русский язык",
+	"lang-native": "Русский язык",
 	all: "Все",
 	tphp: "Наверх",
 	load: "Загрузка ...",
@@ -26,7 +26,7 @@ wb.i18nDict = {
 	matches: {
 		mixin: "[MIXIN] cоответствий найдено"
 	},
-	curr: "(текущая)",
+	current: "(текущая)",
 	hide: "Скрыть",
 	err: "Ошибка",
 	colon: ":",
@@ -58,7 +58,7 @@ wb.i18nDict = {
 	"prv-l": "Предыдущий (клавишей стрелка влево)",
 	first: "Первое",
 	last: "Последнее",
-	menu: "Меню",
+	"srch-menus": "Поиск и меню",
 	email: "E-mail",
 	"menu-close": "Закройте меню",
 	"overlay-close": "Закройте вспомогательных линий",
@@ -79,8 +79,7 @@ wb.i18nDict = {
 	pause: "Пауза",
 	open: "Oткрыть",
 	close: "Закрыть",
-	rew: "Перемотка",
-	ffwd: "Ускоренная перемотка",
+	volume: "Громкость",
 	mute: {
 		on: "Отключение звука",
 		off: "Включить звук"
@@ -192,6 +191,19 @@ wb.i18nDict = {
 	"geo-attrttl": "GeoGratis - Канада базовой карты (на английском или французском языке)",
 	"geo-sel": "Выбирать",
 	"geo-lblsel": "Проверьте, чтобы выбрать элемент на карте",
+	"geo-locurl-geogratis": "http://geogratis.gc.ca/services/geolocation/en/locate",
+	"geo-loc-placeholder": "Укажите название места&#44; почтовый индекс&#44; адрес (почтовый)&#44; количество НТС ...",
+	"geo-loc-label": "Pасположение",
+	"geo-aoi-north": "К северу",
+	"geo-aoi-east": "Восток",
+	"geo-aoi-south": "Юг",
+	"geo-aoi-west": "Запад",
+	"geo-aoi-instructions": "Очертить площадь на карте или заполните форму и нажмите на кнопку \"Рисовать\".",
+	"geo-aoi-btndraw": "Рисовать",
+	"geo-aoi-btnclear": "Удалять",
+	"geo-geoloc-btn": "Увеличить к текущему местоположению",
+	"geo-geoloc-fail": "Расположение не удалось. Пожалуйста, убедитесь, что услуги определения местоположения включены.",
+	"geo-geoloc-uncapable": "Локализация не поддерживается браузером.",
 	/* Disable/enable WET plugins and polyfills */
 	"wb-disable": "Базовая версия HTML",
 	"wb-enable": "Стандартная версия",

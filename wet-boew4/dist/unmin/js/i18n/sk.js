@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0 - 2014-03-31
+ * v4.0.4 - 2014-07-23
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -16,7 +16,7 @@
 /* main index */
 wb.i18nDict = {
 	"lang-code": "sk",
-	"lang-nat": "Slovenčina",
+	"lang-native": "Slovenčina",
 	all: "Všetko",
 	tphp: "Na začiatok stránky",
 	load: "nakladanie ...",
@@ -26,7 +26,7 @@ wb.i18nDict = {
 	matches: {
 		mixin: "[MIXIN] zápasov nenájdený"
 	},
-	curr: "(aktuálne)",
+	current: "(aktuálne)",
 	hide: "Schovať",
 	err: "Chyba",
 	colon: ":",
@@ -58,7 +58,7 @@ wb.i18nDict = {
 	"prv-l": "Predchádzajúci (klávesy šípka doľava)",
 	first: "Prvé",
 	last: "Posledný",
-	menu: "Menu",
+	"srch-menus": "Vyhľadávanie a ponuky",
 	email: "E-mail",
 	"menu-close": "Zavrite menu",
 	"overlay-close": "Zavrite so šablónou",
@@ -79,8 +79,7 @@ wb.i18nDict = {
 	pause: "Pauza",
 	open: "Otvoriť",
 	close: "Zavrieť",
-	rew: "Pretočiť",
-	ffwd: "Rýchly posun vpred",
+	volume: "Hlasitosti",
 	mute: {
 		on: "Vypnutie",
 		off: "Nahlas"
@@ -192,6 +191,19 @@ wb.i18nDict = {
 	"geo-attrttl": "GeoGratis - Kanada základná mapa (len po anglicky alebo francúzsky)",
 	"geo-sel": "Vybrať",
 	"geo-lblsel": "Skontrolujte, vyberte prvok na mape",
+	"geo-locurl-geogratis": "http://geogratis.gc.ca/services/geolocation/en/locate",
+	"geo-loc-placeholder": "Uveďte názov miesta&#44; poštové smerovacie číslo&#44; adresu (poštové)&#44; počet NTS ...",
+	"geo-loc-label": "Umiestnenie",
+	"geo-aoi-north": "Sever",
+	"geo-aoi-east": "Východ",
+	"geo-aoi-south": "Na juh",
+	"geo-aoi-west": "Západ",
+	"geo-aoi-instructions": "Vymedziť oblasť na mape alebo zadajte údaje nižšie a potom kliknite na tlačidlo \"Kresliť\".",
+	"geo-aoi-btndraw": "Kresliť",
+	"geo-aoi-btnclear": "Odstrániť",
+	"geo-geoloc-btn": "Priblížiť sa k aktuálnej polohe",
+	"geo-geoloc-fail": "Lokalita zlyhalo. Uistite sa, že umiestnenie služby sú povolené.",
+	"geo-geoloc-uncapable": "Lokalizácia nie je podporovaná vo vašom prehliadači.",
 	/* Disable/enable WET plugins and polyfills */
 	"wb-disable": "Základné HTML verzia",
 	"wb-enable": "Štandardná verzia",

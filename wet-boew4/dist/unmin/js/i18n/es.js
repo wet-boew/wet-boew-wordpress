@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0 - 2014-03-31
+ * v4.0.4 - 2014-07-23
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -16,7 +16,7 @@
 /* main index */
 wb.i18nDict = {
 	"lang-code": "es",
-	"lang-nat": "Español",
+	"lang-native": "Español",
 	all: "Todo",
 	tphp: "Arriba",
 	load: "cargando …",
@@ -26,7 +26,7 @@ wb.i18nDict = {
 	matches: {
 		mixin: "[MIXIN] resultado(s) encontrados"
 	},
-	curr: "(actual)",
+	current: "(actual)",
 	hide: "Ocultar",
 	err: "Error",
 	colon: ":",
@@ -58,7 +58,7 @@ wb.i18nDict = {
 	"prv-l": "Anterior (tecla flecha izquierda)",
 	first: "Primero",
 	last: "Último",
-	menu: "Menú",
+	"srch-menus": "Búsqueda y menús",
 	email: "Correo electrónico",
 	"menu-close": "Cierre el menú",
 	"overlay-close": "Cierre la superposición",
@@ -79,8 +79,7 @@ wb.i18nDict = {
 	pause: "Pausa",
 	open: "Abrir",
 	close: "Cerrar",
-	rew: "Retroceder",
-	ffwd: "Avanzar",
+	volume: "Volumen",
 	mute: {
 		on: "Silencio",
 		off: "Habilitar sonido"
@@ -192,6 +191,19 @@ wb.i18nDict = {
 	"geo-attrttl": "GeoGratis - Canadá mapa base (Inglés o francés)",
 	"geo-sel": "Seleccionar",
 	"geo-lblsel": "Haga clic para seleccionar el elemento en el mapa",
+	"geo-locurl-geogratis": "http://geogratis.gc.ca/services/geolocation/en/locate",
+	"geo-loc-placeholder": "Indique el nombre de la localidad&#44; código postal&#44; dirección (postal)&#44; el número de NTS ...",
+	"geo-loc-label": "Ubicación",
+	"geo-aoi-north": "Norte",
+	"geo-aoi-east": "Este",
+	"geo-aoi-south": "Sur",
+	"geo-aoi-west": "Oeste",
+	"geo-aoi-instructions": "Delimitar una zona en el mapa o rellene el formulario a continuación&#44; haga clic en el botón \"Dibujar\".",
+	"geo-aoi-btndraw": "Dibujar",
+	"geo-aoi-btnclear": "Eliminar",
+	"geo-geoloc-btn": "Aumentar la ubicación actual",
+	"geo-geoloc-fail": "Ubicación falló. Por favor asegúrese de que los servicios de localización están habilitados.",
+	"geo-geoloc-uncapable": "Localización puede no ser compatible con su navegador.",
 	/* Disable/enable WET plugins and polyfills */
 	"wb-disable": "Versión HTML básica",
 	"wb-enable": "Versión estándar",

@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0 - 2014-03-31
+ * v4.0.4 - 2014-07-23
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -16,7 +16,7 @@
 /* main index */
 wb.i18nDict = {
 	"lang-code": "ko",
-	"lang-nat": "한국어",
+	"lang-native": "한국어",
 	all: "모든",
 	tphp: "맨 위로",
 	load: "로드 중 ...",
@@ -26,7 +26,7 @@ wb.i18nDict = {
 	matches: {
 		mixin: "[MIXIN] 일치하는 검색 결과가"
 	},
-	curr: "(현재)",
+	current: "(현재)",
 	hide: "숨기기",
 	err: "오류",
 	colon: ":",
@@ -58,7 +58,7 @@ wb.i18nDict = {
 	"prv-l": "이전 (왼쪽 화살표 키)",
 	first: "처음으로",
 	last: "마지막",
-	menu: "메뉴",
+	"srch-menus": "검색 및 메뉴",
 	email: "이메일",
 	"menu-close": "메뉴를 닫습니다",
 	"overlay-close": "오버레이에게 닫습니다",
@@ -79,8 +79,7 @@ wb.i18nDict = {
 	pause: "중지",
 	open: "열기",
 	close: "가까운",
-	rew: "되감기",
-	ffwd: "빠른 앞으로",
+	volume: "볼륨",
 	mute: {
 		on: "음소거",
 		off: "음소거 해제"
@@ -192,6 +191,19 @@ wb.i18nDict = {
 	"geo-attrttl": "GeoGratis - 캐나다 기본지도 (영어 나 불어 만)",
 	"geo-sel": "선택",
 	"geo-lblsel": "지도에서 요소를 선택하려면 선택",
+	"geo-locurl-geogratis": "http://geogratis.gc.ca/services/geolocation/en/locate",
+	"geo-loc-placeholder": "위치&#44; 우편 번호&#44; 주소 (우편), NTS의 개수의 이름을 나타내 ...",
+	"geo-loc-label": "위치",
+	"geo-aoi-north": "북쪽",
+	"geo-aoi-east": "동쪽",
+	"geo-aoi-south": "남쪽으로",
+	"geo-aoi-west": "서쪽",
+	"geo-aoi-instructions": "지도에서 지역을 묘사하거나 아래의 정보를 입력 한 후 \"무승부\"버튼을 클릭합니다.",
+	"geo-aoi-btndraw": "무승부",
+	"geo-aoi-btnclear": "제거",
+	"geo-geoloc-btn": "현재 위치로 확대",
+	"geo-geoloc-fail": "위치에 실패했습니다. 위치 서비스가 활성화되어 있는지 확인하십시오.",
+	"geo-geoloc-uncapable": "현지화는 브라우저에서 지원되지 않습니다.",
 	/* Disable/enable WET plugins and polyfills */
 	"wb-disable": "기본 HTML 버전",
 	"wb-enable": "표준 버전",

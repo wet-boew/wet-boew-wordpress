@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0 - 2014-03-31
+ * v4.0.4 - 2014-07-23
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -16,7 +16,7 @@
 /* main index */
 wb.i18nDict = {
 	"lang-code": "th",
-	"lang-nat": "ภาษาไทย",
+	"lang-native": "ภาษาไทย",
 	all: "ทั้งหมด",
 	tphp: "ด้านบนของหน้า",
 	load: "โหลด ...",
@@ -26,7 +26,7 @@ wb.i18nDict = {
 	matches: {
 		mixin: "[MIXIN] พบว่าตรงกัน"
 	},
-	curr: "(ปัจจุบัน)",
+	current: "(ปัจจุบัน)",
 	hide: "ปิดบัง",
 	err: "ความผิดพลาด",
 	colon: ":",
@@ -58,7 +58,7 @@ wb.i18nDict = {
 	"prv-l": "ก่อน (คีย์ลูกศรซ้าย)",
 	first: "แรก",
 	last: "ล่าสุด",
-	menu: "เมนู",
+	"srch-menus": "ค้นหาและเมนู",
 	email: "อีเมล์",
 	"menu-close": "ปิดเมนู",
 	"overlay-close": "ปิดการแสดงข้อมูล",
@@ -79,8 +79,7 @@ wb.i18nDict = {
 	pause: "หยุด",
 	open: "เปิด",
 	close: "ปิด",
-	rew: "ม้วนกลับ",
-	ffwd: "ข้างหน้าอย่างรวดเร็ว",
+	volume: "ปริมาณ",
 	mute: {
 		on: "ปิด",
 		off: "เปิดเสียง"
@@ -192,6 +191,19 @@ wb.i18nDict = {
 	"geo-attrttl": "GeoGratis-แคนาดาฐานแผนที่ (ภาษาอังกฤษหรือภาษาฝรั่งเศสเท่านั้น)",
 	"geo-sel": "เลือก",
 	"geo-lblsel": "ตรวจสอบเพื่อเลือกองค์ประกอบบนแผนที่",
+	"geo-locurl-geogratis": "http://geogratis.gc.ca/services/geolocation/en/locate",
+	"geo-loc-placeholder": "ระบุชื่อสถานที่&#44; รหัสไปรษณีย์ที่อยู่ (ไปรษณีย์) จำนวน NTS ...",
+	"geo-loc-label": "ตำแหน่งที่ตั้ง",
+	"geo-aoi-north": "เหนือ",
+	"geo-aoi-east": "ทางทิศตะวันออก",
+	"geo-aoi-south": "ใต้",
+	"geo-aoi-west": "ทิศตะวันตก",
+	"geo-aoi-instructions": "กำหนดพื้นที่บนแผนที่หรือกรอกรายละเอียดด้านล่างนี้แล้วคลิกที่ \"วาด\" ปุ่ม",
+	"geo-aoi-btndraw": "วาด",
+	"geo-aoi-btnclear": "เอาออก",
+	"geo-geoloc-btn": "ขยายไปยังสถานที่ปัจจุบัน",
+	"geo-geoloc-fail": "ที่ล้มเหลว โปรดตรวจสอบว่าบริการสถานที่มีการใช้งาน",
+	"geo-geoloc-uncapable": "ท้องถิ่นไม่ได้รับการสนับสนุนโดยเบราว์เซอร์ของคุณ",
 	/* Disable/enable WET plugins and polyfills */
 	"wb-disable": "เวอร์ชันพื้นฐานของ HTM​​L",
 	"wb-enable": "รุ่นมาตรฐาน",

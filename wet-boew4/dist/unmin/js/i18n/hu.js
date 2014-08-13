@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0 - 2014-03-31
+ * v4.0.4 - 2014-07-23
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -16,7 +16,7 @@
 /* main index */
 wb.i18nDict = {
 	"lang-code": "hu",
-	"lang-nat": "Magyar",
+	"lang-native": "Magyar",
 	all: "Mind",
 	tphp: "Oldal teteje",
 	load: "betöltése ...",
@@ -26,7 +26,7 @@ wb.i18nDict = {
 	matches: {
 		mixin: "[MIXIN] találat"
 	},
-	curr: "(jelenlegi)",
+	current: "(jelenlegi)",
 	hide: "Elrejtés",
 	err: "Hiba",
 	colon: ":",
@@ -58,7 +58,7 @@ wb.i18nDict = {
 	"prv-l": "Előző (bal nyíl gomb)",
 	first: "Első",
 	last: "Utolsó",
-	menu: "Menü",
+	"srch-menus": "Keresés és menük",
 	email: "Email",
 	"menu-close": "Zárja be a menüt",
 	"overlay-close": "Zárja be az overlay",
@@ -79,8 +79,7 @@ wb.i18nDict = {
 	pause: "Pillanatmegállító",
 	open: "Nyitva",
 	close: "Bezárás",
-	rew: "Vissza",
-	ffwd: "Előre",
+	volume: "Hangerő",
 	mute: {
 		on: "Lenémítás",
 		off: "Hang bekapcsolása"
@@ -192,6 +191,19 @@ wb.i18nDict = {
 	"geo-attrttl": "GeoGratis - Kanada alaptérkép (angol vagy francia nyelven esetén)",
 	"geo-sel": "Választ",
 	"geo-lblsel": "Ellenőrizze, hogy jelölje ki az elemet a térképen",
+	"geo-locurl-geogratis": "http://geogratis.gc.ca/services/geolocation/en/locate",
+	"geo-loc-placeholder": "Adja meg a helység nevét&#44; irányítószám&#44; cím (postai)&#44; a száma NTS ...",
+	"geo-loc-label": "Elhelyezkedés",
+	"geo-aoi-north": "Észak",
+	"geo-aoi-east": "Kelet",
+	"geo-aoi-south": "Dél",
+	"geo-aoi-west": "Nyugat",
+	"geo-aoi-instructions": "Ismertesse a terület a térképen&#44; vagy írja be az alábbi adatokat&#44; majd kattintson a \"Rajzol\" gombra.",
+	"geo-aoi-btndraw": "Rajzol",
+	"geo-aoi-btnclear": "Eltávolít",
+	"geo-geoloc-btn": "Nagyítás az aktuális helyre",
+	"geo-geoloc-fail": "Hely sikerült. Ügyeljen arra, hogy a helymeghatározó szolgáltatások engedélyezve vannak.",
+	"geo-geoloc-uncapable": "A honosítás nem támogatja a böngészője.",
 	/* Disable/enable WET plugins and polyfills */
 	"wb-disable": "Egyszerű HTML verzió",
 	"wb-enable": "Standard verzió",

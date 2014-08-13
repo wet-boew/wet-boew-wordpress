@@ -36,7 +36,7 @@
 <link href="../../assets/favicon.ico" rel="shortcut icon" />
 <link rel="stylesheet" href="../../css/ie8-wet-boew.css" />
 <link rel="stylesheet" href="../../css/ie8-theme.css" />
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js"></script>
 <script src="../../js/ie8-wet-boew.js"></script>
 <![endif]-->
 
@@ -48,8 +48,8 @@
 				<a class="wb-sl" href="#wb-cont">Passer au contenu principal</a>
 			</li>
 
-			<li class="wb-slc visible-md visible-lg">
-				<a class="wb-sl" href="#wb-info">Passer aux informations sur le site</a>
+			<li class="wb-slc visible-sm visible-md visible-lg">
+				<a class="wb-sl" href="#wb-info">Passer à «&#160;À propos de ce site&#160;»</a>
 			</li>
 
 
@@ -80,9 +80,9 @@
 </ul>
 
 							<section class="wb-mb-links col-xs-12 visible-sm visible-xs" id="wb-glb-mn">
-								<h2>Menu</h2>
+								<h2>Recherche et menus</h2>
 								<ul class="pnl-btn list-inline text-right">
-	<li><a href="#mb-pnl" title="Menu" aria-controls="mb-pnl" class="overlay-lnk btn btn-xs btn-default" role="button"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Menu</span></span></a></li>
+	<li><a href="#mb-pnl" title="Recherche et menus" aria-controls="mb-pnl" class="overlay-lnk btn btn-sm btn-default" role="button"><span class="glyphicon glyphicon-search"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Recherche et menus</span></span></span></a></li>
 </ul>
 <div id="mb-pnl"></div>
 
@@ -125,13 +125,13 @@
 
 			<nav role="navigation" id="wb-sm" data-ajax-fetch="../../ajax/sitemenu-fr.html" data-trgt="mb-pnl" class="wb-menu visible-md visible-lg" typeof="SiteNavigationElement">
 				<div class="container nvbar">
-	<h2>Menu du site</h2>
+	<h2>Menu des sujets</h2>
     <div class="row">
         <ul class="list-inline menu">
 
 			<li><a href="../../index-fr.html">Projet de la BOEW</a></li>
-			<li><a href="http://wet-boew.github.io/wet-boew/docs/gs-cd/impl-fr.html">Mise en œuvre de la BOEW</a></li>
-			<li><a href="http://wet-boew.github.io/wet-boew/docs/gs-cd/contrib-fr.html">Contribuer à la BOEW</a></li>
+			<li><a href="http://wet-boew.github.io/wet-boew/docs/start-fr.html#implement">Mise en œuvre de la BOEW</a></li>
+			<li><a href="http://wet-boew.github.io/wet-boew/docs/start-fr.html">Contribuer à la BOEW</a></li>
 
         </ul>
     </div>
@@ -169,6 +169,8 @@
 
 
 			
+<span class="wb-prettify all-pre"></span>
+
 <section>
 	<h2>Intention</h2>
 	<p>Créer des panneaux de contenu de position fixe qui sont conditionnellement affichées quand la page est défiler et redimensionner.</p>
@@ -180,6 +182,21 @@
 	<section class="wb-inview bar-demo" data-inview="barre-bas">
 		<h3 class="no-gutter">Section avec une barre en bas conditionnelle</h3>
 		<p>Une barre sera affichée en bas lors de cette section est <strong>partiellement hors</strong> de la clôture.</p>
+		<p><strong>L'état d'affichage&#160;:</strong> <code lang="en"></code></p>
+		<details>
+			<summary>Visualiser le code</summary>
+			<pre><code>&lt;section class=&quot;wb-inview bar-demo&quot; data-inview=&quot;barre-bas&quot;&gt;
+	&lt;h3 class=&quot;no-gutter&quot;&gt;Section avec une barre en bas conditionnelle&lt;/h3&gt;
+	...
+&lt;/section&gt;
+
+&lt;section id=&quot;barre-bas&quot; class=&quot;wb-overlay modal-content overlay-def wb-bar-b&quot;&gt;
+	&lt;header&gt;
+		&lt;h2 class=&quot;modal-title&quot;&gt;Barre en bas&lt;/h2&gt;
+	&lt;/header&gt;
+	...
+&lt;/section&gt;</code></pre>
+		</details>
 	</section>
 
 	<p>Exemple de texte différent. Exemple de texte différent. Exemple de texte différent. Exemple de texte différent. Exemple de texte différent. Exemple de texte différent. Exemple de texte différent. Exemple de texte différent.</p>
@@ -187,6 +204,74 @@
 	<section class="wb-inview show-none bar-demo" data-inview="barre-haut">
 		<h3 class="no-gutter">Section avec une barre en haut conditionnelle</h3>
 		<p>Une barre sera affichée en haut lors de cette section est <strong>entièrement hors</strong> de la clôture (<code>class="show-none"</code>).</p>
+		<p><strong>L'état d'affichage&#160;:</strong> <code lang="en"></code></p>
+		<details>
+			<summary>Visualiser le code</summary>
+			<pre><code>&lt;section class=&quot;wb-inview show-none bar-demo&quot; data-inview=&quot;barre-haut&quot;&gt;
+	&lt;h3 class=&quot;no-gutter&quot;&gt;Section avec une barre en haut conditionnelle&lt;/h3&gt;
+	...
+&lt;/section&gt;
+
+&lt;section id=&quot;barre-haut&quot; class=&quot;wb-overlay modal-content overlay-def wb-bar-t&quot;&gt;
+	&lt;header&gt;
+		&lt;h2 class=&quot;modal-title&quot;&gt;Barre en haut&lt;/h2&gt;
+	&lt;/header&gt;
+	...
+&lt;/section&gt;</code></pre>
+		</details>
+	</section>
+
+	<section class="wb-inview bar-demo" data-inview="fade-effect">
+		<h3 class="no-gutter">Section qui cause la section suivante à apparaître ou disparaître</h3>
+		<p>La section suivante va apparaître quand cette section est <strong>partiellement hors</strong> de la clôture.</p>
+		<p><strong>L'état d'affichage&#160;:</strong> <code lang="en"></code></p>
+		<details>
+			<summary>Visualiser le code</summary>
+			<pre><code>&lt;section class=&quot;wb-inview bar-demo&quot; data-inview=&quot;fade-effect&quot;&gt;
+	&lt;h3 class=&quot;no-gutter&quot;&gt;Section qui cause la section suivante à apparaître ou disparaître&lt;/h3&gt;
+	...
+&lt;/section&gt;
+
+&lt;section id=&quot;fade-effect&quot; class=&quot;fade bar-demo&quot;&gt;
+	&lt;h3 class=&quot;no-gutter&quot;&gt;Section va apparaître / disparaître&lt;/h3&gt;
+	...
+&lt;/section&gt;</code></pre>
+		</details>
+	</section>
+
+	<section id="fade-effect" class="fade bar-demo">
+		<h3 class="no-gutter">Section qui va apparaître / disparaître</h3>
+		<p>Cette section apparaît et disparaît en fonction de l'état de la section précédente de vue.</p>
+	</section>
+
+	<section class="wb-inview bar-demo">
+		<h3 class="no-gutter">Événements de changement de l'état d'affichage</h3>
+		<p>L'état d'affichage de cette section est identifié ci-dessous via JavaScript.</p>
+		<p><strong>L'état d'affichage&#160;:</strong> <code class="view-state-status"></code></p>
+		<details>
+			<summary>Visualiser le code</summary>
+			<section>
+				<h4>HTML</h4>
+				<pre><code>&lt;section class=&quot;wb-inview bar-demo&quot;&gt;
+	&lt;h3 class=&quot;no-gutter&quot;&gt;Événements de changement de l'état d'affichage&lt;/h3&gt;
+	...
+&lt;/section&gt;</code></pre>
+			</section>
+
+			<section>
+				<h4>JavaScript</h4>
+				<pre><code>(function( $, wb ) {
+&quot;use strict&quot;;
+
+wb.doc.on( &quot;all.wb-inview partial.wb-inview none.wb-inview&quot;, function( event) {
+	if ( event.namespace === &quot;wb-inview&quot; ) {
+		$( event.target ).find( &quot;.view-state-status&quot; ).html( event.type );
+	}
+});
+
+})( jQuery, wb );</code></pre>
+			</section>
+		</details>
 	</section>
 
 	<p>Exemple de texte différent. Exemple de texte différent. Exemple de texte différent. Exemple de texte différent. Exemple de texte différent. Exemple de texte différent. Exemple de texte différent. Exemple de texte différent.</p>
@@ -246,9 +331,9 @@
 </section>
 
 
-			<dl id="wb-dtmd" property="dateModified">
+			<dl id="wb-dtmd">
 	<dt>Date de modification&#160;:&#32;</dt>
-	<dd><time>2014-02-19</time></dd>
+	<dd><time property="dateModified">2014-07-21</time></dd>
 </dl>
 
 
@@ -259,23 +344,24 @@
 		<footer role="contentinfo" id="wb-info" class="visible-sm visible-md visible-lg wb-navcurr">
 			<div class="container">
 				<nav role="navigation">
-					<h2>Informations sur le site</h2>
+					<h2>À propos de ce site</h2>
 					<ul id="gc-tctr" class="list-inline">
 	<li><a rel="license" href="http://wet-boew.github.io/wet-boew/License-fr.html">Avis</a></li>
-	<li><a href="http://www.tbs-sct.gc.ca/pd-dp/index-fr.asp">Transparence</a></li>
+	<li><a href="http://www.tbs-sct.gc.ca/tbs-sct/common/trans-fra.asp">Transparence</a></li>
 </ul>
+
 					<div class="row">
 						<section class="col-sm-3">
+	<h3>Contactez-nous</h3>
+	<ul class="list-unstyled">
+		<li><a href="https://github.com/wet-boew/wet-boew/issues/new">Questions ou commentaires?</a></li>
+	</ul>
+</section>
+<section class="col-sm-3">
 	<h3>À propos</h3>
 	<ul class="list-unstyled">
 		<li><a href="http://wet-boew.github.io/v4.0-ci/index-fr.html#apropos">À propos de la Boîte à outils de l’expérience Web</a></li>
 		<li><a href="http://www.tbs-sct.gc.ca/ws-nw/index-fra.asp">À propos des normes Web</a></li>
-	</ul>
-</section>
-<section class="col-sm-3">
-	<h3>Contactez-nous</h3>
-	<ul class="list-unstyled">
-		<li><a href="https://github.com/wet-boew/wet-boew/issues/new">Questions ou commentaires?</a></li>
 	</ul>
 </section>
 <section class="col-sm-3">
@@ -302,11 +388,11 @@
 						
 <ul class="list-inline">
 
-	<li><a href="http://canadiensensante.gc.ca"><span>Santé</span>canadiensensante.gc.ca</a></li>
-	<li><a href="http://voyage.gc.ca"><span>Voyage</span>voyage.gc.ca</a></li>
-	<li><a href="http://www.servicecanada.gc.ca/fra/accueil.shtml"><span>Service Canada</span>servicecanada.gc.ca</a></li>
-	<li><a href="http://www.guichetemplois.gc.ca"><span>Emplois</span>guichetemplois.gc.ca</a></li>
-	<li><a href="http://plandaction.gc.ca/fr"><span>Économie</span>plandaction.gc.ca</a></li>
+	<li><a href="http://canadiensensante.gc.ca"><span>Santé</span></a></li>
+	<li><a href="http://voyage.gc.ca"><span>Voyage</span></a></li>
+	<li><a href="http://www.servicecanada.gc.ca/fra/accueil.shtml"><span>Service Canada</span></a></li>
+	<li><a href="http://www.guichetemplois.gc.ca"><span>Emplois</span></a></li>
+	<li><a href="http://plandaction.gc.ca/fr"><span>Économie</span></a></li>
 
 	<li id="canada-ca"><a href="http://www.canada.ca/fr/index.html">Canada.ca</a></li>
 </ul>
@@ -316,13 +402,13 @@
 		</footer>
 
 		<!--[if gte IE 9 | !IE ]><!-->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
 <script src="../../js/wet-boew.js"></script>
 <!--<![endif]-->
 <!--[if lt IE 9]>
 <script src="../../js/ie8-wet-boew2.js"></script>
 <![endif]-->
-
+<script src="demo/data-inview.js"></script>
 
 	</body>
 </html>

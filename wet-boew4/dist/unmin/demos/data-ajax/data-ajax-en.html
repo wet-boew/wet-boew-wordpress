@@ -36,7 +36,7 @@
 <link href="../../assets/favicon.ico" rel="shortcut icon" />
 <link rel="stylesheet" href="../../css/ie8-wet-boew.css" />
 <link rel="stylesheet" href="../../css/ie8-theme.css" />
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js"></script>
 <script src="../../js/ie8-wet-boew.js"></script>
 <![endif]-->
 
@@ -48,8 +48,8 @@
 				<a class="wb-sl" href="#wb-cont">Skip to main content</a>
 			</li>
 
-			<li class="wb-slc visible-md visible-lg">
-				<a class="wb-sl" href="#wb-info">Skip to site information</a>
+			<li class="wb-slc visible-sm visible-md visible-lg">
+				<a class="wb-sl" href="#wb-info">Skip to "About this site"</a>
 			</li>
 
 
@@ -80,9 +80,9 @@
 </ul>
 
 							<section class="wb-mb-links col-xs-12 visible-sm visible-xs" id="wb-glb-mn">
-								<h2>Menu</h2>
+								<h2>Search and menus</h2>
 								<ul class="pnl-btn list-inline text-right">
-	<li><a href="#mb-pnl" title="Menu" aria-controls="mb-pnl" class="overlay-lnk btn btn-xs btn-default" role="button"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Menu</span></span></a></li>
+	<li><a href="#mb-pnl" title="Search and menus" aria-controls="mb-pnl" class="overlay-lnk btn btn-sm btn-default" role="button"><span class="glyphicon glyphicon-search"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Search and menus</span></span></span></a></li>
 </ul>
 <div id="mb-pnl"></div>
 
@@ -125,13 +125,13 @@
 
 			<nav role="navigation" id="wb-sm" data-ajax-fetch="../../ajax/sitemenu-en.html" data-trgt="mb-pnl" class="wb-menu visible-md visible-lg" typeof="SiteNavigationElement">
 				<div class="container nvbar">
-	<h2>Site menu</h2>
+	<h2>Topics menu</h2>
     <div class="row">
         <ul class="list-inline menu">
 
 			<li><a href="../../index-en.html">WET project</a></li>
-			<li><a href="http://wet-boew.github.io/wet-boew/docs/gs-cd/impl-en.html">Implement WET</a></li>
-			<li><a href="http://wet-boew.github.io/wet-boew/docs/gs-cd/contrib-en.html">Contribute to WET</a></li>
+			<li><a href="http://wet-boew.github.io/wet-boew/docs/start-en.html#implement">Implement WET</a></li>
+			<li><a href="http://wet-boew.github.io/wet-boew/docs/start-en.html">Contribute to WET</a></li>
 
         </ul>
     </div>
@@ -185,7 +185,9 @@
 		</section>
 		<details>
 			<summary>View code</summary>
-			<pre><code>&lt;section data-ajax-after="ajax/data-ajax-extra-en.html" class="original"&gt;
+			<section>
+				<h4>In-page HTML</h4>
+				<pre><code>&lt;section data-ajax-after="ajax/data-ajax-extra-en.html" class="original"&gt;
 	&lt;h4&gt;Hello World&lt;/h4&gt;
 	&lt;p&gt;Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text.&lt;/p&gt;
 &lt;/section&gt;
@@ -193,6 +195,23 @@
 	&lt;h4&gt;Hello World - Part 2&lt;/h4&gt;
 	&lt;p&gt;Different example text. Different example text. Different example text. Different example text. Different example text. Different example text.&lt;/p&gt;
 &lt;/section&gt;</code></pre>
+			</section>
+
+			<section>
+				<h4>data-ajax-extra-en.html</h4>
+				<pre><code>&lt;section class=&quot;ajaxed-in&quot;&gt;
+	&lt;h4&gt;J'ai été affiché via Ajax&lt;/h4&gt;
+	&lt;p&gt;J'ai été affiché via Ajax. J'ai été affiché via Ajax. J'ai été affiché via Ajax. J'ai été affiché via Ajax. J'ai été affiché via Ajax. J'ai été affiché via Ajax. J'ai été affiché via Ajax.&lt;/p&gt;
+&lt;/section&gt;</code></pre>
+			</section>
+
+			<section>
+				<h4>data-ajax-extra-2-en.html</h4>
+				<pre><code>&lt;section class=&quot;ajaxed-in&quot;&gt;
+	&lt;h4&gt;I was ajaxed in - Part 2&lt;/h4&gt;
+	&lt;p&gt;I was ajaxed in - Part 2. I was ajaxed in - Part 2. I was ajaxed in - Part 2. I was ajaxed in - Part 2. I was ajaxed in - Part 2. I was ajaxed in - Part 2.&lt;/p&gt;
+&lt;/section&gt;</code></pre>
+			</section>
 		</details>
 	</section>
 </section>
@@ -209,12 +228,31 @@
 		</div>
 		<details>
 			<summary>View code</summary>
-			<pre><code>&lt;div data-ajax-append="ajax/data-ajax-extra-en.html" class="original"&gt;
+			<section>
+				<h4>In-page HTML</h4>
+				<pre><code>&lt;div data-ajax-append="ajax/data-ajax-extra-en.html" class="original"&gt;
 	&lt;p&gt;Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div data-ajax-append="ajax/data-ajax-extra-2-en.html" class="original"&gt;
 	&lt;p&gt;Different example text. Different example text. Different example text. Different example text. Different example text. Different example text.&lt;/p&gt;
 &lt;/div&gt;</code></pre>
+			</section>
+
+			<section>
+				<h4>data-ajax-extra-en.html</h4>
+				<pre><code>&lt;section class=&quot;ajaxed-in&quot;&gt;
+	&lt;h4&gt;I was ajaxed in&lt;/h4&gt;
+	&lt;p&gt;I was ajaxed in. I was ajaxed in. I was ajaxed in. I was ajaxed in. I was ajaxed in. I was ajaxed in. I was ajaxed in.&lt;/p&gt;
+&lt;/section&gt;</code></pre>
+			</section>
+
+			<section>
+				<h4>data-ajax-extra-2-en.html</h4>
+				<pre><code>&lt;section class=&quot;ajaxed-in&quot;&gt;
+	&lt;h4&gt;I was ajaxed in - Part 2&lt;/h4&gt;
+	&lt;p&gt;I was ajaxed in - Part 2. I was ajaxed in - Part 2. I was ajaxed in - Part 2. I was ajaxed in - Part 2. I was ajaxed in - Part 2. I was ajaxed in - Part 2.&lt;/p&gt;
+&lt;/section&gt;</code></pre>
+			</section>
 		</details>
 	</section>
 </section>
@@ -233,7 +271,9 @@
 		</section>
 		<details>
 			<summary>View code</summary>
-			<pre><code>&lt;section data-ajax-before="ajax/data-ajax-extra-en.html" class="original"&gt;
+			<section>
+				<h4>In-page HTML</h4>
+				<pre><code>&lt;section data-ajax-before="ajax/data-ajax-extra-en.html" class="original"&gt;
 	&lt;h4&gt;Hello World&lt;/h4&gt;
 	&lt;p&gt;Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text.&lt;/p&gt;
 &lt;/section&gt;
@@ -241,6 +281,23 @@
 	&lt;h4&gt;Hello World - Part 2&lt;/h4&gt;
 	&lt;p&gt;Different example text. Different example text. Different example text. Different example text. Different example text. Different example text.&lt;/p&gt;
 &lt;/section&gt;</code></pre>
+			</section>
+
+			<section>
+				<h4>data-ajax-extra-en.html</h4>
+				<pre><code>&lt;section class=&quot;ajaxed-in&quot;&gt;
+	&lt;h4&gt;I was ajaxed in&lt;/h4&gt;
+	&lt;p&gt;I was ajaxed in. I was ajaxed in. I was ajaxed in. I was ajaxed in. I was ajaxed in. I was ajaxed in. I was ajaxed in.&lt;/p&gt;
+&lt;/section&gt;</code></pre>
+			</section>
+
+			<section>
+				<h4>data-ajax-extra-2-en.html</h4>
+				<pre><code>&lt;section class=&quot;ajaxed-in&quot;&gt;
+	&lt;h4&gt;I was ajaxed in - Part 2&lt;/h4&gt;
+	&lt;p&gt;I was ajaxed in - Part 2. I was ajaxed in - Part 2. I was ajaxed in - Part 2. I was ajaxed in - Part 2. I was ajaxed in - Part 2. I was ajaxed in - Part 2.&lt;/p&gt;
+&lt;/section&gt;</code></pre>
+			</section>
 		</details>
 	</section>
 </section>
@@ -257,12 +314,31 @@
 		</div>
 		<details>
 			<summary>View code</summary>
-			<pre><code>&lt;div data-ajax-prepend="ajax/data-ajax-extra-en.html" class="original"&gt;
+			<section>
+				<h4>In-page HTML</h4>
+				<pre><code>&lt;div data-ajax-prepend="ajax/data-ajax-extra-en.html" class="original"&gt;
 	&lt;p&gt;Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div data-ajax-prepend="ajax/data-ajax-extra-2-en.html" class="original"&gt;
 	&lt;p&gt;Different example text. Different example text. Different example text. Different example text. Different example text. Different example text.&lt;/p&gt;
 &lt;/div&gt;</code></pre>
+			</section>
+
+			<section>
+				<h4>data-ajax-extra-en.html</h4>
+				<pre><code>&lt;section class=&quot;ajaxed-in&quot;&gt;
+	&lt;h4&gt;I was ajaxed in&lt;/h4&gt;
+	&lt;p&gt;I was ajaxed in. I was ajaxed in. I was ajaxed in. I was ajaxed in. I was ajaxed in. I was ajaxed in. I was ajaxed in.&lt;/p&gt;
+&lt;/section&gt;</code></pre>
+			</section>
+
+			<section>
+				<h4>data-ajax-extra-2-en.html</h4>
+				<pre><code>&lt;section class=&quot;ajaxed-in&quot;&gt;
+	&lt;h4&gt;I was ajaxed in - Part 2&lt;/h4&gt;
+	&lt;p&gt;I was ajaxed in - Part 2. I was ajaxed in - Part 2. I was ajaxed in - Part 2. I was ajaxed in - Part 2. I was ajaxed in - Part 2. I was ajaxed in - Part 2.&lt;/p&gt;
+&lt;/section&gt;</code></pre>
+			</section>
 		</details>
 	</section>
 </section>
@@ -285,7 +361,9 @@
 		</div>
 		<details>
 			<summary>View code</summary>
-			<pre><code>&lt;div data-ajax-replace="ajax/data-ajax-extra-en.html" class="original"&gt;
+			<section>
+				<h4>In-page HTML</h4>
+				<pre><code>&lt;div data-ajax-replace="ajax/data-ajax-extra-en.html" class="original"&gt;
 	&lt;section&gt;
 		&lt;h4&gt;Hello World&lt;/h4&gt;
 		&lt;p&gt;Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text.&lt;/p&gt;
@@ -297,14 +375,31 @@
 		&lt;p&gt;Different example text. Different example text. Different example text. Different example text. Different example text. Different example text.&lt;/p&gt;
 	&lt;/section&gt;
 &lt;/div&gt;</code></pre>
+			</section>
+
+			<section>
+				<h4>data-ajax-extra-en.html</h4>
+				<pre><code>&lt;section class=&quot;ajaxed-in&quot;&gt;
+	&lt;h4&gt;I was ajaxed in&lt;/h4&gt;
+	&lt;p&gt;I was ajaxed in. I was ajaxed in. I was ajaxed in. I was ajaxed in. I was ajaxed in. I was ajaxed in. I was ajaxed in.&lt;/p&gt;
+&lt;/section&gt;</code></pre>
+			</section>
+
+			<section>
+				<h4>data-ajax-extra-2-en.html</h4>
+				<pre><code>&lt;section class=&quot;ajaxed-in&quot;&gt;
+	&lt;h4&gt;I was ajaxed in - Part 2&lt;/h4&gt;
+	&lt;p&gt;I was ajaxed in - Part 2. I was ajaxed in - Part 2. I was ajaxed in - Part 2. I was ajaxed in - Part 2. I was ajaxed in - Part 2. I was ajaxed in - Part 2.&lt;/p&gt;
+&lt;/section&gt;</code></pre>
+			</section>
 		</details>
 	</section>
 </section>
 
 
-			<dl id="wb-dtmd" property="dateModified">
+			<dl id="wb-dtmd">
 	<dt>Date modified:&#32;</dt>
-	<dd><time>2014-02-19</time></dd>
+	<dd><time property="dateModified">2014-07-19</time></dd>
 </dl>
 
 
@@ -315,23 +410,24 @@
 		<footer role="contentinfo" id="wb-info" class="visible-sm visible-md visible-lg wb-navcurr">
 			<div class="container">
 				<nav role="navigation">
-					<h2>Site information</h2>
+					<h2>About this site</h2>
 					<ul id="gc-tctr" class="list-inline">
 	<li><a rel="license" href="http://wet-boew.github.io/wet-boew/License-en.html">Terms and conditions</a></li>
-	<li><a href="http://www.tbs-sct.gc.ca/pd-dp/index-en.asp">Transparency</a></li>
+	<li><a href="http://www.tbs-sct.gc.ca/tbs-sct/common/trans-eng.asp">Transparency</a></li>
 </ul>
+
 					<div class="row">
 						<section class="col-sm-3">
+	<h3>Contact us</h3>
+	<ul class="list-unstyled">
+		<li><a href="https://github.com/wet-boew/wet-boew/issues/new">Questions or comments?</a></li>
+	</ul>
+</section>
+<section class="col-sm-3">
 	<h3>About</h3>
 	<ul class="list-unstyled">
 		<li><a href="http://wet-boew.github.io/v4.0-ci/index-en.html#about">About the Web Experience Toolkit</a></li>
 		<li><a href="http://www.tbs-sct.gc.ca/ws-nw/index-eng.asp">About the Web Standards</a></li>
-	</ul>
-</section>
-<section class="col-sm-3">
-	<h3>Contact us</h3>
-	<ul class="list-unstyled">
-		<li><a href="https://github.com/wet-boew/wet-boew/issues/new">Questions or comments?</a></li>
 	</ul>
 </section>
 <section class="col-sm-3">
@@ -358,11 +454,11 @@
 						
 <ul class="list-inline">
 
-	<li><a href="http://healthycanadians.gc.ca"><span>Health</span>healthycanadians.gc.ca</a></li>
-	<li><a href="http://travel.gc.ca"><span>Travel</span>travel.gc.ca</a></li>
-	<li><a href="http://www.servicecanada.gc.ca/eng/home.shtml"><span>Service Canada</span>servicecanada.gc.ca</a></li>
-	<li><a href="http://www.jobbank.gc.ca"><span>Jobs</span>jobbank.gc.ca</a></li>
-	<li><a href="http://actionplan.gc.ca/en"><span>Economy</span>actionplan.gc.ca</a></li>
+	<li><a href="http://healthycanadians.gc.ca"><span>Health</span></a></li>
+	<li><a href="http://travel.gc.ca"><span>Travel</span></a></li>
+	<li><a href="http://www.servicecanada.gc.ca/eng/home.shtml"><span>Service Canada</span></a></li>
+	<li><a href="http://www.jobbank.gc.ca"><span>Jobs</span></a></li>
+	<li><a href="http://actionplan.gc.ca/en"><span>Economy</span></a></li>
 
 	<li id="canada-ca"><a href="http://www.canada.ca/en/index.html">Canada.ca</a></li>
 </ul>
@@ -372,7 +468,7 @@
 		</footer>
 
 		<!--[if gte IE 9 | !IE ]><!-->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
 <script src="../../js/wet-boew.js"></script>
 <!--<![endif]-->
 <!--[if lt IE 9]>
